@@ -15,7 +15,7 @@ def main() -> int:
     with open(INPUT_README_FILE) as f:
         contents = f.read()
     
-    before, delim, _ = contents.partition('[generated-inputs]: # (generated)\n')
+    before, delim, _ = contents.partition('[//]: # (input-output-start)\n')
      
     ## TODO: Return a table of input and output
     rest = ""
