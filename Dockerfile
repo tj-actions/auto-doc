@@ -23,4 +23,3 @@ RUN chmod +x /entrypoint.sh
 ENV PATH="/app/bin:${PATH}"
 
 ENTRYPOINT ["/entrypoint.sh"]
-
