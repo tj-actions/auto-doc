@@ -15,7 +15,7 @@ FROM alpine:3.14.2 as main
 
 RUN apk add bash
 
-COPY --from=builder /app/auto_doc /biauto_doc
+COPY --from=builder /app/auto_doc /app/bin/auto_doc
 
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
