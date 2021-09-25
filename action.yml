@@ -16,6 +16,7 @@ runs:
   steps:
     - run: |
         bash $GITHUB_ACTION_PATH/entrypoint.sh
+        bash $GITHUB_ACTION_PATH/cleanup.sh
       id: auto-doc
       shell: bash
       env:
