@@ -18,7 +18,6 @@ Auto generate documentation from actions.yml.
 
 ## Inputs
 
-
 ## Outputs
 
 *   Free software: [Apache License 2.0](LICENSE)
