@@ -26,7 +26,7 @@ Auto generate documentation from actions.yml.
 ## Outputa
 
 
-* Free software: [MIT license](LICENSE)
+* Free software: [Apache License 2.0](LICENSE)
 
 If you feel generous and want to show some extra appreciation:
 
