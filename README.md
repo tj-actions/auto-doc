@@ -23,7 +23,7 @@ Auto generate documentation from actions.yml.
 ## Inputs
 
 
-## Outputa
+## Outputs
 
 
 * Free software: [Apache License 2.0](LICENSE)
