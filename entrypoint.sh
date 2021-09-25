@@ -2,4 +2,8 @@
 
 set -e
 
-auto_doc --help
+for path in ${INPUT_FILES}
+do
+  echo "$path"
+  auto_doc --help
+done
