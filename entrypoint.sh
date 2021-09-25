@@ -2,8 +2,10 @@
 
 set -e
 
+make build
+
 for path in ${INPUT_FILES}
 do
   echo "$path"
-  auto_doc --help
+  ./auto_doc --help
 done
