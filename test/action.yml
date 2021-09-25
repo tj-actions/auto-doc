@@ -1,0 +1,91 @@
+name: Changed files
+description: Get all changed files for push and pull request events.
+author: tj-actions
+inputs:
+  token:
+    description: 'Github token or Repo Scoped Personal Access Token'
+    required: true
+    default: ${{ github.token }}
+  separator:
+    description: 'Split character for array output'
+    required: true
+    default: " "
+  files_from_source_file:
+    description: 'Source file to populate the files input'
+    required: false
+    default: ""
+  files:
+    description: 'Check for changes using only this list of files (Defaults to the entire repo)'
+    required: false
+    default: ""
+  sha:
+    description: 'Specify a current commit SHA used for comparing changes'
+    required: true
+    default: ${{ github.sha }}
+  base_sha:
+    description: 'Specify a base commit SHA on used for comparing changes'
+    required: false
+  path:
+    description: 'Specify a relative path under $GITHUB_WORKSPACE to locate the repository'
+    required: false
+
+outputs:
+  added_files:
+    description: List of added files.
+    value: ${{ steps.test.outputs.added_files }}
+  copied_files:
+    description: List of copied files.
+    value: ${{ steps.test.outputs.copied_files }}
+  deleted_files:
+    description: List of deleted files.
+    value: ${{ steps.test.outputs.deleted_files }}
+  modified_files:
+    description: List of modified files.
+    value: ${{ steps.test.outputs.modified_files }}
+  renamed_files:
+    description: List of renamed files.
+    value: ${{ steps.test.outputs.renamed_files }}
+  type_changed_files:
+    description: List of files that had type changes.
+    value: ${{ steps.test.outputs.type_changed_files }}
+  unmerged_files:
+    description: List of unmerged files.
+    value: ${{ steps.test.outputs.unmerged_files }}
+  unknown_files:
+    description: List of unknown files.
+    value: ${{ steps.test.outputs.unknown_files }}
+  all_changed_and_modified_files:
+    description: List of all changed files.
+    value: ${{ steps.test.outputs.all_changed_and_modified_files }}
+  all_modified_files:
+    description: List of all copied modified and added files.
+    value: ${{ steps.test.outputs.all_modified_files }}
+  any_changed:
+    description: Return true only when any files provided using the files input have changed.
+    value: ${{ steps.test.outputs.any_changed }}
+  only_changed:
+    description: Return true when all files provided using the files input have changed.
+    value: ${{ steps.test.outputs.only_changed }}
+  other_changed_files:
+    description: Return list of changed files not listed in the files input.
+    value: ${{ steps.test.outputs.other_changed_files }}
+  any_deleted:
+    description: Return true only when any files provided using the files input have been deleted.
+    value: ${{ steps.test.outputs.any_deleted }}
+  only_deleted:
+    description: Return true when all files provided using the files input have been deleted.
+    value: ${{ steps.test.outputs.only_deleted }}
+  other_deleted_files:
+    description: Return list of deleted files not listed in the files input.
+    value: ${{ steps.test.outputs.other_deleted_files }}
+
+runs:
+  using: 'composite'
+  steps:
+    - run: |
+        echo "Test"
+      id: test
+      shell: bash
+branding:
+  icon: file-text
+  color: white
