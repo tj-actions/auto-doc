@@ -2,6 +2,8 @@
 
 .DEFAULT_GOAL := help
 
+PATHS := README.md
+
 .PHONY: help
 # Put it first so that "make" without argument is like "make help".
 help:
@@ -20,5 +22,5 @@ build:  ## Compile go modules
 .PHONY: run
 run: build  ## Execute binary
 	@echo "Executing binary..."
-	@./auto_doc
+	@./auto_doc $(PATHS)
 	@$(MAKE) clean

@@ -31,7 +31,9 @@ var rootCmd = &cobra.Command{
 	Short: "Auto doc generator for your github action",
 	Long: `Auto generate documentation for your github action.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Printf("working")
+	    for _, path := range args {
+	        fmt.Printf("working on %s \n", path)
+	    }
 	},
 }
 

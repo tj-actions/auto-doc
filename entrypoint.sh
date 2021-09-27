@@ -2,9 +2,4 @@
 
 set -e
 
-make build
-
-for path in ${INPUT_FILES}
-do
-  ./auto_doc "$path"
-done
+make run PATHS="${INPUT_FILES}"

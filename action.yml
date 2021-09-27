@@ -2,10 +2,6 @@ name: Action auto doc generator
 description: Action auto doc generator
 author: jackton1
 inputs:
-  token:
-    description: 'GITHUB_TOKEN or a repo scoped PAT'
-    required: true
-    default: ${{ github.token }}
   files:
     description: 'Input file(s)'
     required: true
@@ -27,15 +23,11 @@ runs:
           ${{ runner.os }}-go-
     - run: |
         bash $GITHUB_ACTION_PATH/entrypoint.sh
-        bash $GITHUB_ACTION_PATH/cleanup.sh
       id: auto-doc
       shell: bash
       env:
-        GITHUB_BASE_REF: ${{ github.base_ref }}
-        GITHUB_REPOSITORY: ${{ github.repository }}
         # INPUT_<VARIABLE_NAME> is not available in Composite run steps
         # https://github.community/t/input-variable-name-is-not-available-in-composite-run-steps/127611
-        INPUT_TOKEN: ${{ inputs.token }}
         INPUT_FILES: ${{ inputs.files }}
 branding:
   icon: file-text
