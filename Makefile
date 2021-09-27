@@ -8,17 +8,17 @@ help:
 	@awk 'BEGIN {FS = ":.*?## "} /^[a-zA-Z_-]+:.*?## / {printf "\033[36m%-20s-\033[0m %s\n", $$1, $$2}' $(MAKEFILE_LIST)
 
 .PHONY: clean
-clean: ## Clean binary file
+clean:  ## Clean binary file
 	@echo "Cleaning binary..."
 	@rm -f auto_doc
 
 .PHONY: build
-build: clean ## Compile go modules
+build:  ## Compile go modules
 	@echo "Compiling *.go..."
 	@go build -o auto_doc *.go
 
 .PHONY: run
-run: build ## Execute binary
+run: build  ## Execute binary
 	@echo "Executing binary..."
 	@./auto_doc
 	@$(MAKE) clean
