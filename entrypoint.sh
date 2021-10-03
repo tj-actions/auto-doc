@@ -2,4 +2,6 @@
 
 set -e
 
-make run PATHS="${INPUT_FILES}" ACTION="${INPUT_ACTION}"
+IFS=" " read -r -a FILES <<< "$(echo "${INPUT_FILES[@]}" | sort -u | tr "\n" " ")"
+
+make run PATHS="${FILES[*]}" ACTION="${INPUT_ACTION}"
