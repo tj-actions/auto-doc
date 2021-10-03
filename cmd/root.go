@@ -24,7 +24,7 @@ import (
 )
 
 var cfgFile string
-var actionFile string
+var actionFileName string
 
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
@@ -32,9 +32,22 @@ var rootCmd = &cobra.Command{
 	Short: "Auto doc generator for your github action",
 	Long: `Auto generate documentation for your github action.`,
 	Run: func(cmd *cobra.Command, args []string) {
+		if len(args) == 0 {
+			_, err := fmt.Fprintf(
+				os.Stderr,
+				"invalid number of arguments passed: %d, requires at least 1 input/output file",
+				len(args),
+			)
+			if err != nil {
+				cobra.CheckErr(err)
+			}
+			return
+		}
+
 	    for _, path := range args {
 	        fmt.Printf("working on %s \n", path)
 	    }
+		fmt.Printf("Action file: %s", actionFileName)
 	},
 }
 
@@ -50,10 +63,20 @@ func init() {
 	// Here you will define your flags and configuration settings.
 	// Cobra supports persistent flags, which, if defined here,
 	// will be global for your application.
-	rootCmd.PersistentFlags().StringVar(&cfgFile, "config", "", "config file (default is $HOME/.cobra.yaml)")
+	rootCmd.PersistentFlags().StringVar(
+		&cfgFile,
+		"config",
+		"",
+		"config file (default is $HOME/.cobra.yaml)",
+	)
 	
 	// Custom flags
-	rootCmd.PersistentFlags().StringVar(&actionFile, "action", "action.yml", "action config file (default is action.yml)")
+	rootCmd.PersistentFlags().StringVar(
+		&actionFileName,
+		"action-file",
+		"action.yml",
+		"action config file",
+	)
 }
 
 // initConfig reads in config file and ENV variables if set.

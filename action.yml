@@ -2,6 +2,10 @@ name: Action auto doc generator
 description: Action auto doc generator
 author: jackton1
 inputs:
+  action:
+    description: 'action.yml/yaml file'
+    required: true
+    default: action.yml
   files:
     description: 'Input file(s)'
     required: true

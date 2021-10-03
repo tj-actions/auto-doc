@@ -2,4 +2,4 @@
 
 set -e
 
-make run PATHS="${INPUT_FILES}"
+make run PATHS="${INPUT_FILES}" ACTION="${INPUT_ACTION}"

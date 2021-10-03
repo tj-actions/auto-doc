@@ -2,8 +2,6 @@
 
 .DEFAULT_GOAL := help
 
-PATHS := README.md
-
 .PHONY: help
 # Put it first so that "make" without argument is like "make help".
 help:
@@ -14,13 +12,16 @@ clean:  ## Clean binary file
 	@echo "Cleaning binary..."
 	@rm -f auto_doc
 
+guard-%: ## Checks that env var is set else exits with non 0 mainly used in CI;
+	@if [ -z '${${*}}' ]; then echo 'Environment variable $* not set' && exit 1; fi
+
 .PHONY: build
 build:  ## Compile go modules
 	@echo "Compiling *.go..."
 	@go build -o auto_doc *.go
 
 .PHONY: run
-run: build  ## Execute binary
-	@echo "Executing binary..."
-	@./auto_doc $(PATHS)
+run: build guard-PATHS guard-ACTION  ## Execute binary
+	@echo "Running auto doc..."
+	@./auto_doc --action-file=$(ACTION) $(PATHS)
 	@$(MAKE) clean
