@@ -35,7 +35,7 @@ var rootCmd = &cobra.Command{
 		if len(args) == 0 {
 			_, err := fmt.Fprintf(
 				os.Stderr,
-				"invalid number of arguments passed: %d, requires at least 1 input/output file",
+				"invalid number of arguments passed: %d, requires at least 1 input/output file\n",
 				len(args),
 			)
 			if err != nil {
