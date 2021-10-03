@@ -47,7 +47,7 @@ var rootCmd = &cobra.Command{
 	    for _, path := range args {
 	        fmt.Printf("working on %s \n", path)
 	    }
-		fmt.Printf("Action file: %s", actionFileName)
+		fmt.Printf("Action file: %s \n", actionFileName)
 	},
 }
 
