@@ -23,5 +23,5 @@ build:  ## Compile go modules
 .PHONY: run
 run: build guard-OUTPUT guard-ACTION  ## Execute binary
 	@echo "Running auto doc..."
-	@./auto_doc --action=$(ACTION) -output=$(OUTPUT)
+	@./auto_doc --action=$(ACTION) --output=$(OUTPUT)
 	@$(MAKE) clean
