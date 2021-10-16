@@ -15,16 +15,35 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2.3.5
-      - name: shellcheck
-        uses: reviewdog/action-shellcheck@v1.9
+
+      - name: golangci-lint
+        uses: reviewdog/action-golangci-lint@v2
+        with:
+          workdir: test
+          go_version: "1.14.4"
+
+      - name: Setup go
+        uses: actions/setup-go@v2
+        with:
+          go-version: '1.14.4'
+
+      - uses: actions/cache@v2
+        with:
+          path: ~/go/pkg/mod
+          key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
+          restore-keys: |
+            ${{ runner.os }}-go-
+
       - name: Run auto-doc
         uses: ./
+
       - name: Verify Changed files
         uses: tj-actions/verify-changed-files@v8
         id: verify_changed_files
         with:
           files: |
             README.md
+
       - name: Create Pull Request
         if: steps.verify_changed_files.outputs.files_changed == 'true'
         uses: peter-evans/create-pull-request@v3
