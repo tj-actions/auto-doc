@@ -34,7 +34,7 @@ If you feel generous and want to show some extra appreciation:
 
 This package was created with [Cookiecutter](https://github.com/cookiecutter/cookiecutter) using [cookiecutter-action](https://github.com/tj-actions/cookiecutter-action)
 
-- [cobra](https://github.com/spf13/cobra/cobra)
+*   [cobra](https://github.com/spf13/cobra/cobra)
 
 ## Report Bugs
 
