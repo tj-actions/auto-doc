@@ -19,12 +19,11 @@ package cmd
 import (
 	"fmt"
 	"github.com/spf13/cobra"
-	"github.com/spf13/viper"
 	"os"
 )
 
-var cfgFile string
 var actionFileName string
+var outputFileName string
 
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
@@ -32,10 +31,10 @@ var rootCmd = &cobra.Command{
 	Short: "Auto doc generator for your github action",
 	Long: `Auto generate documentation for your github action.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		if len(args) == 0 {
+		if len(args) > 0 {
 			_, err := fmt.Fprintf(
 				os.Stderr,
-				"invalid number of arguments passed: %d, requires at least 1 input/output file\n",
+				"'%d' invalid arguments passed.\n",
 				len(args),
 			)
 			if err != nil {
@@ -44,9 +43,7 @@ var rootCmd = &cobra.Command{
 			return
 		}
 
-	    for _, path := range args {
-	        fmt.Printf("working on %s \n", path)
-	    }
+	    fmt.Printf("Working on %s \n", outputFileName)
 		fmt.Printf("Action file: %s \n", actionFileName)
 	},
 }
@@ -58,50 +55,17 @@ func Execute() {
 }
 
 func init() {
-	cobra.OnInitialize(initConfig)
-
-	// Here you will define your flags and configuration settings.
-	// Cobra supports persistent flags, which, if defined here,
-	// will be global for your application.
-	rootCmd.PersistentFlags().StringVar(
-		&cfgFile,
-		"config",
-		"",
-		"config file (default is $HOME/.cobra.yaml)",
-	)
-	
 	// Custom flags
 	rootCmd.PersistentFlags().StringVar(
 		&actionFileName,
-		"action-file",
+		"action",
 		"action.yml",
 		"action config file",
 	)
-}
-
-// initConfig reads in config file and ENV variables if set.
-func initConfig() {
-	if cfgFile != "" {
-		// Use config file from the flag.
-		viper.SetConfigFile(cfgFile)
-	} else {
-		// Find home directory.
-		home, err := os.UserHomeDir()
-		cobra.CheckErr(err)
-
-		// Search config in home directory with name ".auto-doc" (without extension).
-		viper.AddConfigPath(home)
-		viper.SetConfigType("yaml")
-		viper.SetConfigName(".auto-doc")
-	}
-
-	viper.AutomaticEnv() // read in environment variables that match
-
-	// If a config file is found, read it in.
-	if err := viper.ReadInConfig(); err == nil {
-		_, err := fmt.Fprintln(os.Stderr, "Using config file:", viper.ConfigFileUsed())
-		if err != nil {
-			cobra.CheckErr(err)
-		}
-	}
+	rootCmd.PersistentFlags().StringVar(
+		&outputFileName,
+		"output",
+		"README.md",
+		"Output file",
+	)
 }

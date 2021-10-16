@@ -21,7 +21,7 @@ build:  ## Compile go modules
 	@go build -o auto_doc *.go
 
 .PHONY: run
-run: build guard-PATHS guard-ACTION  ## Execute binary
+run: build guard-OUTPUT guard-ACTION  ## Execute binary
 	@echo "Running auto doc..."
-	@./auto_doc --action-file=$(ACTION) $(PATHS)
+	@./auto_doc --action=$(ACTION) --output=$(OUTPUT)
 	@$(MAKE) clean
