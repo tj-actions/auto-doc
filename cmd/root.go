@@ -19,11 +19,35 @@ package cmd
 import (
 	"fmt"
 	"github.com/spf13/cobra"
+	"gopkg.in/yaml.v3"
+	"io/ioutil"
+	"log"
 	"os"
 )
 
 var actionFileName string
 var outputFileName string
+
+type Action struct {
+	Name string `yaml:"name"`
+	Description string `yaml:"description"`
+	Inputs yaml.Node `yaml:"inputs,omitempty"`
+	Outputs yaml.Node `yaml:"outputs,omitempty"`
+}
+
+func (a *Action) getAction() *Action {
+	actionYaml, err := ioutil.ReadFile(actionFileName)
+	if err != nil {
+		cobra.CheckErr(err)
+	}
+
+	err = yaml.Unmarshal(actionYaml, a)
+	if err != nil {
+		log.Fatalf("Unmarshal: %v", err)
+	}
+
+	return a
+}
 
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
@@ -43,8 +67,20 @@ var rootCmd = &cobra.Command{
 			return
 		}
 
-	    fmt.Printf("Working on %s \n", outputFileName)
-		fmt.Printf("Action file: %s \n", actionFileName)
+		var action Action
+		action.getAction()
+
+		fmt.Println(action)
+
+		readMe, err := ioutil.ReadFile(outputFileName)
+
+		if err != nil {
+			cobra.CheckErr(err)
+		}
+
+		for _, line := range readMe {
+			fmt.Printf("%b\n", line)
+		}
 	},
 }
 
