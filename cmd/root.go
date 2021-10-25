@@ -24,7 +24,6 @@ import (
 	"log"
 	"os"
 	"bufio"
-        "fmt"
 )
 
 var actionFileName string
