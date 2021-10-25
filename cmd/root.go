@@ -23,6 +23,8 @@ import (
 	"io/ioutil"
 	"log"
 	"os"
+	"bufio"
+        "fmt"
 )
 
 var actionFileName string
@@ -72,15 +74,24 @@ var rootCmd = &cobra.Command{
 
 		fmt.Println(action)
 
-		readMe, err := ioutil.ReadFile(outputFileName)
+
+		file, err := os.Open(outputFileName)
 
 		if err != nil {
 			cobra.CheckErr(err)
-		}
+	        }
 
-		for _, line := range readMe {
-			fmt.Printf("%s\n", string(line))
-		}
+		defer file.Close()
+
+	        scanner := bufio.NewScanner(file)
+
+	        for scanner.Scan() {
+			fmt.Println(scanner.Text())
+	        }
+
+	        if err := scanner.Err(); err != nil {
+			cobra.CheckErr(err)
+	        }
 	},
 }
 
