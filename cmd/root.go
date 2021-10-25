@@ -79,7 +79,7 @@ var rootCmd = &cobra.Command{
 		}
 
 		for _, line := range readMe {
-			fmt.Printf("%b\n", line)
+			fmt.Printf("%s\n", string(line))
 		}
 	},
 }
