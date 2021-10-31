@@ -1,0 +1,72 @@
+name: Format & Tidy go.mod
+on:
+  pull_request:
+    paths:
+      - '**.go'
+      - '**.mod'
+      - 'Makefile'
+      - '.github/workflows/format.yml'
+    branches:
+      - 'main'
+
+jobs:
+  cleanup-runs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: rokroskar/workflow-run-cleanup-action@v0.3.3
+        env:
+          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+
+  format:
+    name: format
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal access token.
+          fetch-depth: 0 # otherwise, there would be errors pushing refs to the destination repository.
+
+      - name: Setup go
+        uses: actions/setup-go@v2
+        with:
+          go-version: '1.14.4'
+
+      - uses: actions/cache@v2
+        with:
+          path: ~/go/pkg/mod
+          key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
+          restore-keys: |
+            ${{ runner.os }}-go-
+
+      - name: Format code
+        run:
+          make format
+
+      - name: Tidy go.mod
+        run:
+          make tidy
+
+      - name: Verify Changed files
+        uses: tj-actions/verify-changed-files@v8
+        id: verify-changed-files
+        with:
+          files: |
+            \.go$
+            \.mod$
+            \.sum$
+
+      - name: Commit migration changes
+        if: steps.verify-changed-files.outputs.files_changed == 'true'
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add cmd main.go go.mod go.sum
+          git commit -m "Formatted code."
+
+      - name: Push formatting changes
+        if: steps.verify-changed-files.outputs.files_changed == 'true'
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.github_token }}
+          branch: ${{ github.head_ref }}

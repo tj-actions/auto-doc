@@ -25,3 +25,11 @@ run: build guard-OUTPUT guard-ACTION  ## Execute binary
 	@echo "Running auto doc..."
 	@./auto_doc --action=$(ACTION) --output=$(OUTPUT)
 	@$(MAKE) clean
+
+.PHONY: format
+format:  ## Format go modules
+	@go fmt ./...
+
+.PHONY: tidy
+tidy:  ## Tidy go.mod
+	@go mod tidy

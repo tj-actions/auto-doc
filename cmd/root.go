@@ -17,23 +17,23 @@ limitations under the License.
 package cmd
 
 import (
+	"bufio"
 	"fmt"
 	"github.com/spf13/cobra"
 	"gopkg.in/yaml.v3"
 	"io/ioutil"
 	"log"
 	"os"
-	"bufio"
 )
 
 var actionFileName string
 var outputFileName string
 
 type Action struct {
-	Name string `yaml:"name"`
-	Description string `yaml:"description"`
-	Inputs yaml.Node `yaml:"inputs,omitempty"`
-	Outputs yaml.Node `yaml:"outputs,omitempty"`
+	Name        string    `yaml:"name"`
+	Description string    `yaml:"description"`
+	Inputs      yaml.Node `yaml:"inputs,omitempty"`
+	Outputs     yaml.Node `yaml:"outputs,omitempty"`
 }
 
 func (a *Action) getAction() *Action {
@@ -54,7 +54,7 @@ func (a *Action) getAction() *Action {
 var rootCmd = &cobra.Command{
 	Use:   "auto-doc",
 	Short: "Auto doc generator for your github action",
-	Long: `Auto generate documentation for your github action.`,
+	Long:  `Auto generate documentation for your github action.`,
 	Run: func(cmd *cobra.Command, args []string) {
 		if len(args) > 0 {
 			_, err := fmt.Fprintf(
@@ -73,24 +73,23 @@ var rootCmd = &cobra.Command{
 
 		fmt.Println(action)
 
-
 		file, err := os.Open(outputFileName)
 
 		if err != nil {
 			cobra.CheckErr(err)
-	        }
+		}
 
 		defer file.Close()
 
-	        scanner := bufio.NewScanner(file)
+		scanner := bufio.NewScanner(file)
 
-	        for scanner.Scan() {
+		for scanner.Scan() {
 			fmt.Println(scanner.Text())
-	        }
+		}
 
-	        if err := scanner.Err(); err != nil {
+		if err := scanner.Err(); err != nil {
 			cobra.CheckErr(err)
-	        }
+		}
 	},
 }
 
