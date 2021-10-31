@@ -18,7 +18,7 @@ jobs:
     steps:
       - uses: rokroskar/workflow-run-cleanup-action@v0.3.3
         env:
-          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.github_token }}
 
   golangci-lint:
     name: golangci lint
