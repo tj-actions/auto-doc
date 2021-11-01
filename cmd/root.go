@@ -73,7 +73,8 @@ var rootCmd = &cobra.Command{
 		var action Action
 		action.getAction()
 
-		fmt.Printf("%v\n", action)
+		fmt.Printf("%v\n", action.Inputs)
+		fmt.Printf("%v\n", action.Outputs)
 		fmt.Printf("Name: %s \n", action.Name)
 		fmt.Printf("Description: %s\n", action.Description)
 
