@@ -43,8 +43,6 @@ type Output struct {
 }
 
 type Action struct {
-	Name        string    `yaml:"name"`
-	Description string    `yaml:"description"`
 	Inputs      map[string]Input `yaml:"inputs,omitempty"`
 	Outputs     map[string]Output `yaml:"outputs,omitempty"`
 }
@@ -85,28 +83,26 @@ var rootCmd = &cobra.Command{
 
 		var action Action
 		action.getAction()
-		fmt.Printf("Name: %s \n", action.Name)
-		fmt.Printf("Description: %s\n", action.Description)
 
-		table := tablewriter.NewWriter(os.Stdout)
-		table.SetHeader([]string{"Input", "Required", "Default", "Description"})
+		inputTable := tablewriter.NewWriter(os.Stdout)
+		inputTable.SetHeader([]string{"Input", "Required", "Default", "Description"})
 
 		for key, input := range action.Inputs {
 			row := []string{key, strconv.FormatBool(input.Required), input.Default, input.Description}
-			table.Append(row)
+			inputTable.Append(row)
 		}
 
-		table.Render()
+		inputTable.Render()
 
-		for _, output := range action.Outputs {
-			fmt.Printf("Output: %v\n", output)
+		outputTable := tablewriter.NewWriter(os.Stdout)
+		outputTable.SetHeader([]string{"Output", "Required", "Default", "Description"})
+
+		for key, output := range action.Inputs {
+			row := []string{key, strconv.FormatBool(output.Required), output.Default, output.Description}
+			outputTable.Append(row)
 		}
 
-		outputFile, err := os.Open(outputFileName)
-
-		if err != nil {
-			cobra.CheckErr(err)
-		}
+		outputTable.Render()
 
 		defer func(file *os.File) {
 			err := file.Close()
