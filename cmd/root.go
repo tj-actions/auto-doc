@@ -86,6 +86,10 @@ var rootCmd = &cobra.Command{
 
 		fmt.Printf("Inputs: %v\n", inputs)
 
+		for _, input := range inputs {
+			fmt.Printf("Output: %v\n", input)
+		}
+
 		outputs := make(map[interface{}]interface{})
 
 		err = action.Outputs.Decode(outputs)
@@ -95,6 +99,10 @@ var rootCmd = &cobra.Command{
 		}
 
 		fmt.Printf("Outputs: %v\n", outputs)
+
+		for _, output := range outputs {
+			fmt.Printf("Output: %v\n", output)
+		}
 
 		outputFile, err := os.Open(outputFileName)
 
