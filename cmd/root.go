@@ -91,8 +91,8 @@ var rootCmd = &cobra.Command{
 		table := tablewriter.NewWriter(os.Stdout)
 		table.SetHeader([]string{"Input", "Required", "Default", "Description"})
 
-		for _, input := range action.Inputs {
-			row := []string{"", strconv.FormatBool(input.Required), input.Default, input.Description}
+		for key, input := range action.Inputs {
+			row := []string{key, strconv.FormatBool(input.Required), input.Default, input.Description}
 			table.Append(row)
 		}
 
