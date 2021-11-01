@@ -95,10 +95,10 @@ var rootCmd = &cobra.Command{
 		inputTable.Render()
 
 		outputTable := tablewriter.NewWriter(os.Stdout)
-		outputTable.SetHeader([]string{"Output", "Required", "Default", "Description"})
+		outputTable.SetHeader([]string{"Output", "Description", "Value"})
 
-		for key, output := range action.Inputs {
-			row := []string{key, strconv.FormatBool(output.Required), output.Default, output.Description}
+		for key, output := range action.Outputs {
+			row := []string{key, output.Description, output.Value}
 			outputTable.Append(row)
 		}
 
