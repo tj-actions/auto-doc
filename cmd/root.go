@@ -56,6 +56,8 @@ var rootCmd = &cobra.Command{
 	Short: "Auto doc generator for your github action",
 	Long:  `Auto generate documentation for your github action.`,
 	Run: func(cmd *cobra.Command, args []string) {
+		var err error
+
 		if len(args) > 0 {
 			_, err := fmt.Fprintf(
 				os.Stderr,
@@ -71,17 +73,43 @@ var rootCmd = &cobra.Command{
 		var action Action
 		action.getAction()
 
-		fmt.Println(action)
+		fmt.Printf("Name: %s", action.Name)
+		fmt.Printf("Description: %s", action.Description)
 
-		file, err := os.Open(outputFileName)
+		inputs := make(map[string]interface{})
+
+		err = action.Outputs.Decode(inputs)
 
 		if err != nil {
 			cobra.CheckErr(err)
 		}
 
-		defer file.Close()
+		fmt.Printf("Inputs: %s", inputs)
 
-		scanner := bufio.NewScanner(file)
+		outputs := make(map[string]interface{})
+
+		err = action.Outputs.Decode(outputs)
+
+		if err != nil {
+			cobra.CheckErr(err)
+		}
+
+		fmt.Printf("Outputs: %s", outputs)
+
+		outputFile, err := os.Open(outputFileName)
+
+		if err != nil {
+			cobra.CheckErr(err)
+		}
+
+		defer func(file *os.File) {
+			err := file.Close()
+			if err != nil {
+				cobra.CheckErr(err)
+			}
+		}(outputFile)
+
+		scanner := bufio.NewScanner(outputFile)
 
 		for scanner.Scan() {
 			fmt.Println(scanner.Text())
