@@ -104,6 +104,12 @@ var rootCmd = &cobra.Command{
 
 		outputTable.Render()
 
+		outputFile, err := os.Open(outputFileName)
+
+		if err != nil {
+			cobra.CheckErr(err)
+		}
+
 		defer func(file *os.File) {
 			err := file.Close()
 			if err != nil {
