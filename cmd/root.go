@@ -84,25 +84,29 @@ var rootCmd = &cobra.Command{
 		var action Action
 		action.getAction()
 
-		inputTable := tablewriter.NewWriter(os.Stdout)
-		inputTable.SetHeader([]string{"Input", "Required", "Default", "Description"})
+		if len(action.Inputs) > 0 {
+			inputTable := tablewriter.NewWriter(os.Stdout)
+			inputTable.SetHeader([]string{"Input", "Required", "Default", "Description"})
 
-		for key, input := range action.Inputs {
-			row := []string{key, strconv.FormatBool(input.Required), input.Default, input.Description}
-			inputTable.Append(row)
+			for key, input := range action.Inputs {
+				row := []string{key, strconv.FormatBool(input.Required), input.Default, input.Description}
+				inputTable.Append(row)
+			}
+
+			inputTable.Render()
 		}
 
-		inputTable.Render()
+		if len(action.Outputs) > 0 {
+			outputTable := tablewriter.NewWriter(os.Stdout)
+			outputTable.SetHeader([]string{"Output", "Description", "Value"})
 
-		outputTable := tablewriter.NewWriter(os.Stdout)
-		outputTable.SetHeader([]string{"Output", "Description", "Value"})
+			for key, output := range action.Outputs {
+				row := []string{key, output.Description, output.Value}
+				outputTable.Append(row)
+			}
 
-		for key, output := range action.Outputs {
-			row := []string{key, output.Description, output.Value}
-			outputTable.Append(row)
+			outputTable.Render()
 		}
-
-		outputTable.Render()
 
 		outputFile, err := os.Open(outputFileName)
 
