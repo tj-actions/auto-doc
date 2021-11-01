@@ -76,7 +76,7 @@ var rootCmd = &cobra.Command{
 		fmt.Printf("Name: %s \n", action.Name)
 		fmt.Printf("Description: %s\n", action.Description)
 
-		inputs := make(map[string]interface{})
+		inputs := make(map[interface{}]interface{})
 
 		err = action.Outputs.Decode(inputs)
 
@@ -84,9 +84,9 @@ var rootCmd = &cobra.Command{
 			cobra.CheckErr(err)
 		}
 
-		fmt.Printf("Inputs: %s\n", inputs)
+		fmt.Printf("Inputs: %v\n", inputs)
 
-		outputs := make(map[string]interface{})
+		outputs := make(map[interface{}]interface{})
 
 		err = action.Outputs.Decode(outputs)
 
@@ -94,7 +94,7 @@ var rootCmd = &cobra.Command{
 			cobra.CheckErr(err)
 		}
 
-		fmt.Printf("Outputs: %s \n", outputs)
+		fmt.Printf("Outputs: %v\n", outputs)
 
 		outputFile, err := os.Open(outputFileName)
 
