@@ -28,6 +28,9 @@ import (
 	"strconv"
 )
 
+var AutoDocStart = "<!-- AUTO-DOC-%s:START - Do not remove or modify this section -->"
+var AutoDocEnd = "<!-- AUTO-DOC-%s:END -->"
+
 var actionFileName string
 var outputFileName string
 
@@ -93,7 +96,9 @@ var rootCmd = &cobra.Command{
 				inputTable.Append(row)
 			}
 
+			fmt.Printf(AutoDocStart, "INPUT")
 			inputTable.Render()
+			fmt.Printf(AutoDocEnd, "INPUT")
 		}
 
 		if len(action.Outputs) > 0 {
@@ -105,7 +110,9 @@ var rootCmd = &cobra.Command{
 				outputTable.Append(row)
 			}
 
+			fmt.Printf(AutoDocStart, "OUTPUT")
 			outputTable.Render()
+			fmt.Printf(AutoDocEnd, "OUTPUT")
 		}
 
 		outputFile, err := os.Open(outputFileName)
