@@ -91,7 +91,7 @@ var rootCmd = &cobra.Command{
 		}
 
 		for _, output := range action.Outputs {
-			fmt.Printf("Output: %v\n\n", output)
+			fmt.Printf("Output: %v\n", output)
 		}
 
 		outputFile, err := os.Open(outputFileName)
