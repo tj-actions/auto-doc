@@ -32,8 +32,8 @@ var outputFileName string
 type Action struct {
 	Name        string    `yaml:"name"`
 	Description string    `yaml:"description"`
-	Inputs      yaml.Node `yaml:"inputs,omitempty"`
-	Outputs     yaml.Node `yaml:"outputs,omitempty"`
+	Inputs      yaml.Node `yaml:"inputs"`
+	Outputs     yaml.Node `yaml:"outputs"`
 }
 
 func (a *Action) getAction() *Action {
