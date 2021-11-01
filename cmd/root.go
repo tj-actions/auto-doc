@@ -87,7 +87,7 @@ var rootCmd = &cobra.Command{
 		fmt.Printf("Inputs: %v\n", inputs)
 
 		for _, input := range inputs {
-			fmt.Printf("Output: %v\n", input)
+			fmt.Printf("Input: %v\n", input)
 		}
 
 		outputs := make(map[interface{}]interface{})
