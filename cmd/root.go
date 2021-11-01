@@ -28,8 +28,8 @@ import (
 	"strconv"
 )
 
-var AutoDocStart = "<!-- AUTO-DOC-%s:START - Do not remove or modify this section -->"
-var AutoDocEnd = "<!-- AUTO-DOC-%s:END -->"
+var AutoDocStart = "<!-- AUTO-DOC-%s:START - Do not remove or modify this section -->\n"
+var AutoDocEnd = "<!-- AUTO-DOC-%s:END -->\n"
 
 var actionFileName string
 var outputFileName string
