@@ -29,11 +29,22 @@ import (
 var actionFileName string
 var outputFileName string
 
+type Input struct {
+	Description string    `yaml:"description"`
+	Required    bool 	  `yaml:"required"`
+	Default     string    `yaml:"default"`
+}
+
+type Output struct {
+	Description string    `yaml:"description"`
+	Value       string    `yaml:"default"`
+}
+
 type Action struct {
 	Name        string    `yaml:"name"`
 	Description string    `yaml:"description"`
-	Inputs      yaml.Node `yaml:"inputs"`
-	Outputs     yaml.Node `yaml:"outputs"`
+	Inputs      map[string]Input `yaml:"inputs"`
+	Outputs     map[string]Output `yaml:"outputs"`
 }
 
 func (a *Action) getAction() *Action {
@@ -78,31 +89,11 @@ var rootCmd = &cobra.Command{
 		fmt.Printf("Name: %s \n", action.Name)
 		fmt.Printf("Description: %s\n", action.Description)
 
-		inputs := make(map[interface{}]interface{})
-
-		err = action.Outputs.Decode(inputs)
-
-		if err != nil {
-			cobra.CheckErr(err)
-		}
-
-		fmt.Printf("Inputs: %v\n", inputs)
-
-		for _, input := range inputs {
+		for _, input := range action.Inputs {
 			fmt.Printf("Input: %v\n", input)
 		}
 
-		outputs := make(map[interface{}]interface{})
-
-		err = action.Outputs.Decode(outputs)
-
-		if err != nil {
-			cobra.CheckErr(err)
-		}
-
-		fmt.Printf("Outputs: %v\n", outputs)
-
-		for _, output := range outputs {
+		for _, output := range action.Outputs {
 			fmt.Printf("Output: %v\n", output)
 		}
 
