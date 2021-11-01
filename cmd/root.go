@@ -19,11 +19,13 @@ package cmd
 import (
 	"bufio"
 	"fmt"
+	"github.com/olekukonko/tablewriter"
 	"github.com/spf13/cobra"
 	"gopkg.in/yaml.v3"
 	"io/ioutil"
 	"log"
 	"os"
+	"strconv"
 )
 
 var actionFileName string
@@ -32,19 +34,19 @@ var outputFileName string
 type Input struct {
 	Description string    `yaml:"description"`
 	Required    bool 	  `yaml:"required"`
-	Default     string    `yaml:"default"`
+	Default     string    `yaml:"default,omitempty"`
 }
 
 type Output struct {
 	Description string    `yaml:"description"`
-	Value       string    `yaml:"default"`
+	Value       string    `yaml:"default,omitempty"`
 }
 
 type Action struct {
 	Name        string    `yaml:"name"`
 	Description string    `yaml:"description"`
-	Inputs      map[string]Input `yaml:"inputs"`
-	Outputs     map[string]Output `yaml:"outputs"`
+	Inputs      map[string]Input `yaml:"inputs,omitempty"`
+	Outputs     map[string]Output `yaml:"outputs,omitempty"`
 }
 
 func (a *Action) getAction() *Action {
@@ -86,9 +88,15 @@ var rootCmd = &cobra.Command{
 		fmt.Printf("Name: %s \n", action.Name)
 		fmt.Printf("Description: %s\n", action.Description)
 
+		table := tablewriter.NewWriter(os.Stdout)
+		table.SetHeader([]string{"Input", "Required", "Default", "Description"})
+
 		for _, input := range action.Inputs {
-			fmt.Printf("Input: %v\n", input)
+			row := []string{"", strconv.FormatBool(input.Required), input.Default, input.Description}
+			table.Append(row)
 		}
+
+		table.Render()
 
 		for _, output := range action.Outputs {
 			fmt.Printf("Output: %v\n", output)
