@@ -3,7 +3,7 @@ description: Action auto doc generator
 author: jackton1
 inputs:
   action:
-    description: 'action.yml/yaml file'
+    description: 'Path to the action.yml file'
     required: true
     default: action.yml
   output:

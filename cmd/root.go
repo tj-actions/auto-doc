@@ -17,7 +17,7 @@ limitations under the License.
 package cmd
 
 import (
-	"bufio"
+	"bytes"
 	"fmt"
 	"github.com/olekukonko/tablewriter"
 	"github.com/spf13/cobra"
@@ -26,10 +26,17 @@ import (
 	"log"
 	"os"
 	"strconv"
+	"strings"
 )
 
-var AutoDocStart = "<!-- AUTO-DOC-%s:START - Do not remove or modify this section -->\n"
-var AutoDocEnd = "<!-- AUTO-DOC-%s:END -->\n"
+var InputsHeader = "## Inputs"
+var OutputsHeader = "## Outputs"
+var AutoDocStart = "<!-- AUTO-DOC-%s:START - Do not remove or modify this section --> \n"
+var AutoDocEnd = "<!-- AUTO-DOC-%s:END -->"
+var inputAutoDocStart = fmt.Sprintf(AutoDocStart, "INPUT")
+var inputAutoDocEnd = fmt.Sprintf(AutoDocEnd, "INPUT")
+var outputAutoDocStart = fmt.Sprintf(AutoDocStart, "OUTPUT")
+var outputAutoDocEnd = fmt.Sprintf(AutoDocEnd, "OUTPUT")
 
 var actionFileName string
 var outputFileName string
@@ -87,55 +94,101 @@ var rootCmd = &cobra.Command{
 		var action Action
 		action.getAction()
 
+		inputTableOutput := &strings.Builder{}
 		if len(action.Inputs) > 0 {
-			inputTable := tablewriter.NewWriter(os.Stdout)
+			_, err = fmt.Fprint(inputTableOutput, inputAutoDocStart)
+
+			if err != nil {
+				cobra.CheckErr(err)
+			}
+
+			inputTable := tablewriter.NewWriter(inputTableOutput)
 			inputTable.SetHeader([]string{"Input", "Required", "Default", "Description"})
+			inputTable.SetBorders(tablewriter.Border{Left: true, Top: false, Right: true, Bottom: false})
+			inputTable.SetCenterSeparator("|")
 
 			for key, input := range action.Inputs {
 				row := []string{key, strconv.FormatBool(input.Required), input.Default, input.Description}
 				inputTable.Append(row)
 			}
 
-			fmt.Printf(AutoDocStart, "INPUT")
 			inputTable.Render()
-			fmt.Printf(AutoDocEnd, "INPUT")
+
+			_, err = fmt.Fprint(inputTableOutput, inputAutoDocEnd)
+			if err != nil {
+				cobra.CheckErr(err)
+			}
 		}
 
+		outputTableOutput := &strings.Builder{}
+
 		if len(action.Outputs) > 0 {
-			outputTable := tablewriter.NewWriter(os.Stdout)
+			_, err = fmt.Fprint(outputTableOutput, outputAutoDocStart)
+
+			if err != nil {
+				cobra.CheckErr(err)
+			}
+
+			outputTable := tablewriter.NewWriter(outputTableOutput)
 			outputTable.SetHeader([]string{"Output", "Description", "Value"})
+			outputTable.SetBorders(tablewriter.Border{Left: true, Top: false, Right: true, Bottom: false})
+			outputTable.SetCenterSeparator("|")
 
 			for key, output := range action.Outputs {
 				row := []string{key, output.Description, output.Value}
 				outputTable.Append(row)
 			}
 
-			fmt.Printf(AutoDocStart, "OUTPUT")
 			outputTable.Render()
-			fmt.Printf(AutoDocEnd, "OUTPUT")
+
+			_, err = fmt.Fprint(outputTableOutput, outputAutoDocEnd)
+			if err != nil {
+				cobra.CheckErr(err)
+			}
 		}
 
-		outputFile, err := os.Open(outputFileName)
+		input, err := ioutil.ReadFile(outputFileName)
 
 		if err != nil {
 			cobra.CheckErr(err)
 		}
 
-		defer func(file *os.File) {
-			err := file.Close()
-			if err != nil {
-				cobra.CheckErr(err)
-			}
-		}(outputFile)
+		var output = []byte("")
 
-		scanner := bufio.NewScanner(outputFile)
+		hasInputsData, _, _ := HasBytesInBetween(
+			input,
+			[]byte(InputsHeader),
+			[]byte(inputAutoDocEnd),
+		)
 
-		for scanner.Scan() {
-			fmt.Println(scanner.Text())
+		if hasInputsData {
+			inputsStr := fmt.Sprintf("%s\n%v\n", InputsHeader, inputTableOutput.String())
+			fmt.Println(inputsStr)
+			//output = ReplaceBytesInBetween(input, inputStartIndex, inputEndIndex, []byte(inputsStr))
+		} else {
+			inputsStr := fmt.Sprintf("%s\n%v\n", InputsHeader, inputTableOutput.String())
+			output = bytes.Replace(input, []byte(InputsHeader), []byte(inputsStr), -1)
 		}
 
-		if err := scanner.Err(); err != nil {
-			cobra.CheckErr(err)
+		hasOutputsData, _, _ := HasBytesInBetween(
+			output,
+			[]byte(OutputsHeader),
+			[]byte(outputAutoDocEnd),
+		)
+
+		if hasOutputsData {
+			outputsStr := fmt.Sprintf("%s\n%v\n", OutputsHeader, outputTableOutput.String())
+			fmt.Println(outputsStr)
+			//output = ReplaceBytesInBetween(output, outputStartIndex, outputEndIndex, []byte(outputsStr))
+		} else {
+			outputsStr := fmt.Sprintf("%s\n%v\n", OutputsHeader, outputTableOutput.String())
+			output = bytes.Replace(output, []byte(OutputsHeader), []byte(outputsStr), -1)
+		}
+
+		if len(output) > 0 {
+			if err = ioutil.WriteFile(outputFileName, output, 0666); err != nil {
+				cobra.CheckErr(err)
+			}
 		}
 	},
 }
@@ -160,4 +213,34 @@ func init() {
 		"README.md",
 		"Output file",
 	)
+}
+
+
+// HasBytesInBetween Returns empty string if no start string found
+func HasBytesInBetween(value, start, end []byte) (found bool, startIndex int, endIndex int) {
+	s := bytes.Index(value, start)
+
+	if s == -1 {
+		return false, -1, -1
+	}
+
+	s += len(start)
+	e := bytes.Index(value[s:], end)
+
+	if e == -1 {
+		return false, -1, -1
+	}
+
+	e += s + e - 1
+	return true, s, e
+}
+
+// ReplaceBytesInBetween Returns a string after replacements
+func ReplaceBytesInBetween(value []byte, startIndex int, endIndex int, new []byte) []byte {
+	t := make([]byte, len(value))
+
+	copy(t[:startIndex - 1], value[:startIndex - 1])
+	copy(t[startIndex:endIndex], new)
+	copy(t[endIndex + 1:], value[endIndex + 1:])
+	return t
 }

@@ -17,8 +17,12 @@ Auto generate documentation from actions.yml.
 ```
 
 ## Inputs
-
-## Outputs
+<!-- AUTO-DOC-INPUT:START - Do not remove or modify this section --> 
+| INPUT  | REQUIRED |  DEFAULT   |         DESCRIPTION         |
+|--------|----------|------------|-----------------------------|
+| action | true     | action.yml | Path to the action.yml file |
+| output | true     | README.md  | Output file                 |
+<!-- AUTO-DOC-INPUT:END -->
 
 *   Free software: [Apache License 2.0](LICENSE)
 

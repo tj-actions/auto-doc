@@ -1,5 +1,8 @@
 # Self-Documented Makefile see https://marmelab.com/blog/2016/02/29/auto-documented-makefile.html
 
+OUTPUT := README.md
+ACTION := action.yml
+
 .DEFAULT_GOAL := help
 
 .PHONY: help
