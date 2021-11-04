@@ -215,7 +215,6 @@ func init() {
 	)
 }
 
-
 func HasBytesInBetween(value, start, end []byte) (found bool, startIndex int, endIndex int) {
 	s := bytes.Index(value, start)
 
@@ -233,7 +232,6 @@ func HasBytesInBetween(value, start, end []byte) (found bool, startIndex int, en
 	e += s + e - 1
 	return true, s, e
 }
-
 
 func ReplaceBytesInBetween(value []byte, startIndex int, endIndex int, new []byte) []byte {
 	t := make([]byte, len(value))
