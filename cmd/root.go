@@ -42,19 +42,19 @@ var actionFileName string
 var outputFileName string
 
 type Input struct {
-	Description string    `yaml:"description"`
-	Required    bool 	  `yaml:"required"`
-	Default     string    `yaml:"default,omitempty"`
+	Description string `yaml:"description"`
+	Required    bool   `yaml:"required"`
+	Default     string `yaml:"default,omitempty"`
 }
 
 type Output struct {
-	Description string    `yaml:"description"`
-	Value       string    `yaml:"default,omitempty"`
+	Description string `yaml:"description"`
+	Value       string `yaml:"default,omitempty"`
 }
 
 type Action struct {
-	Inputs      map[string]Input `yaml:"inputs,omitempty"`
-	Outputs     map[string]Output `yaml:"outputs,omitempty"`
+	Inputs  map[string]Input  `yaml:"inputs,omitempty"`
+	Outputs map[string]Output `yaml:"outputs,omitempty"`
 }
 
 func (a *Action) getAction() *Action {
@@ -238,8 +238,8 @@ func HasBytesInBetween(value, start, end []byte) (found bool, startIndex int, en
 func ReplaceBytesInBetween(value []byte, startIndex int, endIndex int, new []byte) []byte {
 	t := make([]byte, len(value))
 
-	copy(t[:startIndex - 1], value[:startIndex - 1])
+	copy(t[:startIndex-1], value[:startIndex-1])
 	copy(t[startIndex:endIndex], new)
-	copy(t[endIndex + 1:], value[endIndex + 1:])
+	copy(t[endIndex+1:], value[endIndex+1:])
 	return t
 }
