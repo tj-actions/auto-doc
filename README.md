@@ -4,7 +4,7 @@
 
 ## auto-doc
 
-Auto generate documentation from actions.yml like [this](#inputs) by simply add the `## Inputs` or `## Outputs` header to your `README.md`.
+Auto generate documentation from actions.yml like [this](#inputs) by simply adding headers like `## Inputs` or `## Outputs` to your `README.md`.
 
 ## Usage
 
