@@ -1,5 +1,17 @@
 # Changelog
 
+## [v1.0.0](https://github.com/tj-actions/auto-doc/tree/v1.0.0) (2021-11-05)
+
+[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v1...v1.0.0)
+
+**Implemented enhancements:**
+
+- \[Feature\] Add support for updating markdown [\#24](https://github.com/tj-actions/auto-doc/issues/24)
+
+**Merged pull requests:**
+
+- Upgraded to v1 [\#25](https://github.com/tj-actions/auto-doc/pull/25) ([jackton1](https://github.com/jackton1))
+
 ## [v1](https://github.com/tj-actions/auto-doc/tree/v1) (2021-11-04)
 
 [Full Changelog](https://github.com/tj-actions/auto-doc/compare/8fbee177e53ccd82f491e583fdab3be79758a5d4...v1)
