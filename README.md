@@ -86,6 +86,8 @@ If you feel generous and want to show some extra appreciation:
 This package was created with [Cookiecutter](https://github.com/cookiecutter/cookiecutter) using [cookiecutter-action](https://github.com/tj-actions/cookiecutter-action)
 
 *   [cobra](https://github.com/spf13/cobra/cobra)
+*   [gobadge](https://github.com/AlexBeauchemin/gobadge)
+*   [gobinaries](https://github.com/tj/gobinaries)
 
 ## Report Bugs
 
