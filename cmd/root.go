@@ -183,7 +183,7 @@ var rootCmd = &cobra.Command{
 		} else {
 			outputsStr := fmt.Sprintf("%s\n%v\n", OutputsHeader, outputTableOutput.String())
 			output = bytes.Replace(output, []byte(OutputsHeader), []byte(outputsStr), -1)
-                        fmt.Println(output)
+			fmt.Println(output)
 		}
 
 		if len(output) > 0 {
