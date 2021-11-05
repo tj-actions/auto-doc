@@ -22,18 +22,6 @@ jobs:
           workdir: test
           go_version: "1.14.4"
 
-      - name: Setup go
-        uses: actions/setup-go@v2
-        with:
-          go-version: '1.14.4'
-
-      - uses: actions/cache@v2
-        with:
-          path: ~/go/pkg/mod
-          key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
-          restore-keys: |
-            ${{ runner.os }}-go-v2-
-
       - name: Run auto-doc using the current working directory
         uses: ./
 
