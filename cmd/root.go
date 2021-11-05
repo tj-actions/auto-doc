@@ -98,7 +98,6 @@ var rootCmd = &cobra.Command{
 		inputTableOutput := &strings.Builder{}
 		if len(action.Inputs) > 0 {
 			_, err = fmt.Fprintln(inputTableOutput, inputAutoDocStart)
-
 			if err != nil {
 				cobra.CheckErr(err)
 			}
@@ -121,6 +120,11 @@ var rootCmd = &cobra.Command{
 
 			inputTable.Render()
 
+			_, err = fmt.Fprintln(inputTableOutput)
+			if err != nil {
+				cobra.CheckErr(err)
+			}
+
 			_, err = fmt.Fprintln(inputTableOutput, inputAutoDocEnd)
 			if err != nil {
 				cobra.CheckErr(err)
@@ -131,7 +135,6 @@ var rootCmd = &cobra.Command{
 
 		if len(action.Outputs) > 0 {
 			_, err = fmt.Fprintln(outputTableOutput, outputAutoDocStart)
-
 			if err != nil {
 				cobra.CheckErr(err)
 			}
@@ -154,6 +157,11 @@ var rootCmd = &cobra.Command{
 
 			outputTable.Render()
 
+			_, err = fmt.Fprintln(outputTableOutput)
+			if err != nil {
+				cobra.CheckErr(err)
+			}
+
 			_, err = fmt.Fprintln(outputTableOutput, outputAutoDocEnd)
 			if err != nil {
 				cobra.CheckErr(err)
@@ -175,10 +183,10 @@ var rootCmd = &cobra.Command{
 		)
 
 		if hasInputsData {
-			inputsStr := fmt.Sprintf("%s\n%v", InputsHeader, inputTableOutput.String())
+			inputsStr := fmt.Sprintf("%s\n\n%v", InputsHeader, inputTableOutput.String())
 			output = ReplaceBytesInBetween(input, inputStartIndex, inputEndIndex, []byte(inputsStr))
 		} else {
-			inputsStr := fmt.Sprintf("%s\n%v\n", InputsHeader, inputTableOutput.String())
+			inputsStr := fmt.Sprintf("%s\n\n%v\n", InputsHeader, inputTableOutput.String())
 			output = bytes.Replace(input, []byte(InputsHeader), []byte(inputsStr), -1)
 		}
 
@@ -189,10 +197,10 @@ var rootCmd = &cobra.Command{
 		)
 
 		if hasOutputsData {
-			outputsStr := fmt.Sprintf("%s\n%v", OutputsHeader, outputTableOutput.String())
+			outputsStr := fmt.Sprintf("%s\n\n%v", OutputsHeader, outputTableOutput.String())
 			output = ReplaceBytesInBetween(output, outputStartIndex, outputEndIndex, []byte(outputsStr))
 		} else {
-			outputsStr := fmt.Sprintf("%s\n%v\n", OutputsHeader, outputTableOutput.String())
+			outputsStr := fmt.Sprintf("%s\n\n%v\n", OutputsHeader, outputTableOutput.String())
 			output = bytes.Replace(output, []byte(OutputsHeader), []byte(outputsStr), -1)
 		}
 
