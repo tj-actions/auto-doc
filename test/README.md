@@ -1,6 +1,7 @@
 # test
 
 ## Inputs
+
 <!-- AUTO-DOC-INPUT:START - Do not remove or modify this section --> 
 
 |         INPUT          | REQUIRED |       DEFAULT       |          DESCRIPTION           |
@@ -21,9 +22,11 @@
 |                        |          |                     | used for comparing changes     |
 | token                  | true     | ${{ github.token }} | Github token or Repo Scoped    |
 |                        |          |                     | Personal Access Token          |
+
 <!-- AUTO-DOC-INPUT:END -->
 
 ## Outputs
+
 <!-- AUTO-DOC-OUTPUT:START - Do not remove or modify this section --> 
 
 |             OUTPUT             |          DESCRIPTION           | VALUE |
@@ -56,4 +59,5 @@
 |                                | changes.                       |       |
 | unknown_files                  | List of unknown files.         |       |
 | unmerged_files                 | List of unmerged files.        |       |
+
 <!-- AUTO-DOC-OUTPUT:END -->
