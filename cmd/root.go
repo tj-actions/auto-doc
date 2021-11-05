@@ -97,7 +97,7 @@ var rootCmd = &cobra.Command{
 
 		inputTableOutput := &strings.Builder{}
 		if len(action.Inputs) > 0 {
-			_, err = fmt.Fprint(inputTableOutput, inputAutoDocStart)
+			_, err = fmt.Fprintln(inputTableOutput, inputAutoDocStart)
 
 			if err != nil {
 				cobra.CheckErr(err)
@@ -130,7 +130,7 @@ var rootCmd = &cobra.Command{
 		outputTableOutput := &strings.Builder{}
 
 		if len(action.Outputs) > 0 {
-			_, err = fmt.Fprint(outputTableOutput, outputAutoDocStart)
+			_, err = fmt.Fprintln(outputTableOutput, outputAutoDocStart)
 
 			if err != nil {
 				cobra.CheckErr(err)
