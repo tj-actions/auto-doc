@@ -234,7 +234,7 @@ func HasBytesInBetween(value, start, end []byte) (found bool, startIndex int, en
 }
 
 func ReplaceBytesInBetween(value []byte, startIndex int, endIndex int, new []byte) []byte {
-	t := make([]byte, len(value))
+	t := make([]byte, len(value)+len(new))
 
 	copy(t[:startIndex-1], value[:startIndex-1])
 	copy(t[startIndex:endIndex], new)
