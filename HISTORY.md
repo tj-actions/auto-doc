@@ -1,12 +1,16 @@
 # Changelog
 
-## [Unreleased](https://github.com/tj-actions/auto-doc/tree/HEAD)
+## [v1.0.1](https://github.com/tj-actions/auto-doc/tree/v1.0.1) (2021-11-05)
 
-[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v1.1...HEAD)
+[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v1.1...v1.0.1)
 
 **Implemented enhancements:**
 
 - \[Feature\] Deploy go.dev package registry [\#26](https://github.com/tj-actions/auto-doc/issues/26)
+
+**Merged pull requests:**
+
+- Upgraded to v1.1 [\#38](https://github.com/tj-actions/auto-doc/pull/38) ([jackton1](https://github.com/jackton1))
 
 ## [v1.1](https://github.com/tj-actions/auto-doc/tree/v1.1) (2021-11-05)
 
