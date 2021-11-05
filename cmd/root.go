@@ -25,6 +25,7 @@ import (
 	"io/ioutil"
 	"log"
 	"os"
+	"sort"
 	"strconv"
 	"strings"
 )
@@ -63,7 +64,7 @@ func (a *Action) getAction() *Action {
 		cobra.CheckErr(err)
 	}
 
-	err = yaml.Unmarshal(actionYaml, a)
+	err = yaml.Unmarshal(actionYaml, &a)
 	if err != nil {
 		log.Fatalf("Unmarshal: %v", err)
 	}
@@ -107,8 +108,14 @@ var rootCmd = &cobra.Command{
 			inputTable.SetBorders(tablewriter.Border{Left: true, Top: false, Right: true, Bottom: false})
 			inputTable.SetCenterSeparator("|")
 
-			for key, input := range action.Inputs {
-				row := []string{key, strconv.FormatBool(input.Required), input.Default, input.Description}
+			keys := make([]string, 0, len(action.Inputs))
+			for k := range action.Inputs {
+				keys = append(keys, k)
+			}
+			sort.Strings(keys)
+
+			for _, key := range keys {
+				row := []string{key, strconv.FormatBool(action.Inputs[key].Required), action.Inputs[key].Default, action.Inputs[key].Description}
 				inputTable.Append(row)
 			}
 
@@ -134,8 +141,14 @@ var rootCmd = &cobra.Command{
 			outputTable.SetBorders(tablewriter.Border{Left: true, Top: false, Right: true, Bottom: false})
 			outputTable.SetCenterSeparator("|")
 
-			for key, output := range action.Outputs {
-				row := []string{key, output.Description, output.Value}
+			keys := make([]string, 0, len(action.Outputs))
+			for k := range action.Outputs {
+				keys = append(keys, k)
+			}
+			sort.Strings(keys)
+
+			for _, key := range keys {
+				row := []string{key, action.Outputs[key].Description, action.Outputs[key].Value}
 				outputTable.Append(row)
 			}
 
@@ -162,28 +175,25 @@ var rootCmd = &cobra.Command{
 		)
 
 		if hasInputsData {
-			inputsStr := fmt.Sprintf("%s\n%v\n", InputsHeader, inputTableOutput.String())
+			inputsStr := fmt.Sprintf("%s\n%v", InputsHeader, inputTableOutput.String())
 			output = ReplaceBytesInBetween(input, inputStartIndex, inputEndIndex, []byte(inputsStr))
-			fmt.Println(output)
 		} else {
 			inputsStr := fmt.Sprintf("%s\n%v\n", InputsHeader, inputTableOutput.String())
 			output = bytes.Replace(input, []byte(InputsHeader), []byte(inputsStr), -1)
 		}
 
-		hasOutputsData, _, _ := HasBytesInBetween(
+		hasOutputsData, outputStartIndex, outputEndIndex := HasBytesInBetween(
 			output,
 			[]byte(OutputsHeader),
 			[]byte(outputAutoDocEnd),
 		)
 
 		if hasOutputsData {
-			outputsStr := fmt.Sprintf("%s\n%v\n", OutputsHeader, outputTableOutput.String())
-			fmt.Println(outputsStr)
-			//output = ReplaceBytesInBetween(output, outputStartIndex, outputEndIndex, []byte(outputsStr))
+			outputsStr := fmt.Sprintf("%s\n%v", OutputsHeader, outputTableOutput.String())
+			output = ReplaceBytesInBetween(output, outputStartIndex, outputEndIndex, []byte(outputsStr))
 		} else {
 			outputsStr := fmt.Sprintf("%s\n%v\n", OutputsHeader, outputTableOutput.String())
 			output = bytes.Replace(output, []byte(OutputsHeader), []byte(outputsStr), -1)
-			fmt.Println(output)
 		}
 
 		if len(output) > 0 {
@@ -223,22 +233,21 @@ func HasBytesInBetween(value, start, end []byte) (found bool, startIndex int, en
 		return false, -1, -1
 	}
 
-	s += len(start)
-	e := bytes.Index(value[s:], end)
+	e := bytes.Index(value, end)
 
 	if e == -1 {
 		return false, -1, -1
 	}
 
-	e += s + e - 1
-	return true, s, e
+	return true, s, e + len(end) + 1
 }
 
 func ReplaceBytesInBetween(value []byte, startIndex int, endIndex int, new []byte) []byte {
 	t := make([]byte, len(value)+len(new))
+	w := 0
 
-	copy(t[:startIndex-1], value[:startIndex-1])
-	copy(t[startIndex:endIndex], new)
-	copy(t[endIndex+1:], value[endIndex+1:])
-	return t
+	w += copy(t[:startIndex], value[:startIndex])
+	w += copy(t[startIndex:endIndex], new)
+	w += copy(t[endIndex:], value[endIndex:])
+	return t[0:w]
 }
