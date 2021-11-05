@@ -49,6 +49,30 @@ branding:
   ...
 ```
 
+### Using CLI
+
+#### Installation
+
+Run
+```
+go get -u github.com/tj-actions/auto-doc
+```
+
+command line options
+```
+auto-doc -h                                                                                                                               [5/11/21 | 5:26:52]
+Auto generate documentation for your github action.
+
+Usage:
+  auto-doc [flags]
+
+Flags:
+      --action string   action config file (default "action.yml")
+  -h, --help            help for auto-doc
+      --output string   Output file (default "README.md")
+```
+
+
 *   Free software: [Apache License 2.0](LICENSE)
 
 If you feel generous and want to show some extra appreciation:
