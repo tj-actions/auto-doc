@@ -163,7 +163,7 @@ var rootCmd = &cobra.Command{
 
 		if hasInputsData {
 			inputsStr := fmt.Sprintf("%s\n%v\n", InputsHeader, inputTableOutput.String())
-			output = ReplaceBytesInBetween(input, inputStartIndex, inputEndIndex, []byte(inputsStr))
+			output = string(ReplaceBytesInBetween(input, inputStartIndex, inputEndIndex, []byte(inputsStr)))
 			fmt.Println(output)
 		} else {
 			inputsStr := fmt.Sprintf("%s\n%v\n", InputsHeader, inputTableOutput.String())
