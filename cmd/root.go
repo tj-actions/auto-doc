@@ -247,7 +247,7 @@ func ReplaceBytesInBetween(value []byte, startIndex int, endIndex int, new []byt
 	w := 0
 
 	w += copy(t[:startIndex], value[:startIndex])
-	w += copy(t[startIndex:endIndex], new)
-	w += copy(t[endIndex:], value[endIndex:])
+	w += copy(t[w:endIndex], new)
+	w += copy(t[w:], value[endIndex:])
 	return t[0:w]
 }
