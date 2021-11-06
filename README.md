@@ -19,7 +19,7 @@ Auto generate documentation from actions.yml like [this](#inputs) by simply addi
     steps:
       - uses: actions/checkout@v2
       - name: Run auto-doc
-        uses: tj-actions/auto-doc@v1.0.1
+        uses: tj-actions/auto-doc@v1.1.0
 ```
 
 ## Inputs
