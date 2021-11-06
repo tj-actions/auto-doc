@@ -38,19 +38,22 @@ jobs:
 
       - name: Verify Changed files
         uses: tj-actions/verify-changed-files@v8.3
-        id: verify_changed_files
+        id: verify-changed-files
         with:
           files: |
             README.md
 
-      - name: Create Pull Request
-        if: "${{ runner.os }} == 'Linux' && steps.verify_changed_files.outputs.files_changed == 'true'"
-        uses: peter-evans/create-pull-request@v3
-        with:
-          base: "main"
-          title: "Updated README.md"
-          branch: "chore/update-readme"
-          commit-message: "Updated README.md"
-          body: "Updated README.md"
-          token: ${{ secrets.PAT_TOKEN }}
+      - name: Commit migration changes
+        if: steps.verify-changed-files.outputs.files_changed == 'true'
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add ${{ steps.verify-changed-files.outputs.changed_files }}
+          git commit -m "Formatted code."
 
+      - name: Push README changes
+        if: steps.verify-changed-files.outputs.files_changed == 'true'
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.github_token }}
+          branch: ${{ github.head_ref }}
