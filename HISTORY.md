@@ -1,5 +1,13 @@
 # Changelog
 
+## [v1.1.4](https://github.com/tj-actions/auto-doc/tree/v1.1.4) (2021-11-06)
+
+[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v1.1.3...v1.1.4)
+
+**Merged pull requests:**
+
+- Upgraded to v1.1.3 [\#219](https://github.com/tj-actions/auto-doc/pull/219) ([jackton1](https://github.com/jackton1))
+
 ## [v1.1.3](https://github.com/tj-actions/auto-doc/tree/v1.1.3) (2021-11-06)
 
 [Full Changelog](https://github.com/tj-actions/auto-doc/compare/v1.1.2...v1.1.3)
