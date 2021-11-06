@@ -60,7 +60,7 @@ func (a *Action) renderToOutput() {
 
 		inputTable.Render()
 
-		_, err = fmt.Fprint(inputTableOutput,"\r\n")
+		_, err = fmt.Fprint(inputTableOutput, "\r\n")
 		if err != nil {
 			cobra.CheckErr(err)
 		}

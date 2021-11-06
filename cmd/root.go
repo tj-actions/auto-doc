@@ -68,7 +68,7 @@ func (a *Action) getAction() *Action {
 	return a
 }
 
-func (a *Action) RenderToOutput () {
+func (a *Action) RenderToOutput() {
 	a.renderToOutput()
 }
 
