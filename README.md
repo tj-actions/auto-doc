@@ -24,7 +24,7 @@ Auto generate documentation from actions.yml like [this](#inputs) by simply addi
 
 ## Inputs
 
-<!-- AUTO-DOC-INPUT:START - Do not remove or modify this section --> 
+<!-- AUTO-DOC-INPUT:START - Do not remove or modify this section -->
 
 | INPUT  | REQUIRED |  DEFAULT   |         DESCRIPTION         |
 |--------|----------|------------|-----------------------------|
