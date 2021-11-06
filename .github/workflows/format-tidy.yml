@@ -64,7 +64,7 @@ jobs:
             \.mod$
             \.sum$
 
-      - name: Commit migration changes
+      - name: Commit formatting changes
         if: steps.verify-changed-files.outputs.files_changed == 'true'
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
@@ -76,5 +76,5 @@ jobs:
         if: steps.verify-changed-files.outputs.files_changed == 'true'
         uses: ad-m/github-push-action@master
         with:
-          github_token: ${{ secrets.github_token }}
+          github_token: ${{ secrets.PAT_TOKEN }}
           branch: ${{ github.head_ref }}
