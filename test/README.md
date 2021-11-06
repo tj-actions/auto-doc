@@ -2,7 +2,7 @@
 
 ## Inputs
 
-<!-- AUTO-DOC-INPUT:START - Do not remove or modify this section --> 
+<!-- AUTO-DOC-INPUT:START - Do not remove or modify this section -->
 
 |         INPUT          | REQUIRED |       DEFAULT       |          DESCRIPTION           |
 |------------------------|----------|---------------------|--------------------------------|
@@ -59,7 +59,7 @@
 
 ## Outputs
 
-<!-- AUTO-DOC-OUTPUT:START - Do not remove or modify this section --> 
+<!-- AUTO-DOC-OUTPUT:START - Do not remove or modify this section -->
 
 |             OUTPUT             |          DESCRIPTION           | VALUE |
 |--------------------------------|--------------------------------|-------|
