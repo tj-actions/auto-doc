@@ -131,7 +131,7 @@ func HasBytesInBetween(value, start, end []byte) (found bool, startIndex int, en
 		return false, -1, -1
 	}
 
-	return true, s, e + len(end) + 1
+	return true, s, e + len(end)
 }
 
 func ReplaceBytesInBetween(value []byte, startIndex int, endIndex int, new []byte) []byte {
