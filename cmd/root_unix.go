@@ -1,3 +1,5 @@
+// +build !windows
+
 // Package cmd
 /*
 Copyright © 2021 Tonye Jack <jtonye@ymail.com>
