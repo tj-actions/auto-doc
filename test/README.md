@@ -25,7 +25,6 @@
 
 <!-- AUTO-DOC-INPUT:END -->
 
-
 ## Outputs
 
 <!-- AUTO-DOC-OUTPUT:START - Do not remove or modify this section -->
@@ -62,4 +61,3 @@
 | unmerged_files                 | List of unmerged files.        |       |
 
 <!-- AUTO-DOC-OUTPUT:END -->
-
