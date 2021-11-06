@@ -32,7 +32,7 @@ import (
 
 var InputsHeader = "## Inputs"
 var OutputsHeader = "## Outputs"
-var AutoDocStart = "<!-- AUTO-DOC-%s:START - Do not remove or modify this section --> \n"
+var AutoDocStart = "<!-- AUTO-DOC-%s:START - Do not remove or modify this section -->"
 var AutoDocEnd = "<!-- AUTO-DOC-%s:END -->"
 var inputAutoDocStart = fmt.Sprintf(AutoDocStart, "INPUT")
 var inputAutoDocEnd = fmt.Sprintf(AutoDocEnd, "INPUT")
@@ -118,6 +118,11 @@ var rootCmd = &cobra.Command{
 				inputTable.Append(row)
 			}
 
+			_, err = fmt.Fprintln(inputTableOutput)
+			if err != nil {
+				cobra.CheckErr(err)
+			}
+
 			inputTable.Render()
 
 			_, err = fmt.Fprintln(inputTableOutput)
@@ -155,6 +160,11 @@ var rootCmd = &cobra.Command{
 				outputTable.Append(row)
 			}
 
+			_, err = fmt.Fprintln(outputTableOutput)
+			if err != nil {
+				cobra.CheckErr(err)
+			}
+
 			outputTable.Render()
 
 			_, err = fmt.Fprintln(outputTableOutput)
@@ -186,7 +196,7 @@ var rootCmd = &cobra.Command{
 			inputsStr := fmt.Sprintf("%s\n\n%v", InputsHeader, inputTableOutput.String())
 			output = ReplaceBytesInBetween(input, inputStartIndex, inputEndIndex, []byte(inputsStr))
 		} else {
-			inputsStr := fmt.Sprintf("%s\n\n%v\n", InputsHeader, inputTableOutput.String())
+			inputsStr := fmt.Sprintf("%s\n\n%v", InputsHeader, inputTableOutput.String())
 			output = bytes.Replace(input, []byte(InputsHeader), []byte(inputsStr), -1)
 		}
 
@@ -200,7 +210,7 @@ var rootCmd = &cobra.Command{
 			outputsStr := fmt.Sprintf("%s\n\n%v", OutputsHeader, outputTableOutput.String())
 			output = ReplaceBytesInBetween(output, outputStartIndex, outputEndIndex, []byte(outputsStr))
 		} else {
-			outputsStr := fmt.Sprintf("%s\n\n%v\n", OutputsHeader, outputTableOutput.String())
+			outputsStr := fmt.Sprintf("%s\n\n%v", OutputsHeader, outputTableOutput.String())
 			output = bytes.Replace(output, []byte(OutputsHeader), []byte(outputsStr), -1)
 		}
 
