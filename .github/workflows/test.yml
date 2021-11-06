@@ -15,13 +15,13 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        platform: [ubuntu-latest, windows-latest, macos-latest, macos-11, ubuntu-18.04, windows-2022, windows-2016]
+        platform: [ubuntu-latest, windows-latest, macos-latest]
     steps:
       - name: Checkout
         uses: actions/checkout@v2.4.0
 
       - name: golangci-lint
-        if: ${{ matrix.platform }} == 'ubuntu-latest'
+        if: "${{ runner.os }} == 'Linux'"
         uses: reviewdog/action-golangci-lint@v2
         with:
           workdir: test
@@ -44,7 +44,7 @@ jobs:
             README.md
 
       - name: Create Pull Request
-        if: ${{ matrix.platform }} == 'ubuntu-latest' && steps.verify_changed_files.outputs.files_changed == 'true'
+        if: "${{ runner.os }} == 'Linux' && steps.verify_changed_files.outputs.files_changed == 'true'"
         uses: peter-evans/create-pull-request@v3
         with:
           base: "main"
