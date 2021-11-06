@@ -67,7 +67,7 @@ func (a *Action) renderToOutput() {
 			cobra.CheckErr(err)
 		}
 
-		_, err = fmt.Fprintln(inputTableOutput, inputAutoDocEnd)
+		_, err = fmt.Fprint(inputTableOutput, inputAutoDocEnd)
 		if err != nil {
 			cobra.CheckErr(err)
 		}
@@ -109,7 +109,7 @@ func (a *Action) renderToOutput() {
 			cobra.CheckErr(err)
 		}
 
-		_, err = fmt.Fprintln(outputTableOutput, outputAutoDocEnd)
+		_, err = fmt.Fprint(outputTableOutput, outputAutoDocEnd)
 		if err != nil {
 			cobra.CheckErr(err)
 		}
