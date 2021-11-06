@@ -19,15 +19,11 @@ package cmd
 import (
 	"bytes"
 	"fmt"
-	"github.com/olekukonko/tablewriter"
 	"github.com/spf13/cobra"
 	"gopkg.in/yaml.v3"
 	"io/ioutil"
 	"log"
 	"os"
-	"sort"
-	"strconv"
-	"strings"
 )
 
 var InputsHeader = "## Inputs"
@@ -72,14 +68,16 @@ func (a *Action) getAction() *Action {
 	return a
 }
 
+func (a *Action) RenderToOutput () {
+	a.renderToOutput()
+}
+
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
 	Use:   "auto-doc",
 	Short: "Auto doc generator for your github action",
 	Long:  `Auto generate documentation for your github action.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		var err error
-
 		if len(args) > 0 {
 			_, err := fmt.Fprintf(
 				os.Stderr,
@@ -94,131 +92,7 @@ var rootCmd = &cobra.Command{
 
 		var action Action
 		action.getAction()
-
-		inputTableOutput := &strings.Builder{}
-		if len(action.Inputs) > 0 {
-			_, err = fmt.Fprintln(inputTableOutput, inputAutoDocStart)
-			if err != nil {
-				cobra.CheckErr(err)
-			}
-
-			inputTable := tablewriter.NewWriter(inputTableOutput)
-			inputTable.SetHeader([]string{"Input", "Required", "Default", "Description"})
-			inputTable.SetBorders(tablewriter.Border{Left: true, Top: false, Right: true, Bottom: false})
-			inputTable.SetCenterSeparator("|")
-
-			keys := make([]string, 0, len(action.Inputs))
-			for k := range action.Inputs {
-				keys = append(keys, k)
-			}
-			sort.Strings(keys)
-
-			for _, key := range keys {
-				row := []string{key, strconv.FormatBool(action.Inputs[key].Required), action.Inputs[key].Default, action.Inputs[key].Description}
-				inputTable.Append(row)
-			}
-
-			_, err = fmt.Fprintln(inputTableOutput)
-			if err != nil {
-				cobra.CheckErr(err)
-			}
-
-			inputTable.Render()
-
-			_, err = fmt.Fprintln(inputTableOutput)
-			if err != nil {
-				cobra.CheckErr(err)
-			}
-
-			_, err = fmt.Fprintln(inputTableOutput, inputAutoDocEnd)
-			if err != nil {
-				cobra.CheckErr(err)
-			}
-		}
-
-		outputTableOutput := &strings.Builder{}
-
-		if len(action.Outputs) > 0 {
-			_, err = fmt.Fprintln(outputTableOutput, outputAutoDocStart)
-			if err != nil {
-				cobra.CheckErr(err)
-			}
-
-			outputTable := tablewriter.NewWriter(outputTableOutput)
-			outputTable.SetHeader([]string{"Output", "Description", "Value"})
-			outputTable.SetBorders(tablewriter.Border{Left: true, Top: false, Right: true, Bottom: false})
-			outputTable.SetCenterSeparator("|")
-
-			keys := make([]string, 0, len(action.Outputs))
-			for k := range action.Outputs {
-				keys = append(keys, k)
-			}
-			sort.Strings(keys)
-
-			for _, key := range keys {
-				row := []string{key, action.Outputs[key].Description, action.Outputs[key].Value}
-				outputTable.Append(row)
-			}
-
-			_, err = fmt.Fprintln(outputTableOutput)
-			if err != nil {
-				cobra.CheckErr(err)
-			}
-
-			outputTable.Render()
-
-			_, err = fmt.Fprintln(outputTableOutput)
-			if err != nil {
-				cobra.CheckErr(err)
-			}
-
-			_, err = fmt.Fprintln(outputTableOutput, outputAutoDocEnd)
-			if err != nil {
-				cobra.CheckErr(err)
-			}
-		}
-
-		input, err := ioutil.ReadFile(outputFileName)
-
-		if err != nil {
-			cobra.CheckErr(err)
-		}
-
-		var output = []byte("")
-
-		hasInputsData, inputStartIndex, inputEndIndex := HasBytesInBetween(
-			input,
-			[]byte(InputsHeader),
-			[]byte(inputAutoDocEnd),
-		)
-
-		if hasInputsData {
-			inputsStr := fmt.Sprintf("%s\n\n%v", InputsHeader, inputTableOutput.String())
-			output = ReplaceBytesInBetween(input, inputStartIndex, inputEndIndex, []byte(inputsStr))
-		} else {
-			inputsStr := fmt.Sprintf("%s\n\n%v", InputsHeader, inputTableOutput.String())
-			output = bytes.Replace(input, []byte(InputsHeader), []byte(inputsStr), -1)
-		}
-
-		hasOutputsData, outputStartIndex, outputEndIndex := HasBytesInBetween(
-			output,
-			[]byte(OutputsHeader),
-			[]byte(outputAutoDocEnd),
-		)
-
-		if hasOutputsData {
-			outputsStr := fmt.Sprintf("%s\n\n%v", OutputsHeader, outputTableOutput.String())
-			output = ReplaceBytesInBetween(output, outputStartIndex, outputEndIndex, []byte(outputsStr))
-		} else {
-			outputsStr := fmt.Sprintf("%s\n\n%v", OutputsHeader, outputTableOutput.String())
-			output = bytes.Replace(output, []byte(OutputsHeader), []byte(outputsStr), -1)
-		}
-
-		if len(output) > 0 {
-			if err = ioutil.WriteFile(outputFileName, output, 0666); err != nil {
-				cobra.CheckErr(err)
-			}
-		}
+		action.RenderToOutput()
 	},
 }
 

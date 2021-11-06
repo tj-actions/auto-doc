@@ -32,7 +32,7 @@ func (a *Action) renderToOutput() {
 	inputTableOutput := &strings.Builder{}
 
 	if len(a.Inputs) > 0 {
-		_, err = fmt.Fprint(inputTableOutput, fmt.Sprintf("%s\r\n", inputAutoDocStart))
+		_, err = fmt.Fprintln(inputTableOutput, inputAutoDocStart)
 		if err != nil {
 			cobra.CheckErr(err)
 		}
@@ -53,19 +53,19 @@ func (a *Action) renderToOutput() {
 			inputTable.Append(row)
 		}
 
-		_, err = fmt.Fprint(inputTableOutput, "\r\n")
+		_, err = fmt.Fprintln(inputTableOutput)
 		if err != nil {
 			cobra.CheckErr(err)
 		}
 
 		inputTable.Render()
 
-		_, err = fmt.Fprint(inputTableOutput,"\r\n")
+		_, err = fmt.Fprintln(inputTableOutput)
 		if err != nil {
 			cobra.CheckErr(err)
 		}
 
-		_, err = fmt.Fprint(inputTableOutput, fmt.Sprintf("%s\r\n", inputAutoDocEnd))
+		_, err = fmt.Fprintln(inputTableOutput, inputAutoDocEnd)
 		if err != nil {
 			cobra.CheckErr(err)
 		}
@@ -74,7 +74,7 @@ func (a *Action) renderToOutput() {
 	outputTableOutput := &strings.Builder{}
 
 	if len(a.Outputs) > 0 {
-		_, err = fmt.Fprint(outputTableOutput, fmt.Sprintf("%s\r\n", outputAutoDocStart))
+		_, err = fmt.Fprintln(outputTableOutput, outputAutoDocStart)
 		if err != nil {
 			cobra.CheckErr(err)
 		}
@@ -95,19 +95,19 @@ func (a *Action) renderToOutput() {
 			outputTable.Append(row)
 		}
 
-		_, err = fmt.Fprint(outputTableOutput, "\r\n")
+		_, err = fmt.Fprintln(outputTableOutput)
 		if err != nil {
 			cobra.CheckErr(err)
 		}
 
 		outputTable.Render()
 
-		_, err = fmt.Fprint(outputTableOutput, "\r\n")
+		_, err = fmt.Fprintln(outputTableOutput)
 		if err != nil {
 			cobra.CheckErr(err)
 		}
 
-		_, err = fmt.Fprint(outputTableOutput, fmt.Sprintf("%s\r\n", outputAutoDocEnd))
+		_, err = fmt.Fprintln(outputTableOutput, outputAutoDocEnd)
 		if err != nil {
 			cobra.CheckErr(err)
 		}
@@ -128,10 +128,10 @@ func (a *Action) renderToOutput() {
 	)
 
 	if hasInputsData {
-		inputsStr := fmt.Sprintf("%s\r\n\r\n%v", InputsHeader, inputTableOutput.String())
+		inputsStr := fmt.Sprintf("%s\n\n%v", InputsHeader, inputTableOutput.String())
 		output = ReplaceBytesInBetween(input, inputStartIndex, inputEndIndex, []byte(inputsStr))
 	} else {
-		inputsStr := fmt.Sprintf("%s\r\n\r\n%v", InputsHeader, inputTableOutput.String())
+		inputsStr := fmt.Sprintf("%s\n\n%v", InputsHeader, inputTableOutput.String())
 		output = bytes.Replace(input, []byte(InputsHeader), []byte(inputsStr), -1)
 	}
 
@@ -142,10 +142,10 @@ func (a *Action) renderToOutput() {
 	)
 
 	if hasOutputsData {
-		outputsStr := fmt.Sprintf("%s\r\n\r\n%v", OutputsHeader, outputTableOutput.String())
+		outputsStr := fmt.Sprintf("%s\n\n%v", OutputsHeader, outputTableOutput.String())
 		output = ReplaceBytesInBetween(output, outputStartIndex, outputEndIndex, []byte(outputsStr))
 	} else {
-		outputsStr := fmt.Sprintf("%s\r\n\r\n%v", OutputsHeader, outputTableOutput.String())
+		outputsStr := fmt.Sprintf("%s\n\n%v", OutputsHeader, outputTableOutput.String())
 		output = bytes.Replace(output, []byte(OutputsHeader), []byte(outputsStr), -1)
 	}
 
