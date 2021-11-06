@@ -22,20 +22,22 @@ jobs:
         with:
           files: |
             README.md
+      - run: |
+          cat README.md
 
-      - name: README.md changed
-        if: steps.verify_changed_files.outputs.files_changed == 'true'
-        run: |
-          echo "README.md has uncommited changes"
-          exit 1
+#       - name: README.md changed
+#         if: steps.verify_changed_files.outputs.files_changed == 'true'
+#         run: |
+#           echo "README.md has uncommited changes"
+#           exit 1
 
-      - name: Create Pull Request
-        if: failure()
-        uses: peter-evans/create-pull-request@v3
-        with:
-          base: "main"
-          title: "Updated README.md"
-          branch: "chore/update-readme"
-          commit-message: "Updated README.md"
-          body: "Updated README.md"
-          token: ${{ secrets.PAT_TOKEN }}
+#       - name: Create Pull Request
+#         if: failure()
+#         uses: peter-evans/create-pull-request@v3
+#         with:
+#           base: "main"
+#           title: "Updated README.md"
+#           branch: "chore/update-readme"
+#           commit-message: "Updated README.md"
+#           body: "Updated README.md"
+#           token: ${{ secrets.PAT_TOKEN }}
