@@ -33,7 +33,7 @@ jobs:
           output: "test/README.md"
 
       - name: Verify Changed files
-        uses: tj-actions/verify-changed-files@v8.4
+        uses: tj-actions/verify-changed-files@v8.5
         id: verify-changed-files
         with:
           files: |
