@@ -72,11 +72,11 @@ func (a *Action) getAction() *Action {
 	return a
 }
 
-func (a *Action) RenderToOutput() {
-	a.renderToOutput()
+func (a *Action) RenderOutput() {
+	a.renderOutput()
 }
 
-func (a *Action) renderToOutput() {
+func (a *Action) renderOutput() {
 	var err error
 	inputTableOutput := &strings.Builder{}
 
@@ -205,6 +205,7 @@ func (a *Action) renderToOutput() {
 	}
 }
 
+
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
 	Use:   "auto-doc",
@@ -225,7 +226,7 @@ var rootCmd = &cobra.Command{
 
 		var action Action
 		action.getAction()
-		action.RenderToOutput()
+		action.RenderOutput()
 	},
 }
 
