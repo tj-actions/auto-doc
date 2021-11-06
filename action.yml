@@ -15,7 +15,7 @@ runs:
   using: 'composite'
   steps:
     - run: |
-        curl -sf https://gobinaries.com/github.com/tj-actions/auto-doc@v1.1.0 | PREFIX=. sh
+        curl -sf https://gobinaries.com/github.com/tj-actions/auto-doc@v1.1.1 | PREFIX=. sh
         ./auto-doc --action="${{ inputs.action }}" --output="${{ inputs.output }}"
         rm -f ./auto-doc
       shell: bash
