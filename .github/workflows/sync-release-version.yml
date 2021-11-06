@@ -18,6 +18,7 @@ jobs:
           pattern: '${{ github.repository }}@'
           paths: |
             README.md
+            action.yml
       - name: Generate CHANGELOG
         uses: tj-actions/github-changelog-generator@v1.8
         with:
