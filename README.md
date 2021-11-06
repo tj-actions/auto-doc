@@ -11,6 +11,7 @@
 
 Auto generate documentation from actions.yml like [this](#inputs) by simply adding `Inputs` and/or `Outputs` [`H2` header](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#headers) to your `README.md`.
 
+
 ## Usage
 
 ```yaml
