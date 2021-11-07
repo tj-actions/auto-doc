@@ -72,10 +72,6 @@ func (a *Action) getAction() *Action {
 	return a
 }
 
-func (a *Action) RenderOutput() {
-	a.renderOutput()
-}
-
 func (a *Action) renderOutput() {
 	var err error
 	inputTableOutput := &strings.Builder{}
@@ -225,7 +221,7 @@ var rootCmd = &cobra.Command{
 
 		var action Action
 		action.getAction()
-		action.RenderOutput()
+		action.renderOutput()
 	},
 }
 
