@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.1.5](https://github.com/tj-actions/auto-doc/tree/1.1.5) (2021-11-07)
+
+[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v1.1.4...1.1.5)
+
+**Merged pull requests:**
+
+- Updated README.md [\#226](https://github.com/tj-actions/auto-doc/pull/226) ([jackton1](https://github.com/jackton1))
+- Updated output columns [\#224](https://github.com/tj-actions/auto-doc/pull/224) ([jackton1](https://github.com/jackton1))
+- Upgraded to v1.1.4 [\#222](https://github.com/tj-actions/auto-doc/pull/222) ([jackton1](https://github.com/jackton1))
+- Updated README.md [\#221](https://github.com/tj-actions/auto-doc/pull/221) ([jackton1](https://github.com/jackton1))
+
 ## [v1.1.4](https://github.com/tj-actions/auto-doc/tree/v1.1.4) (2021-11-06)
 
 [Full Changelog](https://github.com/tj-actions/auto-doc/compare/v1.1.3...v1.1.4)

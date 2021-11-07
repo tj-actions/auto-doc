@@ -18,7 +18,7 @@ Auto generate documentation from actions.yml like [this](#inputs) by simply addi
     steps:
       - uses: actions/checkout@v2
       - name: Run auto-doc
-        uses: tj-actions/auto-doc@v1.1.4
+        uses: tj-actions/auto-doc@1.1.5
 ```
 
 ## Inputs
@@ -67,7 +67,7 @@ Create a pull request each time the action.yml inputs/outputs change
            fetch-depth: 0  # otherwise, you will failed to push refs to dest repo
 
        - name: Run auto-doc
-         uses: tj-actions/auto-doc@v1.1.4
+         uses: tj-actions/auto-doc@1.1.5
 
        - name: Verify Changed files
          uses: tj-actions/verify-changed-files@v8.6
