@@ -1,13 +1,70 @@
 name: CI
 
 on:
+  push:
+    branches:
+      - main
   pull_request:
     branches:
       - main
 
 jobs:
+  test-local:
+    name: Test auto-doc local
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2.4.0
+        with:
+          fetch-depth: 0  # otherwise, you will failed to push refs to dest repo
+          persist-credentials: false  # otherwise, the token used is the GITHUB_TOKEN, instead of your personal token
+
+      - name: Setup go
+        uses: actions/setup-go@v2
+        with:
+          go-version: '1.14.4'
+
+      - uses: actions/cache@v2
+        with:
+          path: ~/go/pkg/mod
+          key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
+          restore-keys: |
+            ${{ runner.os }}-go-
+
+      - name: Run auto-doc using the current working directory
+        run:
+          make run
+
+      - name: Run auto-doc using the test directory
+        run:
+          make run ACTION="test/action.yml" OUTPUT="test/README.md"
+
+      - name: Verify Changed files
+        uses: tj-actions/verify-changed-files@v8.6
+        id: verify-changed-files
+        with:
+          files: |
+            README.md
+
+      - name: Commit README changes
+        if: steps.verify-changed-files.outputs.files_changed == 'true'
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add ${{ steps.verify-changed-files.outputs.changed_files }}
+          git commit -m "Updated README."
+
+      - name: Push README changes
+        if: steps.verify-changed-files.outputs.files_changed == 'true'
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.PAT_TOKEN }}
+          branch: ${{ github.head_ref }}
+
   test:
     name: Test auto-doc
+    if: github.event_name == 'push'
     runs-on: ${{ matrix.platform }}
     strategy:
       fail-fast: false
@@ -36,17 +93,19 @@ jobs:
           files: |
             README.md
 
-      - name: Commit README changes
+      - name: README.md changed
         if: steps.verify-changed-files.outputs.files_changed == 'true'
         run: |
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
-          git add ${{ steps.verify-changed-files.outputs.changed_files }}
-          git commit -m "Updated README."
+          echo "README.md has uncommited changes"
+          exit 1
 
-      - name: Push README changes
-        if: steps.verify-changed-files.outputs.files_changed == 'true'
-        uses: ad-m/github-push-action@master
+      - name: Create Pull Request
+        if: failure()
+        uses: peter-evans/create-pull-request@v3
         with:
-          github_token: ${{ secrets.PAT_TOKEN }}
-          branch: ${{ github.head_ref }}
+          base: "main"
+          title: "auto-doc: Updated README.md"
+          branch: "chore/auto-doc-update-readme"
+          commit-message: "auto-doc: Updated README.md"
+          body: "auto-doc: Updated README.md"
+          token: ${{ secrets.PAT_TOKEN }}
