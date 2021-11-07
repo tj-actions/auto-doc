@@ -12,7 +12,7 @@ jobs:
   test-local:
     name: Test auto-doc local
     runs-on: ubuntu-latest
-    if: github.event_name == "pull_request"
+    if: github.event_name == 'pull_request'
     steps:
       - name: Checkout
         uses: actions/checkout@v2.4.0
@@ -64,7 +64,7 @@ jobs:
 
   test:
     name: Test auto-doc
-    if: github.event_name == "push"
+    if: github.event_name == 'push'
     runs-on: ${{ matrix.platform }}
     strategy:
       fail-fast: false
