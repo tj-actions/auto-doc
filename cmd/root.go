@@ -129,7 +129,7 @@ func (a *Action) renderOutput() {
 		}
 
 		outputTable := tablewriter.NewWriter(outputTableOutput)
-		outputTable.SetHeader([]string{"Output", "Description", "Value"})
+		outputTable.SetHeader([]string{"Output", "Description", "Type"})
 		outputTable.SetBorders(tablewriter.Border{Left: true, Top: false, Right: true, Bottom: false})
 		outputTable.SetCenterSeparator("|")
 
@@ -140,7 +140,7 @@ func (a *Action) renderOutput() {
 		sort.Strings(keys)
 
 		for _, key := range keys {
-			row := []string{key, a.Outputs[key].Description, a.Outputs[key].Value}
+			row := []string{key, a.Outputs[key].Description, "string"}
 			outputTable.Append(row)
 		}
 
