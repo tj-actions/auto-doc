@@ -56,4 +56,4 @@
 | unknown_files                  | List of unknown files.         | string |
 | unmerged_files                 | List of unmerged files.        | string |
 
-<!-- AUTO-DOC-OUTPUT:END -->
+
