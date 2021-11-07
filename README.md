@@ -55,6 +55,7 @@ branding:
 ```
 
 ## Examples
+
 Create a pull request each time the action.yml inputs/outputs change
 
 ```yaml
@@ -85,7 +86,6 @@ Create a pull request each time the action.yml inputs/outputs change
            commit-message: "auto-doc: Updated README.md"
            body: "auto-doc: Updated README.md"
 ```
-
 
 ### Using CLI
 
