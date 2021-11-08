@@ -87,9 +87,9 @@ Create a pull request each time the action.yml inputs/outputs change
            body: "auto-doc: Updated README.md"
 ```
 
-### Using CLI
+## CLI
 
-#### Installation
+### Installation
 
 Run
 
@@ -97,7 +97,7 @@ Run
 go install github.com/tj-actions/auto-doc
 ```
 
-command line options
+### CLI Options
 
 ```shell script
 auto-doc -h
