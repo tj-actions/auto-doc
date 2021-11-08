@@ -94,7 +94,7 @@ Create a pull request each time the action.yml inputs/outputs change
 Run
 
 ```shell script
-go get -u github.com/tj-actions/auto-doc
+go install github.com/tj-actions/auto-doc
 ```
 
 command line options
