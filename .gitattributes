@@ -1,4 +1,0 @@
-# Ensure predictable outputs by treating all files as binary, preventing git magic updating
-# line endings.
-
-* -text
