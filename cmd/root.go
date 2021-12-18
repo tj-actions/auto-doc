@@ -281,7 +281,7 @@ func wordWrap(s string, limit int) string {
 	// convert string to slice
 	strSlice := strings.Fields(s)
 
-	var result string = ""
+	var result string
 
 	for len(strSlice) >= 1 {
 		// convert slice/array back to string
