@@ -6,11 +6,6 @@
 
 |   INPUT   | REQUIRED |       DEFAULT       |          DESCRIPTION           |
 |-----------|----------|---------------------|--------------------------------|
-| files     | false    |                     | Check for changes using only   |
-|           |          |                     | this list of files (Defaults   |
-|           |          |                     | to the entire repo)            |
-| sha       | true     | ${{ github.sha }}   | Specify a current commit SHA   |
-|           |          |                     | used for comparing changes     |
 | base_sha  | false    |                     | Specify a base commit SHA on   |
 |           |          |                     | used for comparing changes     |
 | path      | false    |                     | Specify a relative path under  |
@@ -20,6 +15,11 @@
 |           |          |                     | Personal Access Token          |
 | separator | true     |                     | Split character for array      |
 |           |          |                     | output                         |
+| files     | false    |                     | Check for changes using only   |
+|           |          |                     | this list of files (Defaults   |
+|           |          |                     | to the entire repo)            |
+| sha       | true     | ${{ github.sha }}   | Specify a current commit SHA   |
+|           |          |                     | used for comparing changes     |
 
 <!-- AUTO-DOC-INPUT:END -->
 
@@ -29,31 +29,31 @@
 
 |             OUTPUT             |          DESCRIPTION           |  TYPE  |
 |--------------------------------|--------------------------------|--------|
-| modified_files                 | List of modified files.        | string |
 | renamed_files                  | List of renamed files.         | string |
 | unmerged_files                 | List of unmerged files.        | string |
+| all_changed_and_modified_files | List of all changed files.     | string |
+| any_changed                    | Return true only when any      | string |
+|                                | files provided using the files |        |
+|                                | input have changed.            |        |
+| type_changed_files             | List of files that had type    | string |
+|                                | changes.                       |        |
+| unknown_files                  | List of unknown files.         | string |
 | only_deleted                   | Return true when all files     | string |
 |                                | provided using the files input |        |
 |                                | have been deleted.             |        |
 | copied_files                   | List of copied files.          | string |
-| type_changed_files             | List of files that had type    | string |
-|                                | changes.                       |        |
-| all_changed_and_modified_files | List of all changed files.     | string |
-| unknown_files                  | List of unknown files.         | string |
-| all_modified_files             | List of all copied modified    | string |
-|                                | and added files.               |        |
-| any_deleted                    | Return true only when any      | string |
-|                                | files provided using the files |        |
-|                                | input have been deleted.       |        |
-| added_files                    | List of added files.           | string |
-| deleted_files                  | List of deleted files.         | string |
-| any_changed                    | Return true only when any      | string |
-|                                | files provided using the files |        |
-|                                | input have changed.            |        |
 | only_changed                   | Return true when all files     | string |
 |                                | provided using the files input |        |
 |                                | have changed.                  |        |
 | other_deleted_files            | Return list of deleted files   | string |
 |                                | not listed in the files input. |        |
+| added_files                    | List of added files.           | string |
+| deleted_files                  | List of deleted files.         | string |
+| modified_files                 | List of modified files.        | string |
+| all_modified_files             | List of all copied modified    | string |
+|                                | and added files.               |        |
+| any_deleted                    | Return true only when any      | string |
+|                                | files provided using the files |        |
+|                                | input have been deleted.       |        |
 
 <!-- AUTO-DOC-OUTPUT:END -->
