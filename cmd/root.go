@@ -94,7 +94,7 @@ func (a *Action) renderOutput() {
 		sort.Strings(keys)
 
 		for _, key := range keys {
-			row := []string{key, strconv.FormatBool(a.Inputs[key].Required), a.Inputs[key].Default, a.Inputs[key].Description}
+			row := []string{key, strconv.FormatBool(a.Inputs[key].Required), a.Inputs[key].Default, wordWrap(a.Inputs[key].Description, 4)}
 			inputTable.Append(row)
 		}
 
@@ -136,7 +136,7 @@ func (a *Action) renderOutput() {
 		sort.Strings(keys)
 
 		for _, key := range keys {
-			row := []string{key, a.Outputs[key].Description, "string"}
+			row := []string{key, wordWrap(a.Outputs[key].Description, 4), "string"}
 			outputTable.Append(row)
 		}
 
@@ -274,7 +274,6 @@ func replaceBytesInBetween(value []byte, startIndex int, endIndex int, new []byt
 }
 
 func wordWrap(s string, limit int) string {
-
 	if strings.TrimSpace(s) == "" {
 		return s
 	}
