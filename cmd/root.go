@@ -166,7 +166,7 @@ func (a *Action) renderOutput() {
 
 	var output = []byte("")
 
-	hasInputsData, inputStartIndex, inputEndIndex := HasBytesInBetween(
+	hasInputsData, inputStartIndex, inputEndIndex := hasBytesInBetween(
 		input,
 		[]byte(InputsHeader),
 		[]byte(inputAutoDocEnd),
@@ -174,13 +174,13 @@ func (a *Action) renderOutput() {
 
 	if hasInputsData {
 		inputsStr := fmt.Sprintf("%s\n\n%v", InputsHeader, inputTableOutput.String())
-		output = ReplaceBytesInBetween(input, inputStartIndex, inputEndIndex, []byte(inputsStr))
+		output = replaceBytesInBetween(input, inputStartIndex, inputEndIndex, []byte(inputsStr))
 	} else {
 		inputsStr := fmt.Sprintf("%s\n\n%v", InputsHeader, inputTableOutput.String())
 		output = bytes.Replace(input, []byte(InputsHeader), []byte(inputsStr), -1)
 	}
 
-	hasOutputsData, outputStartIndex, outputEndIndex := HasBytesInBetween(
+	hasOutputsData, outputStartIndex, outputEndIndex := hasBytesInBetween(
 		output,
 		[]byte(OutputsHeader),
 		[]byte(outputAutoDocEnd),
@@ -188,7 +188,7 @@ func (a *Action) renderOutput() {
 
 	if hasOutputsData {
 		outputsStr := fmt.Sprintf("%s\n\n%v", OutputsHeader, outputTableOutput.String())
-		output = ReplaceBytesInBetween(output, outputStartIndex, outputEndIndex, []byte(outputsStr))
+		output = replaceBytesInBetween(output, outputStartIndex, outputEndIndex, []byte(outputsStr))
 	} else {
 		outputsStr := fmt.Sprintf("%s\n\n%v", OutputsHeader, outputTableOutput.String())
 		output = bytes.Replace(output, []byte(OutputsHeader), []byte(outputsStr), -1)
@@ -247,7 +247,7 @@ func init() {
 	)
 }
 
-func HasBytesInBetween(value, start, end []byte) (found bool, startIndex int, endIndex int) {
+func hasBytesInBetween(value, start, end []byte) (found bool, startIndex int, endIndex int) {
 	s := bytes.Index(value, start)
 
 	if s == -1 {
@@ -263,7 +263,7 @@ func HasBytesInBetween(value, start, end []byte) (found bool, startIndex int, en
 	return true, s, e + len(end)
 }
 
-func ReplaceBytesInBetween(value []byte, startIndex int, endIndex int, new []byte) []byte {
+func replaceBytesInBetween(value []byte, startIndex int, endIndex int, new []byte) []byte {
 	t := make([]byte, len(value)+len(new))
 	w := 0
 
@@ -272,3 +272,35 @@ func ReplaceBytesInBetween(value []byte, startIndex int, endIndex int, new []byt
 	w += copy(t[w:], value[endIndex:])
 	return t[0:w]
 }
+
+func wordWrap(s string, limit int) string {
+
+         if strings.TrimSpace(s) == "" {
+                 return s
+         }
+
+         // convert string to slice
+         strSlice := strings.Fields(s)
+
+         var result string = ""
+
+         for len(strSlice) >= 1 {
+                 // convert slice/array back to string
+                 // but insert <br> at specified limit
+
+                 result = result + strings.Join(strSlice[:limit], " ") + "<br>"
+
+                 // discard the elements that were copied over to result
+                 strSlice = strSlice[limit:]
+
+                 // change the limit
+                 // to cater for the last few words in
+                 //
+                 if len(strSlice) < limit {
+                         limit = len(strSlice)
+                 }
+
+         }
+
+         return result
+ }
