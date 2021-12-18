@@ -91,7 +91,6 @@ func (a *Action) renderOutput() {
 		for k := range a.Inputs {
 			keys = append(keys, k)
 		}
-		sort.Strings(keys)
 
 		for _, key := range keys {
 			row := []string{key, strconv.FormatBool(a.Inputs[key].Required), a.Inputs[key].Default, a.Inputs[key].Description}
@@ -133,7 +132,6 @@ func (a *Action) renderOutput() {
 		for k := range a.Outputs {
 			keys = append(keys, k)
 		}
-		sort.Strings(keys)
 
 		for _, key := range keys {
 			row := []string{key, a.Outputs[key].Description, "string"}
