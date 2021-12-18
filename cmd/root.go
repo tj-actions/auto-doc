@@ -25,7 +25,6 @@ import (
 	"io/ioutil"
 	"log"
 	"os"
-	"sort"
 	"strconv"
 	"strings"
 )
