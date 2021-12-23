@@ -105,9 +105,12 @@ go install github.com/tj-actions/auto-doc
 
 ### CLI Options
 
+Run
 ```shell script
 auto-doc -h
+```
 
+```text
 Auto generate documentation for your github action.
 
 Usage:
