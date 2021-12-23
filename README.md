@@ -29,7 +29,7 @@ Auto generate documentation from actions.yml like [this](#inputs) by simply addi
 |     INPUT     |  TYPE  | REQUIRED |   DEFAULT    |         DESCRIPTION         |
 |---------------|--------|----------|--------------|-----------------------------|
 | action        | string | false    | `action.yml` | Path to the action.yml file |
-| col_max_width | string | false    | `1000`       | Max width of a column       |
+| col\_max\_width | string | false    | `1000`       | Max width of a column       |
 | output        | string | false    | `README.md`  | Path to the output file     |
 
 <!-- AUTO-DOC-INPUT:END -->
