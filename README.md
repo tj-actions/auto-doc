@@ -43,11 +43,15 @@ Auto generate documentation from actions.yml like [this](#inputs) by simply addi
 inputs:
   action:
     description: 'Path to the action.yml file'
-    required: true
+    required: false
     default: action.yml
+  col_max_width:
+    description: 'Max width of a column'
+    required: false
+    default: '1000'
   output:
-    description: 'Output file'
-    required: true
+    description: 'Path to the output file'
+    required: false
     default: README.md
 
 runs:
