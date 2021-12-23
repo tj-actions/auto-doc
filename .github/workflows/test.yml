@@ -39,7 +39,7 @@ jobs:
         run:
           make test
 
-      - name: Run auto-doc using the current working directory
+      - name: Run auto-doc using the top level directory
         run:
           make run
 
