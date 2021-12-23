@@ -1,5 +1,31 @@
 # Changelog
 
+## [v1.1.7](https://github.com/tj-actions/auto-doc/tree/v1.1.7) (2021-12-23)
+
+[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v1.1.6...v1.1.7)
+
+**Implemented enhancements:**
+
+- \[Feature\] Prevent descriptions from getting moved to the next line. [\#231](https://github.com/tj-actions/auto-doc/issues/231)
+
+**Closed issues:**
+
+- Dependency Dashboard [\#2](https://github.com/tj-actions/auto-doc/issues/2)
+
+**Merged pull requests:**
+
+- fixed formatting [\#244](https://github.com/tj-actions/auto-doc/pull/244) ([jackton1](https://github.com/jackton1))
+- Added support for setting the column max width. [\#242](https://github.com/tj-actions/auto-doc/pull/242) ([jackton1](https://github.com/jackton1))
+- Bump github.com/spf13/cobra from 1.2.1 to 1.3.0 [\#239](https://github.com/tj-actions/auto-doc/pull/239) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Resolve bug copying new table data [\#238](https://github.com/tj-actions/auto-doc/pull/238) ([jackton1](https://github.com/jackton1))
+- Remove unused file [\#237](https://github.com/tj-actions/auto-doc/pull/237) ([jackton1](https://github.com/jackton1))
+- Update tj-actions/verify-changed-files action to v8.8 [\#236](https://github.com/tj-actions/auto-doc/pull/236) ([renovate[bot]](https://github.com/apps/renovate))
+- Updated README.md [\#235](https://github.com/tj-actions/auto-doc/pull/235) ([jackton1](https://github.com/jackton1))
+- Add a Codacy badge to README.md [\#234](https://github.com/tj-actions/auto-doc/pull/234) ([codacy-badger](https://github.com/codacy-badger))
+- Bump tj-actions/verify-changed-files from 8.6 to 8.7 [\#233](https://github.com/tj-actions/auto-doc/pull/233) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Updated test [\#232](https://github.com/tj-actions/auto-doc/pull/232) ([jackton1](https://github.com/jackton1))
+- Upgraded to v1.1.6 [\#230](https://github.com/tj-actions/auto-doc/pull/230) ([jackton1](https://github.com/jackton1))
+
 ## [v1.1.6](https://github.com/tj-actions/auto-doc/tree/v1.1.6) (2021-11-07)
 
 [Full Changelog](https://github.com/tj-actions/auto-doc/compare/v1.1.5...v1.1.6)
@@ -59,10 +85,6 @@
 ## [v1.1.0](https://github.com/tj-actions/auto-doc/tree/v1.1.0) (2021-11-06)
 
 [Full Changelog](https://github.com/tj-actions/auto-doc/compare/v1.0.1...v1.1.0)
-
-**Closed issues:**
-
-- Dependency Dashboard [\#2](https://github.com/tj-actions/auto-doc/issues/2)
 
 **Merged pull requests:**
 
