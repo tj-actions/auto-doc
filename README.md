@@ -26,10 +26,11 @@ Auto generate documentation from actions.yml like [this](#inputs) by simply addi
 
 <!-- AUTO-DOC-INPUT:START - Do not remove or modify this section -->
 
-| INPUT  | REQUIRED |  DEFAULT   |         DESCRIPTION         |
-|--------|----------|------------|-----------------------------|
-| action | true     | action.yml | Path to the action.yml file |
-| output | true     | README.md  | Output file                 |
+|     INPUT     |  TYPE  | REQUIRED |   DEFAULT    |         DESCRIPTION         |
+|---------------|--------|----------|--------------|-----------------------------|
+| action        | string | false    | `action.yml` | Path to the action.yml file |
+| col_max_width | string | false    | `1000`       | Max width of a column       |
+| output        | string | false    | `README.md`  | Path to the output file     |
 
 <!-- AUTO-DOC-INPUT:END -->
 
