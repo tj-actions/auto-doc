@@ -37,6 +37,10 @@ jobs:
 
       - name: Run auto-doc using the current working directory
         run:
+          make test
+
+      - name: Run auto-doc using the current working directory
+        run:
           make run
 
       - name: Run auto-doc using the test directory

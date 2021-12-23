@@ -23,8 +23,6 @@ import (
 	"github.com/spf13/cobra"
 	"gopkg.in/yaml.v3"
 	"io/ioutil"
-	"log"
-	"os"
 	"sort"
 	"strconv"
 	"strings"
@@ -41,6 +39,7 @@ var outputAutoDocEnd = fmt.Sprintf(AutoDocEnd, "OUTPUT")
 
 var actionFileName string
 var outputFileName string
+var colMaxWidth string
 
 type Input struct {
 	Description string `yaml:"description"`
@@ -58,32 +57,34 @@ type Action struct {
 	Outputs map[string]Output `yaml:"outputs,omitempty"`
 }
 
-func (a *Action) getAction() *Action {
+func (a *Action) getAction() error {
 	actionYaml, err := ioutil.ReadFile(actionFileName)
 	if err != nil {
-		cobra.CheckErr(err)
+		return err
 	}
 
 	err = yaml.Unmarshal(actionYaml, &a)
-	if err != nil {
-		log.Fatalf("Unmarshal: %v", err)
-	}
 
-	return a
+	return err
 }
 
-func (a *Action) renderOutput() {
+func (a *Action) renderOutput() error {
 	var err error
+	maxWidth, err := strconv.Atoi(colMaxWidth)
+	if err != nil {
+		return err
+	}
+
 	inputTableOutput := &strings.Builder{}
 
 	if len(a.Inputs) > 0 {
 		_, err = fmt.Fprintln(inputTableOutput, inputAutoDocStart)
 		if err != nil {
-			cobra.CheckErr(err)
+			return err
 		}
 
 		inputTable := tablewriter.NewWriter(inputTableOutput)
-		inputTable.SetHeader([]string{"Input", "Required", "Default", "Description"})
+		inputTable.SetHeader([]string{"Input", "Type", "Required", "Default", "Description"})
 		inputTable.SetBorders(tablewriter.Border{Left: true, Top: false, Right: true, Bottom: false})
 		inputTable.SetCenterSeparator("|")
 
@@ -93,26 +94,28 @@ func (a *Action) renderOutput() {
 		}
 		sort.Strings(keys)
 
+		inputTable.SetColWidth(maxWidth)
+
 		for _, key := range keys {
-			row := []string{key, strconv.FormatBool(a.Inputs[key].Required), a.Inputs[key].Default, a.Inputs[key].Description}
+			row := []string{key, "string", strconv.FormatBool(a.Inputs[key].Required), a.Inputs[key].Default, a.Inputs[key].Description}
 			inputTable.Append(row)
 		}
 
 		_, err = fmt.Fprintln(inputTableOutput)
 		if err != nil {
-			cobra.CheckErr(err)
+			return err
 		}
 
 		inputTable.Render()
 
 		_, err = fmt.Fprintln(inputTableOutput)
 		if err != nil {
-			cobra.CheckErr(err)
+			return err
 		}
 
 		_, err = fmt.Fprint(inputTableOutput, inputAutoDocEnd)
 		if err != nil {
-			cobra.CheckErr(err)
+			return err
 		}
 	}
 
@@ -121,7 +124,7 @@ func (a *Action) renderOutput() {
 	if len(a.Outputs) > 0 {
 		_, err = fmt.Fprintln(outputTableOutput, outputAutoDocStart)
 		if err != nil {
-			cobra.CheckErr(err)
+			return err
 		}
 
 		outputTable := tablewriter.NewWriter(outputTableOutput)
@@ -135,6 +138,7 @@ func (a *Action) renderOutput() {
 		}
 		sort.Strings(keys)
 
+		outputTable.SetColWidth(maxWidth)
 		for _, key := range keys {
 			row := []string{key, a.Outputs[key].Description, "string"}
 			outputTable.Append(row)
@@ -142,31 +146,30 @@ func (a *Action) renderOutput() {
 
 		_, err = fmt.Fprintln(outputTableOutput)
 		if err != nil {
-			cobra.CheckErr(err)
+			return err
 		}
-
 		outputTable.Render()
 
 		_, err = fmt.Fprintln(outputTableOutput)
 		if err != nil {
-			cobra.CheckErr(err)
+			return err
 		}
 
 		_, err = fmt.Fprint(outputTableOutput, outputAutoDocEnd)
 		if err != nil {
-			cobra.CheckErr(err)
+			return err
 		}
 	}
 
 	input, err := ioutil.ReadFile(outputFileName)
 
 	if err != nil {
-		cobra.CheckErr(err)
+		return err
 	}
 
 	var output = []byte("")
 
-	hasInputsData, inputStartIndex, inputEndIndex := HasBytesInBetween(
+	hasInputsData, inputStartIndex, inputEndIndex := hasBytesInBetween(
 		input,
 		[]byte(InputsHeader),
 		[]byte(inputAutoDocEnd),
@@ -174,13 +177,13 @@ func (a *Action) renderOutput() {
 
 	if hasInputsData {
 		inputsStr := fmt.Sprintf("%s\n\n%v", InputsHeader, inputTableOutput.String())
-		output = ReplaceBytesInBetween(input, inputStartIndex, inputEndIndex, []byte(inputsStr))
+		output = replaceBytesInBetween(input, inputStartIndex, inputEndIndex, []byte(inputsStr))
 	} else {
 		inputsStr := fmt.Sprintf("%s\n\n%v", InputsHeader, inputTableOutput.String())
 		output = bytes.Replace(input, []byte(InputsHeader), []byte(inputsStr), -1)
 	}
 
-	hasOutputsData, outputStartIndex, outputEndIndex := HasBytesInBetween(
+	hasOutputsData, outputStartIndex, outputEndIndex := hasBytesInBetween(
 		output,
 		[]byte(OutputsHeader),
 		[]byte(outputAutoDocEnd),
@@ -188,7 +191,7 @@ func (a *Action) renderOutput() {
 
 	if hasOutputsData {
 		outputsStr := fmt.Sprintf("%s\n\n%v", OutputsHeader, outputTableOutput.String())
-		output = ReplaceBytesInBetween(output, outputStartIndex, outputEndIndex, []byte(outputsStr))
+		output = replaceBytesInBetween(output, outputStartIndex, outputEndIndex, []byte(outputsStr))
 	} else {
 		outputsStr := fmt.Sprintf("%s\n\n%v", OutputsHeader, outputTableOutput.String())
 		output = bytes.Replace(output, []byte(OutputsHeader), []byte(outputsStr), -1)
@@ -199,6 +202,8 @@ func (a *Action) renderOutput() {
 			cobra.CheckErr(err)
 		}
 	}
+
+	return nil
 }
 
 // rootCmd represents the base command when called without any subcommands
@@ -206,22 +211,36 @@ var rootCmd = &cobra.Command{
 	Use:   "auto-doc",
 	Short: "Auto doc generator for your github action",
 	Long:  `Auto generate documentation for your github action.`,
-	Run: func(cmd *cobra.Command, args []string) {
+	RunE: func(cmd *cobra.Command, args []string) error {
 		if len(args) > 0 {
 			_, err := fmt.Fprintf(
-				os.Stderr,
+				cmd.OutOrStderr(),
 				"'%d' invalid arguments passed.\n",
 				len(args),
 			)
 			if err != nil {
-				cobra.CheckErr(err)
+				return err
 			}
-			return
 		}
 
 		var action Action
-		action.getAction()
-		action.renderOutput()
+
+		err := action.getAction()
+		if err != nil {
+			return err
+		}
+
+		err = action.renderOutput()
+		if err != nil {
+			return err
+		}
+
+		_, err = fmt.Fprintln(
+			cmd.OutOrStdout(),
+			"Successfully generated documentation",
+		)
+
+		return err
 	},
 }
 
@@ -245,9 +264,15 @@ func init() {
 		"README.md",
 		"Output file",
 	)
+	rootCmd.PersistentFlags().StringVar(
+		&colMaxWidth,
+		"colMaxWidth",
+		"1000",
+		"Column max width",
+	)
 }
 
-func HasBytesInBetween(value, start, end []byte) (found bool, startIndex int, endIndex int) {
+func hasBytesInBetween(value, start, end []byte) (found bool, startIndex int, endIndex int) {
 	s := bytes.Index(value, start)
 
 	if s == -1 {
@@ -263,7 +288,7 @@ func HasBytesInBetween(value, start, end []byte) (found bool, startIndex int, en
 	return true, s, e + len(end)
 }
 
-func ReplaceBytesInBetween(value []byte, startIndex int, endIndex int, new []byte) []byte {
+func replaceBytesInBetween(value []byte, startIndex int, endIndex int, new []byte) []byte {
 	t := make([]byte, len(value)+len(new))
 	w := 0
 

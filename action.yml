@@ -4,11 +4,15 @@ author: jackton1
 inputs:
   action:
     description: 'Path to the action.yml file'
-    required: true
+    required: false
     default: action.yml
+  col_max_width:
+    description: 'Max width of a column'
+    required: false
+    default: '1000'
   output:
-    description: 'Output file'
-    required: true
+    description: 'Path to the output file'
+    required: false
     default: README.md
 
 runs:
@@ -16,7 +20,7 @@ runs:
   steps:
     - run: |
         curl -sf https://gobinaries.com/github.com/tj-actions/auto-doc@1.1.5 | PREFIX=. sh
-        ./auto-doc --action="${{ inputs.action }}" --output="${{ inputs.output }}"
+        ./auto-doc --action="${{ inputs.action }}" --output="${{ inputs.output }}" --colMaxWidth="${{ inputs.col_max_width }}"
         rm -f ./auto-doc
       shell: bash
 branding:
