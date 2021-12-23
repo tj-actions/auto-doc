@@ -13,21 +13,25 @@ help:
 .PHONY: clean
 clean:  ## Clean binary file
 	@echo "Cleaning binary..."
-	@rm -f auto_doc
+	@rm -rf bin
 
 guard-%: ## Checks that env var is set else exits with non 0 mainly used in CI;
 	@if [ -z '${${*}}' ]; then echo 'Environment variable $* not set' && exit 1; fi
 
 .PHONY: build
-build:  ## Compile go modules
+build: clean  ## Compile go modules
 	@echo "Compiling *.go..."
-	@go build -o auto_doc *.go
+	@go build -o ./bin/auto_doc *.go
 
 .PHONY: run
 run: build guard-OUTPUT guard-ACTION  ## Execute binary
 	@echo "Running auto doc..."
-	@./auto_doc --action=$(ACTION) --output=$(OUTPUT)
+	@./bin/auto_doc --action=$(ACTION) --output=$(OUTPUT)
 	@$(MAKE) clean
+
+.PHONY: test
+test: clean
+	@go test ./...
 
 .PHONY: format
 format:  ## Format go modules
