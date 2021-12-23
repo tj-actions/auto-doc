@@ -84,7 +84,7 @@ func (a *Action) renderOutput() error {
 		}
 
 		inputTable := tablewriter.NewWriter(inputTableOutput)
-		inputTable.SetHeader([]string{"Input", "Required", "Default", "Description"})
+		inputTable.SetHeader([]string{"Input", "Type", "Required", "Default", "Description"})
 		inputTable.SetBorders(tablewriter.Border{Left: true, Top: false, Right: true, Bottom: false})
 		inputTable.SetCenterSeparator("|")
 
@@ -97,7 +97,7 @@ func (a *Action) renderOutput() error {
 		inputTable.SetColWidth(maxWidth)
 
 		for _, key := range keys {
-			row := []string{key, strconv.FormatBool(a.Inputs[key].Required), a.Inputs[key].Default, a.Inputs[key].Description}
+			row := []string{key, "string", strconv.FormatBool(a.Inputs[key].Required), a.Inputs[key].Default, a.Inputs[key].Description}
 			inputTable.Append(row)
 		}
 
