@@ -35,17 +35,13 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-go-
 
-      - name: Run auto-doc using the current working directory
+      - name: Run auto-doc using the test directory
         run:
           make test
 
       - name: Run auto-doc using the top level directory
         run:
           make run
-
-      - name: Run auto-doc using the test directory
-        run:
-          make run ACTION="test/action.yml" OUTPUT="test/README.md"
 
       - name: Verify Changed files
         uses: tj-actions/verify-changed-files@v8.8

@@ -6,9 +6,9 @@
 
 |   INPUT   |  TYPE  | REQUIRED |        DEFAULT        |                                  DESCRIPTION                                  |
 |-----------|--------|----------|-----------------------|-------------------------------------------------------------------------------|
-| base_sha  | string | false    | ``                    | Specify a base commit SHA on used for comparing changes                       |
-| files     | string | false    | ``                    | Check for changes using only this list of files (Defaults to the entire repo) |
-| path      | string | false    | ``                    | Specify a relative path under $GITHUB_WORKSPACE to locate the repository      |
+| base_sha  | string | false    |                       | Specify a base commit SHA on used for comparing changes                       |
+| files     | string | false    |                       | Check for changes using only this list of files (Defaults to the entire repo) |
+| path      | string | false    |                       | Specify a relative path under $GITHUB_WORKSPACE to locate the repository      |
 | separator | string | true     | ` `                   | Split character for array output                                              |
 | sha       | string | true     | `${{ github.sha }}`   | Specify a current commit SHA used for comparing changes                       |
 | token     | string | true     | `${{ github.token }}` | Github token or Repo Scoped Personal Access Token                             |
