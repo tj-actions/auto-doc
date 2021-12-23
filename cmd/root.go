@@ -97,7 +97,11 @@ func (a *Action) renderOutput() error {
 		inputTable.SetColWidth(maxWidth)
 
 		for _, key := range keys {
-			row := []string{key, "string", strconv.FormatBool(a.Inputs[key].Required), fmt.Sprintf("`%s`", a.Inputs[key].Default), a.Inputs[key].Description}
+			var _default string
+			if len(a.Inputs[key].Default) > 0 {
+				_default = fmt.Sprintf("`%s`", a.Inputs[key].Default)
+			}
+			row := []string{key, "string", strconv.FormatBool(a.Inputs[key].Required), _default, a.Inputs[key].Description}
 			inputTable.Append(row)
 		}
 
