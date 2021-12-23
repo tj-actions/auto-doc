@@ -128,7 +128,7 @@ func (a *Action) renderOutput() error {
 		}
 
 		outputTable := tablewriter.NewWriter(outputTableOutput)
-		outputTable.SetHeader([]string{"Output", "Description", "Type"})
+		outputTable.SetHeader([]string{"Output", "Type", "Description"})
 		outputTable.SetBorders(tablewriter.Border{Left: true, Top: false, Right: true, Bottom: false})
 		outputTable.SetCenterSeparator("|")
 
@@ -140,7 +140,7 @@ func (a *Action) renderOutput() error {
 
 		outputTable.SetColWidth(maxWidth)
 		for _, key := range keys {
-			row := []string{key, a.Outputs[key].Description, "string"}
+			row := []string{key, "string", a.Outputs[key].Description}
 			outputTable.Append(row)
 		}
 
