@@ -114,9 +114,10 @@ Usage:
   auto-doc [flags]
 
 Flags:
-      --action string   action config file (default "action.yml")
-  -h, --help            help for auto-doc
-      --output string   Output file (default "README.md")
+      --action string        action config file (default "action.yml")
+      --colMaxWidth string   Column max width (default "1000")
+  -h, --help                 help for auto-doc
+      --output string        Output file (default "README.md")
 ```
 
 *   Free software: [Apache License 2.0](LICENSE)
