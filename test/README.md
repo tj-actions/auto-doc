@@ -19,22 +19,22 @@
 
 <!-- AUTO-DOC-OUTPUT:START - Do not remove or modify this section -->
 
-|             OUTPUT             |                                    DESCRIPTION                                    |  TYPE  |
-|--------------------------------|-----------------------------------------------------------------------------------|--------|
-| added_files                    | List of added files.                                                              | string |
-| all_changed_and_modified_files | List of all changed files.                                                        | string |
-| all_modified_files             | List of all copied modified and added files.                                      | string |
-| any_changed                    | Return true only when any files provided using the files input have changed.      | string |
-| any_deleted                    | Return true only when any files provided using the files input have been deleted. | string |
-| copied_files                   | List of copied files.                                                             | string |
-| deleted_files                  | List of deleted files.                                                            | string |
-| modified_files                 | List of modified files.                                                           | string |
-| only_changed                   | Return true when all files provided using the files input have changed.           | string |
-| only_deleted                   | Return true when all files provided using the files input have been deleted.      | string |
-| other_deleted_files            | Return list of deleted files not listed in the files input.                       | string |
-| renamed_files                  | List of renamed files.                                                            | string |
-| type_changed_files             | List of files that had type changes.                                              | string |
-| unknown_files                  | List of unknown files.                                                            | string |
-| unmerged_files                 | List of unmerged files.                                                           | string |
+|             OUTPUT             |  TYPE  |                                    DESCRIPTION                                    |
+|--------------------------------|--------|-----------------------------------------------------------------------------------|
+| added_files                    | string | List of added files.                                                              |
+| all_changed_and_modified_files | string | List of all changed files.                                                        |
+| all_modified_files             | string | List of all copied modified and added files.                                      |
+| any_changed                    | string | Return true only when any files provided using the files input have changed.      |
+| any_deleted                    | string | Return true only when any files provided using the files input have been deleted. |
+| copied_files                   | string | List of copied files.                                                             |
+| deleted_files                  | string | List of deleted files.                                                            |
+| modified_files                 | string | List of modified files.                                                           |
+| only_changed                   | string | Return true when all files provided using the files input have changed.           |
+| only_deleted                   | string | Return true when all files provided using the files input have been deleted.      |
+| other_deleted_files            | string | Return list of deleted files not listed in the files input.                       |
+| renamed_files                  | string | List of renamed files.                                                            |
+| type_changed_files             | string | List of files that had type changes.                                              |
+| unknown_files                  | string | List of unknown files.                                                            |
+| unmerged_files                 | string | List of unmerged files.                                                           |
 
 <!-- AUTO-DOC-OUTPUT:END -->
