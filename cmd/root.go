@@ -40,6 +40,7 @@ var outputAutoDocEnd = fmt.Sprintf(AutoDocEnd, "OUTPUT")
 var actionFileName string
 var outputFileName string
 var colMaxWidth string
+var colMaxWords string
 
 type Input struct {
 	Description string `yaml:"description"`
@@ -75,6 +76,11 @@ func (a *Action) renderOutput() error {
 		return err
 	}
 
+	maxWords, err := strconv.Atoi(colMaxWords)
+	if err != nil {
+		return err
+	}
+
 	inputTableOutput := &strings.Builder{}
 
 	if len(a.Inputs) > 0 {
@@ -101,7 +107,7 @@ func (a *Action) renderOutput() error {
 			if len(a.Inputs[key].Default) > 0 {
 				_default = fmt.Sprintf("`%s`", a.Inputs[key].Default)
 			}
-			row := []string{key, "string", strconv.FormatBool(a.Inputs[key].Required), _default, a.Inputs[key].Description}
+			row := []string{key, "string", strconv.FormatBool(a.Inputs[key].Required), _default, wordWrap(a.Inputs[key].Description, maxWords)}
 			inputTable.Append(row)
 		}
 
@@ -144,7 +150,7 @@ func (a *Action) renderOutput() error {
 
 		outputTable.SetColWidth(maxWidth)
 		for _, key := range keys {
-			row := []string{key, "string", a.Outputs[key].Description}
+			row := []string{key, "string", wordWrap(a.Outputs[key].Description, maxWords)}
 			outputTable.Append(row)
 		}
 
@@ -272,7 +278,13 @@ func init() {
 		&colMaxWidth,
 		"colMaxWidth",
 		"1000",
-		"Column max width",
+		"Max width of a column",
+	)
+	rootCmd.PersistentFlags().StringVar(
+		&colMaxWords,
+		"colMaxWords",
+		"6",
+		"Max number of words per line in a column",
 	)
 }
 
@@ -300,4 +312,41 @@ func replaceBytesInBetween(value []byte, startIndex int, endIndex int, new []byt
 	w += copy(t[w:w+len(new)], new)
 	w += copy(t[w:], value[endIndex:])
 	return t[0:w]
+}
+
+func wordWrap(s string, limit int) string {
+	if strings.TrimSpace(s) == "" {
+		return s
+	}
+	// convert string to slice
+	strSlice := strings.Fields(s)
+	currentLimit := limit
+
+	var result string
+
+	for len(strSlice) >= 1 {
+		// convert slice/array back to string
+		// but insert <br> at specified limit
+
+		if len(strSlice) < currentLimit {
+			currentLimit = len(strSlice)
+			result = result + strings.Join(strSlice[:currentLimit], " ")
+		} else if currentLimit == limit {
+			result = result + strings.Join(strSlice[:currentLimit], " ") + "<br>"
+		} else {
+			result = result + strings.Join(strSlice[:currentLimit], " ")
+		}
+
+		// discard the elements that were copied over to result
+		strSlice = strSlice[currentLimit:]
+
+		// change the limit
+		// to cater for the last few words in
+		//
+		if len(strSlice) < currentLimit {
+			currentLimit = len(strSlice)
+		}
+
+	}
+	return result
 }

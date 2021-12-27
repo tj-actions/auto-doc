@@ -19,7 +19,7 @@ inputs:
     required: true
     default: ${{ github.sha }}
   base_sha:
-    description: 'Specify a base commit SHA on used for comparing changes'
+    description: 'Specify a base commit SHA used for comparing changes'
     required: false
   path:
     description: 'Specify a relative path under $GITHUB_WORKSPACE to locate the repository'
