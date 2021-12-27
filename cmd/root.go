@@ -281,7 +281,7 @@ func init() {
 		"Max width of a column",
 	)
 	rootCmd.PersistentFlags().StringVar(
-		&colMaxWidth,
+		&colMaxWords,
 		"colMaxWords",
 		"6",
 		"Max number of words per line in a column",
