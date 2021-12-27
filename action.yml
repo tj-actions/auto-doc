@@ -10,6 +10,10 @@ inputs:
     description: 'Max width of a column'
     required: false
     default: '1000'
+  col_max_words:
+    description: 'Max number of words per line in a column'
+    required: false
+    default: '6'
   output:
     description: 'Path to the output file'
     required: false
@@ -20,7 +24,7 @@ runs:
   steps:
     - run: |
         curl -sf https://gobinaries.com/github.com/tj-actions/auto-doc@1.1.5 | PREFIX=. sh
-        ./auto-doc --action="${{ inputs.action }}" --output="${{ inputs.output }}" --colMaxWidth="${{ inputs.col_max_width }}"
+        ./auto-doc --action="${{ inputs.action }}" --output="${{ inputs.output }}" --colMaxWidth="${{ inputs.col_max_width }}" --colMaxWords="${{ inputs.col_max_words }}"
         rm -f ./auto-doc
       shell: bash
 branding:
