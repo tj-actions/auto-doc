@@ -195,7 +195,7 @@ func (a *Action) renderOutput() error {
 
 	hasOutputsData, outputStartIndex, outputEndIndex := hasBytesInBetween(
 		output,
-		[]byte(OutputsHeader),
+		[]byte(outputsHeader),
 		[]byte(outputAutoDocEnd),
 	)
 
