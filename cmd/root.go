@@ -190,7 +190,7 @@ func (a *Action) renderOutput() error {
 		output = replaceBytesInBetween(input, inputStartIndex, inputEndIndex, []byte(inputsStr))
 	} else {
 		inputsStr := fmt.Sprintf("%s\n\n%v", inputsHeader, inputTableOutput.String())
-		output = bytes.Replace(input, []byte(InputsHeader), []byte(inputsStr), -1)
+		output = bytes.Replace(input, []byte(inputsHeader), []byte(inputsStr), -1)
 	}
 
 	hasOutputsData, outputStartIndex, outputEndIndex := hasBytesInBetween(
@@ -204,7 +204,7 @@ func (a *Action) renderOutput() error {
 		output = replaceBytesInBetween(output, outputStartIndex, outputEndIndex, []byte(outputsStr))
 	} else {
 		outputsStr := fmt.Sprintf("%s\n\n%v", outputsHeader, outputTableOutput.String())
-		output = bytes.Replace(output, []byte(OutputsHeader), []byte(outputsStr), -1)
+		output = bytes.Replace(output, []byte(outputsHeader), []byte(outputsStr), -1)
 	}
 
 	if len(output) > 0 {
