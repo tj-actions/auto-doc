@@ -1,5 +1,14 @@
 # Changelog
 
+## [v1.1.9](https://github.com/tj-actions/auto-doc/tree/v1.1.9) (2021-12-28)
+
+[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v1.1.8...v1.1.9)
+
+**Merged pull requests:**
+
+- Fix golint warnings [\#249](https://github.com/tj-actions/auto-doc/pull/249) ([jackton1](https://github.com/jackton1))
+- Upgraded to v1.1.8 [\#248](https://github.com/tj-actions/auto-doc/pull/248) ([jackton1](https://github.com/jackton1))
+
 ## [v1.1.8](https://github.com/tj-actions/auto-doc/tree/v1.1.8) (2021-12-27)
 
 [Full Changelog](https://github.com/tj-actions/auto-doc/compare/v1.1.7...v1.1.8)
