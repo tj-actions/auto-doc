@@ -177,7 +177,7 @@ func (a *Action) renderOutput() error {
 		return err
 	}
 
-	var output = []byte("")
+	var output []byte
 
 	hasInputsData, inputStartIndex, inputEndIndex := hasBytesInBetween(
 		input,
