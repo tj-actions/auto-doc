@@ -35,7 +35,7 @@ test: clean
 
 .PHONY: format
 format:  ## Format go modules
-	@go fmt -s ./...
+	@go fmt ./...
 
 .PHONY: tidy
 tidy:  ## Tidy go.mod
