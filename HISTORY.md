@@ -1,5 +1,14 @@
 # Changelog
 
+## [v1.1.8](https://github.com/tj-actions/auto-doc/tree/v1.1.8) (2021-12-27)
+
+[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v1.1.7...v1.1.8)
+
+**Merged pull requests:**
+
+- Added support for configuring the max words per line in a column. [\#247](https://github.com/tj-actions/auto-doc/pull/247) ([jackton1](https://github.com/jackton1))
+- Upgraded to v1.1.7 [\#246](https://github.com/tj-actions/auto-doc/pull/246) ([jackton1](https://github.com/jackton1))
+
 ## [v1.1.7](https://github.com/tj-actions/auto-doc/tree/v1.1.7) (2021-12-23)
 
 [Full Changelog](https://github.com/tj-actions/auto-doc/compare/v1.1.6...v1.1.7)
