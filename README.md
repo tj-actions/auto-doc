@@ -16,7 +16,16 @@ Auto generate documentation from actions.yml like [this](#inputs) by simply addi
 ## Usage
 
 ```yaml
-...
+name: Update README.md with the latest actions.yml
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  update-doc:
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - name: Run auto-doc
@@ -43,7 +52,16 @@ Auto generate documentation from actions.yml like [this](#inputs) by simply addi
 Create a pull request each time the action.yml inputs/outputs change
 
 ```yaml
-...
+name: Update README.md with the latest actions.yml
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  update-doc:
+     runs-on: ubuntu-latest
      steps:
        - name: Checkout
          uses: actions/checkout@v2.4.0
