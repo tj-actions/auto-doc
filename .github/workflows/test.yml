@@ -34,6 +34,9 @@ jobs:
           key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
           restore-keys: |
             ${{ runner.os }}-go-
+      
+      - name: Test action
+        uses: ./
 
       - name: Run auto-doc using the test directory
         run:
