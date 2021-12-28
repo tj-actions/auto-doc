@@ -28,14 +28,14 @@ import (
 	"strings"
 )
 
-var InputsHeader = "## Inputs"
-var OutputsHeader = "## Outputs"
-var AutoDocStart = "<!-- AUTO-DOC-%s:START - Do not remove or modify this section -->"
-var AutoDocEnd = "<!-- AUTO-DOC-%s:END -->"
-var inputAutoDocStart = fmt.Sprintf(AutoDocStart, "INPUT")
-var inputAutoDocEnd = fmt.Sprintf(AutoDocEnd, "INPUT")
-var outputAutoDocStart = fmt.Sprintf(AutoDocStart, "OUTPUT")
-var outputAutoDocEnd = fmt.Sprintf(AutoDocEnd, "OUTPUT")
+var inputsHeader = "## Inputs"
+var outputsHeader = "## Outputs"
+var autoDocStart = "<!-- AUTO-DOC-%s:START - Do not remove or modify this section -->"
+var autoDocEnd = "<!-- AUTO-DOC-%s:END -->"
+var inputAutoDocStart = fmt.Sprintf(autoDocStart, "INPUT")
+var inputAutoDocEnd = fmt.Sprintf(autoDocEnd, "INPUT")
+var outputAutoDocStart = fmt.Sprintf(autoDocStart, "OUTPUT")
+var outputAutoDocEnd = fmt.Sprintf(autoDocEnd, "OUTPUT")
 
 var actionFileName string
 var outputFileName string
@@ -181,15 +181,15 @@ func (a *Action) renderOutput() error {
 
 	hasInputsData, inputStartIndex, inputEndIndex := hasBytesInBetween(
 		input,
-		[]byte(InputsHeader),
+		[]byte(inputsHeader),
 		[]byte(inputAutoDocEnd),
 	)
 
 	if hasInputsData {
-		inputsStr := fmt.Sprintf("%s\n\n%v", InputsHeader, inputTableOutput.String())
+		inputsStr := fmt.Sprintf("%s\n\n%v", inputsHeader, inputTableOutput.String())
 		output = replaceBytesInBetween(input, inputStartIndex, inputEndIndex, []byte(inputsStr))
 	} else {
-		inputsStr := fmt.Sprintf("%s\n\n%v", InputsHeader, inputTableOutput.String())
+		inputsStr := fmt.Sprintf("%s\n\n%v", inputsHeader, inputTableOutput.String())
 		output = bytes.Replace(input, []byte(InputsHeader), []byte(inputsStr), -1)
 	}
 
@@ -200,10 +200,10 @@ func (a *Action) renderOutput() error {
 	)
 
 	if hasOutputsData {
-		outputsStr := fmt.Sprintf("%s\n\n%v", OutputsHeader, outputTableOutput.String())
+		outputsStr := fmt.Sprintf("%s\n\n%v", outputsHeader, outputTableOutput.String())
 		output = replaceBytesInBetween(output, outputStartIndex, outputEndIndex, []byte(outputsStr))
 	} else {
-		outputsStr := fmt.Sprintf("%s\n\n%v", OutputsHeader, outputTableOutput.String())
+		outputsStr := fmt.Sprintf("%s\n\n%v", outputsHeader, outputTableOutput.String())
 		output = bytes.Replace(output, []byte(OutputsHeader), []byte(outputsStr), -1)
 	}
 
