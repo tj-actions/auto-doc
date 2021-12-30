@@ -1,5 +1,5 @@
-name: Action auto doc generator
-description: Action auto doc generator
+name: Github Action doc generator
+description: Github Action doc generator
 author: jackton1
 inputs:
   action:
