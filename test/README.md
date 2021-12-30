@@ -2,7 +2,7 @@
 
 ## Inputs
 
-<!-- AUTO-DOC-INPUT:START - Do not remove or modify this section -->
+<!-- ACTION-AUTO-DOC-INPUT:START - Do not remove or modify this section -->
 
 |   INPUT   |  TYPE  | REQUIRED |        DEFAULT        |                                     DESCRIPTION                                     |
 |-----------|--------|----------|-----------------------|-------------------------------------------------------------------------------------|
@@ -13,11 +13,11 @@
 | sha       | string | true     | `${{ github.sha }}`   | Specify a current commit SHA used<br>for comparing changes                          |
 | token     | string | true     | `${{ github.token }}` | Github token or Repo Scoped Personal<br>Access Token                                |
 
-<!-- AUTO-DOC-INPUT:END -->
+<!-- ACTION-AUTO-DOC-INPUT:END -->
 
 ## Outputs
 
-<!-- AUTO-DOC-OUTPUT:START - Do not remove or modify this section -->
+<!-- ACTION-AUTO-DOC-OUTPUT:START - Do not remove or modify this section -->
 
 |             OUTPUT             |  TYPE  |                                       DESCRIPTION                                       |
 |--------------------------------|--------|-----------------------------------------------------------------------------------------|
@@ -37,4 +37,4 @@
 | unknown_files                  | string | List of unknown files.                                                                  |
 | unmerged_files                 | string | List of unmerged files.                                                                 |
 
-<!-- AUTO-DOC-OUTPUT:END -->
+<!-- ACTION-AUTO-DOC-OUTPUT:END -->

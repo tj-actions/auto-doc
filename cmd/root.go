@@ -30,8 +30,8 @@ import (
 
 var inputsHeader = "## Inputs"
 var outputsHeader = "## Outputs"
-var autoDocStart = "<!-- AUTO-DOC-%s:START - Do not remove or modify this section -->"
-var autoDocEnd = "<!-- AUTO-DOC-%s:END -->"
+var autoDocStart = "<!-- ACTION-AUTO-DOC-%s:START - Do not remove or modify this section -->"
+var autoDocEnd = "<!-- ACTION-AUTO-DOC-%s:END -->"
 var inputAutoDocStart = fmt.Sprintf(autoDocStart, "INPUT")
 var inputAutoDocEnd = fmt.Sprintf(autoDocEnd, "INPUT")
 var outputAutoDocStart = fmt.Sprintf(autoDocStart, "OUTPUT")

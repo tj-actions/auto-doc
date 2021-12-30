@@ -15,7 +15,7 @@ limitations under the License.
 */
 package main
 
-import "github.com/tj-actions/auto-doc/cmd"
+import "github.com/tj-actions/action-auto-doc/cmd"
 
 func main() {
 	cmd.Execute()

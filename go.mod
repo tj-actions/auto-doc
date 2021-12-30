@@ -1,4 +1,4 @@
-module github.com/tj-actions/auto-doc
+module github.com/tj-actions/action-auto-doc
 
 go 1.14
 

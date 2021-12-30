@@ -1,5 +1,5 @@
-name: Action auto doc generator
-description: Action auto doc generator
+name: Github Action doc generator
+description: Github Action doc generator
 author: jackton1
 inputs:
   action:
@@ -23,9 +23,9 @@ runs:
   using: 'composite'
   steps:
     - run: |
-        curl -sf https://gobinaries.com/github.com/tj-actions/auto-doc@v1.2.1 | PREFIX=. sh
-        ./auto-doc --action="${{ inputs.action }}" --output="${{ inputs.output }}" --colMaxWidth="${{ inputs.col_max_width }}" --colMaxWords="${{ inputs.col_max_words }}"
-        rm -f ./auto-doc
+        curl -sf https://gobinaries.com/github.com/tj-actions/action-auto-doc@v1.2.1 | PREFIX=. sh
+        ./action-auto-doc --action="${{ inputs.action }}" --output="${{ inputs.output }}" --colMaxWidth="${{ inputs.col_max_width }}" --colMaxWords="${{ inputs.col_max_words }}"
+        rm -f ./action-auto-doc
       shell: bash
 branding:
   icon: file-text

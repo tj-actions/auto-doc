@@ -10,7 +10,7 @@ on:
 
 jobs:
   test:
-    name: Test auto-doc
+    name: Test action-auto-doc
     runs-on: ${{ matrix.platform }}
     strategy:
       fail-fast: false
@@ -38,11 +38,11 @@ jobs:
       - name: Test action
         uses: ./
 
-      - name: Run auto-doc using the test directory
+      - name: Run action-auto-doc using the test directory
         run:
           make test
 
-      - name: Run auto-doc using the top level directory
+      - name: Run action-auto-doc using the top level directory
         run:
           make run
 

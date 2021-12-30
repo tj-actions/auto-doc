@@ -1,4 +1,4 @@
-# Self-Documented Makefile see https://marmelab.com/blog/2016/02/29/auto-documented-makefile.html
+# Self-Documented Makefile see https://marmelab.com/blog/2016/02/29/action-auto-documented-makefile.html
 
 OUTPUT := README.md
 ACTION := action.yml
