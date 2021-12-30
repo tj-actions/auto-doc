@@ -31,7 +31,7 @@ run: build guard-OUTPUT guard-ACTION  ## Execute binary
 
 .PHONY: test
 test: clean
-	@go test ./...
+	@@go test ./cmd
 
 .PHONY: format
 format:  ## Format go modules
