@@ -135,6 +135,7 @@ This package was created with [Cookiecutter](https://github.com/cookiecutter/coo
 
 *   [cobra](https://github.com/spf13/cobra)
 *   [gobinaries](https://github.com/tj/gobinaries)
+*   [goreleaser](https://github.com/goreleaser/goreleaser/)
 
 ## Report Bugs
 
