@@ -30,7 +30,7 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Run action-auto-doc
-        uses: tj-actions/action-auto-doc@v2.1.2
+        uses: tj-actions/action-auto-doc@v2.1.3
 ```
 
 ## Inputs
@@ -70,7 +70,7 @@ jobs:
            fetch-depth: 0  # otherwise, you will failed to push refs to dest repo
 
        - name: Run action-auto-doc
-         uses: tj-actions/action-auto-doc@v2.1.2
+         uses: tj-actions/action-auto-doc@v2.1.3
 
        - name: Verify Changed files
          uses: tj-actions/verify-changed-files@v8.6
