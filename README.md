@@ -9,7 +9,7 @@
 [![Mac OS](https://img.shields.io/badge/mac%20os-000000?logo=macos\&logoColor=F0F0F0)](https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idruns-on)
 [![Windows](https://img.shields.io/badge/Windows-0078D6?logo=windows\&logoColor=white)](https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idruns-on)
 
-## auto-doc
+## action-auto-doc
 
 Auto generate documentation from actions.yml like [this](#inputs) by simply adding `Inputs` and/or `Outputs` [`H2` header](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#headers) to your `README.md`.
 
