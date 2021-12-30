@@ -1,6 +1,35 @@
 # Changelog
 
-## [v2.1.3](https://github.com/tj-actions/action-auto-doc/tree/v2.1.3) (2021-12-30)
+## [v1.2.3](https://github.com/tj-actions/auto-doc/tree/v1.2.3) (2021-12-30)
+
+[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v1.2.2...v1.2.3)
+
+**Merged pull requests:**
+
+- Upgraded to v1.2.2 [\#270](https://github.com/tj-actions/auto-doc/pull/270) ([jackton1](https://github.com/jackton1))
+
+## [v1.2.2](https://github.com/tj-actions/auto-doc/tree/v1.2.2) (2021-12-30)
+
+[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v1.2.1...v1.2.2)
+
+**Implemented enhancements:**
+
+- \[Feature\] Deploy package using goreleaser [\#227](https://github.com/tj-actions/auto-doc/issues/227)
+
+**Closed issues:**
+
+- Dependency Dashboard [\#2](https://github.com/tj-actions/auto-doc/issues/2)
+
+## [v1.2.1](https://github.com/tj-actions/auto-doc/tree/v1.2.1) (2021-12-28)
+
+[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v1.2.0...v1.2.1)
+
+**Merged pull requests:**
+
+- Update test.yml [\#252](https://github.com/tj-actions/auto-doc/pull/252) ([jackton1](https://github.com/jackton1))
+- Upgraded to v1.2.0 [\#251](https://github.com/tj-actions/auto-doc/pull/251) ([jackton1](https://github.com/jackton1))
+
+## [v1.2.0](https://github.com/tj-actions/auto-doc/tree/v1.2.0) (2021-12-28)
 
 [Full Changelog](https://github.com/tj-actions/action-auto-doc/compare/v2.1.2...v2.1.3)
 
@@ -38,80 +67,6 @@
 ## [v2.0.0](https://github.com/tj-actions/action-auto-doc/tree/v2.0.0) (2021-12-30)
 
 [Full Changelog](https://github.com/tj-actions/action-auto-doc/compare/v1.2.3...v2.0.0)
-
-**Closed issues:**
-
-- Dependency Dashboard [\#2](https://github.com/tj-actions/action-auto-doc/issues/2)
-
-**Merged pull requests:**
-
-- Update goreleaser/goreleaser-action action to v2 [\#259](https://github.com/tj-actions/action-auto-doc/pull/259) ([renovate[bot]](https://github.com/apps/renovate))
-- Upgraded to v1.2.3 [\#258](https://github.com/tj-actions/action-auto-doc/pull/258) ([jackton1](https://github.com/jackton1))
-
-## [v1.2.3](https://github.com/tj-actions/action-auto-doc/tree/v1.2.3) (2021-12-30)
-
-[Full Changelog](https://github.com/tj-actions/action-auto-doc/compare/v1.2.2...v1.2.3)
-
-**Merged pull requests:**
-
-- Updated go version. [\#257](https://github.com/tj-actions/action-auto-doc/pull/257) ([jackton1](https://github.com/jackton1))
-- Upgraded to v1.2.2 [\#256](https://github.com/tj-actions/action-auto-doc/pull/256) ([jackton1](https://github.com/jackton1))
-
-## [v1.2.2](https://github.com/tj-actions/action-auto-doc/tree/v1.2.2) (2021-12-30)
-
-[Full Changelog](https://github.com/tj-actions/action-auto-doc/compare/v1.2.1...v1.2.2)
-
-**Implemented enhancements:**
-
-- \[Feature\] Deploy package using goreleaser [\#227](https://github.com/tj-actions/action-auto-doc/issues/227)
-
-**Merged pull requests:**
-
-- Setup goreleaser [\#255](https://github.com/tj-actions/action-auto-doc/pull/255) ([jackton1](https://github.com/jackton1))
-- Upgraded to v1.2.1 [\#253](https://github.com/tj-actions/action-auto-doc/pull/253) ([jackton1](https://github.com/jackton1))
-
-## [v1.2.1](https://github.com/tj-actions/action-auto-doc/tree/v1.2.1) (2021-12-28)
-
-[Full Changelog](https://github.com/tj-actions/action-auto-doc/compare/v1.2.0...v1.2.1)
-
-**Merged pull requests:**
-
-- Update test.yml [\#252](https://github.com/tj-actions/action-auto-doc/pull/252) ([jackton1](https://github.com/jackton1))
-- Upgraded to v1.2.0 [\#251](https://github.com/tj-actions/action-auto-doc/pull/251) ([jackton1](https://github.com/jackton1))
-
-## [v1.2.0](https://github.com/tj-actions/action-auto-doc/tree/v1.2.0) (2021-12-28)
-
-[Full Changelog](https://github.com/tj-actions/action-auto-doc/compare/v1.1.9...v1.2.0)
-
-**Merged pull requests:**
-
-- Upgraded to v1.1.9 [\#250](https://github.com/tj-actions/action-auto-doc/pull/250) ([jackton1](https://github.com/jackton1))
-
-## [v1.1.9](https://github.com/tj-actions/action-auto-doc/tree/v1.1.9) (2021-12-28)
-
-[Full Changelog](https://github.com/tj-actions/action-auto-doc/compare/v1.1.8...v1.1.9)
-
-**Merged pull requests:**
-
-- Fix golint warnings [\#249](https://github.com/tj-actions/action-auto-doc/pull/249) ([jackton1](https://github.com/jackton1))
-- Upgraded to v1.1.8 [\#248](https://github.com/tj-actions/action-auto-doc/pull/248) ([jackton1](https://github.com/jackton1))
-
-## [v1.1.8](https://github.com/tj-actions/action-auto-doc/tree/v1.1.8) (2021-12-27)
-
-[Full Changelog](https://github.com/tj-actions/action-auto-doc/compare/v1.1.7...v1.1.8)
-
-**Merged pull requests:**
-
-- Added support for configuring the max words per line in a column. [\#247](https://github.com/tj-actions/action-auto-doc/pull/247) ([jackton1](https://github.com/jackton1))
-- Upgraded to v1.1.7 [\#246](https://github.com/tj-actions/action-auto-doc/pull/246) ([jackton1](https://github.com/jackton1))
-
-## [v1.1.7](https://github.com/tj-actions/action-auto-doc/tree/v1.1.7) (2021-12-23)
-
-[Full Changelog](https://github.com/tj-actions/action-auto-doc/compare/v1.1.6...v1.1.7)
-
-**Implemented enhancements:**
-
-- \[Feature\] Prevent descriptions from getting moved to the next line. [\#231](https://github.com/tj-actions/action-auto-doc/issues/231)
 
 **Merged pull requests:**
 
