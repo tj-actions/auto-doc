@@ -1,5 +1,5 @@
 name: action.yml doc generator
-description: Auto generate documention for your github actions using `action.yml`
+description: Auto generate documention for your github actions using the action.yml file
 author: jackton1
 inputs:
   action:
