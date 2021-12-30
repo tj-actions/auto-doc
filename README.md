@@ -16,7 +16,7 @@ Auto generate documentation from actions.yml like [this](#inputs) by simply addi
 ## Usage
 
 ```yaml
-name: Update README.md using the latest actions.yml
+name: Update README.md using the actions.yml
 
 on:
   push:
