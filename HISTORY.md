@@ -1,5 +1,17 @@
 # Changelog
 
+## [v1.2.5](https://github.com/tj-actions/auto-doc/tree/v1.2.5) (2021-12-30)
+
+[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v1.2.4...v1.2.5)
+
+**Implemented enhancements:**
+
+- \[Feature\] Deploy package using goreleaser [\#227](https://github.com/tj-actions/auto-doc/issues/227)
+
+**Merged pull requests:**
+
+- Upgraded to v1.2.4 [\#273](https://github.com/tj-actions/auto-doc/pull/273) ([jackton1](https://github.com/jackton1))
+
 ## [v1.2.4](https://github.com/tj-actions/auto-doc/tree/v1.2.4) (2021-12-30)
 
 [Full Changelog](https://github.com/tj-actions/auto-doc/compare/v1.2.3...v1.2.4)
