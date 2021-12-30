@@ -58,3 +58,6 @@ vendor/
 
 
 bin/
+dist/
+
+dist/
