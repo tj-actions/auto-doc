@@ -35,8 +35,8 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-go-
       
-      - name: Test action
-        uses: ./
+      # - name: Test action
+      #  uses: ./
 
       - name: Run action-auto-doc using the test directory
         run:
