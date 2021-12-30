@@ -1,5 +1,14 @@
 # Changelog
 
+## [v2.1.2](https://github.com/tj-actions/action-auto-doc/tree/v2.1.2) (2021-12-30)
+
+[Full Changelog](https://github.com/tj-actions/action-auto-doc/compare/v2.1.1...v2.1.2)
+
+**Merged pull requests:**
+
+- Remove goreleaser [\#267](https://github.com/tj-actions/action-auto-doc/pull/267) ([jackton1](https://github.com/jackton1))
+- Upgraded to v2.1.1 [\#266](https://github.com/tj-actions/action-auto-doc/pull/266) ([jackton1](https://github.com/jackton1))
+
 ## [v2.1.1](https://github.com/tj-actions/action-auto-doc/tree/v2.1.1) (2021-12-30)
 
 [Full Changelog](https://github.com/tj-actions/action-auto-doc/compare/v2.1.0...v2.1.1)
