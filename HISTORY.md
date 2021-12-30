@@ -1,6 +1,29 @@
 # Changelog
 
+## [v1.2.3](https://github.com/tj-actions/action-auto-doc/tree/v1.2.3) (2021-12-30)
+
+[Full Changelog](https://github.com/tj-actions/action-auto-doc/compare/v1.2.2...v1.2.3)
+
+**Merged pull requests:**
+
+- Updated go version. [\#257](https://github.com/tj-actions/action-auto-doc/pull/257) ([jackton1](https://github.com/jackton1))
+- Upgraded to v1.2.2 [\#256](https://github.com/tj-actions/action-auto-doc/pull/256) ([jackton1](https://github.com/jackton1))
+
+## [v1.2.2](https://github.com/tj-actions/action-auto-doc/tree/v1.2.2) (2021-12-30)
+
+[Full Changelog](https://github.com/tj-actions/action-auto-doc/compare/v1.2.1...v1.2.2)
+
+**Implemented enhancements:**
+
+- \[Feature\] Deploy package using goreleaser [\#227](https://github.com/tj-actions/action-auto-doc/issues/227)
+
+**Merged pull requests:**
+
+- Setup goreleaser [\#255](https://github.com/tj-actions/action-auto-doc/pull/255) ([jackton1](https://github.com/jackton1))
+- Upgraded to v1.2.1 [\#253](https://github.com/tj-actions/action-auto-doc/pull/253) ([jackton1](https://github.com/jackton1))
+
 ## [v1.2.1](https://github.com/tj-actions/action-auto-doc/tree/v1.2.1) (2021-12-28)
+>>>>>>> cf20b34cce667663d50b5b9d9b2128438eb3fd4a
 
 [Full Changelog](https://github.com/tj-actions/action-auto-doc/compare/v1.2.0...v1.2.1)
 

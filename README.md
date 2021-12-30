@@ -28,8 +28,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+
       - name: Run action-auto-doc
-        uses: tj-actions/action-auto-doc@v1.2.1
+        uses: tj-actions/action-auto-doc@v1.2.3
 ```
 
 ## Inputs
@@ -69,7 +70,7 @@ jobs:
            fetch-depth: 0  # otherwise, you will failed to push refs to dest repo
 
        - name: Run action-auto-doc
-         uses: tj-actions/action-auto-doc@v1.2.1
+         uses: tj-actions/action-auto-doc@v1.2.3
 
        - name: Verify Changed files
          uses: tj-actions/verify-changed-files@v8.6
