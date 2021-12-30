@@ -1,5 +1,13 @@
 # Changelog
 
+## [v2.1.3](https://github.com/tj-actions/action-auto-doc/tree/v2.1.3) (2021-12-30)
+
+[Full Changelog](https://github.com/tj-actions/action-auto-doc/compare/v2.1.2...v2.1.3)
+
+**Merged pull requests:**
+
+- Upgraded to v2.1.2 [\#268](https://github.com/tj-actions/action-auto-doc/pull/268) ([jackton1](https://github.com/jackton1))
+
 ## [v2.1.2](https://github.com/tj-actions/action-auto-doc/tree/v2.1.2) (2021-12-30)
 
 [Full Changelog](https://github.com/tj-actions/action-auto-doc/compare/v2.1.1...v2.1.2)
