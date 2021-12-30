@@ -1,5 +1,15 @@
 # Changelog
 
+## [v2.1.0](https://github.com/tj-actions/action-auto-doc/tree/v2.1.0) (2021-12-30)
+
+[Full Changelog](https://github.com/tj-actions/action-auto-doc/compare/v2.0.0...v2.1.0)
+
+**Merged pull requests:**
+
+- Revert "Revert "Updated go version."" [\#264](https://github.com/tj-actions/action-auto-doc/pull/264) ([jackton1](https://github.com/jackton1))
+- Revert "Updated go version." [\#263](https://github.com/tj-actions/action-auto-doc/pull/263) ([jackton1](https://github.com/jackton1))
+- Upgraded to v2.0.0 [\#260](https://github.com/tj-actions/action-auto-doc/pull/260) ([jackton1](https://github.com/jackton1))
+
 ## [v2.0.0](https://github.com/tj-actions/action-auto-doc/tree/v2.0.0) (2021-12-30)
 
 [Full Changelog](https://github.com/tj-actions/action-auto-doc/compare/v1.2.3...v2.0.0)
