@@ -21,12 +21,12 @@ guard-%: ## Checks that env var is set else exits with non 0 mainly used in CI;
 .PHONY: build
 build: clean  ## Compile go modules
 	@echo "Compiling *.go..."
-	@go build -o ./bin/auto_doc *.go
+	@go build -o ./bin/action-auto-doc *.go
 
 .PHONY: run
 run: build guard-OUTPUT guard-ACTION  ## Execute binary
 	@echo "Running auto doc..."
-	@./bin/auto_doc --action=$(ACTION) --output=$(OUTPUT)
+	@./bin/action-auto-doc --action=$(ACTION) --output=$(OUTPUT)
 	@$(MAKE) clean
 
 .PHONY: test
