@@ -1,5 +1,18 @@
 # Changelog
 
+## [v2.0.0](https://github.com/tj-actions/action-auto-doc/tree/v2.0.0) (2021-12-30)
+
+[Full Changelog](https://github.com/tj-actions/action-auto-doc/compare/v1.2.3...v2.0.0)
+
+**Closed issues:**
+
+- Dependency Dashboard [\#2](https://github.com/tj-actions/action-auto-doc/issues/2)
+
+**Merged pull requests:**
+
+- Update goreleaser/goreleaser-action action to v2 [\#259](https://github.com/tj-actions/action-auto-doc/pull/259) ([renovate[bot]](https://github.com/apps/renovate))
+- Upgraded to v1.2.3 [\#258](https://github.com/tj-actions/action-auto-doc/pull/258) ([jackton1](https://github.com/jackton1))
+
 ## [v1.2.3](https://github.com/tj-actions/action-auto-doc/tree/v1.2.3) (2021-12-30)
 
 [Full Changelog](https://github.com/tj-actions/action-auto-doc/compare/v1.2.2...v1.2.3)
@@ -23,7 +36,6 @@
 - Upgraded to v1.2.1 [\#253](https://github.com/tj-actions/action-auto-doc/pull/253) ([jackton1](https://github.com/jackton1))
 
 ## [v1.2.1](https://github.com/tj-actions/action-auto-doc/tree/v1.2.1) (2021-12-28)
->>>>>>> cf20b34cce667663d50b5b9d9b2128438eb3fd4a
 
 [Full Changelog](https://github.com/tj-actions/action-auto-doc/compare/v1.2.0...v1.2.1)
 
@@ -65,10 +77,6 @@
 **Implemented enhancements:**
 
 - \[Feature\] Prevent descriptions from getting moved to the next line. [\#231](https://github.com/tj-actions/action-auto-doc/issues/231)
-
-**Closed issues:**
-
-- Dependency Dashboard [\#2](https://github.com/tj-actions/action-auto-doc/issues/2)
 
 **Merged pull requests:**
 
