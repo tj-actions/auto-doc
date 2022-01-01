@@ -15,6 +15,23 @@ Generate documentation from actions.yml like [this](#inputs) by simply adding `I
 
 ## Table of Contents
 
+*   [Usage](#usage)
+
+*   [Inputs](#inputs)
+
+    *   [👆 This is generated 👆 using :point\_right: action.yml](#-this-is-generated--using-point_right-actionyml)
+
+*   [Examples](#examples)
+
+*   [CLI](#cli)
+
+    *   [Installation](#installation)
+    *   [Usage](#usage-1)
+
+*   [Credits](#credits)
+
+*   [Report Bugs](#report-bugs)
+
 ## Usage
 
 ```yaml
@@ -41,13 +58,13 @@ jobs:
 |     INPUT     |  TYPE  | REQUIRED |   DEFAULT    |                 DESCRIPTION                 |
 |---------------|--------|----------|--------------|---------------------------------------------|
 | action        | string | false    | `action.yml` | Path to the action.yml file                 |
-| col_max_width | string | false    | `1000`       | Max width of a column                       |
-| col_max_words | string | false    | `6`          | Max number of words per line<br>in a column |
+| col\_max\_width | string | false    | `1000`       | Max width of a column                       |
+| col\_max\_words | string | false    | `6`          | Max number of words per line<br>in a column |
 | output        | string | false    | `README.md`  | Path to the output file                     |
 
 <!-- AUTO-DOC-INPUT:END -->
 
-### 👆 This is generated 👆 using :point_right: [action.yml](./action.yml)
+### 👆 This is generated 👆 using :point\_right: [action.yml](./action.yml)
 
 ## Examples
 
@@ -104,6 +121,7 @@ go install github.com/tj-actions/auto-doc
 ### Usage
 
 Run
+
 ```shell script
 auto-doc -h
 ```
