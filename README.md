@@ -64,7 +64,7 @@ jobs:
 
 <!-- AUTO-DOC-INPUT:END -->
 
-### 👆 This is generated 👆 using :point\_right: [action.yml](./action.yml)
+**👆 This is generated 👆 using :point\_right: [action.yml](./action.yml)**
 
 ## Examples
 
