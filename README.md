@@ -11,7 +11,7 @@
 
 ## auto-doc
 
-Auto generate documentation from actions.yml like [this](#inputs) by simply adding `Inputs` and/or `Outputs` [`H2` header](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#headers) to any markdown file.
+Generate documentation from actions.yml like [this](#inputs) by simply adding `Inputs` and/or `Outputs` [`H2` header](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#headers) to any markdown file.
 
 ## Usage
 
