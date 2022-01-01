@@ -19,8 +19,6 @@ Generate documentation from actions.yml like [this](#inputs) by simply adding `I
 
 *   [Inputs](#inputs)
 
-    *   [👆 This is generated 👆 using :point_right: action.yml](#-this-is-generated--using-point_right-actionyml)
-
 *   [Examples](#examples)
 
 *   [CLI](#cli)
