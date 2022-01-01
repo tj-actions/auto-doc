@@ -20,7 +20,7 @@ jobs:
             README.md
             action.yml
       - name: Generate CHANGELOG
-        uses: tj-actions/github-changelog-generator@v1.8
+        uses: tj-actions/github-changelog-generator@v1.10
         with:
           output: 'HISTORY.md'
       - name: Create Pull Request
