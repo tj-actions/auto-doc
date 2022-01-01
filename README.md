@@ -13,6 +13,8 @@
 
 Generate documentation from actions.yml like [this](#inputs) by simply adding `Inputs` and/or `Outputs` [`H2` header](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#headers) to any markdown file.
 
+## Table of Contents
+
 ## Usage
 
 ```yaml
@@ -99,7 +101,7 @@ Run
 go install github.com/tj-actions/auto-doc
 ```
 
-### CLI Options
+### Usage
 
 Run
 ```shell script
