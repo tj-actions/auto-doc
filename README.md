@@ -19,7 +19,7 @@ Generate documentation from actions.yml like [this](#inputs) by simply adding `I
 
 *   [Inputs](#inputs)
 
-    *   [👆 This is generated 👆 using :point\_right: action.yml](#-this-is-generated--using-point_right-actionyml)
+    *   [👆 This is generated 👆 using :point_right: action.yml](#-this-is-generated--using-point_right-actionyml)
 
 *   [Examples](#examples)
 
