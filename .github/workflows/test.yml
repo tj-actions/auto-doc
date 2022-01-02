@@ -47,7 +47,7 @@ jobs:
           make run
           
       - name: Format markdown
-        uses: tj-actions/remark@v1.7
+        uses: tj-actions/remark@v2
 
       - name: Verify Changed files
         uses: tj-actions/verify-changed-files@v8.8
