@@ -24,8 +24,8 @@ runs:
   steps:
     - run: |
         curl -sf https://gobinaries.com/github.com/tj-actions/auto-doc@v1.2.7 | PREFIX="${{ github.action_path }}" sh
-        ${{ github.action_path }}auto-doc --action="${{ inputs.action }}" --output="${{ inputs.output }}" --colMaxWidth="${{ inputs.col_max_width }}" --colMaxWords="${{ inputs.col_max_words }}"
-        rm -f ${{ github.action_path }}auto-doc
+        ${{ github.action_path }}\auto-doc --action="${{ inputs.action }}" --output="${{ inputs.output }}" --colMaxWidth="${{ inputs.col_max_width }}" --colMaxWords="${{ inputs.col_max_words }}"
+        rm -f ${{ github.action_path }}\auto-doc
       shell: bash
 branding:
   icon: file-text
