@@ -37,7 +37,7 @@ Generate documentation from actions.yml like [this](#inputs) by simply adding `I
     steps:
       - uses: actions/checkout@v2
       - name: Run auto-doc
-        uses: tj-actions/auto-doc@v1.2.6
+        uses: tj-actions/auto-doc@v1.2.7
 ```
 
 ## Inputs
@@ -77,7 +77,7 @@ jobs:
            fetch-depth: 0  # otherwise, you will failed to push refs to dest repo
 
        - name: Run auto-doc
-         uses: tj-actions/auto-doc@v1.2.6
+         uses: tj-actions/auto-doc@v1.2.7
 
        - name: Verify Changed files
          uses: tj-actions/verify-changed-files@v8.6
