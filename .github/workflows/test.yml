@@ -1,14 +1,100 @@
 name: CI
 
 on:
-  push:
-    branches:
-      - main
   pull_request:
     branches:
       - main
 
 jobs:
+  snapshot:
+    name: snapshot
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/setup-go@v2
+        with:
+          go-version: "1.17.5"
+
+      - uses: actions/cache@v2
+        with:
+          path: ~/go/pkg/mod
+          key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
+          restore-keys: |
+            ${{ runner.os }}-go-
+
+      - name: GoReleaser
+        uses: goreleaser/goreleaser-action@v2
+        with:
+          version: latest
+          args: release --snapshot --rm-dist
+
+      - name: Capture x86_64 (64-bit) Linux binary
+        uses: actions/upload-artifact@v2
+        with:
+          name: auto-doc-linux-amd64
+          path: dist/auto-doc_linux_amd64/auto-doc
+
+      - name: Capture i386 (32-bit) Linux binary
+        uses: actions/upload-artifact@v2
+        with:
+          name: auto-doc-linux-i386
+          path: dist/auto-doc_linux_386/auto-doc
+
+      - name: Capture arm64 (64-bit) Linux binary
+        uses: actions/upload-artifact@v2
+        with:
+          name: auto-doc-linux-arm64
+          path: dist/auto-doc_linux_arm64/auto-doc
+
+      - name: Capture armv6 (32-bit) Linux binary
+        uses: actions/upload-artifact@v2
+        with:
+          name: auto-doc-linux-armv6
+          path: dist/auto-doc_linux_arm_6/auto-doc
+
+      - name: Capture armv7 (32-bit) Linux binary
+        uses: actions/upload-artifact@v2
+        with:
+          name: auto-doc-linux-armv7
+          path: dist/auto-doc_linux_arm_7/auto-doc
+
+      - name: Capture x86_64 (64-bit) Windows binary
+        uses: actions/upload-artifact@v2
+        with:
+          name: auto-doc-windows-amd64
+          path: dist/auto-doc_windows_amd64/auto-doc.exe
+
+      - name: Capture i386 (32-bit) Windows binary
+        uses: actions/upload-artifact@v2
+        with:
+          name: auto-doc-windows-i386
+          path: dist/auto-doc_windows_386/auto-doc.exe
+
+      - name: Capture arm64 (64-bit) Windows binary
+        uses: actions/upload-artifact@v2
+        with:
+          name: auto-doc-windows-arm64
+          path: dist/auto-doc_windows_arm64/auto-doc.exe
+
+      - name: Capture armv7 (32-bit) Windows binary
+        uses: actions/upload-artifact@v2
+        with:
+          name: auto-doc-windows-armv7
+          path: dist/auto-doc_windows_arm_7/auto-doc.exe
+
+      - name: Capture x86_64 (64-bit) MacOS binary
+        uses: actions/upload-artifact@v2
+        with:
+          name: auto-doc-macos-amd64
+          path: dist/auto-doc_darwin_amd64/auto-doc
+
+      - name: Capture arm64 (64-bit) MacOS binary
+        uses: actions/upload-artifact@v2
+        with:
+          name: auto-doc-macos-arm64
+          path: dist/auto-doc_darwin_arm64/auto-doc
+
   test:
     name: Test auto-doc
     runs-on: ${{ matrix.platform }}
@@ -26,7 +112,7 @@ jobs:
       - name: Setup go
         uses: actions/setup-go@v2
         with:
-          go-version: '1.14.4'
+          go-version: '1.17.5'
 
       - uses: actions/cache@v2
         with:
