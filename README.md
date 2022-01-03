@@ -33,20 +33,11 @@ Generate documentation from actions.yml like [this](#inputs) by simply adding `I
 ## Usage
 
 ```yaml
-name: Update README.md using the actions.yml
-
-on:
-  push:
-    branches:
-      - main
-
-jobs:
-  update-doc:
-    runs-on: ubuntu-latest
+...
     steps:
       - uses: actions/checkout@v2
       - name: Run auto-doc
-        uses: tj-actions/auto-doc@v1.2.0
+        uses: tj-actions/auto-doc@v1.2.6
 ```
 
 ## Inputs
@@ -86,7 +77,7 @@ jobs:
            fetch-depth: 0  # otherwise, you will failed to push refs to dest repo
 
        - name: Run auto-doc
-         uses: tj-actions/auto-doc@v1.2.0
+         uses: tj-actions/auto-doc@v1.2.6
 
        - name: Verify Changed files
          uses: tj-actions/verify-changed-files@v8.6
