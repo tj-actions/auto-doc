@@ -10,6 +10,17 @@ builds:
       - linux
       - windows
       - darwin
+    goarch:
+      - amd64
+      - '386'
+      - arm64
+      - arm
+    goarm:
+      - '6'
+      - '7'
+    ignore:
+      - goos: windows
+        goarm: '6'
 archives:
   - replacements:
       darwin: Darwin
@@ -17,6 +28,9 @@ archives:
       windows: Windows
       386: i386
       amd64: x86_64
+    format_overrides:
+      - goos: windows
+        format: zip
 checksum:
   name_template: 'checksums.txt'
 snapshot:
