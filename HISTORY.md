@@ -1,5 +1,14 @@
 # Changelog
 
+## [v1.2.7](https://github.com/tj-actions/auto-doc/tree/v1.2.7) (2022-01-03)
+
+[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v1.2.6...v1.2.7)
+
+**Merged pull requests:**
+
+- Added support for creating snapshots [\#277](https://github.com/tj-actions/auto-doc/pull/277) ([jackton1](https://github.com/jackton1))
+- Upgraded to v1.2.6 [\#276](https://github.com/tj-actions/auto-doc/pull/276) ([jackton1](https://github.com/jackton1))
+
 ## [v1.2.6](https://github.com/tj-actions/auto-doc/tree/v1.2.6) (2022-01-03)
 
 [Full Changelog](https://github.com/tj-actions/auto-doc/compare/v1.2.5...v1.2.6)
