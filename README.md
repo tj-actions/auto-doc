@@ -113,7 +113,9 @@ Run
 
 ```shell script
 auto_doc --help
+```
 
+```shell script
 Auto generate documentation for your github action.
 
 Usage:
