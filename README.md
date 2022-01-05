@@ -37,7 +37,7 @@ Generate documentation from actions.yml like [this](#inputs) by simply adding `I
     steps:
       - uses: actions/checkout@v2
       - name: Run auto-doc
-        uses: tj-actions/auto-doc@v1.2.8
+        uses: tj-actions/auto-doc@v1.2.9
 ```
 
 ## Inputs
@@ -46,10 +46,10 @@ Generate documentation from actions.yml like [this](#inputs) by simply adding `I
 
 |     INPUT     |  TYPE  | REQUIRED |   DEFAULT    |                 DESCRIPTION                 |
 |---------------|--------|----------|--------------|---------------------------------------------|
-| action        | string | false    | `action.yml` | Path to the action.yml file                 |
-| col\_max\_width | string | false    | `1000`       | Max width of a column                       |
-| col\_max\_words | string | false    | `6`          | Max number of words per line<br>in a column |
-| output        | string | false    | `README.md`  | Path to the output file                     |
+| action        | string | false    | `action.yml` | Path to the action.yml file<br>             |
+| col\_max\_width | string | false    | `1000`       | Max width of a column<br>                   |
+| col\_max\_words | string | false    | `5`          | Max number of words per<br>line in a column |
+| output        | string | false    | `README.md`  | Path to the output file<br>                 |
 
 <!-- AUTO-DOC-INPUT:END -->
 
@@ -77,7 +77,7 @@ jobs:
            fetch-depth: 0  # otherwise, you will failed to push refs to dest repo
 
        - name: Run auto-doc
-         uses: tj-actions/auto-doc@v1.2.8
+         uses: tj-actions/auto-doc@v1.2.9
 
        - name: Verify Changed files
          uses: tj-actions/verify-changed-files@v8.6
