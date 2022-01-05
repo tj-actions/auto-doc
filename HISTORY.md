@@ -1,5 +1,18 @@
 # Changelog
 
+## [v1.2.8](https://github.com/tj-actions/auto-doc/tree/v1.2.8) (2022-01-05)
+
+[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v1.2.7...v1.2.8)
+
+**Closed issues:**
+
+- Dependency Dashboard [\#2](https://github.com/tj-actions/auto-doc/issues/2)
+
+**Merged pull requests:**
+
+- Update tj-actions/github-changelog-generator action to v1.11 [\#280](https://github.com/tj-actions/auto-doc/pull/280) ([renovate[bot]](https://github.com/apps/renovate))
+- Upgraded to v1.2.7 [\#278](https://github.com/tj-actions/auto-doc/pull/278) ([jackton1](https://github.com/jackton1))
+
 ## [v1.2.7](https://github.com/tj-actions/auto-doc/tree/v1.2.7) (2022-01-03)
 
 [Full Changelog](https://github.com/tj-actions/auto-doc/compare/v1.2.6...v1.2.7)
@@ -12,10 +25,6 @@
 ## [v1.2.6](https://github.com/tj-actions/auto-doc/tree/v1.2.6) (2022-01-03)
 
 [Full Changelog](https://github.com/tj-actions/auto-doc/compare/v1.2.5...v1.2.6)
-
-**Closed issues:**
-
-- Dependency Dashboard [\#2](https://github.com/tj-actions/auto-doc/issues/2)
 
 **Merged pull requests:**
 
