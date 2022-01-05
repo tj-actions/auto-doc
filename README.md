@@ -46,10 +46,10 @@ Generate documentation from actions.yml like [this](#inputs) by simply adding `I
 
 |     INPUT     |  TYPE  | REQUIRED |   DEFAULT    |                 DESCRIPTION                 |
 |---------------|--------|----------|--------------|---------------------------------------------|
-| action        | string | false    | `action.yml` | Path to the action.yml file                 |
-| col\_max\_width | string | false    | `1000`       | Max width of a column                       |
-| col\_max\_words | string | false    | `6`          | Max number of words per line<br>in a column |
-| output        | string | false    | `README.md`  | Path to the output file                     |
+| action        | string | false    | `action.yml` | Path to the action.yml file<br>             |
+| col\_max\_width | string | false    | `1000`       | Max width of a column<br>                   |
+| col\_max\_words | string | false    | `5`          | Max number of words per<br>line in a column |
+| output        | string | false    | `README.md`  | Path to the output file<br>                 |
 
 <!-- AUTO-DOC-INPUT:END -->
 
