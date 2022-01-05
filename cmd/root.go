@@ -283,7 +283,7 @@ func init() {
 	rootCmd.PersistentFlags().StringVar(
 		&colMaxWords,
 		"colMaxWords",
-		"6",
+		"4",
 		"Max number of words per line in a column",
 	)
 }
