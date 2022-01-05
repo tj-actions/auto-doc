@@ -112,10 +112,8 @@ go install github.com/tj-actions/auto-doc
 Run
 
 ```shell script
-auto-doc -h
-```
+auto_doc --help
 
-```text
 Auto generate documentation for your github action.
 
 Usage:
@@ -123,7 +121,8 @@ Usage:
 
 Flags:
       --action string        action config file (default "action.yml")
-      --colMaxWidth string   Column max width (default "1000")
+      --colMaxWidth string   Max width of a column (default "1000")
+      --colMaxWords string   Max number of words per line in a column (default "5")
   -h, --help                 help for auto-doc
       --output string        Output file (default "README.md")
 ```
