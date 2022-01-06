@@ -27,6 +27,7 @@ runs:
         ./auto-doc --action="${{ inputs.action }}" --output="${{ inputs.output }}" --colMaxWidth="${{ inputs.col_max_width }}" --colMaxWords="${{ inputs.col_max_words }}"
         rm -f ./auto-doc
       shell: bash
+
 branding:
   icon: file-text
   color: white
