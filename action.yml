@@ -23,7 +23,7 @@ runs:
   using: 'composite'
   steps:
     - run: |
-        curl -sf https://gobinaries.com/github.com/tj-actions/auto-doc@v1.2.9 | PREFIX=. sh
+        curl -sf https://gobinaries.com/github.com/tj-actions/auto-doc@v1.2.10 | PREFIX=. sh
         ./auto-doc --action="${{ inputs.action }}" --output="${{ inputs.output }}" --colMaxWidth="${{ inputs.col_max_width }}" --colMaxWords="${{ inputs.col_max_words }}"
         rm -f ./auto-doc
       shell: bash
