@@ -1,5 +1,14 @@
 # Changelog
 
+## [v1.2.11](https://github.com/tj-actions/auto-doc/tree/v1.2.11) (2022-02-01)
+
+[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v1.2.10...v1.2.11)
+
+**Merged pull requests:**
+
+- fix: Ensure the latest version is always installed [\#286](https://github.com/tj-actions/auto-doc/pull/286) ([jackton1](https://github.com/jackton1))
+- Upgraded to v1.2.10 [\#285](https://github.com/tj-actions/auto-doc/pull/285) ([jackton1](https://github.com/jackton1))
+
 ## [v1.2.10](https://github.com/tj-actions/auto-doc/tree/v1.2.10) (2022-02-01)
 
 [Full Changelog](https://github.com/tj-actions/auto-doc/compare/v1.2.9...v1.2.10)
