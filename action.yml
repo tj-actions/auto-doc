@@ -24,8 +24,13 @@ runs:
   steps:
     - run: |
         curl -sf https://gobinaries.com/github.com/tj-actions/auto-doc | PREFIX=. sh
-        ./auto-doc --action="${{ inputs.action }}" --output="${{ inputs.output }}" --colMaxWidth="${{ inputs.col_max_width }}" --colMaxWords="${{ inputs.col_max_words }}"
+        ./auto-doc --action="${{ inputs.action }}" --output="${{ inputs.output }}" --colMaxWidth="${{ inputs.col_max_width }}" --colMaxWords="${{ inputs.col_max_words }}" && exit_status=$? || exit_status=$?
         rm -f ./auto-doc
+
+        if [[ $exit_status -ne 0 ]]; then
+          echo "::warning::Error occurred running auto-doc"
+          exit 1;
+        fi
       shell: bash
 
 branding:
