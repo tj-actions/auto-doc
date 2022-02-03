@@ -29,7 +29,7 @@ runs:
 
         if [[ $exit_status -ne 0 ]]; then
           echo "::warning::Error occurred running auto-doc"
-          exit 1;
+          exit $exit_status;
         fi
       shell: bash
 
