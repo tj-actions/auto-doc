@@ -1,5 +1,18 @@
 # Changelog
 
+## [v1.2.13](https://github.com/tj-actions/auto-doc/tree/v1.2.13) (2022-02-05)
+
+[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v1.2.12...v1.2.13)
+
+**Fixed bugs:**
+
+- \[BUG\] Handle rendering \(default\) array of strings [\#254](https://github.com/tj-actions/auto-doc/issues/254)
+
+**Merged pull requests:**
+
+- fix: rendering pipe separator [\#293](https://github.com/tj-actions/auto-doc/pull/293) ([jackton1](https://github.com/jackton1))
+- Upgraded to v1.2.12 [\#292](https://github.com/tj-actions/auto-doc/pull/292) ([jackton1](https://github.com/jackton1))
+
 ## [v1.2.12](https://github.com/tj-actions/auto-doc/tree/v1.2.12) (2022-02-05)
 
 [Full Changelog](https://github.com/tj-actions/auto-doc/compare/v1.2.11...v1.2.12)
@@ -11,7 +24,7 @@
 
 **Merged pull requests:**
 
-- Update README.md [\#291](https://github.com/tj-actions/auto-doc/pull/291) ([jackton1](https://github.com/jackton1))
+- fix: rendering array of strings [\#291](https://github.com/tj-actions/auto-doc/pull/291) ([jackton1](https://github.com/jackton1))
 - fix: bug escaping defaults [\#290](https://github.com/tj-actions/auto-doc/pull/290) ([jackton1](https://github.com/jackton1))
 - Clean binary regardless of exit code [\#288](https://github.com/tj-actions/auto-doc/pull/288) ([jackton1](https://github.com/jackton1))
 - Upgraded to v1.2.11 [\#287](https://github.com/tj-actions/auto-doc/pull/287) ([jackton1](https://github.com/jackton1))
