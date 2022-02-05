@@ -107,7 +107,7 @@ func (a *Action) renderOutput() error {
 			var outputDefault string
 			if len(a.Inputs[key].Default) > 0 {
 				if a.Inputs[key].Default == pipeSeparator {
-					outputDefault = "\"\\" + outputDefault + "\""
+					outputDefault = "\"\\" + a.Inputs[key].Default + "\""
 				} else {
 					outputDefault = fmt.Sprintf("%#v", a.Inputs[key].Default)
 				}
