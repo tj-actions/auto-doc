@@ -9,7 +9,7 @@ inputs:
   separator:
     description: 'Split character for array output'
     required: true
-    default: "\n"
+    default: "|"
   files:
     description: 'Check for changes using only this list of files (Defaults to the entire repo)'
     required: false
