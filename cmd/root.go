@@ -32,6 +32,7 @@ var inputsHeader = "## Inputs"
 var outputsHeader = "## Outputs"
 var autoDocStart = "<!-- AUTO-DOC-%s:START - Do not remove or modify this section -->"
 var autoDocEnd = "<!-- AUTO-DOC-%s:END -->"
+var pipeSeparator = "|"
 var inputAutoDocStart = fmt.Sprintf(autoDocStart, "INPUT")
 var inputAutoDocEnd = fmt.Sprintf(autoDocEnd, "INPUT")
 var outputAutoDocStart = fmt.Sprintf(autoDocStart, "OUTPUT")
@@ -92,7 +93,7 @@ func (a *Action) renderOutput() error {
 		inputTable := tablewriter.NewWriter(inputTableOutput)
 		inputTable.SetHeader([]string{"Input", "Type", "Required", "Default", "Description"})
 		inputTable.SetBorders(tablewriter.Border{Left: true, Top: false, Right: true, Bottom: false})
-		inputTable.SetCenterSeparator("|")
+		inputTable.SetCenterSeparator(pipeSeparator)
 
 		keys := make([]string, 0, len(a.Inputs))
 		for k := range a.Inputs {
@@ -105,7 +106,11 @@ func (a *Action) renderOutput() error {
 		for _, key := range keys {
 			var outputDefault string
 			if len(a.Inputs[key].Default) > 0 {
-				outputDefault = fmt.Sprintf("`\"%s\"`", a.Inputs[key].Default)
+				outputDefault = a.Inputs[key].Default
+				
+				if outputDefault == pipeSeparator {
+					outputDefault = "`\\" + outputDefault + "`"
+				}
 			}
 			row := []string{key, "string", strconv.FormatBool(a.Inputs[key].Required), outputDefault, wordWrap(a.Inputs[key].Description, maxWords)}
 			inputTable.Append(row)
@@ -140,7 +145,7 @@ func (a *Action) renderOutput() error {
 		outputTable := tablewriter.NewWriter(outputTableOutput)
 		outputTable.SetHeader([]string{"Output", "Type", "Description"})
 		outputTable.SetBorders(tablewriter.Border{Left: true, Top: false, Right: true, Bottom: false})
-		outputTable.SetCenterSeparator("|")
+		outputTable.SetCenterSeparator(pipeSeparator)
 
 		keys := make([]string, 0, len(a.Outputs))
 		for k := range a.Outputs {
