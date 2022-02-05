@@ -109,8 +109,10 @@ func (a *Action) renderOutput() error {
 				outputDefault = a.Inputs[key].Default
 
 				if outputDefault == pipeSeparator {
-					outputDefault = "`\\" + outputDefault + "`"
+					outputDefault = "\\" + outputDefault
 				}
+				
+				outputDefault = "`\"" + outputDefault + "`\""
 			}
 			row := []string{key, "string", strconv.FormatBool(a.Inputs[key].Required), outputDefault, wordWrap(a.Inputs[key].Description, maxWords)}
 			inputTable.Append(row)
