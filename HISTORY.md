@@ -1,5 +1,21 @@
 # Changelog
 
+## [v1.2.12](https://github.com/tj-actions/auto-doc/tree/v1.2.12) (2022-02-05)
+
+[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v1.2.11...v1.2.12)
+
+**Fixed bugs:**
+
+- \[BUG\] Properly escape default values [\#289](https://github.com/tj-actions/auto-doc/issues/289)
+- \[BUG\] Clean binary regardless of exit code [\#281](https://github.com/tj-actions/auto-doc/issues/281)
+
+**Merged pull requests:**
+
+- Update README.md [\#291](https://github.com/tj-actions/auto-doc/pull/291) ([jackton1](https://github.com/jackton1))
+- fix: bug escaping defaults [\#290](https://github.com/tj-actions/auto-doc/pull/290) ([jackton1](https://github.com/jackton1))
+- Clean binary regardless of exit code [\#288](https://github.com/tj-actions/auto-doc/pull/288) ([jackton1](https://github.com/jackton1))
+- Upgraded to v1.2.11 [\#287](https://github.com/tj-actions/auto-doc/pull/287) ([jackton1](https://github.com/jackton1))
+
 ## [v1.2.11](https://github.com/tj-actions/auto-doc/tree/v1.2.11) (2022-02-01)
 
 [Full Changelog](https://github.com/tj-actions/auto-doc/compare/v1.2.10...v1.2.11)
