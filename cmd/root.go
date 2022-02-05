@@ -106,10 +106,10 @@ func (a *Action) renderOutput() error {
 		for _, key := range keys {
 			var outputDefault string
 			if len(a.Inputs[key].Default) > 0 {
-				outputDefault = fmt.Sprintf("%#v", a.Inputs[key].Default)
-
-				if outputDefault == pipeSeparator {
-					outputDefault = "\\" + outputDefault
+				if a.Inputs[key].Default == pipeSeparator {
+					outputDefault = "\"\\" + a.Inputs[key].Default + "\""
+				} else {
+					outputDefault = fmt.Sprintf("%#v", a.Inputs[key].Default)
 				}
 
 				outputDefault = "`" + outputDefault + "`"
