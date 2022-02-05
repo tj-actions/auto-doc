@@ -13,7 +13,9 @@ inputs:
   files:
     description: 'Check for changes using only this list of files (Defaults to the entire repo)'
     required: false
-    default: ""
+    default: |
+      README.md
+      README.md
   sha:
     description: 'Specify a current commit SHA used for comparing changes'
     required: true
