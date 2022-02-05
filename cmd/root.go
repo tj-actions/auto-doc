@@ -106,10 +106,10 @@ func (a *Action) renderOutput() error {
 		for _, key := range keys {
 			var outputDefault string
 			if len(a.Inputs[key].Default) > 0 {
-				if a.Inputs[key].Default != pipeSeparator {
-					outputDefault = fmt.Sprintf("`%#v`", a.Inputs[key].Default)
-				} else {
-					outputDefault = "`\\" + fmt.Sprintf("%s", a.Inputs[key].Default) + "`"
+				outputDefault = a.Inputs[key].Default
+				
+				if outputDefault == pipeSeparator {
+					outputDefault = "`\\" + outputDefault + "`"
 				}
 			}
 			row := []string{key, "string", strconv.FormatBool(a.Inputs[key].Required), outputDefault, wordWrap(a.Inputs[key].Description, maxWords)}
