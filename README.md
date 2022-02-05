@@ -11,7 +11,7 @@
 
 ## auto-doc
 
-Generate documentation for your actions.yml.
+Generate documentation for your actions.(yml|yaml).
 
 ## Table of Contents
 
