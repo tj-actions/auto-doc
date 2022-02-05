@@ -11,7 +11,7 @@
 
 ## auto-doc
 
-Generate documentation for your actions.yml.
+Generate documentation for your actions.(yml|yaml).
 
 ## Table of Contents
 
@@ -46,12 +46,12 @@ Add the `Inputs` and/or `Outputs` [`H2` header](https://github.com/adam-p/markdo
 
 <!-- AUTO-DOC-INPUT:START - Do not remove or modify this section -->
 
-|     INPUT     |  TYPE  | REQUIRED |    DEFAULT     |                 DESCRIPTION                 |
-|---------------|--------|----------|----------------|---------------------------------------------|
-| action        | string | false    | `"action.yml"` | Path to the action.yml file<br>             |
-| col\_max\_width | string | false    | `"1000"`       | Max width of a column<br>                   |
-| col\_max\_words | string | false    | `"5"`          | Max number of words per<br>line in a column |
-| output        | string | false    | `"README.md"`  | Path to the output file<br>                 |
+|     INPUT     |  TYPE  | REQUIRED |     DEFAULT      |                 DESCRIPTION                 |
+|---------------|--------|----------|------------------|---------------------------------------------|
+| action        | string | false    | `""action.yml""` | Path to the action.yml file<br>             |
+| col\_max\_width | string | false    | `""1000""`       | Max width of a column<br>                   |
+| col\_max\_words | string | false    | `""5""`          | Max number of words per<br>line in a column |
+| output        | string | false    | `""README.md""`  | Path to the output file<br>                 |
 
 <!-- AUTO-DOC-INPUT:END -->
 
