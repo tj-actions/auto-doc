@@ -107,7 +107,7 @@ func (a *Action) renderOutput() error {
 			var outputDefault string
 			if len(a.Inputs[key].Default) > 0 {
 				outputDefault = a.Inputs[key].Default
-				
+
 				if outputDefault == pipeSeparator {
 					outputDefault = "`\\" + outputDefault + "`"
 				}
