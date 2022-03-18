@@ -133,7 +133,7 @@ jobs:
           make run
           
       - name: Format markdown
-        uses: tj-actions/remark@v2
+        uses: tj-actions/remark@v3
 
       - name: Verify Changed files
         uses: tj-actions/verify-changed-files@v9
