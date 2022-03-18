@@ -16,18 +16,12 @@ Generate documentation for your actions.(yml|yaml).
 ## Table of Contents
 
 *   [Usage](#usage)
-
 *   [Inputs](#inputs)
-
 *   [Examples](#examples)
-
 *   [CLI](#cli)
-
     *   [Installation](#installation)
     *   [Usage](#usage-1)
-
 *   [Credits](#credits)
-
 *   [Report Bugs](#report-bugs)
 
 ## Usage
