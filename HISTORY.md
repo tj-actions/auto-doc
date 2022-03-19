@@ -1,5 +1,30 @@
 # Changelog
 
+## [Unreleased](https://github.com/tj-actions/auto-doc/tree/HEAD)
+
+[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v1.2.14...HEAD)
+
+**Closed issues:**
+
+- Dependency Dashboard [\#2](https://github.com/tj-actions/auto-doc/issues/2)
+
+## [v1.2.14](https://github.com/tj-actions/auto-doc/tree/v1.2.14) (2022-03-19)
+
+[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v1.2.13...v1.2.14)
+
+**Merged pull requests:**
+
+- Update tj-actions/remark action to v3 [\#305](https://github.com/tj-actions/auto-doc/pull/305) ([renovate[bot]](https://github.com/apps/renovate))
+- Bump tj-actions/verify-changed-files from 8.8 to 9 [\#304](https://github.com/tj-actions/auto-doc/pull/304) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Update tj-actions/github-changelog-generator action to v1.13 [\#303](https://github.com/tj-actions/auto-doc/pull/303) ([renovate[bot]](https://github.com/apps/renovate))
+- Bump github.com/spf13/cobra from 1.3.0 to 1.4.0 [\#302](https://github.com/tj-actions/auto-doc/pull/302) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Update actions/upload-artifact action to v3 [\#300](https://github.com/tj-actions/auto-doc/pull/300) ([renovate[bot]](https://github.com/apps/renovate))
+- Update actions/checkout action [\#298](https://github.com/tj-actions/auto-doc/pull/298) ([renovate[bot]](https://github.com/apps/renovate))
+- Update actions/setup-go action to v3 [\#297](https://github.com/tj-actions/auto-doc/pull/297) ([renovate[bot]](https://github.com/apps/renovate))
+- Update tj-actions/github-changelog-generator action to v1.12 [\#296](https://github.com/tj-actions/auto-doc/pull/296) ([renovate[bot]](https://github.com/apps/renovate))
+- Update tj-actions/sync-release-version action to v11 [\#295](https://github.com/tj-actions/auto-doc/pull/295) ([renovate[bot]](https://github.com/apps/renovate))
+- Upgraded to v1.2.13 [\#294](https://github.com/tj-actions/auto-doc/pull/294) ([jackton1](https://github.com/jackton1))
+
 ## [v1.2.13](https://github.com/tj-actions/auto-doc/tree/v1.2.13) (2022-02-05)
 
 [Full Changelog](https://github.com/tj-actions/auto-doc/compare/v1.2.12...v1.2.13)
@@ -58,10 +83,6 @@
 ## [v1.2.8](https://github.com/tj-actions/auto-doc/tree/v1.2.8) (2022-01-05)
 
 [Full Changelog](https://github.com/tj-actions/auto-doc/compare/v1.2.7...v1.2.8)
-
-**Closed issues:**
-
-- Dependency Dashboard [\#2](https://github.com/tj-actions/auto-doc/issues/2)
 
 **Merged pull requests:**
 
