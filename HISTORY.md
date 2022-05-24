@@ -2,11 +2,29 @@
 
 ## [Unreleased](https://github.com/tj-actions/auto-doc/tree/HEAD)
 
-[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v1.2.14...HEAD)
+[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v1.2.15...HEAD)
 
 **Closed issues:**
 
 - Dependency Dashboard [\#2](https://github.com/tj-actions/auto-doc/issues/2)
+
+## [v1.2.15](https://github.com/tj-actions/auto-doc/tree/v1.2.15) (2022-05-23)
+
+[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v1.2.14...v1.2.15)
+
+**Merged pull requests:**
+
+- Update goreleaser/goreleaser-action action to v3 [\#317](https://github.com/tj-actions/auto-doc/pull/317) ([renovate[bot]](https://github.com/apps/renovate))
+- Update module gopkg.in/yaml.v3 to v3.0.0 [\#316](https://github.com/tj-actions/auto-doc/pull/316) ([renovate[bot]](https://github.com/apps/renovate))
+- Update pascalgn/automerge-action action to v0.15.3 [\#315](https://github.com/tj-actions/auto-doc/pull/315) ([renovate[bot]](https://github.com/apps/renovate))
+- Update actions/checkout action to v3.0.2 [\#314](https://github.com/tj-actions/auto-doc/pull/314) ([renovate[bot]](https://github.com/apps/renovate))
+- Update actions/checkout action to v3.0.1 [\#313](https://github.com/tj-actions/auto-doc/pull/313) ([renovate[bot]](https://github.com/apps/renovate))
+- Update pascalgn/automerge-action action to v0.15.2 [\#312](https://github.com/tj-actions/auto-doc/pull/312) ([renovate[bot]](https://github.com/apps/renovate))
+- Update pascalgn/automerge-action action to v0.15.1 [\#311](https://github.com/tj-actions/auto-doc/pull/311) ([renovate[bot]](https://github.com/apps/renovate))
+- Update pascalgn/automerge-action action to v0.14.4 [\#310](https://github.com/tj-actions/auto-doc/pull/310) ([renovate[bot]](https://github.com/apps/renovate))
+- Update peter-evans/create-pull-request action to v4 [\#309](https://github.com/tj-actions/auto-doc/pull/309) ([renovate[bot]](https://github.com/apps/renovate))
+- Update actions/cache action to v3 [\#308](https://github.com/tj-actions/auto-doc/pull/308) ([renovate[bot]](https://github.com/apps/renovate))
+- Upgraded to v1.2.14 [\#307](https://github.com/tj-actions/auto-doc/pull/307) ([jackton1](https://github.com/jackton1))
 
 ## [v1.2.14](https://github.com/tj-actions/auto-doc/tree/v1.2.14) (2022-03-19)
 
