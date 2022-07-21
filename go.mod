@@ -1,6 +1,6 @@
 module github.com/tj-actions/auto-doc
 
-go 1.14
+go 1.18
 
 require (
 	github.com/kr/pretty v0.2.0 // indirect
