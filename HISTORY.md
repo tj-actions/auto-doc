@@ -1,12 +1,26 @@
 # Changelog
 
-## [Unreleased](https://github.com/tj-actions/auto-doc/tree/HEAD)
+## [v1.3.0](https://github.com/tj-actions/auto-doc/tree/v1.3.0) (2022-07-28)
 
-[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v1.2.15...HEAD)
+[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v1.2.15...v1.3.0)
+
+**Implemented enhancements:**
+
+- \[Feature\] Make some columns optional [\#319](https://github.com/tj-actions/auto-doc/issues/319)
 
 **Closed issues:**
 
 - Dependency Dashboard [\#2](https://github.com/tj-actions/auto-doc/issues/2)
+
+**Merged pull requests:**
+
+- chore: update readme [\#327](https://github.com/tj-actions/auto-doc/pull/327) ([jackton1](https://github.com/jackton1))
+- feat: add support for customizing input and output columns [\#326](https://github.com/tj-actions/auto-doc/pull/326) ([jackton1](https://github.com/jackton1))
+- Update tj-actions/github-changelog-generator action to v1.14 [\#324](https://github.com/tj-actions/auto-doc/pull/324) ([renovate[bot]](https://github.com/apps/renovate))
+- Update tj-actions/verify-changed-files action to v10 [\#323](https://github.com/tj-actions/auto-doc/pull/323) ([renovate[bot]](https://github.com/apps/renovate))
+- Update module github.com/spf13/cobra to v1.5.0 [\#322](https://github.com/tj-actions/auto-doc/pull/322) ([renovate[bot]](https://github.com/apps/renovate))
+- Bump gopkg.in/yaml.v3 from 3.0.0 to 3.0.1 [\#321](https://github.com/tj-actions/auto-doc/pull/321) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Upgraded to v1.2.15 [\#318](https://github.com/tj-actions/auto-doc/pull/318) ([jackton1](https://github.com/jackton1))
 
 ## [v1.2.15](https://github.com/tj-actions/auto-doc/tree/v1.2.15) (2022-05-23)
 
