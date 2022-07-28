@@ -38,8 +38,6 @@ runs:
         for output_column in "${{ join(inputs.output_columns, ' ') }}" do
           EXTRA_ARGS="${EXTRA_ARGS} --output-column ${output_column}"
         done
-        
-        if 
   
         curl -sf https://gobinaries.com/github.com/tj-actions/auto-doc | PREFIX=. sh
   
