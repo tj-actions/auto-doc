@@ -31,11 +31,11 @@ runs:
     - run: |
         EXTRA_ARGS=""
   
-        for input_column in "${{ join(inputs.input_columns, " ") }}" do
+        for input_column in "${{ join(inputs.input_columns, ' ') }}" do
           EXTRA_ARGS="${EXTRA_ARGS} --input-column ${input_column}"
         done
   
-        for output_column in "${{ join(inputs.output_columns, " ") }}" do
+        for output_column in "${{ join(inputs.output_columns, ' ') }}" do
           EXTRA_ARGS="${EXTRA_ARGS} --output-column ${output_column}"
         done
         
