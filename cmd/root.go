@@ -311,6 +311,7 @@ func Execute() {
 	cobra.CheckErr(rootCmd.Execute())
 }
 
+// RootCmdFlags returns the flags for the root command.
 func RootCmdFlags(cmd *cobra.Command) {
 	// Custom flags
 	cmd.Flags().StringVar(
