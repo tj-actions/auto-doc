@@ -18,7 +18,6 @@ package cmd
 
 import (
 	"bytes"
-	"errors"
 	"fmt"
 	"github.com/olekukonko/tablewriter"
 	"github.com/spf13/cobra"
@@ -136,12 +135,10 @@ func (a *Action) renderOutput() error {
 				case "Description":
 					row = append(row, wordWrap(a.Inputs[key].Description, maxWords))
 				default:
-					return errors.New(
-						fmt.Sprintf(
-							"unknown input column: '%s'. Please specify any of the following columns: %s",
-							col,
-							strings.Join(defaultInputColumns, ", "),
-						),
+					return fmt.Errorf(
+						"unknown input column: '%s'. Please specify any of the following columns: %s",
+						col,
+						strings.Join(defaultInputColumns, ", "),
 					)
 				}
 			}
@@ -198,12 +195,10 @@ func (a *Action) renderOutput() error {
 				case "Description":
 					row = append(row, wordWrap(a.Outputs[key].Description, maxWords))
 				default:
-					return errors.New(
-						fmt.Sprintf(
-							"unknown output column: '%s'. Please specify any of the following columns: %s",
-							col,
-							strings.Join(defaultOutputColumns, ", "),
-						),
+					return fmt.Errorf(
+						"unknown output column: '%s'. Please specify any of the following columns: %s",
+						col,
+						strings.Join(defaultOutputColumns, ", "),
 					)
 				}
 			}
@@ -282,7 +277,7 @@ var rootCmd = &cobra.Command{
 
 func RootCmdRunE(cmd *cobra.Command, args []string) error {
 	if len(args) > 0 {
-		return errors.New("requires no positional arguments")
+		return fmt.Errorf("requires no positional arguments: %d given", len(args))
 	}
 
 	var action Action
