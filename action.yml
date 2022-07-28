@@ -54,7 +54,7 @@ runs:
           --colMaxWidth="${{ inputs.col_max_width }}" --colMaxWords="${{ inputs.col_max_words }}" \
           ${EXTRA_ARGS} && exit_status=$? || exit_status=$?
 
-        rm -f ./auto-doc
+        rm -f $BIN_PATH
   
         if [[ $exit_status -ne 0 ]]; then
           echo "::warning::Error occurred running auto-doc"
