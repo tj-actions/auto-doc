@@ -18,15 +18,46 @@ inputs:
     description: 'Path to the output file'
     required: false
     default: README.md
+  input_columns:
+    description: 'List of Input columns'
+    required: false
+  output_columns:
+    description: 'List of Output columns'
+    required: false
+  bin_path:
+    description: 'Path to the binary'
+    required: false
 
 runs:
   using: 'composite'
   steps:
     - run: |
-        curl -sf https://gobinaries.com/github.com/tj-actions/auto-doc | PREFIX=. sh
-        ./auto-doc --action="${{ inputs.action }}" --output="${{ inputs.output }}" --colMaxWidth="${{ inputs.col_max_width }}" --colMaxWords="${{ inputs.col_max_words }}" && exit_status=$? || exit_status=$?
-        rm -f ./auto-doc
+        EXTRA_ARGS=""
+        BIN_PATH="${{ inputs.bin_path }}"
+        INPUT_COLUMNS=(${{ inputs.input_columns }})
+        OUTPUT_COLUMNS=(${{ inputs.output_columns }})
+  
+        for input_column in ${INPUT_COLUMNS[@]}; do
+          EXTRA_ARGS="${EXTRA_ARGS} --inputColumns ${input_column}"
+        done
+  
+        for output_column in ${OUTPUT_COLUMNS[@]}; do
+          EXTRA_ARGS="${EXTRA_ARGS} --outputColumns ${output_column}"
+        done
+        
+        if [ -z "$BIN_PATH" ]; then
+          curl -sf https://gobinaries.com/github.com/tj-actions/auto-doc | PREFIX=. sh
+          BIN_PATH="./auto-doc"
+        fi
+        
+        echo "Generating documentation using ${BIN_PATH} with ${EXTRA_ARGS}..."
+  
+        $BIN_PATH --action="${{ inputs.action }}" --output="${{ inputs.output }}" \
+          --colMaxWidth="${{ inputs.col_max_width }}" --colMaxWords="${{ inputs.col_max_words }}" \
+          ${EXTRA_ARGS} && exit_status=$? || exit_status=$?
 
+        rm -f $BIN_PATH
+  
         if [[ $exit_status -ne 0 ]]; then
           echo "::warning::Error occurred running auto-doc"
           exit $exit_status;
