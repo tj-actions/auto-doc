@@ -24,12 +24,16 @@ inputs:
   output_columns:
     description: 'List of Output columns'
     required: false
+  bin_path:
+    description: 'Path to the binary'
+    required: false
 
 runs:
   using: 'composite'
   steps:
     - run: |
         EXTRA_ARGS=""
+        BIN_PATH="${{ inputs.bin_path }}"
   
         for input_column in "${{ join(inputs.input_columns, ' ') }}"; do
           EXTRA_ARGS="${EXTRA_ARGS} --inputColumns ${input_column}"
@@ -38,10 +42,13 @@ runs:
         for output_column in "${{ join(inputs.output_columns, ' ') }}"; do
           EXTRA_ARGS="${EXTRA_ARGS} --outputColumns ${output_column}"
         done
+        
+        if [ -z "$BIN_PATH" ]; then
+          curl -sf https://gobinaries.com/github.com/tj-actions/auto-doc | PREFIX=. sh
+          BIN_PATH="./auto-doc"
+        fi
   
-        curl -sf https://gobinaries.com/github.com/tj-actions/auto-doc | PREFIX=. sh
-  
-        ./auto-doc --action="${{ inputs.action }}" --output="${{ inputs.output }}" \
+        $BIN_PATH --action="${{ inputs.action }}" --output="${{ inputs.output }}" \
           --colMaxWidth="${{ inputs.col_max_width }}" --colMaxWords="${{ inputs.col_max_words }}" \
           ${EXTRA_ARGS} && exit_status=$? || exit_status=$?
 

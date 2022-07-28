@@ -43,6 +43,7 @@ Add the `Inputs` and/or `Outputs` [`H2` header](https://github.com/adam-p/markdo
 |     INPUT      |  TYPE  | REQUIRED |    DEFAULT     |                 DESCRIPTION                 |
 |----------------|--------|----------|----------------|---------------------------------------------|
 | action         | string | false    | `"action.yml"` | Path to the action.yml file<br>             |
+| bin_path       | string | false    |                | Path to the binary                          |
 | col_max_width  | string | false    | `"1000"`       | Max width of a column<br>                   |
 | col_max_words  | string | false    | `"5"`          | Max number of words per<br>line in a column |
 | input_columns  | string | false    |                | List of Input columns                       |
