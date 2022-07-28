@@ -37,11 +37,11 @@ runs:
         INPUT_COLUMNS=(${{ inputs.input_columns }})
         OUTPUT_COLUMNS=(${{ inputs.output_columns }})
   
-        for input_column in $INPUT_COLUMNS; do
+        for input_column in ${INPUT_COLUMNS[@]}; do
           EXTRA_ARGS="${EXTRA_ARGS} --inputColumns ${input_column}"
         done
   
-        for output_column in $OUTPUT_COLUMNS; do
+        for output_column in ${OUTPUT_COLUMNS[@]}; do
           EXTRA_ARGS="${EXTRA_ARGS} --outputColumns ${output_column}"
         done
         
