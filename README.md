@@ -47,9 +47,9 @@ Add the `Inputs` and/or `Outputs` [`H2` header](https://github.com/adam-p/markdo
 | bin\_path       | string | false    |                | Path to the binary                          |
 | col\_max\_width  | string | false    | `"1000"`       | Max width of a column<br>                   |
 | col\_max\_words  | string | false    | `"5"`          | Max number of words per<br>line in a column |
-| input\_columns  | string | false    |                | List of Input columns                       |
+| input\_columns  | string | false    |                | List of Input columns names<br>to display   |
 | output         | string | false    | `"README.md"`  | Path to the output file<br>                 |
-| output\_columns | string | false    |                | List of Output columns                      |
+| output\_columns | string | false    |                | List of Output column names<br>to display   |
 
 <!-- AUTO-DOC-INPUT:END -->
 
