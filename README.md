@@ -20,7 +20,8 @@ Generate documentation for your actions.(yml|yaml).
 *   [Examples](#examples)
 *   [CLI](#cli)
     *   [Installation](#installation)
-    *   [Usage](#usage-1)
+    *   [Synopsis](#synopsis)
+    *   [Options](#options)
 *   [Credits](#credits)
 *   [Report Bugs](#report-bugs)
 
@@ -43,12 +44,12 @@ Add the `Inputs` and/or `Outputs` [`H2` header](https://github.com/adam-p/markdo
 |     INPUT      |  TYPE  | REQUIRED |    DEFAULT     |                 DESCRIPTION                 |
 |----------------|--------|----------|----------------|---------------------------------------------|
 | action         | string | false    | `"action.yml"` | Path to the action.yml file<br>             |
-| bin_path       | string | false    |                | Path to the binary                          |
-| col_max_width  | string | false    | `"1000"`       | Max width of a column<br>                   |
-| col_max_words  | string | false    | `"5"`          | Max number of words per<br>line in a column |
-| input_columns  | string | false    |                | List of Input columns                       |
+| bin\_path       | string | false    |                | Path to the binary                          |
+| col\_max\_width  | string | false    | `"1000"`       | Max width of a column<br>                   |
+| col\_max\_words  | string | false    | `"5"`          | Max number of words per<br>line in a column |
+| input\_columns  | string | false    |                | List of Input columns                       |
 | output         | string | false    | `"README.md"`  | Path to the output file<br>                 |
-| output_columns | string | false    |                | List of Output columns                      |
+| output\_columns | string | false    |                | List of Output columns                      |
 
 <!-- AUTO-DOC-INPUT:END -->
 
@@ -110,21 +111,17 @@ go install github.com/tj-actions/auto-doc
 
 Auto generate documentation for your github action.
 
-```
-auto-doc [flags]
-```
+    auto-doc [flags]
 
 ### Options
 
-```
-      --action string               action config file (default "action.yml")
-      --colMaxWidth string          Max width of a column (default "1000")
-      --colMaxWords string          Max number of words per line in a column (default "5")
-  -h, --help                        help for auto-doc
-      --inputColumns stringArray    list of input column names (default [Input,Type,Required,Default,Description])
-      --output string               Output file (default "README.md")
-      --outputColumns stringArray   list of output column names (default [Output,Type,Description])
-```
+          --action string               action config file (default "action.yml")
+          --colMaxWidth string          Max width of a column (default "1000")
+          --colMaxWords string          Max number of words per line in a column (default "5")
+      -h, --help                        help for auto-doc
+          --inputColumns stringArray    list of input column names (default [Input,Type,Required,Default,Description])
+          --output string               Output file (default "README.md")
+          --outputColumns stringArray   list of output column names (default [Output,Type,Description])
 
 *   Free software: [Apache License 2.0](LICENSE)
 
