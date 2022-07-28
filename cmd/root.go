@@ -48,17 +48,20 @@ var colMaxWords string
 var inputColumns = defaultInputColumns
 var outputColumns = defaultOutputColumns
 
+// Input represents the input of the action.yml
 type Input struct {
 	Description string `yaml:"description"`
 	Required    bool   `yaml:"required"`
 	Default     string `yaml:"default,omitempty"`
 }
 
+// Output represents the output of the action.yml
 type Output struct {
 	Description string `yaml:"description"`
 	Value       string `yaml:"default,omitempty"`
 }
 
+// Action represents the action.yml
 type Action struct {
 	Inputs  map[string]Input  `yaml:"inputs,omitempty"`
 	Outputs map[string]Output `yaml:"outputs,omitempty"`
@@ -275,6 +278,8 @@ var rootCmd = &cobra.Command{
 	RunE:  RootCmdRunE,
 }
 
+// RootCmdRunE runs the root commands RunE function	and handles invalid options and prints the help message
+// if the command is called with no arguments.
 func RootCmdRunE(cmd *cobra.Command, args []string) error {
 	if len(args) > 0 {
 		return fmt.Errorf("requires no positional arguments: %d given", len(args))
