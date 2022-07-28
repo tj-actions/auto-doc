@@ -35,11 +35,11 @@ runs:
         EXTRA_ARGS=""
         BIN_PATH="${{ inputs.bin_path }}"
   
-        for input_column in (${{ join(inputs.input_columns, ' ') }}); do
+        for input_column in ("${{ join(inputs.input_columns, ' ') }}); do
           EXTRA_ARGS="${EXTRA_ARGS} --inputColumns ${input_column}"
         done
   
-        for output_column in (${{ join(inputs.output_columns, ' ') }}); do
+        for output_column in ("${{ join(inputs.output_columns, ' ') }}"); do
           EXTRA_ARGS="${EXTRA_ARGS} --outputColumns ${output_column}"
         done
         
