@@ -47,6 +47,8 @@ runs:
           curl -sf https://gobinaries.com/github.com/tj-actions/auto-doc | PREFIX=. sh
           BIN_PATH="./auto-doc"
         fi
+        
+        echo "Generating documentation using ${BIN_PATH} with ${EXTRA_ARGS}..."
   
         $BIN_PATH --action="${{ inputs.action }}" --output="${{ inputs.output }}" \
           --colMaxWidth="${{ inputs.col_max_width }}" --colMaxWords="${{ inputs.col_max_words }}" \
