@@ -45,7 +45,7 @@ runs:
           EXTRA_ARGS="${EXTRA_ARGS} --outputColumns ${output_column}"
         done
         
-        if [ -z "$BIN_PATH" ]; then
+        if [[ -z "$BIN_PATH" ]]; then
           curl -sf https://gobinaries.com/github.com/tj-actions/auto-doc | PREFIX=. sh
           BIN_PATH="./auto-doc"
         fi
