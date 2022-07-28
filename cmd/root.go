@@ -18,6 +18,7 @@ package cmd
 
 import (
 	"bytes"
+	"errors"
 	"fmt"
 	"github.com/olekukonko/tablewriter"
 	"github.com/spf13/cobra"
@@ -38,10 +39,15 @@ var inputAutoDocEnd = fmt.Sprintf(autoDocEnd, "INPUT")
 var outputAutoDocStart = fmt.Sprintf(autoDocStart, "OUTPUT")
 var outputAutoDocEnd = fmt.Sprintf(autoDocEnd, "OUTPUT")
 
+var defaultInputColumns = []string{"Input", "Type", "Required", "Default", "Description"}
+var defaultOutputColumns = []string{"Output", "Type", "Description"}
+
 var actionFileName string
 var outputFileName string
 var colMaxWidth string
 var colMaxWords string
+var inputColumns = defaultInputColumns
+var outputColumns = defaultOutputColumns
 
 type Input struct {
 	Description string `yaml:"description"`
@@ -91,7 +97,7 @@ func (a *Action) renderOutput() error {
 		}
 
 		inputTable := tablewriter.NewWriter(inputTableOutput)
-		inputTable.SetHeader([]string{"Input", "Type", "Required", "Default", "Description"})
+		inputTable.SetHeader(inputColumns)
 		inputTable.SetBorders(tablewriter.Border{Left: true, Top: false, Right: true, Bottom: false})
 		inputTable.SetCenterSeparator(pipeSeparator)
 
@@ -114,7 +120,31 @@ func (a *Action) renderOutput() error {
 
 				outputDefault = "`" + outputDefault + "`"
 			}
-			row := []string{key, "string", strconv.FormatBool(a.Inputs[key].Required), outputDefault, wordWrap(a.Inputs[key].Description, maxWords)}
+
+			var row []string
+
+			for _, col := range inputColumns {
+				switch col {
+				case "Input":
+					row = append(row, key)
+				case "Type":
+					row = append(row, "string")
+				case "Required":
+					row = append(row, strconv.FormatBool(a.Inputs[key].Required))
+				case "Default":
+					row = append(row, outputDefault)
+				case "Description":
+					row = append(row, wordWrap(a.Inputs[key].Description, maxWords))
+				default:
+					return errors.New(
+						fmt.Sprintf(
+							"unknown input column: '%s'. Please specify any of the following columns: %s",
+							col,
+							strings.Join(defaultInputColumns, ", "),
+						),
+					)
+				}
+			}
 			inputTable.Append(row)
 		}
 
@@ -145,7 +175,7 @@ func (a *Action) renderOutput() error {
 		}
 
 		outputTable := tablewriter.NewWriter(outputTableOutput)
-		outputTable.SetHeader([]string{"Output", "Type", "Description"})
+		outputTable.SetHeader(outputColumns)
 		outputTable.SetBorders(tablewriter.Border{Left: true, Top: false, Right: true, Bottom: false})
 		outputTable.SetCenterSeparator(pipeSeparator)
 
@@ -157,7 +187,26 @@ func (a *Action) renderOutput() error {
 
 		outputTable.SetColWidth(maxWidth)
 		for _, key := range keys {
-			row := []string{key, "string", wordWrap(a.Outputs[key].Description, maxWords)}
+			var row []string
+
+			for _, col := range outputColumns {
+				switch col {
+				case "Output":
+					row = append(row, key)
+				case "Type":
+					row = append(row, "string")
+				case "Description":
+					row = append(row, wordWrap(a.Outputs[key].Description, maxWords))
+				default:
+					return errors.New(
+						fmt.Sprintf(
+							"unknown output column: '%s'. Please specify any of the following columns: %s",
+							col,
+							strings.Join(defaultOutputColumns, ", "),
+						),
+					)
+				}
+			}
 			outputTable.Append(row)
 		}
 
@@ -228,37 +277,32 @@ var rootCmd = &cobra.Command{
 	Use:   "auto-doc",
 	Short: "Auto doc generator for your github action",
 	Long:  `Auto generate documentation for your github action.`,
-	RunE: func(cmd *cobra.Command, args []string) error {
-		if len(args) > 0 {
-			_, err := fmt.Fprintf(
-				cmd.OutOrStderr(),
-				"'%d' invalid arguments passed.\n",
-				len(args),
-			)
-			if err != nil {
-				return err
-			}
-		}
+	RunE:  RootCmdRunE,
+}
 
-		var action Action
+func RootCmdRunE(cmd *cobra.Command, args []string) error {
+	if len(args) > 0 {
+		return errors.New("requires no positional arguments")
+	}
 
-		err := action.getAction()
-		if err != nil {
-			return err
-		}
+	var action Action
 
-		err = action.renderOutput()
-		if err != nil {
-			return err
-		}
-
-		_, err = fmt.Fprintln(
-			cmd.OutOrStdout(),
-			"Successfully generated documentation",
-		)
-
+	err := action.getAction()
+	if err != nil {
 		return err
-	},
+	}
+
+	err = action.renderOutput()
+	if err != nil {
+		return err
+	}
+
+	_, err = fmt.Fprintln(
+		cmd.OutOrStdout(),
+		"Successfully generated documentation",
+	)
+
+	return err
 }
 
 // Execute adds all child commands to the root command and sets flags appropriately.
@@ -267,32 +311,48 @@ func Execute() {
 	cobra.CheckErr(rootCmd.Execute())
 }
 
-func init() {
+func RootCmdFlags(cmd *cobra.Command) {
 	// Custom flags
-	rootCmd.PersistentFlags().StringVar(
+	cmd.Flags().StringVar(
 		&actionFileName,
 		"action",
 		"action.yml",
 		"action config file",
 	)
-	rootCmd.PersistentFlags().StringVar(
+	cmd.Flags().StringVar(
 		&outputFileName,
 		"output",
 		"README.md",
 		"Output file",
 	)
-	rootCmd.PersistentFlags().StringVar(
+	cmd.Flags().StringVar(
 		&colMaxWidth,
 		"colMaxWidth",
 		"1000",
 		"Max width of a column",
 	)
-	rootCmd.PersistentFlags().StringVar(
+	cmd.Flags().StringVar(
 		&colMaxWords,
 		"colMaxWords",
 		"5",
 		"Max number of words per line in a column",
 	)
+	cmd.Flags().StringArrayVar(
+		&inputColumns,
+		"inputColumns",
+		defaultInputColumns,
+		"list of input column names",
+	)
+	cmd.Flags().StringArrayVar(
+		&outputColumns,
+		"outputColumns",
+		defaultOutputColumns,
+		"list of output column names",
+	)
+}
+
+func init() {
+	RootCmdFlags(rootCmd)
 }
 
 func hasBytesInBetween(value, start, end []byte) (found bool, startIndex int, endIndex int) {
