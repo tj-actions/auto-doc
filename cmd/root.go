@@ -120,7 +120,7 @@ func (a *Action) renderOutput() error {
 					inputDefault = fmt.Sprintf("%#v", a.Inputs[key].Default)
 				}
 
-				inputDefault = "`" + inputDefault + "`"
+				inputDefault = "`" + strings.ReplaceAll(inputDefault, "\n", "<br>") + "`"
 			}
 
 			var row []string
