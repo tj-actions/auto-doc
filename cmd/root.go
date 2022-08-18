@@ -112,15 +112,28 @@ func (a *Action) renderOutput() error {
 		inputTable.SetColWidth(maxWidth)
 
 		for _, key := range keys {
-			var outputDefault string
+			var inputDefault string
 			if len(a.Inputs[key].Default) > 0 {
-				if a.Inputs[key].Default == pipeSeparator {
-					outputDefault = "\"\\" + a.Inputs[key].Default + "\""
+				inputDefault = a.Inputs[key].Default
+				var defaultValue string
+				var parts = strings.Split(inputDefault, "\n")
+
+				if len(parts) > 1 {
+					for _, part := range parts {
+						if part != "" {
+							defaultValue += "`\"" + part + "\"`" + "<br>"
+						}
+					}
 				} else {
-					outputDefault = fmt.Sprintf("%#v", a.Inputs[key].Default)
+					if strings.Contains(inputDefault, pipeSeparator) {
+						inputDefault = strings.Replace(inputDefault, pipeSeparator, "\"\\"+pipeSeparator+"\"", -1)
+					} else {
+						inputDefault = fmt.Sprintf("%#v", a.Inputs[key].Default)
+					}
+					defaultValue = "`" + inputDefault + "`"
 				}
 
-				outputDefault = "`" + outputDefault + "`"
+				inputDefault = defaultValue
 			}
 
 			var row []string
@@ -134,7 +147,7 @@ func (a *Action) renderOutput() error {
 				case "Required":
 					row = append(row, strconv.FormatBool(a.Inputs[key].Required))
 				case "Default":
-					row = append(row, outputDefault)
+					row = append(row, inputDefault)
 				case "Description":
 					row = append(row, wordWrap(a.Inputs[key].Description, maxWords))
 				default:
