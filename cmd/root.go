@@ -119,8 +119,7 @@ func (a *Action) renderOutput() error {
 				var defaultValue string
 				var parts = strings.Split(inputDefault, "\n")
 
-				
-                                if len(parts) > 1 && inputDefault != newLineSeparator {
+				if len(parts) > 1 && inputDefault != newLineSeparator {
 					for _, part := range parts {
 						if part != "" {
 							defaultValue += "`\"" + part + "\"`" + "<br>"
