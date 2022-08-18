@@ -33,6 +33,7 @@ var outputsHeader = "## Outputs"
 var autoDocStart = "<!-- AUTO-DOC-%s:START - Do not remove or modify this section -->"
 var autoDocEnd = "<!-- AUTO-DOC-%s:END -->"
 var pipeSeparator = "|"
+var newLineSeparator = "\n"
 var inputAutoDocStart = fmt.Sprintf(autoDocStart, "INPUT")
 var inputAutoDocEnd = fmt.Sprintf(autoDocEnd, "INPUT")
 var outputAutoDocStart = fmt.Sprintf(autoDocStart, "OUTPUT")
@@ -118,7 +119,7 @@ func (a *Action) renderOutput() error {
 				var defaultValue string
 				var parts = strings.Split(inputDefault, "\n")
 
-				if len(parts) > 1 {
+				if len(parts) > 1 && inputDefault != newLineSeparator {
 					for _, part := range parts {
 						if part != "" {
 							defaultValue += "`\"" + part + "\"`" + "<br>"
