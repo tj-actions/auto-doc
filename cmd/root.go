@@ -114,13 +114,26 @@ func (a *Action) renderOutput() error {
 		for _, key := range keys {
 			var inputDefault string
 			if len(a.Inputs[key].Default) > 0 {
-				if a.Inputs[key].Default == pipeSeparator {
-					inputDefault = "\"\\" + a.Inputs[key].Default + "\""
+				inputDefault = a.Inputs[key].Default
+				var defaultValue string
+				var parts = strings.Split(inputDefault, "\n")
+
+				if len(parts) > 1 {
+					for _, part := range parts {
+						if part != "" {
+							defaultValue += "`\"" + part + "\"`" + "<br>"
+						}
+					}
 				} else {
-					inputDefault = fmt.Sprintf("%#v", a.Inputs[key].Default)
+					if strings.Contains(inputDefault, pipeSeparator) {
+						inputDefault = strings.Replace(inputDefault, pipeSeparator, "\"\\"+pipeSeparator+"\"", -1)
+					} else {
+						inputDefault = fmt.Sprintf("%#v", a.Inputs[key].Default)
+					}
+					defaultValue = "`" + inputDefault + "`"
 				}
 
-				inputDefault = "`" + strings.ReplaceAll(inputDefault, "\\n", "<br>") + "`"
+				inputDefault = defaultValue
 			}
 
 			var row []string
