@@ -1,5 +1,14 @@
 # Changelog
 
+## [v1.4.1](https://github.com/tj-actions/auto-doc/tree/v1.4.1) (2022-08-18)
+
+[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v1.4.0...v1.4.1)
+
+**Merged pull requests:**
+
+- fix: bug handling newline characters [\#335](https://github.com/tj-actions/auto-doc/pull/335) ([jackton1](https://github.com/jackton1))
+- Upgraded to v1.4.0 [\#334](https://github.com/tj-actions/auto-doc/pull/334) ([jackton1](https://github.com/jackton1))
+
 ## [v1.4.0](https://github.com/tj-actions/auto-doc/tree/v1.4.0) (2022-08-18)
 
 [Full Changelog](https://github.com/tj-actions/auto-doc/compare/v1.3.1...v1.4.0)
