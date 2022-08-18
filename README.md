@@ -34,7 +34,7 @@ Add the `Inputs` and/or `Outputs` [`H2` header](https://github.com/adam-p/markdo
     steps:
       - uses: actions/checkout@v2
       - name: Run auto-doc
-        uses: tj-actions/auto-doc@v1.3.1
+        uses: tj-actions/auto-doc@v1.4.0
 ```
 
 ## Inputs
@@ -77,7 +77,7 @@ jobs:
            fetch-depth: 0  # otherwise, you will failed to push refs to dest repo
 
        - name: Run auto-doc
-         uses: tj-actions/auto-doc@v1.3.1
+         uses: tj-actions/auto-doc@v1.4.0
 
        - name: Verify Changed files
          uses: tj-actions/verify-changed-files@v8.6
