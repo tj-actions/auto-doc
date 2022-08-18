@@ -27,7 +27,7 @@ Generate documentation for your actions.(yml|yaml).
 
 ## Usage
 
-Add the `Inputs` and/or `Outputs` [`H2` header](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#headers) to any markdown file
+Add the `Inputs` and/or `Outputs` [`H2` header](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#headers) to any markdown file.
 
 ```yaml
 ...
