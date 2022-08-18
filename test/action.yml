@@ -26,6 +26,10 @@ inputs:
   path:
     description: 'Specify a relative path under $GITHUB_WORKSPACE to locate the repository'
     required: false
+  path_separator:
+    description: 'Path separator'
+    required: false
+    default: "\n"
 
 outputs:
   added_files:
