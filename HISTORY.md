@@ -1,5 +1,26 @@
 # Changelog
 
+## [v1.4.0](https://github.com/tj-actions/auto-doc/tree/v1.4.0) (2022-08-18)
+
+[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v1.3.1...v1.4.0)
+
+**Implemented enhancements:**
+
+- \[Feature\] Preserve input/output ordering [\#241](https://github.com/tj-actions/auto-doc/issues/241)
+- \[Feature\] Add verbose logging [\#39](https://github.com/tj-actions/auto-doc/issues/39)
+
+**Closed issues:**
+
+- Dependency Dashboard [\#2](https://github.com/tj-actions/auto-doc/issues/2)
+
+**Merged pull requests:**
+
+- chore: update readme [\#333](https://github.com/tj-actions/auto-doc/pull/333) ([jackton1](https://github.com/jackton1))
+- feat: rename variable and fixed multiline defaults [\#332](https://github.com/tj-actions/auto-doc/pull/332) ([jackton1](https://github.com/jackton1))
+- chore: update go version [\#331](https://github.com/tj-actions/auto-doc/pull/331) ([jackton1](https://github.com/jackton1))
+- Update module go to 1.19 [\#330](https://github.com/tj-actions/auto-doc/pull/330) ([renovate[bot]](https://github.com/apps/renovate))
+- Upgraded to v1.3.1 [\#329](https://github.com/tj-actions/auto-doc/pull/329) ([jackton1](https://github.com/jackton1))
+
 ## [v1.3.1](https://github.com/tj-actions/auto-doc/tree/v1.3.1) (2022-07-28)
 
 [Full Changelog](https://github.com/tj-actions/auto-doc/compare/v1.3.0...v1.3.1)
@@ -15,10 +36,6 @@
 **Implemented enhancements:**
 
 - \[Feature\] Make some columns optional [\#319](https://github.com/tj-actions/auto-doc/issues/319)
-
-**Closed issues:**
-
-- Dependency Dashboard [\#2](https://github.com/tj-actions/auto-doc/issues/2)
 
 **Merged pull requests:**
 
