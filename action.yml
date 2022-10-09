@@ -19,10 +19,10 @@ inputs:
     required: false
     default: README.md
   input_columns:
-    description: 'List of Input columns names to display'
+    description: 'List of Input columns names to display, default (display all columns)'
     required: false
   output_columns:
-    description: 'List of Output column names to display'
+    description: 'List of Output column names to display, default (display all columns)'
     required: false
   bin_path:
     description: 'Path to the binary'
