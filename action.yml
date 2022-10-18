@@ -24,6 +24,9 @@ inputs:
   output_columns:
     description: 'List of Output column names to display, default (display all columns)'
     required: false
+  bin_path:
+    description: 'Path to the binary'
+    required: false
 
 runs:
   using: 'composite'
@@ -42,6 +45,7 @@ runs:
         INPUT_OUTPUT: ${{ inputs.output }}
         INPUT_INPUT_COLUMNS: ${{ inputs.input_columns }}
         INPUT_OUTPUT_COLUMNS: ${{ inputs.output_columns }}
+        INPUT_BIN_PATH: ${{ inputs.bin_path }}
 
 branding:
   icon: file-text
