@@ -29,7 +29,7 @@ runs:
   using: 'composite'
   steps:
     - run: |
-        # "Run auto-doc..."
+        # "Running auto-doc..."
         bash $GITHUB_ACTION_PATH/entrypoint.sh
       id: auto-doc
       shell: bash
