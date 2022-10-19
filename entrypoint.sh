@@ -22,10 +22,6 @@ if [[ -z "$INPUT_BIN_PATH" ]]; then
   trap 'rm -rf "$TEMP_DIR"' EXIT
 fi
 
-chmod +x "$INPUT_BIN_PATH"
-
-$INPUT_BIN_PATH --version
-
 echo "::debug::Generating documentation using ${INPUT_BIN_PATH}..."
 echo "::debug::Extra args: ${EXTRA_ARGS}"
 
