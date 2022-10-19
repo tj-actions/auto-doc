@@ -4,13 +4,12 @@ set -eu
 
 EXTRA_ARGS=""
 
-readarray -t -d '' INPUT_COLUMNS < "$INPUT_INPUT_COLUMNS"
+IFS=$'\n' read -ra INPUT_COLUMNS <<< "$INPUT_INPUT_COLUMNS"
+IFS=$'\n' read -ra OUTPUT_COLUMNS <<< "$INPUT_OUTPUT_COLUMNS"
 
 for INPUT_COLUMN in "${INPUT_COLUMNS[@]}"; do
   EXTRA_ARGS="$EXTRA_ARGS --inputColumns $INPUT_COLUMN"
 done
-
-readarray -t -d '' OUTPUT_COLUMNS < "$INPUT_OUTPUT_COLUMNS"
 
 for OUTPUT_COLUMN in "${OUTPUT_COLUMNS[@]}"; do
   EXTRA_ARGS="$EXTRA_ARGS --outputColumns $OUTPUT_COLUMN"
