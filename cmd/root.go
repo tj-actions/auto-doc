@@ -296,7 +296,7 @@ var rootCmd = &cobra.Command{
 // if the command is called with no arguments.
 func RootCmdRunE(cmd *cobra.Command, args []string) error {
 	if len(args) > 0 {
-		return fmt.Errorf("requires no positional arguments: %d given", len(args))
+		return fmt.Errorf("requires no positional arguments: %d given: %s", len(args), strings.Join(args, ", "))
 	}
 
 	var action Action
