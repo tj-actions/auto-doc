@@ -28,6 +28,8 @@ fi
 echo "::debug::Generating documentation using ${INPUT_BIN_PATH}..."
 echo "::debug::Extra args: ${EXTRA_ARGS}"
 
+echo "Running command: $INPUT_BIN_PATH --action=$INPUT_ACTION --output=$INPUT_OUTPUT --colMaxWidth=$INPUT_COL_MAX_WIDTH --colMaxWords=$INPUT_COL_MAX_WORDS ${EXTRA_ARGS}"
+
 $INPUT_BIN_PATH --action="$INPUT_ACTION" --output="$INPUT_OUTPUT" \
   --colMaxWidth="$INPUT_COL_MAX_WIDTH" --colMaxWords="$INPUT_COL_MAX_WORDS" \
   "${EXTRA_ARGS}" && exit_status=$? || exit_status=$?
