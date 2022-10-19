@@ -4,11 +4,11 @@ set -eu
 
 EXTRA_ARGS=""
 
-for input_column in "${INPUT_COLUMNS[@]}"; do
+for input_column in "${INPUT_INPUT_COLUMNS[@]}"; do
   EXTRA_ARGS="${EXTRA_ARGS} --inputColumns ${input_column}"
 done
 
-for output_column in "${OUTPUT_COLUMNS[@]}"; do
+for output_column in "${INPUT_OUTPUT_COLUMNS[@]}"; do
   EXTRA_ARGS="${EXTRA_ARGS} --outputColumns ${output_column}"
 done
 
