@@ -4,12 +4,16 @@ set -eu
 
 EXTRA_ARGS=""
 
-for input_column in "${INPUT_INPUT_COLUMNS[@]}"; do
-  EXTRA_ARGS="${EXTRA_ARGS} --inputColumns ${input_column}"
+readarray -t -d '' INPUT_COLUMNS < "$INPUT_INPUT_COLUMNS"
+
+for INPUT_COLUMN in "${INPUT_COLUMNS[@]}"; do
+  EXTRA_ARGS="$EXTRA_ARGS --inputColumns $INPUT_COLUMN"
 done
 
-for output_column in "${INPUT_OUTPUT_COLUMNS[@]}"; do
-  EXTRA_ARGS="${EXTRA_ARGS} --outputColumns ${output_column}"
+readarray -t -d '' OUTPUT_COLUMNS < "$INPUT_OUTPUT_COLUMNS"
+
+for OUTPUT_COLUMN in "${OUTPUT_COLUMNS[@]}"; do
+  EXTRA_ARGS="$EXTRA_ARGS --outputColumns $OUTPUT_COLUMN"
 done
 
 if [[ -z "$INPUT_BIN_PATH" ]]; then
