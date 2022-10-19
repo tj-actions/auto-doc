@@ -28,9 +28,9 @@ fi
 echo "::debug::Generating documentation using ${INPUT_BIN_PATH}..."
 
 if [ -z "$EXTRA_ARGS" ]; then
-  $INPUT_BIN_PATH --action="$INPUT_ACTION" --output="$INPUT_OUTPUT" --colMaxWidth="$INPUT_COL_MAX_WIDTH" --colMaxWords="$INPUT_COL_MAX_WORDS"
+  $INPUT_BIN_PATH --action="$INPUT_ACTION" --output="$INPUT_OUTPUT" --colMaxWidth="$INPUT_COL_MAX_WIDTH" --colMaxWords="$INPUT_COL_MAX_WORDS" && exit_status=$? || exit_status=$?
 else
-  $INPUT_BIN_PATH --action="$INPUT_ACTION" --output="$INPUT_OUTPUT" --colMaxWidth="$INPUT_COL_MAX_WIDTH" --colMaxWords="$INPUT_COL_MAX_WORDS" "$EXTRA_ARGS"
+  $INPUT_BIN_PATH --action="$INPUT_ACTION" --output="$INPUT_OUTPUT" --colMaxWidth="$INPUT_COL_MAX_WIDTH" --colMaxWords="$INPUT_COL_MAX_WORDS" "$EXTRA_ARGS" && exit_status=$? || exit_status=$?
 fi
 
 # Remove the bin path if it still exists.
