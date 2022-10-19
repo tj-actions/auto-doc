@@ -138,6 +138,16 @@ jobs:
         with:
           bin_path: ./bin/auto_doc
 
+      - name: Test action with custom input columns
+        uses: ./
+        with:
+          action: test/action.yml
+          output: test/README-inputColumns.md
+          input_columns: |
+            Input
+            Type
+            Description
+
       - name: Run auto-doc using the test directory
         run: make test
 
@@ -153,6 +163,7 @@ jobs:
         with:
           files: |
             README.md
+            test/**
 
       - name: Commit README changes
         if: steps.verify-changed-files.outputs.files_changed == 'true'
