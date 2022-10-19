@@ -295,10 +295,6 @@ var rootCmd = &cobra.Command{
 // RootCmdRunE runs the root commands RunE function	and handles invalid options and prints the help message
 // if the command is called with no arguments.
 func RootCmdRunE(cmd *cobra.Command, args []string) error {
-	if len(args) > 0 {
-		return fmt.Errorf("requires no positional arguments: %d given: %s", len(args), strings.Join(args, ", "))
-	}
-
 	var action Action
 
 	err := action.getAction()
