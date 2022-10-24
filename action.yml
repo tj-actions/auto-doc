@@ -25,7 +25,7 @@ inputs:
     description: 'List of Output column names to display, default (display all columns)'
     required: false
   bin_path:
-    description: 'Path to the binary'
+    description: 'Path to the auto-doc binary'
     required: false
 
 runs:
