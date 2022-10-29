@@ -103,6 +103,7 @@ func (a *Action) renderOutput() error {
 		inputTable.SetHeader(inputColumns)
 		inputTable.SetBorders(tablewriter.Border{Left: true, Top: false, Right: true, Bottom: false})
 		inputTable.SetCenterSeparator(pipeSeparator)
+		inputTable.SetAlignment(tablewriter.ALIGN_CENTER)
 
 		keys := make([]string, 0, len(a.Inputs))
 		for k := range a.Inputs {
@@ -192,6 +193,7 @@ func (a *Action) renderOutput() error {
 		outputTable.SetHeader(outputColumns)
 		outputTable.SetBorders(tablewriter.Border{Left: true, Top: false, Right: true, Bottom: false})
 		outputTable.SetCenterSeparator(pipeSeparator)
+		outputTable.SetAlignment(tablewriter.ALIGN_CENTER)
 
 		keys := make([]string, 0, len(a.Outputs))
 		for k := range a.Outputs {
