@@ -1,5 +1,39 @@
 # Changelog
 
+## [v1.4.2](https://github.com/tj-actions/auto-doc/tree/v1.4.2) (2022-10-29)
+
+[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v1...v1.4.2)
+
+## [v1](https://github.com/tj-actions/auto-doc/tree/v1) (2022-10-29)
+
+[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v1.4.1...v1)
+
+**Closed issues:**
+
+- Dependency Dashboard [\#2](https://github.com/tj-actions/auto-doc/issues/2)
+
+**Merged pull requests:**
+
+- Updated README.md [\#355](https://github.com/tj-actions/auto-doc/pull/355) ([jackton1](https://github.com/jackton1))
+- Updated README.md [\#354](https://github.com/tj-actions/auto-doc/pull/354) ([jackton1](https://github.com/jackton1))
+- chore: update table alignment [\#353](https://github.com/tj-actions/auto-doc/pull/353) ([jackton1](https://github.com/jackton1))
+- Update module github.com/spf13/cobra to v1.6.1 [\#352](https://github.com/tj-actions/auto-doc/pull/352) ([renovate[bot]](https://github.com/apps/renovate))
+- Updated README.md [\#351](https://github.com/tj-actions/auto-doc/pull/351) ([jackton1](https://github.com/jackton1))
+- Update peter-evans/create-pull-request action to v4.2.0 [\#349](https://github.com/tj-actions/auto-doc/pull/349) ([renovate[bot]](https://github.com/apps/renovate))
+- Update pascalgn/automerge-action action to v0.15.5 [\#348](https://github.com/tj-actions/auto-doc/pull/348) ([renovate[bot]](https://github.com/apps/renovate))
+- Update peter-evans/create-pull-request action to v4.1.4 [\#347](https://github.com/tj-actions/auto-doc/pull/347) ([renovate[bot]](https://github.com/apps/renovate))
+- Update tj-actions/verify-changed-files action to v12 [\#346](https://github.com/tj-actions/auto-doc/pull/346) ([renovate[bot]](https://github.com/apps/renovate))
+- Update module github.com/spf13/cobra to v1.6.0 [\#345](https://github.com/tj-actions/auto-doc/pull/345) ([renovate[bot]](https://github.com/apps/renovate))
+- Update actions/first-interaction action to v1.1.1 [\#344](https://github.com/tj-actions/auto-doc/pull/344) ([renovate[bot]](https://github.com/apps/renovate))
+- Update actions/checkout action to v3.1.0 [\#343](https://github.com/tj-actions/auto-doc/pull/343) ([renovate[bot]](https://github.com/apps/renovate))
+- Update peter-evans/create-pull-request action to v4.1.3 [\#342](https://github.com/tj-actions/auto-doc/pull/342) ([renovate[bot]](https://github.com/apps/renovate))
+- Update peter-evans/create-pull-request action to v4.1.2 [\#341](https://github.com/tj-actions/auto-doc/pull/341) ([renovate[bot]](https://github.com/apps/renovate))
+- Update codacy/codacy-analysis-cli-action action to v4.2.0 [\#340](https://github.com/tj-actions/auto-doc/pull/340) ([renovate[bot]](https://github.com/apps/renovate))
+- Update tj-actions/sync-release-version action to v13 [\#339](https://github.com/tj-actions/auto-doc/pull/339) ([renovate[bot]](https://github.com/apps/renovate))
+- Update tj-actions/github-changelog-generator action to v1.15 [\#338](https://github.com/tj-actions/auto-doc/pull/338) ([renovate[bot]](https://github.com/apps/renovate))
+- Update tj-actions/verify-changed-files action to v11 [\#337](https://github.com/tj-actions/auto-doc/pull/337) ([renovate[bot]](https://github.com/apps/renovate))
+- Upgraded to v1.4.1 [\#336](https://github.com/tj-actions/auto-doc/pull/336) ([jackton1](https://github.com/jackton1))
+
 ## [v1.4.1](https://github.com/tj-actions/auto-doc/tree/v1.4.1) (2022-08-18)
 
 [Full Changelog](https://github.com/tj-actions/auto-doc/compare/v1.4.0...v1.4.1)
@@ -17,10 +51,6 @@
 
 - \[Feature\] Preserve input/output ordering [\#241](https://github.com/tj-actions/auto-doc/issues/241)
 - \[Feature\] Add verbose logging [\#39](https://github.com/tj-actions/auto-doc/issues/39)
-
-**Closed issues:**
-
-- Dependency Dashboard [\#2](https://github.com/tj-actions/auto-doc/issues/2)
 
 **Merged pull requests:**
 
@@ -354,7 +384,7 @@
 
 ## [v1.0.0](https://github.com/tj-actions/auto-doc/tree/v1.0.0) (2021-11-05)
 
-[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v1...v1.0.0)
+[Full Changelog](https://github.com/tj-actions/auto-doc/compare/8fbee177e53ccd82f491e583fdab3be79758a5d4...v1.0.0)
 
 **Implemented enhancements:**
 
@@ -363,13 +393,6 @@
 **Merged pull requests:**
 
 - Upgraded to v1 [\#25](https://github.com/tj-actions/auto-doc/pull/25) ([jackton1](https://github.com/jackton1))
-
-## [v1](https://github.com/tj-actions/auto-doc/tree/v1) (2021-11-04)
-
-[Full Changelog](https://github.com/tj-actions/auto-doc/compare/8fbee177e53ccd82f491e583fdab3be79758a5d4...v1)
-
-**Merged pull requests:**
-
 - Updated README.md [\#23](https://github.com/tj-actions/auto-doc/pull/23) ([jackton1](https://github.com/jackton1))
 - Updated README.md [\#22](https://github.com/tj-actions/auto-doc/pull/22) ([jackton1](https://github.com/jackton1))
 - Update actions/checkout action to v2.4.0 [\#21](https://github.com/tj-actions/auto-doc/pull/21) ([renovate[bot]](https://github.com/apps/renovate))
