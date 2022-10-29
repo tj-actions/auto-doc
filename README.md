@@ -104,7 +104,7 @@ jobs:
 Run
 
 ```shell script
-go install github.com/tj-actions/auto-doc
+go install github.com/tj-actions/auto-doc@latest
 ```
 
 ### Synopsis
