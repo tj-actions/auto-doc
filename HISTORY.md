@@ -1,16 +1,30 @@
 # Changelog
 
-## [v1.4.2](https://github.com/tj-actions/auto-doc/tree/v1.4.2) (2022-10-29)
+## [Unreleased](https://github.com/tj-actions/auto-doc/tree/HEAD)
 
-[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v1...v1.4.2)
-
-## [v1](https://github.com/tj-actions/auto-doc/tree/v1) (2022-10-29)
-
-[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v1.4.1...v1)
+[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v1.4.3...HEAD)
 
 **Closed issues:**
 
 - Dependency Dashboard [\#2](https://github.com/tj-actions/auto-doc/issues/2)
+
+## [v1.4.3](https://github.com/tj-actions/auto-doc/tree/v1.4.3) (2022-10-30)
+
+[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v1...v1.4.3)
+
+## [v1](https://github.com/tj-actions/auto-doc/tree/v1) (2022-10-30)
+
+[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v1.4.2...v1)
+
+**Merged pull requests:**
+
+- Update tj-actions/auto-doc action to v1.4.2 [\#358](https://github.com/tj-actions/auto-doc/pull/358) ([renovate[bot]](https://github.com/apps/renovate))
+- Upgraded to [\#357](https://github.com/tj-actions/auto-doc/pull/357) ([jackton1](https://github.com/jackton1))
+- Updated README.md [\#356](https://github.com/tj-actions/auto-doc/pull/356) ([jackton1](https://github.com/jackton1))
+
+## [v1.4.2](https://github.com/tj-actions/auto-doc/tree/v1.4.2) (2022-10-29)
+
+[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v1.4.1...v1.4.2)
 
 **Merged pull requests:**
 
