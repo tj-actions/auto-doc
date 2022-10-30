@@ -144,6 +144,7 @@ jobs:
         with:
           files: |
             README.md
+            test/**
 
       - name: Commit README changes
         if: steps.verify-changed-files.outputs.files_changed == 'true'
