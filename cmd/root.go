@@ -1,4 +1,4 @@
-// Package cmd
+// Package cmd provides a cli script that parses the github action.yml file and outputs a markdown table to a specified path.
 /*
 Copyright © 2021 Tonye Jack <jtonye@ymail.com>
 
