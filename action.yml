@@ -46,8 +46,9 @@ runs:
         done
         
         if [[ -z "$BIN_PATH" ]]; then
-          curl -sf https://gobinaries.com/github.com/tj-actions/auto-doc | PREFIX=. sh
-          BIN_PATH="./auto-doc"
+          TEMP_DIR=$(mktemp -d)
+          curl -sf https://gobinaries.com/github.com/tj-actions/auto-doc | PREFIX=$TEMP_DIR sh
+          BIN_PATH="$TEMP_DIR/auto-doc"
         fi
         
         echo "::debug::Generating documentation using ${BIN_PATH}..."
