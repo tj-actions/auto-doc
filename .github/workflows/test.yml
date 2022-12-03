@@ -120,11 +120,14 @@ jobs:
           key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
           restore-keys: |
             ${{ runner.os }}-go-
+            
+      - name: Test action
+        uses: ./
 
       - name: Run build
         run: make build
       
-      - name: Test action
+      - name: Test action with bin_path
         uses: ./
         with:
           bin_path: ./bin/auto_doc
