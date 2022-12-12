@@ -104,7 +104,7 @@ jobs:
         platform: [ubuntu-latest, windows-latest, macos-latest]
     steps:
       - name: Checkout
-        uses: actions/checkout@v3.1.0
+        uses: actions/checkout@v3.2.0
         with:
           fetch-depth: 0  # otherwise, you will failed to push refs to dest repo
           persist-credentials: false  # otherwise, the token used is the GITHUB_TOKEN, instead of your personal token
