@@ -1,16 +1,28 @@
 # Changelog
 
-## [v1.5.0](https://github.com/tj-actions/auto-doc/tree/v1.5.0) (2022-12-03)
+## [v1.6.0](https://github.com/tj-actions/auto-doc/tree/v1.6.0) (2022-12-15)
 
-[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v1...v1.5.0)
+[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v1...v1.6.0)
 
-## [v1](https://github.com/tj-actions/auto-doc/tree/v1) (2022-12-03)
+## [v1](https://github.com/tj-actions/auto-doc/tree/v1) (2022-12-15)
 
-[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v1.4.3...v1)
+[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v1.5.0...v1)
 
 **Closed issues:**
 
 - Dependency Dashboard [\#2](https://github.com/tj-actions/auto-doc/issues/2)
+
+**Merged pull requests:**
+
+- chore: update the default col max words [\#378](https://github.com/tj-actions/auto-doc/pull/378) ([jackton1](https://github.com/jackton1))
+- Update goreleaser/goreleaser-action action to v4 [\#377](https://github.com/tj-actions/auto-doc/pull/377) ([renovate[bot]](https://github.com/apps/renovate))
+- Update actions/checkout action to v3.2.0 [\#376](https://github.com/tj-actions/auto-doc/pull/376) ([renovate[bot]](https://github.com/apps/renovate))
+- Update tj-actions/auto-doc action to v1.5.0 [\#375](https://github.com/tj-actions/auto-doc/pull/375) ([renovate[bot]](https://github.com/apps/renovate))
+- Upgraded to v1.5.0 [\#374](https://github.com/tj-actions/auto-doc/pull/374) ([jackton1](https://github.com/jackton1))
+
+## [v1.5.0](https://github.com/tj-actions/auto-doc/tree/v1.5.0) (2022-12-03)
+
+[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v1.4.3...v1.5.0)
 
 **Merged pull requests:**
 
