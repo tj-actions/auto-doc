@@ -47,7 +47,7 @@ Add the `Inputs` and/or `Outputs` [`H2` header](https://github.com/adam-p/markdo
 |     action     | string |  false   | `"action.yml"` |                       Path to the action.yml file                        |
 |    bin\_path    | string |  false   |                |                       Path to the auto-doc binary                        |
 | col\_max\_width  | string |  false   |    `"1000"`    |                          Max width of a column                           |
-| col\_max\_words  | string |  false   |     `"5"`      |               Max number of words per line<br>in a column                |
+| col\_max\_words  | string |  false   |     `"6"`      |               Max number of words per line<br>in a column                |
 | input\_columns  | string |  false   |                | List of Input columns names to<br>display, default (display all columns) |
 |     output     | string |  false   | `"README.md"`  |                         Path to the output file                          |
 | output\_columns | string |  false   |                | List of Output column names to<br>display, default (display all columns) |
