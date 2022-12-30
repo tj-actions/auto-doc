@@ -352,7 +352,7 @@ func RootCmdFlags(cmd *cobra.Command) {
 	cmd.Flags().StringVar(
 		&colMaxWords,
 		"colMaxWords",
-		"5",
+		"6",
 		"Max number of words per line in a column",
 	)
 	cmd.Flags().StringArrayVar(
@@ -418,6 +418,11 @@ func wordWrap(s string, limit int) string {
 		// convert slice/array back to string
 		// but insert <br> at specified limit
 		// unless the current slice contains a Markdown link or code block or code
+		hasMore := len(strSlice) > currentLimit
+
+		if hasMore && len(result) > 0 {
+			result += " "
+		}
 
 		if len(strSlice) < currentLimit {
 			currentLimit = len(strSlice)
@@ -438,5 +443,6 @@ func wordWrap(s string, limit int) string {
 			currentLimit = len(strSlice)
 		}
 	}
-	return result
+
+	return strings.TrimSpace(result)
 }
