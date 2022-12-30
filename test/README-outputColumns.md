@@ -4,15 +4,15 @@
 
 <!-- AUTO-DOC-INPUT:START - Do not remove or modify this section -->
 
-|     INPUT      |  TYPE  | REQUIRED |              DEFAULT               |                                     DESCRIPTION                                     |
-|----------------|--------|----------|------------------------------------|-------------------------------------------------------------------------------------|
-|    base_sha    | string |  false   |                                    |               Specify a base commit SHA<br>used for comparing changes               |
-|     files      | string |  false   | `"README.md"`<br>`"README.md"`<br> | Check for changes using only<br>this list of files (Defaults<br>to the entire repo) |
-|      path      | string |  false   |                                    |   Specify a relative path under<br>$GITHUB_WORKSPACE to locate the repository<br>   |
-| path_separator | string |  false   |               `"\n"`               |                                   Path separator                                    |
-|   separator    | string |   true   |               `"\|"`               |                        Split character for array output<br>                         |
-|      sha       | string |   true   |       `"${{ github.sha }}"`        |             Specify a current commit SHA<br>used for comparing changes              |
-|     token      | string |   true   |      `"${{ github.token }}"`       |                Github token or Repo Scoped<br>Personal Access Token                 |
+|     INPUT      |  TYPE  | REQUIRED |              DEFAULT               |                                       DESCRIPTION                                       |
+|----------------|--------|----------|------------------------------------|-----------------------------------------------------------------------------------------|
+|    base_sha    | string |  false   |                                    |               Specify a base commit SHA<br>used for comparing changes<br>               |
+|     files      | string |  false   | `"README.md"`<br>`"README.md"`<br> | Check for changes using only<br>this list of files (Defaults<br>to the entire repo)<br> |
+|      path      | string |  false   |                                    |     Specify a relative path under<br>$GITHUB_WORKSPACE to locate the repository<br>     |
+| path_separator | string |  false   |               `"\n"`               |                                   Path separator<br>                                    |
+|   separator    | string |   true   |               `"\|"`               |                          Split character for array output<br>                           |
+|      sha       | string |   true   |       `"${{ github.sha }}"`        |             Specify a current commit SHA<br>used for comparing changes<br>              |
+|     token      | string |   true   |      `"${{ github.token }}"`       |                Github token or Repo Scoped<br>Personal Access Token<br>                 |
 
 <!-- AUTO-DOC-INPUT:END -->
 
