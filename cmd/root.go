@@ -23,6 +23,7 @@ import (
 	"github.com/spf13/cobra"
 	"gopkg.in/yaml.v3"
 	"io/ioutil"
+	"regexp"
 	"sort"
 	"strconv"
 	"strings"
@@ -402,6 +403,11 @@ func wordWrap(s string, limit int) string {
 	if strings.TrimSpace(s) == "" {
 		return s
 	}
+	// compile regular expressions for Markdown links and code blocks and code
+	linkRegex := regexp.MustCompile(`\[.*]\(.*\)`)
+	codeBlockRegex := regexp.MustCompile(`\` + "```" + `.*` + "```" + `\s*`)
+	codeRegex := regexp.MustCompile("`.*`")
+
 	// convert string to slice
 	strSlice := strings.Fields(s)
 	currentLimit := limit
@@ -411,11 +417,12 @@ func wordWrap(s string, limit int) string {
 	for len(strSlice) >= 1 {
 		// convert slice/array back to string
 		// but insert <br> at specified limit
+		// unless the current slice contains a Markdown link or code block or code
 
 		if len(strSlice) < currentLimit {
 			currentLimit = len(strSlice)
 			result = result + strings.Join(strSlice[:currentLimit], " ")
-		} else if currentLimit == limit {
+		} else if currentLimit == limit && !linkRegex.MatchString(strings.Join(strSlice[:currentLimit], " ")) && !codeBlockRegex.MatchString(strings.Join(strSlice[:currentLimit], " ")) && !codeRegex.MatchString(strings.Join(strSlice[:currentLimit], " ")) {
 			result = result + strings.Join(strSlice[:currentLimit], " ") + "<br>"
 		} else {
 			result = result + strings.Join(strSlice[:currentLimit], " ")
@@ -430,7 +437,6 @@ func wordWrap(s string, limit int) string {
 		if len(strSlice) < currentLimit {
 			currentLimit = len(strSlice)
 		}
-
 	}
 	return result
 }
