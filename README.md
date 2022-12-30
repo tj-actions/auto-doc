@@ -1,5 +1,5 @@
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/bb5dc10c1d2645c0894fa6774300639b)](https://app.codacy.com/gh/tj-actions/auto-doc?utm_source=github.com\&utm_medium=referral\&utm_content=tj-actions/auto-doc\&utm_campaign=Badge_Grade_Settings)
-![Coverage](https://img.shields.io/badge/Coverage-84.1%25-brightgreen)
+![Coverage](https://img.shields.io/badge/Coverage-84.4%25-brightgreen)
 [![Go Reference](https://pkg.go.dev/badge/github.com/tj-actions/auto-doc.svg)](https://pkg.go.dev/github.com/tj-actions/auto-doc)
 [![Go Report Card](https://goreportcard.com/badge/github.com/tj-actions/auto-doc)](https://goreportcard.com/report/github.com/tj-actions/auto-doc)
 [![CI](https://github.com/tj-actions/auto-doc/workflows/CI/badge.svg)](https://github.com/tj-actions/auto-doc/actions?query=workflow%3ACI)
