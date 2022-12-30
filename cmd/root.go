@@ -406,7 +406,6 @@ func wordWrap(s string, limit int) string {
 	// compile regular expressions for Markdown links and code blocks and code
 	linkRegex := regexp.MustCompile(`\[.*]\(.*\)`)
 	codeBlockRegex := regexp.MustCompile(`\` + "```" + `.*` + "```" + `\s*`)
-	codeRegex := regexp.MustCompile("`.*`")
 
 	// convert string to slice
 	strSlice := strings.Fields(s)
@@ -427,7 +426,7 @@ func wordWrap(s string, limit int) string {
 		if len(strSlice) < currentLimit {
 			currentLimit = len(strSlice)
 			result = result + strings.Join(strSlice[:currentLimit], " ")
-		} else if currentLimit == limit && !linkRegex.MatchString(strings.Join(strSlice[:currentLimit], " ")) && !codeBlockRegex.MatchString(strings.Join(strSlice[:currentLimit], " ")) && !codeRegex.MatchString(strings.Join(strSlice[:currentLimit], " ")) {
+		} else if currentLimit == limit && !linkRegex.MatchString(strings.Join(strSlice[:currentLimit], " ")) && !codeBlockRegex.MatchString(strings.Join(strSlice[:currentLimit], " ")) {
 			result = result + strings.Join(strSlice[:currentLimit], " ") + "<br>"
 		} else {
 			result = result + strings.Join(strSlice[:currentLimit], " ")
