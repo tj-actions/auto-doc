@@ -1,8 +1,17 @@
 # Changelog
 
+## [v1.7.1](https://github.com/tj-actions/auto-doc/tree/v1.7.1) (2022-12-30)
+
+[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v1...v1.7.1)
+
 ## [v1](https://github.com/tj-actions/auto-doc/tree/v1) (2022-12-30)
 
 [Full Changelog](https://github.com/tj-actions/auto-doc/compare/v1.7.0...v1)
+
+**Merged pull requests:**
+
+- fix: bug with spacing [\#397](https://github.com/tj-actions/auto-doc/pull/397) ([jackton1](https://github.com/jackton1))
+- Upgraded to v1.7.0 [\#396](https://github.com/tj-actions/auto-doc/pull/396) ([jackton1](https://github.com/jackton1))
 
 ## [v1.7.0](https://github.com/tj-actions/auto-doc/tree/v1.7.0) (2022-12-30)
 
