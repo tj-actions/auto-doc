@@ -1,16 +1,38 @@
 # Changelog
 
-## [v1.6.0](https://github.com/tj-actions/auto-doc/tree/v1.6.0) (2022-12-15)
+## [v1](https://github.com/tj-actions/auto-doc/tree/v1) (2022-12-30)
 
-[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v1...v1.6.0)
+[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v1.7.0...v1)
 
-## [v1](https://github.com/tj-actions/auto-doc/tree/v1) (2022-12-15)
+## [v1.7.0](https://github.com/tj-actions/auto-doc/tree/v1.7.0) (2022-12-30)
 
-[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v1.5.0...v1)
+[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v1.6.0...v1.7.0)
 
 **Closed issues:**
 
 - Dependency Dashboard [\#2](https://github.com/tj-actions/auto-doc/issues/2)
+
+**Merged pull requests:**
+
+- chore/update default [\#395](https://github.com/tj-actions/auto-doc/pull/395) ([jackton1](https://github.com/jackton1))
+- chore: add support to skip adding br tags to links or code [\#394](https://github.com/tj-actions/auto-doc/pull/394) ([jackton1](https://github.com/jackton1))
+- chore: update the default col\_max\_words [\#393](https://github.com/tj-actions/auto-doc/pull/393) ([jackton1](https://github.com/jackton1))
+- chore: add support to skip adding br tags to links or code [\#392](https://github.com/tj-actions/auto-doc/pull/392) ([jackton1](https://github.com/jackton1))
+- chore: update readme [\#390](https://github.com/tj-actions/auto-doc/pull/390) ([jackton1](https://github.com/jackton1))
+- chore\(deps\): update tj-actions/github-changelog-generator action to v1.17 [\#389](https://github.com/tj-actions/auto-doc/pull/389) ([renovate[bot]](https://github.com/apps/renovate))
+- Updated README.md [\#388](https://github.com/tj-actions/auto-doc/pull/388) ([jackton1](https://github.com/jackton1))
+- Updated README.md [\#387](https://github.com/tj-actions/auto-doc/pull/387) ([jackton1](https://github.com/jackton1))
+- Updated README.md [\#386](https://github.com/tj-actions/auto-doc/pull/386) ([jackton1](https://github.com/jackton1))
+- Updated README.md [\#385](https://github.com/tj-actions/auto-doc/pull/385) ([jackton1](https://github.com/jackton1))
+- Updated README.md [\#384](https://github.com/tj-actions/auto-doc/pull/384) ([jackton1](https://github.com/jackton1))
+- Updated README.md [\#382](https://github.com/tj-actions/auto-doc/pull/382) ([jackton1](https://github.com/jackton1))
+- Update tj-actions/verify-changed-files action to v13 [\#381](https://github.com/tj-actions/auto-doc/pull/381) ([renovate[bot]](https://github.com/apps/renovate))
+- Update tj-actions/auto-doc action to v1.6.0 [\#380](https://github.com/tj-actions/auto-doc/pull/380) ([renovate[bot]](https://github.com/apps/renovate))
+- Upgraded to v1.6.0 [\#379](https://github.com/tj-actions/auto-doc/pull/379) ([jackton1](https://github.com/jackton1))
+
+## [v1.6.0](https://github.com/tj-actions/auto-doc/tree/v1.6.0) (2022-12-15)
+
+[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v1.5.0...v1.6.0)
 
 **Merged pull requests:**
 
