@@ -97,7 +97,6 @@ jobs:
            commit-message: "auto-doc: Updated README.md"
            body: "auto-doc: Updated README.md"
 ```
-
 ## CLI
 
 ### Installation
