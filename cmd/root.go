@@ -352,7 +352,7 @@ func RootCmdFlags(cmd *cobra.Command) {
 	cmd.Flags().StringVar(
 		&colMaxWords,
 		"colMaxWords",
-		"5",
+		"6",
 		"Max number of words per line in a column",
 	)
 	cmd.Flags().StringArrayVar(
