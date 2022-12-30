@@ -399,36 +399,36 @@ func replaceBytesInBetween(value []byte, startIndex int, endIndex int, new []byt
 }
 
 func wordWrap(s string, limit int) string {
-    if strings.TrimSpace(s) == "" {
-        return s
-    }
-    // convert string to slice
-    strSlice := strings.Fields(s)
-    currentLimit := limit
+	if strings.TrimSpace(s) == "" {
+		return s
+	}
+	// convert string to slice
+	strSlice := strings.Fields(s)
+	currentLimit := limit
 
-    var result string
-    var i int
-    for i = 0; i < len(strSlice); i += currentLimit {
-        if i + currentLimit > len(strSlice) {
-            currentLimit = len(strSlice) - i
-        }
-        // check if the current slice contains any markdown links or code syntax
-        // if it does, don't add the <br> tag
-        if !containsLinkOrCode(strSlice[i:i+currentLimit]) {
-            result += strings.Join(strSlice[i:i+currentLimit], " ") + "<br>"
-        } else {
-            result += strings.Join(strSlice[i:i+currentLimit], " ")
-        }
-    }
-    return result
+	var result string
+	var i int
+	for i = 0; i < len(strSlice); i += currentLimit {
+		if i+currentLimit > len(strSlice) {
+			currentLimit = len(strSlice) - i
+		}
+		// check if the current slice contains any markdown links or code syntax
+		// if it does, don't add the <br> tag
+		if !containsLinkOrCode(strSlice[i : i+currentLimit]) {
+			result += strings.Join(strSlice[i:i+currentLimit], " ") + "<br>"
+		} else {
+			result += strings.Join(strSlice[i:i+currentLimit], " ")
+		}
+	}
+	return result
 }
 
 // helper function to check if a slice contains any markdown links or code syntax
 func containsLinkOrCode(slice []string) bool {
-    for _, word := range slice {
-        if strings.HasPrefix(word, "[") || strings.HasPrefix(word, "`") {
-            return true
-        }
-    }
-    return false
+	for _, word := range slice {
+		if strings.HasPrefix(word, "[") || strings.HasPrefix(word, "`") {
+			return true
+		}
+	}
+	return false
 }
