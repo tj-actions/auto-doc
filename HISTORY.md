@@ -1,12 +1,21 @@
 # Changelog
 
+## [v1](https://github.com/tj-actions/auto-doc/tree/v1) (2022-12-31)
+
+[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v1.7.2...v1)
+
+## [v1.7.2](https://github.com/tj-actions/auto-doc/tree/v1.7.2) (2022-12-31)
+
+[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v1.7.1...v1.7.2)
+
+**Merged pull requests:**
+
+- chore: update to remove trailing br tags [\#399](https://github.com/tj-actions/auto-doc/pull/399) ([jackton1](https://github.com/jackton1))
+- Upgraded to v1.7.1 [\#398](https://github.com/tj-actions/auto-doc/pull/398) ([jackton1](https://github.com/jackton1))
+
 ## [v1.7.1](https://github.com/tj-actions/auto-doc/tree/v1.7.1) (2022-12-30)
 
-[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v1...v1.7.1)
-
-## [v1](https://github.com/tj-actions/auto-doc/tree/v1) (2022-12-30)
-
-[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v1.7.0...v1)
+[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v1.7.0...v1.7.1)
 
 **Merged pull requests:**
 
