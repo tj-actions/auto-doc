@@ -443,5 +443,8 @@ func wordWrap(s string, limit int) string {
 		}
 	}
 
+	// Remove trailing <br> if any
+	result = strings.TrimSuffix(result, "<br>")
+
 	return strings.TrimSpace(result)
 }
