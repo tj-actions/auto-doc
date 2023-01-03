@@ -114,6 +114,7 @@ Auto generate documentation for your github action.
 
     auto-doc [flags]
 
+
 ### Options
 
           --action string               action config file (default "action.yml")
