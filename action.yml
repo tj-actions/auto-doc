@@ -36,6 +36,11 @@ runs:
         BIN_PATH="${{ inputs.bin_path }}"
         INPUT_COLUMNS=(${{ inputs.input_columns }})
         OUTPUT_COLUMNS=(${{ inputs.output_columns }})
+        
+        if [[ ! -f "${{ inputs.action }}" ]]; then
+          echo "::warning::No action file found at: ${{ inputs.action }}"
+          exit 0
+        fi
   
         for input_column in ${INPUT_COLUMNS[@]}; do
           EXTRA_ARGS="${EXTRA_ARGS} --inputColumns ${input_column}"
