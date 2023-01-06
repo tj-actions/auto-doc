@@ -436,8 +436,7 @@ func wordWrap(s string, limit int) string {
 		strSlice = strSlice[currentLimit:]
 
 		// change the limit
-		// to cater for the last few words in
-		//
+		// to cater for the last few words in the line
 		if len(strSlice) < currentLimit {
 			currentLimit = len(strSlice)
 		}
