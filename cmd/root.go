@@ -23,6 +23,7 @@ import (
 	"github.com/spf13/cobra"
 	"gopkg.in/yaml.v3"
 	"io/ioutil"
+	"regexp"
 	"sort"
 	"strconv"
 	"strings"
@@ -351,7 +352,7 @@ func RootCmdFlags(cmd *cobra.Command) {
 	cmd.Flags().StringVar(
 		&colMaxWords,
 		"colMaxWords",
-		"5",
+		"6",
 		"Max number of words per line in a column",
 	)
 	cmd.Flags().StringArrayVar(
@@ -402,6 +403,10 @@ func wordWrap(s string, limit int) string {
 	if strings.TrimSpace(s) == "" {
 		return s
 	}
+	// compile regular expressions for Markdown links and code blocks and code
+	linkRegex := regexp.MustCompile(`\[.*]\(.*\)`)
+	codeBlockRegex := regexp.MustCompile(`\` + "```" + `.*` + "```" + `\s*`)
+
 	// convert string to slice
 	strSlice := strings.Fields(s)
 	currentLimit := limit
@@ -411,11 +416,17 @@ func wordWrap(s string, limit int) string {
 	for len(strSlice) >= 1 {
 		// convert slice/array back to string
 		// but insert <br> at specified limit
+		// unless the current slice contains a Markdown link or code block or code
+		hasMore := len(strSlice) > currentLimit
+
+		if hasMore && len(result) > 0 {
+			result += " "
+		}
 
 		if len(strSlice) < currentLimit {
 			currentLimit = len(strSlice)
 			result = result + strings.Join(strSlice[:currentLimit], " ")
-		} else if currentLimit == limit {
+		} else if currentLimit == limit && !linkRegex.MatchString(strings.Join(strSlice[:currentLimit], " ")) && !codeBlockRegex.MatchString(strings.Join(strSlice[:currentLimit], " ")) {
 			result = result + strings.Join(strSlice[:currentLimit], " ") + "<br>"
 		} else {
 			result = result + strings.Join(strSlice[:currentLimit], " ")
@@ -425,12 +436,14 @@ func wordWrap(s string, limit int) string {
 		strSlice = strSlice[currentLimit:]
 
 		// change the limit
-		// to cater for the last few words in
-		//
+		// to cater for the last few words in the line
 		if len(strSlice) < currentLimit {
 			currentLimit = len(strSlice)
 		}
-
 	}
-	return result
+
+	// Remove trailing <br> if any
+	result = strings.TrimSuffix(result, "<br>")
+
+	return strings.TrimSpace(result)
 }

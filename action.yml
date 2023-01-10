@@ -13,7 +13,7 @@ inputs:
   col_max_words:
     description: 'Max number of words per line in a column'
     required: false
-    default: '5'
+    default: '6'
   output:
     description: 'Path to the output file'
     required: false
@@ -36,6 +36,11 @@ runs:
         BIN_PATH="${{ inputs.bin_path }}"
         INPUT_COLUMNS=(${{ inputs.input_columns }})
         OUTPUT_COLUMNS=(${{ inputs.output_columns }})
+        
+        if [[ ! -f "${{ inputs.action }}" ]]; then
+          echo "::warning::No action file found at: ${{ inputs.action }}"
+          exit 0
+        fi
   
         for input_column in ${INPUT_COLUMNS[@]}; do
           EXTRA_ARGS="${EXTRA_ARGS} --inputColumns ${input_column}"
@@ -46,8 +51,9 @@ runs:
         done
         
         if [[ -z "$BIN_PATH" ]]; then
-          curl -sf https://gobinaries.com/github.com/tj-actions/auto-doc | PREFIX=. sh
-          BIN_PATH="./auto-doc"
+          TEMP_DIR=$(mktemp -d)
+          curl -sf https://gobinaries.com/github.com/tj-actions/auto-doc | PREFIX=$TEMP_DIR sh
+          BIN_PATH="$TEMP_DIR/auto-doc"
         fi
         
         echo "::debug::Generating documentation using ${BIN_PATH}..."

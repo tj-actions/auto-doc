@@ -1,5 +1,5 @@
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/bb5dc10c1d2645c0894fa6774300639b)](https://app.codacy.com/gh/tj-actions/auto-doc?utm_source=github.com\&utm_medium=referral\&utm_content=tj-actions/auto-doc\&utm_campaign=Badge_Grade_Settings)
-![Coverage](https://img.shields.io/badge/Coverage-84.1%25-brightgreen)
+![Coverage](https://img.shields.io/badge/Coverage-82.4%25-brightgreen)
 [![Go Reference](https://pkg.go.dev/badge/github.com/tj-actions/auto-doc.svg)](https://pkg.go.dev/github.com/tj-actions/auto-doc)
 [![Go Report Card](https://goreportcard.com/badge/github.com/tj-actions/auto-doc)](https://goreportcard.com/report/github.com/tj-actions/auto-doc)
 [![CI](https://github.com/tj-actions/auto-doc/workflows/CI/badge.svg)](https://github.com/tj-actions/auto-doc/actions?query=workflow%3ACI)
@@ -42,15 +42,15 @@ Add the `Inputs` and/or `Outputs` [`H2` header](https://github.com/adam-p/markdo
 
 <!-- AUTO-DOC-INPUT:START - Do not remove or modify this section -->
 
-|     INPUT      |  TYPE  | REQUIRED |    DEFAULT     |                                 DESCRIPTION                                 |
-|----------------|--------|----------|----------------|-----------------------------------------------------------------------------|
-|     action     | string |  false   | `"action.yml"` |                       Path to the action.yml file<br>                       |
-|    bin\_path    | string |  false   |                |                       Path to the auto-doc binary<br>                       |
-| col\_max\_width  | string |  false   |    `"1000"`    |                          Max width of a column<br>                          |
-| col\_max\_words  | string |  false   |     `"5"`      |                 Max number of words per<br>line in a column                 |
-| input\_columns  | string |  false   |                | List of Input columns names<br>to display, default (display all<br>columns) |
-|     output     | string |  false   | `"README.md"`  |                         Path to the output file<br>                         |
-| output\_columns | string |  false   |                | List of Output column names<br>to display, default (display all<br>columns) |
+|     INPUT      |  TYPE  | REQUIRED |    DEFAULT     |                               DESCRIPTION                                |
+|----------------|--------|----------|----------------|--------------------------------------------------------------------------|
+|     action     | string |  false   | `"action.yml"` |                       Path to the action.yml file                        |
+|    bin\_path    | string |  false   |                |                       Path to the auto-doc binary                        |
+| col\_max\_width  | string |  false   |    `"1000"`    |                          Max width of a column                           |
+| col\_max\_words  | string |  false   |     `"6"`      |               Max number of words per line<br>in a column                |
+| input\_columns  | string |  false   |                | List of Input columns names to<br>display, default (display all columns) |
+|     output     | string |  false   | `"README.md"`  |                         Path to the output file                          |
+| output\_columns | string |  false   |                | List of Output column names to<br>display, default (display all columns) |
 
 <!-- AUTO-DOC-INPUT:END -->
 
