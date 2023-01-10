@@ -40,6 +40,9 @@ jobs:
           coverage-reports: coverage.out
           force-coverage-parser: go
           language: go
+      
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v3
 
       - name: Go Coverage Badge
         uses: tj-actions/coverage-badge-go@v2
