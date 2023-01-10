@@ -1,6 +1,9 @@
 name: Generate code coverage badge
 
 on:
+  push:
+    branches:
+      - main
   pull_request:
     branches:
       - main
@@ -8,6 +11,11 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    if: |
+      (
+        github.actor != 'dependabot[bot]' &&
+        github.actor != 'dependabot'
+      )
     name: Update coverage badge
     steps:
       - name: Checkout
