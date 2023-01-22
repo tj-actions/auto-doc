@@ -1,8 +1,17 @@
 # Changelog
 
-## [v1](https://github.com/tj-actions/auto-doc/tree/v1) (2023-01-03)
+## [v1](https://github.com/tj-actions/auto-doc/tree/v1) (2023-01-22)
 
-[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v1.7.3...v1)
+[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v1.7.4...v1)
+
+## [v1.7.4](https://github.com/tj-actions/auto-doc/tree/v1.7.4) (2023-01-22)
+
+[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v1.7.3...v1.7.4)
+
+**Merged pull requests:**
+
+- Upgraded to v1.7.3 [\#402](https://github.com/tj-actions/auto-doc/pull/402) ([jackton1](https://github.com/jackton1))
+- chore: upload coverage reports to codacy [\#366](https://github.com/tj-actions/auto-doc/pull/366) ([jackton1](https://github.com/jackton1))
 
 ## [v1.7.3](https://github.com/tj-actions/auto-doc/tree/v1.7.3) (2023-01-03)
 
