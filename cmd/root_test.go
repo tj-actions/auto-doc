@@ -3,9 +3,10 @@ package cmd
 import (
 	"bytes"
 	"fmt"
-	"github.com/spf13/cobra"
 	"io/ioutil"
 	"testing"
+
+	"github.com/spf13/cobra"
 )
 
 func Test_rootCommand(t *testing.T) {
@@ -14,7 +15,7 @@ func Test_rootCommand(t *testing.T) {
 		RootCmdFlags(cmd)
 		b := bytes.NewBufferString("")
 		cmd.SetOut(b)
-		cmd.SetArgs([]string{"--action", "../test/action.yml", "--output", "../test/README.md"})
+		cmd.SetArgs([]string{"--filename", "../test/action.yml", "--output", "../test/README.md"})
 		err := cmd.Execute()
 
 		if err != nil {
@@ -42,7 +43,7 @@ func Test_rootCommand(t *testing.T) {
 		RootCmdFlags(cmd)
 		b := bytes.NewBufferString("")
 		cmd.SetOut(b)
-		cmd.SetArgs([]string{"--action", "../test/action.yml", "--output", "../test/README-outputColumns.md", "--outputColumns", "Output", "--outputColumns", "Type"})
+		cmd.SetArgs([]string{"--filename", "../test/action.yml", "--output", "../test/README-outputColumns.md", "--outputColumns", "Output", "--outputColumns", "Type"})
 		err := cmd.Execute()
 
 		if err != nil {
@@ -70,7 +71,7 @@ func Test_rootCommand(t *testing.T) {
 		RootCmdFlags(cmd)
 		b := bytes.NewBufferString("")
 		cmd.SetOut(b)
-		cmd.SetArgs([]string{"--action", "../test/action.yml", "--output", "../test/README-inputColumns.md", "--inputColumns", "Input", "--inputColumns", "Type", "--inputColumns", "Description"})
+		cmd.SetArgs([]string{"--filename", "../test/action.yml", "--output", "../test/README-inputColumns.md", "--inputColumns", "Input", "--inputColumns", "Type", "--inputColumns", "Description"})
 		err := cmd.Execute()
 
 		if err != nil {

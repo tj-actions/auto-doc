@@ -517,7 +517,7 @@ func RootCmdFlags(cmd *cobra.Command) {
 	)
 	cmd.Flags().StringArrayVar(
 		&secretsColumns,
-		"outputColumns",
+		"secretsColumns",
 		defaultSecretsColumns,
 		"list of secrets column names",
 	)
