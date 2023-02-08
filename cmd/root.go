@@ -352,6 +352,9 @@ func (a *Action) renderOutput() error {
 	inputTableOutput, err := renderInputOutput(a.Inputs, maxWidth, maxWords)
 	outputTableOutput, err := renderOutputOutput(a.Outputs, maxWidth, maxWords)
 	err = writeDocumentation(inputTableOutput, outputTableOutput)
+	if err != nil {
+		return err
+	}
 	return nil
 }
 
@@ -369,6 +372,9 @@ func (r *Reusable) renderOutput() error {
 	inputTableOutput, err := renderInputOutput(r.On.Workflow_call.Inputs, maxWidth, maxWords)
 	secretTableOutput, err := renderSecretOutput(r.On.Workflow_call.Secrets, maxWidth, maxWords)
 	err = writeDocumentation(inputTableOutput, secretTableOutput)
+	if err != nil {
+		return err
+	}
 	return nil
 }
 
