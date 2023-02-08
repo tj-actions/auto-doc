@@ -19,18 +19,20 @@ package cmd
 import (
 	"bytes"
 	"fmt"
-	"github.com/olekukonko/tablewriter"
-	"github.com/spf13/cobra"
-	"gopkg.in/yaml.v3"
 	"io/ioutil"
 	"regexp"
 	"sort"
 	"strconv"
 	"strings"
+
+	"github.com/olekukonko/tablewriter"
+	"github.com/spf13/cobra"
+	"gopkg.in/yaml.v3"
 )
 
 var inputsHeader = "## Inputs"
 var outputsHeader = "## Outputs"
+var secretsHeader = "## Secrets"
 var autoDocStart = "<!-- AUTO-DOC-%s:START - Do not remove or modify this section -->"
 var autoDocEnd = "<!-- AUTO-DOC-%s:END -->"
 var pipeSeparator = "|"
@@ -39,16 +41,21 @@ var inputAutoDocStart = fmt.Sprintf(autoDocStart, "INPUT")
 var inputAutoDocEnd = fmt.Sprintf(autoDocEnd, "INPUT")
 var outputAutoDocStart = fmt.Sprintf(autoDocStart, "OUTPUT")
 var outputAutoDocEnd = fmt.Sprintf(autoDocEnd, "OUTPUT")
+var secretAutoDocStart = fmt.Sprintf(autoDocStart, "SECRETS")
+var secretAutoDocEnd = fmt.Sprintf(autoDocEnd, "SECRETS")
 
 var defaultInputColumns = []string{"Input", "Type", "Required", "Default", "Description"}
 var defaultOutputColumns = []string{"Output", "Type", "Description"}
+var defaultSecretsColumns = []string{"Secret", "Required", "Description"}
 
-var actionFileName string
+var documentFileName string
+var reusable bool
 var outputFileName string
 var colMaxWidth string
 var colMaxWords string
 var inputColumns = defaultInputColumns
 var outputColumns = defaultOutputColumns
+var secretsColumns = defaultSecretsColumns
 
 // Input represents the input of the action.yml
 type Input struct {
@@ -63,14 +70,45 @@ type Output struct {
 	Value       string `yaml:"default,omitempty"`
 }
 
+// Secret represents the secret of reusable workflows
+type Secret struct {
+	Required    bool   `yaml:"required"`
+	Description string `yaml:"description"`
+}
+
 // Action represents the action.yml
 type Action struct {
 	Inputs  map[string]Input  `yaml:"inputs,omitempty"`
 	Outputs map[string]Output `yaml:"outputs,omitempty"`
 }
 
-func (a *Action) getAction() error {
-	actionYaml, err := ioutil.ReadFile(actionFileName)
+// Reusable represents the reusable workflow yaml
+type Reusable struct {
+	On struct {
+		Workflow_call struct {
+			Inputs  map[string]Input  `yaml:"inputs,omitempty"`
+			Secrets map[string]Secret `yaml:"secrets,omitempty"`
+		}
+	}
+}
+
+type Documentation interface {
+	getData() error
+	renderOutput() error
+}
+
+func (r *Reusable) getData() error {
+	reusableYaml, err := ioutil.ReadFile(documentFileName)
+	if err != nil {
+		return err
+	}
+	err = yaml.Unmarshal(reusableYaml, &r)
+
+	return err
+}
+
+func (a *Action) getData() error {
+	actionYaml, err := ioutil.ReadFile(documentFileName)
 	if err != nil {
 		return err
 	}
@@ -80,24 +118,13 @@ func (a *Action) getAction() error {
 	return err
 }
 
-func (a *Action) renderOutput() error {
-	var err error
-	maxWidth, err := strconv.Atoi(colMaxWidth)
-	if err != nil {
-		return err
-	}
-
-	maxWords, err := strconv.Atoi(colMaxWords)
-	if err != nil {
-		return err
-	}
-
+func renderInputOutput(i map[string]Input, maxWidth int, maxWords int) (*strings.Builder, error) {
 	inputTableOutput := &strings.Builder{}
 
-	if len(a.Inputs) > 0 {
-		_, err = fmt.Fprintln(inputTableOutput, inputAutoDocStart)
+	if len(i) > 0 {
+		_, err := fmt.Fprintln(inputTableOutput, inputAutoDocStart)
 		if err != nil {
-			return err
+			return inputTableOutput, err
 		}
 
 		inputTable := tablewriter.NewWriter(inputTableOutput)
@@ -106,8 +133,8 @@ func (a *Action) renderOutput() error {
 		inputTable.SetCenterSeparator(pipeSeparator)
 		inputTable.SetAlignment(tablewriter.ALIGN_CENTER)
 
-		keys := make([]string, 0, len(a.Inputs))
-		for k := range a.Inputs {
+		keys := make([]string, 0, len(i))
+		for k := range i {
 			keys = append(keys, k)
 		}
 		sort.Strings(keys)
@@ -116,8 +143,8 @@ func (a *Action) renderOutput() error {
 
 		for _, key := range keys {
 			var inputDefault string
-			if len(a.Inputs[key].Default) > 0 {
-				inputDefault = a.Inputs[key].Default
+			if len(i[key].Default) > 0 {
+				inputDefault = i[key].Default
 				var defaultValue string
 				var parts = strings.Split(inputDefault, "\n")
 
@@ -131,7 +158,7 @@ func (a *Action) renderOutput() error {
 					if strings.Contains(inputDefault, pipeSeparator) {
 						inputDefault = strings.Replace(inputDefault, pipeSeparator, "\"\\"+pipeSeparator+"\"", -1)
 					} else {
-						inputDefault = fmt.Sprintf("%#v", a.Inputs[key].Default)
+						inputDefault = fmt.Sprintf("%#v", i[key].Default)
 					}
 					defaultValue = "`" + inputDefault + "`"
 				}
@@ -148,13 +175,13 @@ func (a *Action) renderOutput() error {
 				case "Type":
 					row = append(row, "string")
 				case "Required":
-					row = append(row, strconv.FormatBool(a.Inputs[key].Required))
+					row = append(row, strconv.FormatBool(i[key].Required))
 				case "Default":
 					row = append(row, inputDefault)
 				case "Description":
-					row = append(row, wordWrap(a.Inputs[key].Description, maxWords))
+					row = append(row, wordWrap(i[key].Description, maxWords))
 				default:
-					return fmt.Errorf(
+					return inputTableOutput, fmt.Errorf(
 						"unknown input column: '%s'. Please specify any of the following columns: %s",
 						col,
 						strings.Join(defaultInputColumns, ", "),
@@ -166,28 +193,31 @@ func (a *Action) renderOutput() error {
 
 		_, err = fmt.Fprintln(inputTableOutput)
 		if err != nil {
-			return err
+			return inputTableOutput, err
 		}
 
 		inputTable.Render()
 
 		_, err = fmt.Fprintln(inputTableOutput)
 		if err != nil {
-			return err
+			return inputTableOutput, err
 		}
 
 		_, err = fmt.Fprint(inputTableOutput, inputAutoDocEnd)
 		if err != nil {
-			return err
+			return inputTableOutput, err
 		}
 	}
+	return inputTableOutput, nil
+}
 
+func renderOutputOutput(o map[string]Output, maxWidth int, maxWords int) (*strings.Builder, error) {
 	outputTableOutput := &strings.Builder{}
 
-	if len(a.Outputs) > 0 {
-		_, err = fmt.Fprintln(outputTableOutput, outputAutoDocStart)
+	if len(o) > 0 {
+		_, err := fmt.Fprintln(outputTableOutput, outputAutoDocStart)
 		if err != nil {
-			return err
+			return outputTableOutput, err
 		}
 
 		outputTable := tablewriter.NewWriter(outputTableOutput)
@@ -196,8 +226,8 @@ func (a *Action) renderOutput() error {
 		outputTable.SetCenterSeparator(pipeSeparator)
 		outputTable.SetAlignment(tablewriter.ALIGN_CENTER)
 
-		keys := make([]string, 0, len(a.Outputs))
-		for k := range a.Outputs {
+		keys := make([]string, 0, len(o))
+		for k := range o {
 			keys = append(keys, k)
 		}
 		sort.Strings(keys)
@@ -213,9 +243,9 @@ func (a *Action) renderOutput() error {
 				case "Type":
 					row = append(row, "string")
 				case "Description":
-					row = append(row, wordWrap(a.Outputs[key].Description, maxWords))
+					row = append(row, wordWrap(o[key].Description, maxWords))
 				default:
-					return fmt.Errorf(
+					return outputTableOutput, fmt.Errorf(
 						"unknown output column: '%s'. Please specify any of the following columns: %s",
 						col,
 						strings.Join(defaultOutputColumns, ", "),
@@ -227,21 +257,122 @@ func (a *Action) renderOutput() error {
 
 		_, err = fmt.Fprintln(outputTableOutput)
 		if err != nil {
-			return err
+			return outputTableOutput, err
 		}
 		outputTable.Render()
 
 		_, err = fmt.Fprintln(outputTableOutput)
 		if err != nil {
-			return err
+			return outputTableOutput, err
 		}
 
 		_, err = fmt.Fprint(outputTableOutput, outputAutoDocEnd)
 		if err != nil {
-			return err
+			return outputTableOutput, err
 		}
 	}
+	return outputTableOutput, nil
+}
 
+func renderSecretOutput(o map[string]Secret, maxWidth int, maxWords int) (*strings.Builder, error) {
+
+	secretTableOutput := &strings.Builder{}
+
+	if len(o) > 0 {
+		_, err := fmt.Fprintln(secretTableOutput, secretAutoDocStart)
+		if err != nil {
+			return secretTableOutput, err
+		}
+
+		secretTable := tablewriter.NewWriter(secretTableOutput)
+		secretTable.SetHeader(secretsColumns)
+		secretTable.SetBorders(tablewriter.Border{Left: true, Top: false, Right: true, Bottom: false})
+		secretTable.SetCenterSeparator(pipeSeparator)
+		secretTable.SetAlignment(tablewriter.ALIGN_CENTER)
+
+		keys := make([]string, 0, len(o))
+		for k := range o {
+			keys = append(keys, k)
+		}
+		sort.Strings(keys)
+
+		secretTable.SetColWidth(maxWidth)
+		for _, key := range keys {
+			var row []string
+
+			for _, col := range secretsColumns {
+				switch col {
+				case "Secret":
+					row = append(row, key)
+				case "Required":
+					row = append(row, fmt.Sprintf("%v", o[key].Required))
+				case "Description":
+					row = append(row, o[key].Description)
+				default:
+					return secretTableOutput, fmt.Errorf(
+						"unknown secrets column: '%s'. Please specify any of the following columns: %s",
+						col,
+						strings.Join(defaultSecretsColumns, ", "),
+					)
+				}
+			}
+			secretTable.Append(row)
+		}
+		_, err = fmt.Fprintln(secretTableOutput)
+		if err != nil {
+			return secretTableOutput, err
+		}
+		secretTable.Render()
+
+		_, err = fmt.Fprintln(secretTableOutput)
+		if err != nil {
+			return secretTableOutput, err
+		}
+
+		_, err = fmt.Fprint(secretTableOutput, secretAutoDocEnd)
+		if err != nil {
+			return secretTableOutput, err
+		}
+	}
+	return secretTableOutput, nil
+}
+
+func (a *Action) renderOutput() error {
+	var err error
+	maxWidth, err := strconv.Atoi(colMaxWidth)
+	if err != nil {
+		return err
+	}
+
+	maxWords, err := strconv.Atoi(colMaxWords)
+	if err != nil {
+		return err
+	}
+
+	inputTableOutput, err := renderInputOutput(a.Inputs, maxWidth, maxWords)
+	outputTableOutput, err := renderOutputOutput(a.Outputs, maxWidth, maxWords)
+	err = writeDocumentation(inputTableOutput, outputTableOutput)
+	return nil
+}
+
+func (r *Reusable) renderOutput() error {
+	var err error
+	maxWidth, err := strconv.Atoi(colMaxWidth)
+	if err != nil {
+		return err
+	}
+
+	maxWords, err := strconv.Atoi(colMaxWords)
+	if err != nil {
+		return err
+	}
+	inputTableOutput, err := renderInputOutput(r.On.Workflow_call.Inputs, maxWidth, maxWords)
+	secretTableOutput, err := renderSecretOutput(r.On.Workflow_call.Secrets, maxWidth, maxWords)
+	err = writeDocumentation(inputTableOutput, secretTableOutput)
+	return nil
+}
+
+func writeDocumentation(in1, in2 *strings.Builder) error {
 	input, err := ioutil.ReadFile(outputFileName)
 
 	if err != nil {
@@ -257,10 +388,10 @@ func (a *Action) renderOutput() error {
 	)
 
 	if hasInputsData {
-		inputsStr := fmt.Sprintf("%s\n\n%v", inputsHeader, inputTableOutput.String())
+		inputsStr := fmt.Sprintf("%s\n\n%v", inputsHeader, in1.String())
 		output = replaceBytesInBetween(input, inputStartIndex, inputEndIndex, []byte(inputsStr))
 	} else {
-		inputsStr := fmt.Sprintf("%s\n\n%v", inputsHeader, inputTableOutput.String())
+		inputsStr := fmt.Sprintf("%s\n\n%v", inputsHeader, in1.String())
 		output = bytes.Replace(input, []byte(inputsHeader), []byte(inputsStr), -1)
 	}
 
@@ -271,10 +402,10 @@ func (a *Action) renderOutput() error {
 	)
 
 	if hasOutputsData {
-		outputsStr := fmt.Sprintf("%s\n\n%v", outputsHeader, outputTableOutput.String())
+		outputsStr := fmt.Sprintf("%s\n\n%v", outputsHeader, in2.String())
 		output = replaceBytesInBetween(output, outputStartIndex, outputEndIndex, []byte(outputsStr))
 	} else {
-		outputsStr := fmt.Sprintf("%s\n\n%v", outputsHeader, outputTableOutput.String())
+		outputsStr := fmt.Sprintf("%s\n\n%v", outputsHeader, in2.String())
 		output = bytes.Replace(output, []byte(outputsHeader), []byte(outputsStr), -1)
 	}
 
@@ -302,14 +433,20 @@ func RootCmdRunE(cmd *cobra.Command, args []string) error {
 		return fmt.Errorf("requires no positional arguments: %d given", len(args))
 	}
 
-	var action Action
+	var documentation Documentation
 
-	err := action.getAction()
+	if cmd.Flags().Changed("reusable") {
+		documentation = &Reusable{}
+	} else {
+		documentation = &Action{}
+	}
+
+	err := documentation.getData()
 	if err != nil {
 		return err
 	}
 
-	err = action.renderOutput()
+	err = documentation.renderOutput()
 	if err != nil {
 		return err
 	}
@@ -332,10 +469,15 @@ func Execute() {
 func RootCmdFlags(cmd *cobra.Command) {
 	// Custom flags
 	cmd.Flags().StringVar(
-		&actionFileName,
-		"action",
+		&documentFileName,
+		"filename",
 		"action.yml",
-		"action config file",
+		"config file",
+	)
+	cmd.Flags().Bool(
+		"reusable",
+		false,
+		"A reusable workflow",
 	)
 	cmd.Flags().StringVar(
 		&outputFileName,
@@ -366,6 +508,12 @@ func RootCmdFlags(cmd *cobra.Command) {
 		"outputColumns",
 		defaultOutputColumns,
 		"list of output column names",
+	)
+	cmd.Flags().StringArrayVar(
+		&secretsColumns,
+		"outputColumns",
+		defaultSecretsColumns,
+		"list of secrets column names",
 	)
 }
 
