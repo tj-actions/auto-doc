@@ -114,7 +114,6 @@ func (a *Action) getData() error {
 	}
 
 	err = yaml.Unmarshal(actionYaml, &a)
-
 	return err
 }
 

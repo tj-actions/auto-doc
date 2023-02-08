@@ -2,8 +2,8 @@ name: action.yml autodoc
 description: action.yml doc generator
 author: jackton1
 inputs:
-  action:
-    description: 'Path to the action.yml file'
+  filename:
+    description: 'Path to the yml file'
     required: false
     default: action.yml
   col_max_width:
@@ -24,8 +24,14 @@ inputs:
   output_columns:
     description: 'List of Output column names to display, default (display all columns)'
     required: false
+  secrets_columns:
+    description: 'List of Secrets column names to display, default (display all columns)'
+    required: false
   bin_path:
     description: 'Path to the auto-doc binary'
+    required: false
+  reusable:
+    description: 'Is the yaml file a reusable workflow'
     required: false
 
 runs:
@@ -34,11 +40,13 @@ runs:
     - run: |
         EXTRA_ARGS=""
         BIN_PATH="${{ inputs.bin_path }}"
+        REUSABLE="${{ inputs.reusable }}"
         INPUT_COLUMNS=(${{ inputs.input_columns }})
         OUTPUT_COLUMNS=(${{ inputs.output_columns }})
+        SECRETS_COLUMNS=(${{ inputs.secrets_columns }})
         
-        if [[ ! -f "${{ inputs.action }}" ]]; then
-          echo "::warning::No action file found at: ${{ inputs.action }}"
+        if [[ ! -f "${{ inputs.filename }}" ]]; then
+          echo "::warning::No filename found at: ${{ inputs.filename }}"
           exit 0
         fi
   
@@ -50,16 +58,24 @@ runs:
           EXTRA_ARGS="${EXTRA_ARGS} --outputColumns ${output_column}"
         done
         
+        for secret_column in ${SECRETS_COLUMNS[@]}; do
+          EXTRA_ARGS="${EXTRA_ARGS} --secretsColumns ${secret_column}"
+        done
+
+        if [[ -n "$REUSABLE" ]]; then
+          EXTRA_ARGS="${EXTRA_ARGS} --reusable"
+        fi
+
         if [[ -z "$BIN_PATH" ]]; then
           TEMP_DIR=$(mktemp -d)
           curl -sf https://gobinaries.com/github.com/tj-actions/auto-doc | PREFIX=$TEMP_DIR sh
           BIN_PATH="$TEMP_DIR/auto-doc"
         fi
-        
+
         echo "::debug::Generating documentation using ${BIN_PATH}..."
         echo "::debug::Extra args: ${EXTRA_ARGS}"
   
-        $BIN_PATH --action="${{ inputs.action }}" --output="${{ inputs.output }}" \
+        $BIN_PATH --filename="${{ inputs.filename }}" --output="${{ inputs.output }}" \
           --colMaxWidth="${{ inputs.col_max_width }}" --colMaxWords="${{ inputs.col_max_words }}" \
           ${EXTRA_ARGS} && exit_status=$? || exit_status=$?
 

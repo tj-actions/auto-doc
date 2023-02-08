@@ -117,13 +117,15 @@ Auto generate documentation for your github action.
 
 ### Options
 
-          --action string               action config file (default "action.yml")
+          --fileame string              action config file (default "action.yml")
           --colMaxWidth string          Max width of a column (default "1000")
           --colMaxWords string          Max number of words per line in a column (default "5")
       -h, --help                        help for auto-doc
           --inputColumns stringArray    list of input column names (default [Input,Type,Required,Default,Description])
           --output string               Output file (default "README.md")
           --outputColumns stringArray   list of output column names (default [Output,Type,Description])
+          --reusable                    parse and generate documentation for a reusable workflow
+          --secretsColumns stringArray  list of secrets column names (default [Secret,Required,Description])
 
 *   Free software: [Apache License 2.0](LICENSE)
 
