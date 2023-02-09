@@ -41,8 +41,8 @@ var inputAutoDocStart = fmt.Sprintf(autoDocStart, "INPUT")
 var inputAutoDocEnd = fmt.Sprintf(autoDocEnd, "INPUT")
 var outputAutoDocStart = fmt.Sprintf(autoDocStart, "OUTPUT")
 var outputAutoDocEnd = fmt.Sprintf(autoDocEnd, "OUTPUT")
-var secretAutoDocStart = fmt.Sprintf(autoDocStart, "SECRETS")
-var secretAutoDocEnd = fmt.Sprintf(autoDocEnd, "SECRETS")
+var secretsAutoDocStart = fmt.Sprintf(autoDocStart, "SECRETS")
+var secretsAutoDocEnd = fmt.Sprintf(autoDocEnd, "SECRETS")
 
 var defaultInputColumns = []string{"Input", "Type", "Required", "Default", "Description"}
 var defaultOutputColumns = []string{"Output", "Type", "Description"}
@@ -85,13 +85,14 @@ type Action struct {
 // Reusable represents the reusable workflow yaml
 type Reusable struct {
 	On struct {
-		Workflow_call struct {
+		WorkflowCall struct {
 			Inputs  map[string]Input  `yaml:"inputs,omitempty"`
 			Secrets map[string]Secret `yaml:"secrets,omitempty"`
-		}
+		} `yaml:"workflow_call"`
 	}
 }
 
+// Documentation is the interface for Action and Reusable
 type Documentation interface {
 	getData() error
 	renderOutput() error
@@ -273,12 +274,11 @@ func renderOutputOutput(o map[string]Output, maxWidth int, maxWords int) (*strin
 	return outputTableOutput, nil
 }
 
-func renderSecretOutput(o map[string]Secret, maxWidth int, maxWords int) (*strings.Builder, error) {
-
+func renderSecretOutput(s map[string]Secret, maxWidth int, maxWords int) (*strings.Builder, error) {
 	secretTableOutput := &strings.Builder{}
 
-	if len(o) > 0 {
-		_, err := fmt.Fprintln(secretTableOutput, secretAutoDocStart)
+	if len(s) > 0 {
+		_, err := fmt.Fprintln(secretTableOutput, secretsAutoDocStart)
 		if err != nil {
 			return secretTableOutput, err
 		}
@@ -289,8 +289,8 @@ func renderSecretOutput(o map[string]Secret, maxWidth int, maxWords int) (*strin
 		secretTable.SetCenterSeparator(pipeSeparator)
 		secretTable.SetAlignment(tablewriter.ALIGN_CENTER)
 
-		keys := make([]string, 0, len(o))
-		for k := range o {
+		keys := make([]string, 0, len(s))
+		for k := range s {
 			keys = append(keys, k)
 		}
 		sort.Strings(keys)
@@ -304,9 +304,9 @@ func renderSecretOutput(o map[string]Secret, maxWidth int, maxWords int) (*strin
 				case "Secret":
 					row = append(row, key)
 				case "Required":
-					row = append(row, fmt.Sprintf("%v", o[key].Required))
+					row = append(row, fmt.Sprintf("%v", s[key].Required))
 				case "Description":
-					row = append(row, o[key].Description)
+					row = append(row, s[key].Description)
 				default:
 					return secretTableOutput, fmt.Errorf(
 						"unknown secrets column: '%s'. Please specify any of the following columns: %s",
@@ -328,7 +328,7 @@ func renderSecretOutput(o map[string]Secret, maxWidth int, maxWords int) (*strin
 			return secretTableOutput, err
 		}
 
-		_, err = fmt.Fprint(secretTableOutput, secretAutoDocEnd)
+		_, err = fmt.Fprint(secretTableOutput, secretsAutoDocEnd)
 		if err != nil {
 			return secretTableOutput, err
 		}
@@ -368,8 +368,8 @@ func (r *Reusable) renderOutput() error {
 	if err != nil {
 		return err
 	}
-	inputTableOutput, err := renderInputOutput(r.On.Workflow_call.Inputs, maxWidth, maxWords)
-	secretTableOutput, err := renderSecretOutput(r.On.Workflow_call.Secrets, maxWidth, maxWords)
+	inputTableOutput, err := renderInputOutput(r.On.WorkflowCall.Inputs, maxWidth, maxWords)
+	secretTableOutput, err := renderSecretOutput(r.On.WorkflowCall.Secrets, maxWidth, maxWords)
 	err = writeDocumentation(inputTableOutput, secretTableOutput)
 	if err != nil {
 		return err
@@ -412,6 +412,20 @@ func writeDocumentation(in1, in2 *strings.Builder) error {
 	} else {
 		outputsStr := fmt.Sprintf("%s\n\n%v", outputsHeader, in2.String())
 		output = bytes.Replace(output, []byte(outputsHeader), []byte(outputsStr), -1)
+	}
+
+	hasSecretsData, secretsStartIndex, secretsEndIndex := hasBytesInBetween(
+		output,
+		[]byte(secretsHeader),
+		[]byte(secretsAutoDocEnd),
+	)
+
+	if hasSecretsData {
+		secretsStr := fmt.Sprintf("%s\n\n%v", secretsHeader, in2.String())
+		output = replaceBytesInBetween(output, secretsStartIndex, secretsEndIndex, []byte(secretsStr))
+	} else {
+		secretsStr := fmt.Sprintf("%s\n\n%v", secretsHeader, in2.String())
+		output = bytes.Replace(output, []byte(secretsHeader), []byte(secretsStr), -1)
 	}
 
 	if len(output) > 0 {
