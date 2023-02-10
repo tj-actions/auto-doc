@@ -62,7 +62,7 @@ runs:
           EXTRA_ARGS="${EXTRA_ARGS} --secretsColumns ${secret_column}"
         done
 
-        if [[ -n "$REUSABLE" ]]; then
+        if [[ "$REUSABLE" == “true” ]]; then
           EXTRA_ARGS="${EXTRA_ARGS} --reusable"
         fi
 
