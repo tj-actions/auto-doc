@@ -3,7 +3,7 @@ description: action.yml doc generator
 author: jackton1
 inputs:
   filename:
-    description: 'Path to the yml file'
+    description: 'Path to the yaml file'
     required: false
     default: action.yml
   col_max_width:
