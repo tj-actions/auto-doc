@@ -71,6 +71,7 @@ type Output struct {
 	Value       string `yaml:"default,omitempty"`
 }
 
+// ReusableOutput represents the output of the reusable workflow
 type ReusableOutput struct {
 	Description string `yaml:"description"`
 	Value       string `yaml:"value"`
