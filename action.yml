@@ -24,6 +24,9 @@ inputs:
   output_columns:
     description: 'List of Output column names to display, default (display all columns)'
     required: false
+  reusable_output_columns:
+    description: 'List of Output column names to display, default (display all columns)'
+    required: false
   secrets_columns:
     description: 'List of Secrets column names to display, default (display all columns)'
     required: false
@@ -44,7 +47,8 @@ runs:
         INPUT_COLUMNS=(${{ inputs.input_columns }})
         OUTPUT_COLUMNS=(${{ inputs.output_columns }})
         SECRETS_COLUMNS=(${{ inputs.secrets_columns }})
-        
+        REUSABLE_OUTPUT_COLUMNS=(${{ inputs.reusable_output_columns }})
+
         if [[ ! -f "${{ inputs.filename }}" ]]; then
           echo "::warning::No file found at: ${{ inputs.filename }}"
           exit 0
@@ -58,6 +62,10 @@ runs:
           EXTRA_ARGS="${EXTRA_ARGS} --outputColumns ${output_column}"
         done
         
+        for output_column in ${REUSABLE_OUTPUT_COLUMNS[@]}; do
+          EXTRA_ARGS="${EXTRA_ARGS} --reusableOutputColumns ${output_column}"
+        done
+
         for secret_column in ${SECRETS_COLUMNS[@]}; do
           EXTRA_ARGS="${EXTRA_ARGS} --secretsColumns ${secret_column}"
         done

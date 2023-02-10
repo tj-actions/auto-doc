@@ -43,15 +43,18 @@ Add the `Inputs` and/or `Outputs` [`H2` header](https://github.com/adam-p/markdo
 
 <!-- AUTO-DOC-INPUT:START - Do not remove or modify this section -->
 
-|     INPUT      |  TYPE  | REQUIRED |    DEFAULT     |                               DESCRIPTION                                |
-|----------------|--------|----------|----------------|--------------------------------------------------------------------------|
-|     action     | string |  false   | `"action.yml"` |                       Path to the action.yml file                        |
-|    bin\_path    | string |  false   |                |                       Path to the auto-doc binary                        |
-| col\_max\_width  | string |  false   |    `"1000"`    |                          Max width of a column                           |
-| col\_max\_words  | string |  false   |     `"6"`      |               Max number of words per line<br>in a column                |
-| input\_columns  | string |  false   |                | List of Input columns names to<br>display, default (display all columns) |
-|     output     | string |  false   | `"README.md"`  |                         Path to the output file                          |
-| output\_columns | string |  false   |                | List of Output column names to<br>display, default (display all columns) |
+|          INPUT          |  TYPE  | REQUIRED |    DEFAULT     |                                DESCRIPTION                                |
+|-------------------------|--------|----------|----------------|---------------------------------------------------------------------------|
+|        bin_path         | string |  false   |                |                        Path to the auto-doc binary                        |
+|      col_max_width      | string |  false   |    `"1000"`    |                           Max width of a column                           |
+|      col_max_words      | string |  false   |     `"6"`      |                Max number of words per line<br>in a column                |
+|        filename         | string |  false   | `"action.yml"` |                           Path to the yaml file                           |
+|      input_columns      | string |  false   |                | List of Input columns names to<br>display, default (display all columns)  |
+|         output          | string |  false   | `"README.md"`  |                          Path to the output file                          |
+|     output_columns      | string |  false   |                | List of Output column names to<br>display, default (display all columns)  |
+|        reusable         | string |  false   |                |                  Is the yaml file a reusable<br>workflow                  |
+| reusable_output_columns | string |  false   |                | List of Output column names to<br>display, default (display all columns)  |
+|     secrets_columns     | string |  false   |                | List of Secrets column names to<br>display, default (display all columns) |
 
 <!-- AUTO-DOC-INPUT:END -->
 
@@ -117,15 +120,16 @@ Auto generate documentation for your github action.
 
 ### Options
 
-          --filename string              action.yml or a reusable workflow yaml file (default "action.yml")
-          --colMaxWidth string          Max width of a column (default "1000")
-          --colMaxWords string          Max number of words per line in a column (default "5")
-      -h, --help                        help for auto-doc
-          --inputColumns stringArray    list of input column names (default [Input,Type,Required,Default,Description])
-          --output string               Output file (default "README.md")
-          --outputColumns stringArray   list of output column names (default [Output,Type,Description])
-          --reusable                    parse and generate documentation for a reusable workflow
-          --secretsColumns stringArray  list of secrets column names (default [Secret,Required,Description])
+          --filename string                     action.yml or a reusable workflow yaml file (default "action.yml")
+          --colMaxWidth string                  Max width of a column (default "1000")
+          --colMaxWords string                  Max number of words per line in a column (default "5")
+      -h, --help                                help for auto-doc
+          --inputColumns stringArray            list of input column names (default [Input,Type,Required,Default,Description])
+          --output string                       Output file (default "README.md")
+          --outputColumns stringArray           list of output column names (default [Output,Type,Description])
+          --reusable                            parse and generate documentation for a reusable workflow
+          --reusableOutputColumns stringArray   list of output column names (default [Output,Value,Description])
+          --secretsColumns stringArray          list of secrets column names (default [Secret,Required,Description])
 
 *   Free software: [Apache License 2.0](LICENSE)
 

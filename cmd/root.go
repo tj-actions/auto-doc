@@ -47,6 +47,7 @@ var secretsAutoDocEnd = fmt.Sprintf(autoDocEnd, "SECRETS")
 var defaultInputColumns = []string{"Input", "Type", "Required", "Default", "Description"}
 var defaultOutputColumns = []string{"Output", "Type", "Description"}
 var defaultSecretsColumns = []string{"Secret", "Required", "Description"}
+var defaultReusableOutputColumns = []string{"Output", "Value", "Description"}
 
 var documentFileName string
 var outputFileName string
@@ -54,6 +55,7 @@ var colMaxWidth string
 var colMaxWords string
 var inputColumns = defaultInputColumns
 var outputColumns = defaultOutputColumns
+var reusableOutputColumns = defaultReusableOutputColumns
 var secretsColumns = defaultSecretsColumns
 
 // Input represents the input of the action.yml
@@ -67,6 +69,11 @@ type Input struct {
 type Output struct {
 	Description string `yaml:"description"`
 	Value       string `yaml:"default,omitempty"`
+}
+
+type ReusableOutput struct {
+	Description string `yaml:"description"`
+	Value       string `yaml:"value"`
 }
 
 // Secret represents the secret of reusable workflows
@@ -85,8 +92,9 @@ type Action struct {
 type Reusable struct {
 	On struct {
 		WorkflowCall struct {
-			Inputs  map[string]Input  `yaml:"inputs,omitempty"`
-			Secrets map[string]Secret `yaml:"secrets,omitempty"`
+			Inputs  map[string]Input          `yaml:"inputs,omitempty"`
+			Secrets map[string]Secret         `yaml:"secrets,omitempty"`
+			Outputs map[string]ReusableOutput `yaml:"outputs,omitempty"`
 		} `yaml:"workflow_call"`
 	}
 }
@@ -273,6 +281,69 @@ func renderOutputOutput(o map[string]Output, maxWidth int, maxWords int) (*strin
 	return outputTableOutput, nil
 }
 
+func renderReusableOutputOutput(o map[string]ReusableOutput, maxWidth int, maxWords int) (*strings.Builder, error) {
+	outputTableOutput := &strings.Builder{}
+
+	if len(o) > 0 {
+		_, err := fmt.Fprintln(outputTableOutput, outputAutoDocStart)
+		if err != nil {
+			return outputTableOutput, err
+		}
+
+		outputTable := tablewriter.NewWriter(outputTableOutput)
+		outputTable.SetHeader(reusableOutputColumns)
+		outputTable.SetBorders(tablewriter.Border{Left: true, Top: false, Right: true, Bottom: false})
+		outputTable.SetCenterSeparator(pipeSeparator)
+		outputTable.SetAlignment(tablewriter.ALIGN_CENTER)
+
+		keys := make([]string, 0, len(o))
+		for k := range o {
+			keys = append(keys, k)
+		}
+		sort.Strings(keys)
+
+		outputTable.SetColWidth(maxWidth)
+		for _, key := range keys {
+			var row []string
+
+			for _, col := range reusableOutputColumns {
+				switch col {
+				case "Output":
+					row = append(row, key)
+				case "Value":
+					row = append(row, o[key].Value)
+				case "Description":
+					row = append(row, wordWrap(o[key].Description, maxWords))
+				default:
+					return outputTableOutput, fmt.Errorf(
+						"unknown output column: '%s'. Please specify any of the following columns: %s",
+						col,
+						strings.Join(defaultOutputColumns, ", "),
+					)
+				}
+			}
+			outputTable.Append(row)
+		}
+
+		_, err = fmt.Fprintln(outputTableOutput)
+		if err != nil {
+			return outputTableOutput, err
+		}
+		outputTable.Render()
+
+		_, err = fmt.Fprintln(outputTableOutput)
+		if err != nil {
+			return outputTableOutput, err
+		}
+
+		_, err = fmt.Fprint(outputTableOutput, outputAutoDocEnd)
+		if err != nil {
+			return outputTableOutput, err
+		}
+	}
+	return outputTableOutput, nil
+}
+
 func renderSecretOutput(s map[string]Secret, maxWidth int, maxWords int) (*strings.Builder, error) {
 	secretTableOutput := &strings.Builder{}
 
@@ -349,7 +420,7 @@ func (a *Action) renderOutput() error {
 
 	inputTableOutput, err := renderInputOutput(a.Inputs, maxWidth, maxWords)
 	outputTableOutput, err := renderOutputOutput(a.Outputs, maxWidth, maxWords)
-	err = writeDocumentation(inputTableOutput, outputTableOutput)
+	err = writeActionDocumentation(inputTableOutput, outputTableOutput)
 	if err != nil {
 		return err
 	}
@@ -369,14 +440,15 @@ func (r *Reusable) renderOutput() error {
 	}
 	inputTableOutput, err := renderInputOutput(r.On.WorkflowCall.Inputs, maxWidth, maxWords)
 	secretTableOutput, err := renderSecretOutput(r.On.WorkflowCall.Secrets, maxWidth, maxWords)
-	err = writeDocumentation(inputTableOutput, secretTableOutput)
+	outputTableOutput, err := renderReusableOutputOutput(r.On.WorkflowCall.Outputs, maxWidth, maxWords)
+	err = writeReusableDocumentation(inputTableOutput, outputTableOutput, secretTableOutput)
 	if err != nil {
 		return err
 	}
 	return nil
 }
 
-func writeDocumentation(in1, in2 *strings.Builder) error {
+func writeActionDocumentation(inputTable, outputTable *strings.Builder) error {
 	input, err := ioutil.ReadFile(outputFileName)
 
 	if err != nil {
@@ -392,10 +464,10 @@ func writeDocumentation(in1, in2 *strings.Builder) error {
 	)
 
 	if hasInputsData {
-		inputsStr := fmt.Sprintf("%s\n\n%v", inputsHeader, in1.String())
+		inputsStr := fmt.Sprintf("%s\n\n%v", inputsHeader, inputTable.String())
 		output = replaceBytesInBetween(input, inputStartIndex, inputEndIndex, []byte(inputsStr))
 	} else {
-		inputsStr := fmt.Sprintf("%s\n\n%v", inputsHeader, in1.String())
+		inputsStr := fmt.Sprintf("%s\n\n%v", inputsHeader, inputTable.String())
 		output = bytes.Replace(input, []byte(inputsHeader), []byte(inputsStr), -1)
 	}
 
@@ -406,10 +478,56 @@ func writeDocumentation(in1, in2 *strings.Builder) error {
 	)
 
 	if hasOutputsData {
-		outputsStr := fmt.Sprintf("%s\n\n%v", outputsHeader, in2.String())
+		outputsStr := fmt.Sprintf("%s\n\n%v", outputsHeader, outputTable.String())
 		output = replaceBytesInBetween(output, outputStartIndex, outputEndIndex, []byte(outputsStr))
 	} else {
-		outputsStr := fmt.Sprintf("%s\n\n%v", outputsHeader, in2.String())
+		outputsStr := fmt.Sprintf("%s\n\n%v", outputsHeader, outputTable.String())
+		output = bytes.Replace(output, []byte(outputsHeader), []byte(outputsStr), -1)
+	}
+
+	if len(output) > 0 {
+		if err = ioutil.WriteFile(outputFileName, output, 0666); err != nil {
+			cobra.CheckErr(err)
+		}
+	}
+
+	return nil
+}
+
+func writeReusableDocumentation(inputTable, outputTable, secretsTable *strings.Builder) error {
+	input, err := ioutil.ReadFile(outputFileName)
+
+	if err != nil {
+		return err
+	}
+
+	var output []byte
+
+	hasInputsData, inputStartIndex, inputEndIndex := hasBytesInBetween(
+		input,
+		[]byte(inputsHeader),
+		[]byte(inputAutoDocEnd),
+	)
+
+	if hasInputsData {
+		inputsStr := fmt.Sprintf("%s\n\n%v", inputsHeader, inputTable.String())
+		output = replaceBytesInBetween(input, inputStartIndex, inputEndIndex, []byte(inputsStr))
+	} else {
+		inputsStr := fmt.Sprintf("%s\n\n%v", inputsHeader, inputTable.String())
+		output = bytes.Replace(input, []byte(inputsHeader), []byte(inputsStr), -1)
+	}
+
+	hasOutputsData, outputStartIndex, outputEndIndex := hasBytesInBetween(
+		output,
+		[]byte(outputsHeader),
+		[]byte(outputAutoDocEnd),
+	)
+
+	if hasOutputsData {
+		outputsStr := fmt.Sprintf("%s\n\n%v", outputsHeader, outputTable.String())
+		output = replaceBytesInBetween(output, outputStartIndex, outputEndIndex, []byte(outputsStr))
+	} else {
+		outputsStr := fmt.Sprintf("%s\n\n%v", outputsHeader, outputTable.String())
 		output = bytes.Replace(output, []byte(outputsHeader), []byte(outputsStr), -1)
 	}
 
@@ -420,10 +538,10 @@ func writeDocumentation(in1, in2 *strings.Builder) error {
 	)
 
 	if hasSecretsData {
-		secretsStr := fmt.Sprintf("%s\n\n%v", secretsHeader, in2.String())
+		secretsStr := fmt.Sprintf("%s\n\n%v", secretsHeader, secretsTable.String())
 		output = replaceBytesInBetween(output, secretsStartIndex, secretsEndIndex, []byte(secretsStr))
 	} else {
-		secretsStr := fmt.Sprintf("%s\n\n%v", secretsHeader, in2.String())
+		secretsStr := fmt.Sprintf("%s\n\n%v", secretsHeader, secretsTable.String())
 		output = bytes.Replace(output, []byte(secretsHeader), []byte(secretsStr), -1)
 	}
 
@@ -525,6 +643,12 @@ func RootCmdFlags(cmd *cobra.Command) {
 		&outputColumns,
 		"outputColumns",
 		defaultOutputColumns,
+		"list of output column names",
+	)
+	cmd.Flags().StringArrayVar(
+		&reusableOutputColumns,
+		"reusableOutputColumns",
+		defaultReusableOutputColumns,
 		"list of output column names",
 	)
 	cmd.Flags().StringArrayVar(
