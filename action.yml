@@ -46,7 +46,7 @@ runs:
         SECRETS_COLUMNS=(${{ inputs.secrets_columns }})
         
         if [[ ! -f "${{ inputs.filename }}" ]]; then
-          echo "::warning::No filename found at: ${{ inputs.filename }}"
+          echo "::warning::No file found at: ${{ inputs.filename }}"
           exit 0
         fi
   
