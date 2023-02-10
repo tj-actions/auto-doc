@@ -49,7 +49,6 @@ var defaultOutputColumns = []string{"Output", "Type", "Description"}
 var defaultSecretsColumns = []string{"Secret", "Required", "Description"}
 
 var documentFileName string
-var reusable bool
 var outputFileName string
 var colMaxWidth string
 var colMaxWords string
