@@ -420,11 +420,20 @@ func (a *Action) renderOutput() error {
 	}
 
 	inputTableOutput, err := renderInputOutput(a.Inputs, maxWidth, maxWords)
+	if err != nil {
+		return err
+	}
+
 	outputTableOutput, err := renderOutputOutput(a.Outputs, maxWidth, maxWords)
+	if err != nil {
+		return err
+	}
+
 	err = writeActionDocumentation(inputTableOutput, outputTableOutput)
 	if err != nil {
 		return err
 	}
+
 	return nil
 }
 
@@ -440,12 +449,25 @@ func (r *Reusable) renderOutput() error {
 		return err
 	}
 	inputTableOutput, err := renderInputOutput(r.On.WorkflowCall.Inputs, maxWidth, maxWords)
+	if err != nil {
+		return err
+	}
+
 	secretTableOutput, err := renderSecretOutput(r.On.WorkflowCall.Secrets, maxWidth, maxWords)
+	if err != nil {
+		return err
+	}
+
 	outputTableOutput, err := renderReusableOutputOutput(r.On.WorkflowCall.Outputs, maxWidth, maxWords)
+	if err != nil {
+		return err
+	}
+
 	err = writeReusableDocumentation(inputTableOutput, outputTableOutput, secretTableOutput)
 	if err != nil {
 		return err
 	}
+
 	return nil
 }
 
