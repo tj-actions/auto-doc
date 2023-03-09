@@ -131,7 +131,6 @@ go get -u github.com/tj-actions/auto-doc
 #### Install using Homebrew:
 
 ```shell script
-brew tap tj-actions/tap
 brew install tj-actions/tap/auto-doc
 ```
 
