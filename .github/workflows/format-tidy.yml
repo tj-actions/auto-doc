@@ -8,7 +8,7 @@ on:
       - '.github/workflows/format.yml'
     branches:
       - 'main'
-  pull_request:
+  pull_request_target:
     paths:
       - '**.go'
       - '**.mod'
