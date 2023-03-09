@@ -39,9 +39,6 @@ inputs:
   reusable:
     description: 'Boolean Indicating whether the file is a reusable workflow'
     required: false
-  version:
-    description: 'The version number to run'
-    required: false
 
 runs:
   using: 'composite'
@@ -50,7 +47,6 @@ runs:
         EXTRA_ARGS=""
         BIN_PATH="${{ inputs.bin_path }}"
         REUSABLE="${{ inputs.reusable }}"
-        VERSION="${{ inputs.version }}"
         # action.yml file
         INPUT_COLUMNS=(${{ inputs.input_columns }})
         OUTPUT_COLUMNS=(${{ inputs.output_columns }})
@@ -92,11 +88,7 @@ runs:
 
         if [[ -z "$BIN_PATH" ]]; then
           TEMP_DIR=$(mktemp -d)
-          if [[ -z "$VERSION" ]]; then
-            curl -sf https://gobinaries.com/github.com/tj-actions/auto-doc | PREFIX=$TEMP_DIR sh
-          else
-            curl -sf https://gobinaries.com/github.com/tj-actions/auto-doc@$VERSION | PREFIX=$TEMP_DIR sh
-          fi
+          curl -sf https://gobinaries.com/github.com/tj-actions/auto-doc | PREFIX=$TEMP_DIR sh
           BIN_PATH="$TEMP_DIR/auto-doc"
         fi
 
