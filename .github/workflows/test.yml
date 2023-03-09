@@ -4,11 +4,14 @@ on:
   pull_request:
     branches:
       - main
+  push:
+    tags: "**"
 
 jobs:
   snapshot:
     name: snapshot
     runs-on: ubuntu-latest
+    if: !startsWith(github.ref, 'refs/tags/')
     steps:
       - uses: actions/checkout@v3
 
@@ -126,28 +129,44 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-go-
 
+      - name: Get branch name
+        id: branch-name
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: tj-actions/branch-names@v6
+        with:
+          strip_tag_prefix: v
+
+      - name: Test action
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: ./
+        with:
+          version: ${{ steps.branch-name.outputs.tag }}
+
       - name: Run build
+        if: !startsWith(github.ref, 'refs/tags/')
         run: make build
       
       - name: Test action with bin_path
+        if: !startsWith(github.ref, 'refs/tags/')
         uses: ./
         with:
           bin_path: ./bin/auto_doc
 
       - name: Run auto-doc using the test directory
+        if: !startsWith(github.ref, 'refs/tags/')
         run: make test
 
       - name: Run auto-doc using the top level directory
         run: make run
-        if: github.event.pull_request.head.repo.owner.login == github.repository_owner
+        if: !startsWith(github.ref, 'refs/tags/') && github.event.pull_request.head.repo.owner.login == github.repository_owner
           
       - name: Format markdown
         uses: tj-actions/remark@v3
-        if: github.event.pull_request.head.repo.owner.login == github.repository_owner
+        if: !startsWith(github.ref, 'refs/tags/') && github.event.pull_request.head.repo.owner.login == github.repository_owner
 
       - name: Verify Changed files
         uses: tj-actions/verify-changed-files@v13
-        if: github.event.pull_request.head.repo.owner.login == github.repository_owner
+        if: !startsWith(github.ref, 'refs/tags/') && github.event.pull_request.head.repo.owner.login == github.repository_owner
         id: verify-changed-files
         with:
           files: |
@@ -155,7 +174,7 @@ jobs:
             test/**
 
       - name: Commit README changes
-        if: github.event.pull_request.head.repo.owner.login == github.repository_owner && steps.verify-changed-files.outputs.files_changed == 'true'
+        if: !startsWith(github.ref, 'refs/tags/') && github.event.pull_request.head.repo.owner.login == github.repository_owner && steps.verify-changed-files.outputs.files_changed == 'true'
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
@@ -163,7 +182,7 @@ jobs:
           git commit -m "Updated README."
 
       - name: Push README changes
-        if: github.event.pull_request.head.repo.owner.login == github.repository_owner && steps.verify-changed-files.outputs.files_changed == 'true'
+        if: !startsWith(github.ref, 'refs/tags/') && github.event.pull_request.head.repo.owner.login == github.repository_owner && steps.verify-changed-files.outputs.files_changed == 'true'
         uses: ad-m/github-push-action@master
         continue-on-error: true
         with:
