@@ -95,8 +95,8 @@ runs:
         fi
 
         if [[ -z "$BIN_PATH" ]]; then
-          echo "Downloading auto-doc binary..."
           LATEST_VERSION=$VERSION
+          echo "Downloading auto-doc $LATEST_VERSION binary..."
 
           # Download the latest version
           WINDOWS_TARGET=Windows_x86_64
