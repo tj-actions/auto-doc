@@ -51,17 +51,17 @@ type ReusableSecret struct {
 
 // Reusable represents the reusable workflow yaml
 type Reusable struct {
-	InputFileName string
+	InputFileName  string
 	OutputFileName string
-	ColMaxWidth string
-	ColMaxWords string
-	InputColumns []string
-	OutputColumns []string
-	SecretColumns []string
-	On struct {
+	ColMaxWidth    string
+	ColMaxWords    string
+	InputColumns   []string
+	OutputColumns  []string
+	SecretColumns  []string
+	On             struct {
 		WorkflowCall struct {
-			Inputs  map[string]ReusableInput          `yaml:"inputs,omitempty"`
-			Secrets map[string]ReusableSecret         `yaml:"secrets,omitempty"`
+			Inputs  map[string]ReusableInput  `yaml:"inputs,omitempty"`
+			Secrets map[string]ReusableSecret `yaml:"secrets,omitempty"`
 			Outputs map[string]ReusableOutput `yaml:"outputs,omitempty"`
 		} `yaml:"workflow_call"`
 	}
@@ -175,7 +175,7 @@ func (r *Reusable) RenderOutput() error {
 }
 
 // renderReusableInputTableOutput renders the reusable workflow input table
-func renderReusableInputTableOutput(i map[string]ReusableInput, inputColumns[]string, maxWidth int, maxWords int) (*strings.Builder, error) {
+func renderReusableInputTableOutput(i map[string]ReusableInput, inputColumns []string, maxWidth int, maxWords int) (*strings.Builder, error) {
 	inputTableOutput := &strings.Builder{}
 
 	if len(i) > 0 {
@@ -245,7 +245,7 @@ func renderReusableInputTableOutput(i map[string]ReusableInput, inputColumns[]st
 }
 
 // renderReusableOutputTableOutput renders the reusable workflow output table
-func renderReusableOutputTableOutput(o map[string]ReusableOutput, reusableOutputColumns[]string, maxWidth int, maxWords int) (*strings.Builder, error) {
+func renderReusableOutputTableOutput(o map[string]ReusableOutput, reusableOutputColumns []string, maxWidth int, maxWords int) (*strings.Builder, error) {
 	outputTableOutput := &strings.Builder{}
 
 	if len(o) > 0 {
@@ -309,7 +309,7 @@ func renderReusableOutputTableOutput(o map[string]ReusableOutput, reusableOutput
 }
 
 // renderReusableSecretTableOutput renders the reusable workflow secret table
-func renderReusableSecretTableOutput(s map[string]ReusableSecret, secretColumns[]string, maxWidth int, maxWords int) (*strings.Builder, error) {
+func renderReusableSecretTableOutput(s map[string]ReusableSecret, secretColumns []string, maxWidth int, maxWords int) (*strings.Builder, error) {
 	secretTableOutput := &strings.Builder{}
 
 	if len(s) > 0 {

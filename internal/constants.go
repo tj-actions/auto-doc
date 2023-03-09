@@ -20,28 +20,40 @@ import "fmt"
 
 // InputsHeader represents the markdown header of inputs
 const InputsHeader = "## Inputs"
+
 // OutputsHeader represents the markdown header of outputs
 const OutputsHeader = "## Outputs"
+
 // SecretsHeader represents the markdown header of secrets
 const SecretsHeader = "## Secrets"
+
 // AutoDocStart placeholder that represents the start of the input table
 const AutoDocStart = "<!-- AUTO-DOC-%s:START - Do not remove or modify this section -->"
+
 // AutoDocEnd placeholder that represents the end of the input table
 const AutoDocEnd = "<!-- AUTO-DOC-%s:END -->"
+
 // PipeSeparator represents the separator used for the distinguishing between columns
 const PipeSeparator = "|"
+
 // NewLineSeparator used for splitting lines
 const NewLineSeparator = "\n"
+
 // InputAutoDocStart is the start of the input
 var InputAutoDocStart = fmt.Sprintf(AutoDocStart, "INPUT")
+
 // InputAutoDocEnd is the end of the input
 var InputAutoDocEnd = fmt.Sprintf(AutoDocEnd, "INPUT")
+
 // OutputAutoDocStart is the start of the output
 var OutputAutoDocStart = fmt.Sprintf(AutoDocStart, "OUTPUT")
+
 // OutputAutoDocEnd is the end of the output
 var OutputAutoDocEnd = fmt.Sprintf(AutoDocEnd, "OUTPUT")
+
 // SecretsAutoDocStart is the start of the secrets
 var SecretsAutoDocStart = fmt.Sprintf(AutoDocStart, "SECRETS")
+
 // SecretsAutoDocEnd is the end of the secrets
 var SecretsAutoDocEnd = fmt.Sprintf(AutoDocEnd, "SECRETS")
 
@@ -49,15 +61,17 @@ var SecretsAutoDocEnd = fmt.Sprintf(AutoDocEnd, "SECRETS")
 
 // DefaultActionInputColumns default values
 var DefaultActionInputColumns = []string{"Input", "Type", "Required", "Default", "Description"}
+
 // DefaultActionOutputColumns default values
 var DefaultActionOutputColumns = []string{"Output", "Type", "Description"}
-
 
 // Reusable workflows
 
 // DefaultReusableSecretColumns default values
 var DefaultReusableSecretColumns = []string{"Secret", "Required", "Description"}
+
 // DefaultReusableOutputColumns default values
 var DefaultReusableOutputColumns = []string{"Output", "Value", "Description"}
+
 // DefaultReusableInputColumns default values
 var DefaultReusableInputColumns = []string{"Input", "Type", "Required", "Default", "Description"}

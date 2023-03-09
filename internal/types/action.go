@@ -45,14 +45,14 @@ type ActionOutput struct {
 
 // Action represents the action.yml
 type Action struct {
-	InputFileName string
+	InputFileName  string
 	OutputFileName string
-	ColMaxWidth string
-	ColMaxWords string
-	InputColumns []string
-	OutputColumns []string
-	Inputs  map[string]ActionInput  `yaml:"inputs,omitempty"`
-	Outputs map[string]ActionOutput `yaml:"outputs,omitempty"`
+	ColMaxWidth    string
+	ColMaxWords    string
+	InputColumns   []string
+	OutputColumns  []string
+	Inputs         map[string]ActionInput  `yaml:"inputs,omitempty"`
+	Outputs        map[string]ActionOutput `yaml:"outputs,omitempty"`
 }
 
 // GetData parses the source yaml file
@@ -145,7 +145,7 @@ func (a *Action) RenderOutput() error {
 }
 
 // renderActionOutputTableOutput renders the action input table
-func renderActionInputTableOutput(i map[string]ActionInput, inputColumns[]string, maxWidth int, maxWords int) (*strings.Builder, error) {
+func renderActionInputTableOutput(i map[string]ActionInput, inputColumns []string, maxWidth int, maxWords int) (*strings.Builder, error) {
 	inputTableOutput := &strings.Builder{}
 
 	if len(i) > 0 {
@@ -215,7 +215,7 @@ func renderActionInputTableOutput(i map[string]ActionInput, inputColumns[]string
 }
 
 // renderActionOutputTableOutput renders the action output table
-func renderActionOutputTableOutput(o map[string]ActionOutput, outputColumns[]string, maxWidth int, maxWords int) (*strings.Builder, error) {
+func renderActionOutputTableOutput(o map[string]ActionOutput, outputColumns []string, maxWidth int, maxWords int) (*strings.Builder, error) {
 	outputTableOutput := &strings.Builder{}
 
 	if len(o) > 0 {
