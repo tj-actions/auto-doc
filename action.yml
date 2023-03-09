@@ -70,7 +70,7 @@ runs:
         done
 
         # reusable workflow
-        if [[ "$REUSABLE" == “true” ]]; then
+        if [[ "$REUSABLE" == "true" ]]; then
           EXTRA_ARGS="${EXTRA_ARGS} --reusable"
         fi
 
