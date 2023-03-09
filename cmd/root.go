@@ -66,22 +66,22 @@ func RootCmdRunE(cmd *cobra.Command, args []string) error {
 
 	if reusable {
 		documentation = &types.Reusable{
-			InputFileName: fileName,
+			InputFileName:  fileName,
 			OutputFileName: outputFileName,
-			ColMaxWidth: colMaxWidth,
-			ColMaxWords: colMaxWords,
-			InputColumns: reusableInputColumns,
-			OutputColumns: reusableOutputColumns,
-			SecretColumns: reusableSecretColumns,
+			ColMaxWidth:    colMaxWidth,
+			ColMaxWords:    colMaxWords,
+			InputColumns:   reusableInputColumns,
+			OutputColumns:  reusableOutputColumns,
+			SecretColumns:  reusableSecretColumns,
 		}
 	} else {
 		documentation = &types.Action{
-			InputFileName: fileName,
+			InputFileName:  fileName,
 			OutputFileName: outputFileName,
-			ColMaxWidth: colMaxWidth,
-			ColMaxWords: colMaxWords,
-			InputColumns: inputColumns,
-			OutputColumns: outputColumns,
+			ColMaxWidth:    colMaxWidth,
+			ColMaxWords:    colMaxWords,
+			InputColumns:   inputColumns,
+			OutputColumns:  outputColumns,
 		}
 	}
 

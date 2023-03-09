@@ -1,3 +1,19 @@
+//Package types contains all defined types
+/*
+Copyright © 2021 Tonye Jack <jtonye@ymail.com>
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+*/
 package types
 
 import (
@@ -35,22 +51,23 @@ type ReusableSecret struct {
 
 // Reusable represents the reusable workflow yaml
 type Reusable struct {
-	InputFileName string
+	InputFileName  string
 	OutputFileName string
-	ColMaxWidth string
-	ColMaxWords string
-	InputColumns []string
-	OutputColumns []string
-	SecretColumns []string
-	On struct {
+	ColMaxWidth    string
+	ColMaxWords    string
+	InputColumns   []string
+	OutputColumns  []string
+	SecretColumns  []string
+	On             struct {
 		WorkflowCall struct {
-			Inputs  map[string]ReusableInput          `yaml:"inputs,omitempty"`
-			Secrets map[string]ReusableSecret         `yaml:"secrets,omitempty"`
+			Inputs  map[string]ReusableInput  `yaml:"inputs,omitempty"`
+			Secrets map[string]ReusableSecret `yaml:"secrets,omitempty"`
 			Outputs map[string]ReusableOutput `yaml:"outputs,omitempty"`
 		} `yaml:"workflow_call"`
 	}
 }
 
+// GetData parses the source yaml file
 func (r *Reusable) GetData() error {
 	reusableYaml, err := os.ReadFile(r.InputFileName)
 	if err != nil {
@@ -61,6 +78,7 @@ func (r *Reusable) GetData() error {
 	return err
 }
 
+// WriteDocumentation write the table to the output file
 func (r *Reusable) WriteDocumentation(inputTable, outputTable, secretsTable *strings.Builder) error {
 	input, err := os.ReadFile(r.OutputFileName)
 
@@ -121,6 +139,7 @@ func (r *Reusable) WriteDocumentation(inputTable, outputTable, secretsTable *str
 	return nil
 }
 
+// RenderOutput renders the output and writes it to the given output
 func (r *Reusable) RenderOutput() error {
 	var err error
 	maxWidth, err := strconv.Atoi(r.ColMaxWidth)
@@ -155,7 +174,8 @@ func (r *Reusable) RenderOutput() error {
 	return nil
 }
 
-func renderReusableInputTableOutput(i map[string]ReusableInput, inputColumns[]string, maxWidth int, maxWords int) (*strings.Builder, error) {
+// renderReusableInputTableOutput renders the reusable workflow input table
+func renderReusableInputTableOutput(i map[string]ReusableInput, inputColumns []string, maxWidth int, maxWords int) (*strings.Builder, error) {
 	inputTableOutput := &strings.Builder{}
 
 	if len(i) > 0 {
@@ -224,7 +244,8 @@ func renderReusableInputTableOutput(i map[string]ReusableInput, inputColumns[]st
 	return inputTableOutput, nil
 }
 
-func renderReusableOutputTableOutput(o map[string]ReusableOutput, reusableOutputColumns[]string, maxWidth int, maxWords int) (*strings.Builder, error) {
+// renderReusableOutputTableOutput renders the reusable workflow output table
+func renderReusableOutputTableOutput(o map[string]ReusableOutput, reusableOutputColumns []string, maxWidth int, maxWords int) (*strings.Builder, error) {
 	outputTableOutput := &strings.Builder{}
 
 	if len(o) > 0 {
@@ -287,7 +308,8 @@ func renderReusableOutputTableOutput(o map[string]ReusableOutput, reusableOutput
 	return outputTableOutput, nil
 }
 
-func renderReusableSecretTableOutput(s map[string]ReusableSecret, secretColumns[]string, maxWidth int, maxWords int) (*strings.Builder, error) {
+// renderReusableSecretTableOutput renders the reusable workflow secret table
+func renderReusableSecretTableOutput(s map[string]ReusableSecret, secretColumns []string, maxWidth int, maxWords int) (*strings.Builder, error) {
 	secretTableOutput := &strings.Builder{}
 
 	if len(s) > 0 {
