@@ -18,23 +18,26 @@ inputs:
     description: 'Path to the output file'
     required: false
     default: README.md
-  input_columns:
-    description: 'List of Input columns names to display, default (display all columns)'
-    required: false
-  output_columns:
-    description: 'List of Output column names to display, default (display all columns)'
-    required: false
-  reusable_output_columns:
-    description: 'List of Output column names to display, default (display all columns)'
-    required: false
-  secrets_columns:
-    description: 'List of Secrets column names to display, default (display all columns)'
-    required: false
   bin_path:
     description: 'Path to the auto-doc binary'
     required: false
+  input_columns:
+    description: 'List of action.yml **input** columns names to display, default (display all columns)'
+    required: false
+  output_columns:
+    description: 'List of action.yml **output** column names to display, default (display all columns)'
+    required: false
+  reusable_output_columns:
+    description: 'List of reusable workflow **output** column names to display, default (display all columns)'
+    required: false
+  reusable_input_columns:
+    description: 'List of reusable workflow **input** column names to display, default (display all columns)'
+    required: false
+  reusable_secret_columns:
+    description: 'List of reusable workflow **secret** column names to display, default (display all columns)'
+    required: false
   reusable:
-    description: 'Is the yaml file a reusable workflow'
+    description: 'Boolean Indicating whether the file is a reusable workflow'
     required: false
 
 runs:
@@ -44,35 +47,44 @@ runs:
         EXTRA_ARGS=""
         BIN_PATH="${{ inputs.bin_path }}"
         REUSABLE="${{ inputs.reusable }}"
+        # action.yml file
         INPUT_COLUMNS=(${{ inputs.input_columns }})
         OUTPUT_COLUMNS=(${{ inputs.output_columns }})
-        SECRETS_COLUMNS=(${{ inputs.secrets_columns }})
-        REUSABLE_OUTPUT_COLUMNS=(${{ inputs.reusable_output_columns }})
+        # reusable workflow
+        REUSABLE_SECRETS_COLUMNS=(${{ inputs.reusable_secret_columns }})
+        REUSABLE_INPUTS_COLUMNS=(${{ inputs.reusable_inputs_columns }})
+        REUSABLE_OUTPUTS_COLUMNS=(${{ inputs.reusable_outputs_columns }})
 
         if [[ ! -f "${{ inputs.filename }}" ]]; then
           echo "::warning::No file found at: ${{ inputs.filename }}"
           exit 0
         fi
-  
+
+        # action.yml file
         for input_column in ${INPUT_COLUMNS[@]}; do
           EXTRA_ARGS="${EXTRA_ARGS} --inputColumns ${input_column}"
         done
-  
+
         for output_column in ${OUTPUT_COLUMNS[@]}; do
           EXTRA_ARGS="${EXTRA_ARGS} --outputColumns ${output_column}"
         done
-        
-        for output_column in ${REUSABLE_OUTPUT_COLUMNS[@]}; do
-          EXTRA_ARGS="${EXTRA_ARGS} --reusableOutputColumns ${output_column}"
-        done
 
-        for secret_column in ${SECRETS_COLUMNS[@]}; do
-          EXTRA_ARGS="${EXTRA_ARGS} --secretsColumns ${secret_column}"
-        done
-
+        # reusable workflow
         if [[ "$REUSABLE" == “true” ]]; then
           EXTRA_ARGS="${EXTRA_ARGS} --reusable"
         fi
+
+        for reusable_input_column in ${REUSABLE_INPUT_COLUMNS[@]}; do
+          EXTRA_ARGS="${EXTRA_ARGS} --reusableInputColumns ${reusable_input_column}"
+        done
+
+        for reusable_output_column in ${REUSABLE_OUTPUT_COLUMNS[@]}; do
+          EXTRA_ARGS="${EXTRA_ARGS} --reusableOutputColumns ${reusable_output_column}"
+        done
+
+        for reusable_secret_column in ${REUSABLE_SECRET_COLUMNS[@]}; do
+          EXTRA_ARGS="${EXTRA_ARGS} --reusableSecretColumns ${reusable_secret_column}"
+        done
 
         if [[ -z "$BIN_PATH" ]]; then
           TEMP_DIR=$(mktemp -d)

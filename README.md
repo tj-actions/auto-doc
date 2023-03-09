@@ -30,7 +30,7 @@ GitHub Action that generates beautiful, easy-to-read markdown tables with just a
 
 ## Usage
 
-Add the `Inputs` and/or `Outputs` [`H2` header](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#headers) to any markdown file.
+Add the `Inputs` and/or `Outputs` and/or `Secrets` [`H2` header](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#headers) to any markdown file.
 
 ```yaml
 ...
@@ -44,18 +44,19 @@ Add the `Inputs` and/or `Outputs` [`H2` header](https://github.com/adam-p/markdo
 
 <!-- AUTO-DOC-INPUT:START - Do not remove or modify this section -->
 
-|          INPUT          |  TYPE  | REQUIRED |    DEFAULT     |                                DESCRIPTION                                |
-|-------------------------|--------|----------|----------------|---------------------------------------------------------------------------|
-|        bin_path         | string |  false   |                |                        Path to the auto-doc binary                        |
-|      col_max_width      | string |  false   |    `"1000"`    |                           Max width of a column                           |
-|      col_max_words      | string |  false   |     `"6"`      |                Max number of words per line<br>in a column                |
-|        filename         | string |  false   | `"action.yml"` |                           Path to the yaml file                           |
-|      input_columns      | string |  false   |                | List of Input columns names to<br>display, default (display all columns)  |
-|         output          | string |  false   | `"README.md"`  |                          Path to the output file                          |
-|     output_columns      | string |  false   |                | List of Output column names to<br>display, default (display all columns)  |
-|        reusable         | string |  false   |                |                  Is the yaml file a reusable<br>workflow                  |
-| reusable_output_columns | string |  false   |                | List of Output column names to<br>display, default (display all columns)  |
-|     secrets_columns     | string |  false   |                | List of Secrets column names to<br>display, default (display all columns) |
+|          INPUT          |  TYPE  | REQUIRED |    DEFAULT     |                                            DESCRIPTION                                             |
+|-------------------------|--------|----------|----------------|----------------------------------------------------------------------------------------------------|
+|        bin_path         | string |  false   |                |                                    Path to the auto-doc binary                                     |
+|      col_max_width      | string |  false   |    `"1000"`    |                                       Max width of a column                                        |
+|      col_max_words      | string |  false   |     `"6"`      |                            Max number of words per line<br>in a column                             |
+|        filename         | string |  false   | `"action.yml"` |                                       Path to the yaml file                                        |
+|      input_columns      | string |  false   |                |      List of action.yml **input** columns names<br>to display, default (display all columns)       |
+|         output          | string |  false   | `"README.md"`  |                                      Path to the output file                                       |
+|     output_columns      | string |  false   |                |      List of action.yml **output** column names<br>to display, default (display all columns)       |
+|        reusable         | string |  false   |                |                   Boolean Indicating whether the file is<br>a reusable workflow                    |
+| reusable_input_columns  | string |  false   |                | List of reusable workflow **input** column<br> names to display, default (display all<br>columns)  |
+| reusable_output_columns | string |  false   |                | List of reusable workflow **output** column<br> names to display, default (display all<br>columns) |
+| reusable_secret_columns | string |  false   |                | List of reusable workflow **secret** column<br> names to display, default (display all<br>columns) |
 
 <!-- AUTO-DOC-INPUT:END -->
 
@@ -119,18 +120,20 @@ Auto generate documentation for your github action.
 
     auto-doc [flags]
 
-### Options
+### Flags
 
-          --filename string                     action.yml or a reusable workflow yaml file (default "action.yml")
-          --colMaxWidth string                  Max width of a column (default "1000")
-          --colMaxWords string                  Max number of words per line in a column (default "5")
-      -h, --help                                help for auto-doc
-          --inputColumns stringArray            list of input column names (default [Input,Type,Required,Default,Description])
-          --output string                       Output file (default "README.md")
-          --outputColumns stringArray           list of output column names (default [Output,Type,Description])
-          --reusable                            parse and generate documentation for a reusable workflow
-          --reusableOutputColumns stringArray   list of output column names (default [Output,Value,Description])
-          --secretsColumns stringArray          list of secrets column names (default [Secret,Required,Description])
+    --colMaxWidth string                  Max width of a column (default "1000")
+    --colMaxWords string                  Max number of words per line in a column (default "6")
+    -f, --filename string                 config file
+    -h, --help                            help for auto-doc
+    --inputColumns stringArray            list of input column names (default [Input,Type,Required,Default,Description])
+    -o, --output string                   Output file (default "README.md")
+    --outputColumns stringArray           list of output column names (default [Output,Type,Description])
+    -r, --reusable                        A reusable workflow
+    --reusableInputColumns stringArray    list of reusable input column names (default [Input,Type,Required,Default,Description])
+    --reusableOutputColumns stringArray   list of reusable output column names (default [Output,Value,Description])
+    --reusableSecretColumns stringArray   list of reusable secrets column names (default [Secret,Required,Description])
+
 
 *   Free software: [Apache License 2.0](LICENSE)
 

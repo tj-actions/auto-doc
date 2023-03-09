@@ -1,7 +1,7 @@
 # Self-Documented Makefile see https://marmelab.com/blog/2016/02/29/auto-documented-makefile.html
 
 OUTPUT := README.md
-ACTION := action.yml
+FILENAME := action.yml
 
 .DEFAULT_GOAL := help
 
@@ -24,9 +24,16 @@ build: clean  ## Compile go modules
 	@go build -o ./bin/auto_doc *.go
 
 .PHONY: run
-run: build guard-OUTPUT guard-ACTION  ## Execute binary
+run: build guard-OUTPUT guard-FILENAME  ## Execute binary
 	@echo "Running auto doc..."
-	@./bin/auto_doc --action=$(ACTION) --output=$(OUTPUT)
+	@./bin/auto_doc --filename=$(FILENAME) --output=$(OUTPUT)
+	@$(MAKE) clean
+
+.PHONY: run-help
+run-help: build guard-OUTPUT guard-FILENAME  ## Execute binary
+	@echo "Running auto doc help..."
+	@echo ""
+	@./bin/auto_doc --help
 	@$(MAKE) clean
 
 .PHONY: test
