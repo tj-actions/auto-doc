@@ -40,3 +40,14 @@ changelog:
     exclude:
       - '^docs:'
       - '^test:'
+brews:
+  - name: auto-doc
+    homepage: https://github.com/tj-actions/auto-doc
+    description: Generate markdown tables for your Github action and reusable workflow with ease.
+    tap:
+      owner: tj-actions
+      name: homebrew-tap
+      branch: main
+      token: "{{ .Env.HOMEBREW_TAP_GITHUB_TOKEN }}"
+    license: "Apache-2.0"
+    folder: Formula
