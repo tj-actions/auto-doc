@@ -1,12 +1,17 @@
 # Changelog
 
-## [v2.0.2](https://github.com/tj-actions/auto-doc/tree/v2.0.2) (2023-03-09)
+## [v2.1.0](https://github.com/tj-actions/auto-doc/tree/v2.1.0) (2023-03-09)
 
-[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v2...v2.0.2)
+[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v2...v2.1.0)
 
 ## [v2](https://github.com/tj-actions/auto-doc/tree/v2) (2023-03-09)
 
 [Full Changelog](https://github.com/tj-actions/auto-doc/compare/v2.0.3...v2)
+
+**Merged pull requests:**
+
+- Upgraded to v2.0.3 [\#419](https://github.com/tj-actions/auto-doc/pull/419) ([jackton1](https://github.com/jackton1))
+- Upgraded to v2.0.2 [\#418](https://github.com/tj-actions/auto-doc/pull/418) ([jackton1](https://github.com/jackton1))
 
 ## [v2.0.3](https://github.com/tj-actions/auto-doc/tree/v2.0.3) (2023-03-09)
 
@@ -15,11 +20,6 @@
 ## [v2.0.2](https://github.com/tj-actions/auto-doc/tree/v2.0.2) (2023-03-09)
 
 [Full Changelog](https://github.com/tj-actions/auto-doc/compare/v2.0.1...v2.0.2)
-
-**Merged pull requests:**
-
-- chore/hard code version [\#417](https://github.com/tj-actions/auto-doc/pull/417) ([jackton1](https://github.com/jackton1))
-- Upgraded to v2.0.1 [\#414](https://github.com/tj-actions/auto-doc/pull/414) ([jackton1](https://github.com/jackton1))
 
 **Merged pull requests:**
 
