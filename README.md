@@ -12,19 +12,21 @@
 [![Windows](https://img.shields.io/badge/Windows-0078D6?logo=windows\&logoColor=white)](https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idruns-on)
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+
 [![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 ## auto-doc
 
 GitHub Action that generates beautiful, easy-to-read markdown tables with just a few lines of code. Say goodbye to manual table creation and hello to streamlined documentation that's always up-to-date.
 
-
 ## Features
-- Document custom actions from the `action.yml` file
-- Document reusable workflows by specifying the filename
-- Easy to understand markdown table of all inputs/outputs/secrets.
-- Fast and always up-to-date documentation
+
+*   Document custom actions from the `action.yml` file
+*   Document reusable workflows by specifying the filename
+*   Easy to understand markdown table of all inputs/outputs/secrets.
+*   Fast and always up-to-date documentation
 
 ## Table of Contents
 
@@ -34,9 +36,10 @@ GitHub Action that generates beautiful, easy-to-read markdown tables with just a
 *   [CLI](#cli)
     *   [Installation](#installation)
     *   [Synopsis](#synopsis)
-    *   [Options](#options)
+    *   [Flags](#flags)
 *   [Credits](#credits)
 *   [Report Bugs](#report-bugs)
+*   [Contributors ✨](#contributors-)
 
 ## Usage
 
@@ -56,17 +59,17 @@ Add the `Inputs` and/or `Outputs` and/or `Secrets` [`H2` header](https://github.
 
 |          INPUT          |  TYPE  | REQUIRED |    DEFAULT     |                                            DESCRIPTION                                             |
 |-------------------------|--------|----------|----------------|----------------------------------------------------------------------------------------------------|
-|        bin_path         | string |  false   |                |                                    Path to the auto-doc binary                                     |
-|      col_max_width      | string |  false   |    `"1000"`    |                                       Max width of a column                                        |
-|      col_max_words      | string |  false   |     `"6"`      |                            Max number of words per line<br>in a column                             |
+|        bin\_path         | string |  false   |                |                                    Path to the auto-doc binary                                     |
+|      col\_max\_width      | string |  false   |    `"1000"`    |                                       Max width of a column                                        |
+|      col\_max\_words      | string |  false   |     `"6"`      |                            Max number of words per line<br>in a column                             |
 |        filename         | string |  false   | `"action.yml"` |                                       Path to the yaml file                                        |
-|      input_columns      | string |  false   |                |      List of action.yml **input** columns names<br>to display, default (display all columns)       |
+|      input\_columns      | string |  false   |                |      List of action.yml **input** columns names<br>to display, default (display all columns)       |
 |         output          | string |  false   | `"README.md"`  |                                      Path to the output file                                       |
-|     output_columns      | string |  false   |                |      List of action.yml **output** column names<br>to display, default (display all columns)       |
+|     output\_columns      | string |  false   |                |      List of action.yml **output** column names<br>to display, default (display all columns)       |
 |        reusable         | string |  false   |                |                   Boolean Indicating whether the file is<br>a reusable workflow                    |
-| reusable_input_columns  | string |  false   |                | List of reusable workflow **input** column<br> names to display, default (display all<br>columns)  |
-| reusable_output_columns | string |  false   |                | List of reusable workflow **output** column<br> names to display, default (display all<br>columns) |
-| reusable_secret_columns | string |  false   |                | List of reusable workflow **secret** column<br> names to display, default (display all<br>columns) |
+| reusable\_input\_columns  | string |  false   |                | List of reusable workflow **input** column<br> names to display, default (display all<br>columns)  |
+| reusable\_output\_columns | string |  false   |                | List of reusable workflow **output** column<br> names to display, default (display all<br>columns) |
+| reusable\_secret\_columns | string |  false   |                | List of reusable workflow **secret** column<br> names to display, default (display all<br>columns) |
 
 <!-- AUTO-DOC-INPUT:END -->
 
@@ -144,7 +147,6 @@ Auto generate documentation for your github action.
     --reusableOutputColumns stringArray   list of reusable output column names (default [Output,Value,Description])
     --reusableSecretColumns stringArray   list of reusable secrets column names (default [Secret,Required,Description])
 
-
 *   Free software: [Apache License 2.0](LICENSE)
 
 If you feel generous and want to show some extra appreciation:
@@ -178,8 +180,11 @@ If you are reporting a bug, please include:
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+
 <!-- prettier-ignore-start -->
+
 <!-- markdownlint-disable -->
+
 <table>
   <tbody>
     <tr>
@@ -189,6 +194,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 </table>
 
 <!-- markdownlint-restore -->
+
 <!-- prettier-ignore-end -->
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
