@@ -39,6 +39,9 @@ inputs:
   reusable:
     description: 'Boolean Indicating whether the file is a reusable workflow'
     required: false
+  version:
+    description: 'The version number to run'
+    required: false
 
 runs:
   using: 'composite'
@@ -47,6 +50,7 @@ runs:
         EXTRA_ARGS=""
         BIN_PATH="${{ inputs.bin_path }}"
         REUSABLE="${{ inputs.reusable }}"
+        VERSION="${{ inputs.version }}"
         # action.yml file
         INPUT_COLUMNS=(${{ inputs.input_columns }})
         OUTPUT_COLUMNS=(${{ inputs.output_columns }})
@@ -87,20 +91,54 @@ runs:
         done
 
         if [[ -z "$BIN_PATH" ]]; then
+          echo "Downloading auto-doc binary..."
+          LATEST_VERSION=${VERSION:-v2.0.0}
+
+          # Download the latest version
+          WINDOWS_TARGET=x86_64-pc-windows-gnu
+          LINUX_TARGET=x86_64-unknown-linux-musl
+          MACOS_TARGET=x86_64-apple-darwin
+          ARCHIVE=zip
           TEMP_DIR=$(mktemp -d)
-          curl -sf https://gobinaries.com/github.com/tj-actions/auto-doc | PREFIX=$TEMP_DIR sh
+
+          if [[ $(uname -s) == "Linux" ]]; then
+            TARGET=$LINUX_TARGET
+            ARCHIVE=tar.gz
+          elif [[ $(uname -s) == "Darwin" ]]; then
+            TARGET=$MACOS_TARGET
+          else
+            TARGET=$WINDOWS_TARGET
+          fi
+        
+          DELAY=10
+          OUTPUT_FILE="$TEMP_DIR"/auto-doc."$ARCHIVE"
+        
+          for i in $(seq 1 5); do
+              curl --connect-timeout 300 -sLf https://github.com/tj-actions/json2file/releases/download/"$LATEST_VERSION"/json2file_"$LATEST_VERSION"_"$TARGET"."$ARCHIVE" -o "$OUTPUT_FILE" && break
+              sleep $DELAY
+              echo "$i retries"
+          done
+        
+          if [[ "$ARCHIVE" == "zip" ]]; then
+            unzip -q "$OUTPUT_FILE" -d "$TEMP_DIR"
+          else
+            tar -xzf "$OUTPUT_FILE" -C "$TEMP_DIR"
+          fi
+
+          chmod +x "$TEMP_DIR"/auto-doc
+
           BIN_PATH="$TEMP_DIR/auto-doc"
         fi
 
         echo "::debug::Generating documentation using ${BIN_PATH}..."
         echo "::debug::Extra args: ${EXTRA_ARGS}"
-  
+        
         $BIN_PATH --filename="${{ inputs.filename }}" --output="${{ inputs.output }}" \
           --colMaxWidth="${{ inputs.col_max_width }}" --colMaxWords="${{ inputs.col_max_words }}" \
           ${EXTRA_ARGS} && exit_status=$? || exit_status=$?
 
         rm -f $BIN_PATH
-  
+        
         if [[ $exit_status -ne 0 ]]; then
           echo "::warning::Error occurred running auto-doc"
           exit $exit_status;
