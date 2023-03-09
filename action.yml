@@ -95,9 +95,9 @@ runs:
           LATEST_VERSION=${VERSION:-v2.0.0}
 
           # Download the latest version
-          WINDOWS_TARGET=x86_64-pc-windows-gnu
-          LINUX_TARGET=x86_64-unknown-linux-musl
-          MACOS_TARGET=x86_64-apple-darwin
+          WINDOWS_TARGET=Windows_x86_64
+          LINUX_TARGET=Linux_x86_64
+          MACOS_TARGET=Darwin_x86_64
           ARCHIVE=zip
           TEMP_DIR=$(mktemp -d)
 
@@ -114,7 +114,7 @@ runs:
           OUTPUT_FILE="$TEMP_DIR"/auto-doc."$ARCHIVE"
         
           for i in $(seq 1 5); do
-              curl --connect-timeout 300 -sLf https://github.com/tj-actions/json2file/releases/download/"$LATEST_VERSION"/json2file_"$LATEST_VERSION"_"$TARGET"."$ARCHIVE" -o "$OUTPUT_FILE" && break
+              curl --connect-timeout 300 -sLf https://github.com/tj-actions/auto-doc/releases/download/"$LATEST_VERSION"/auto-doc_"$LATEST_VERSION"_"$TARGET"."$ARCHIVE" -o "$OUTPUT_FILE" && break
               sleep $DELAY
               echo "$i retries"
           done
