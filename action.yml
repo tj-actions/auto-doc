@@ -92,7 +92,7 @@ runs:
 
         if [[ -z "$BIN_PATH" ]]; then
           echo "Downloading auto-doc binary..."
-          LATEST_VERSION=${VERSION:-2.0.0}
+          LATEST_VERSION=${VERSION:-v2.0.0}
 
           # Download the latest version
           WINDOWS_TARGET=Windows_x86_64
@@ -114,7 +114,7 @@ runs:
           OUTPUT_FILE="$TEMP_DIR"/auto-doc."$ARCHIVE"
         
           for i in $(seq 1 5); do
-            curl --connect-timeout 300 -svLf https://github.com/tj-actions/auto-doc/releases/download/"$LATEST_VERSION"/auto-doc_"$LATEST_VERSION"_"$TARGET"."$ARCHIVE" -o "$OUTPUT_FILE" && break
+            curl --connect-timeout 300 -sLf https://github.com/tj-actions/auto-doc/releases/download/"$LATEST_VERSION"/auto-doc_"${LATEST_VERSION/v/}"_"$TARGET"."$ARCHIVE" -o "$OUTPUT_FILE" && break
             sleep $DELAY
             echo "$i retries"
           done

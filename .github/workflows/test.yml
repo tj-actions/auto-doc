@@ -133,8 +133,6 @@ jobs:
         id: branch-name
         if: "startsWith(github.ref, 'refs/tags/')"
         uses: tj-actions/branch-names@v6
-        with:
-          strip_tag_prefix: v
 
       - name: Test action
         uses: ./
