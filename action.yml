@@ -91,7 +91,7 @@ runs:
         done
         
         if [[ -z "$VERSION" ]]; then
-          VERSION=$(curl --connect-timeout 300 -sLf "https://api.github.com/repos/tj-actions/auto-doc/tags" | jq -r '.[].name' | grep -E "^v?[0-9]+\.[0-9]+\.[0-9]+$" | sort -V | tail -n 1)
+          VERSION=$(curl --connect-timeout 300 -svLf "https://api.github.com/repos/tj-actions/auto-doc/tags" | jq -r '.[].name' | grep -E "^v?[0-9]+\.[0-9]+\.[0-9]+$" | sort -V | tail -n 1)
         fi
 
         if [[ -z "$BIN_PATH" ]]; then
