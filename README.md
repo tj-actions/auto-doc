@@ -70,6 +70,7 @@ Add the `Inputs` and/or `Outputs` and/or `Secrets` [`H2` header](https://github.
 | reusable\_input\_columns  | string |  false   |                | List of reusable workflow **input** column<br> names to display, default (display all<br>columns)  |
 | reusable\_output\_columns | string |  false   |                | List of reusable workflow **output** column<br> names to display, default (display all<br>columns) |
 | reusable\_secret\_columns | string |  false   |                | List of reusable workflow **secret** column<br> names to display, default (display all<br>columns) |
+|         version         | string |  false   |                |                                     The version number to run                                      |
 
 <!-- AUTO-DOC-INPUT:END -->
 
