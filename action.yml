@@ -89,10 +89,14 @@ runs:
         for reusable_secret_column in ${REUSABLE_SECRET_COLUMNS[@]}; do
           EXTRA_ARGS="${EXTRA_ARGS} --reusableSecretColumns ${reusable_secret_column}"
         done
+        
+        if [[ -z "$VERSION" ]]; then
+          VERSION=$(curl -sLf "https://api.github.com/repos/tj-actions/auto-doc/tags" | jq -r '.[].name' | grep -E "^v?[0-9]+\.[0-9]+\.[0-9]+$" | sort -V | tail -n 1)
+        fi
 
         if [[ -z "$BIN_PATH" ]]; then
           echo "Downloading auto-doc binary..."
-          LATEST_VERSION=${VERSION:-v2.0.0}
+          LATEST_VERSION=$VERSION
 
           # Download the latest version
           WINDOWS_TARGET=Windows_x86_64
