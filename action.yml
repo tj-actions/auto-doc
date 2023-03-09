@@ -106,6 +106,7 @@ runs:
             ARCHIVE=tar.gz
           elif [[ $(uname -s) == "Darwin" ]]; then
             TARGET=$MACOS_TARGET
+            ARCHIVE=tar.gz
           else
             TARGET=$WINDOWS_TARGET
           fi
