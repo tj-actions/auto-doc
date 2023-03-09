@@ -1,3 +1,19 @@
+//Package types contains all defined types
+/*
+Copyright © 2021 Tonye Jack <jtonye@ymail.com>
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+*/
 package types
 
 import (
@@ -39,6 +55,7 @@ type Action struct {
 	Outputs map[string]ActionOutput `yaml:"outputs,omitempty"`
 }
 
+// GetData parses the source yaml file
 func (a *Action) GetData() error {
 	actionYaml, err := os.ReadFile(a.InputFileName)
 	if err != nil {
@@ -49,6 +66,7 @@ func (a *Action) GetData() error {
 	return err
 }
 
+// WriteDocumentation write the table to the output file
 func (a *Action) WriteDocumentation(inputTable, outputTable *strings.Builder) error {
 	input, err := os.ReadFile(a.OutputFileName)
 
@@ -95,6 +113,7 @@ func (a *Action) WriteDocumentation(inputTable, outputTable *strings.Builder) er
 	return nil
 }
 
+// RenderOutput renders the output and writes it to the given output
 func (a *Action) RenderOutput() error {
 	var err error
 	maxWidth, err := strconv.Atoi(a.ColMaxWidth)
@@ -125,6 +144,7 @@ func (a *Action) RenderOutput() error {
 	return nil
 }
 
+// renderActionOutputTableOutput renders the action input table
 func renderActionInputTableOutput(i map[string]ActionInput, inputColumns[]string, maxWidth int, maxWords int) (*strings.Builder, error) {
 	inputTableOutput := &strings.Builder{}
 
@@ -149,30 +169,6 @@ func renderActionInputTableOutput(i map[string]ActionInput, inputColumns[]string
 		inputTable.SetColWidth(maxWidth)
 
 		for _, key := range keys {
-			var inputDefault string
-			if len(i[key].Default) > 0 {
-				inputDefault = i[key].Default
-				var defaultValue string
-				var parts = strings.Split(inputDefault, "\n")
-
-				if len(parts) > 1 && inputDefault != internal.NewLineSeparator {
-					for _, part := range parts {
-						if part != "" {
-							defaultValue += "`\"" + part + "\"`" + "<br>"
-						}
-					}
-				} else {
-					if strings.Contains(inputDefault, internal.PipeSeparator) {
-						inputDefault = strings.Replace(inputDefault, internal.PipeSeparator, "\"\\"+internal.PipeSeparator+"\"", -1)
-					} else {
-						inputDefault = fmt.Sprintf("%#v", i[key].Default)
-					}
-					defaultValue = "`" + inputDefault + "`"
-				}
-
-				inputDefault = defaultValue
-			}
-
 			var row []string
 
 			for _, col := range inputColumns {
@@ -184,7 +180,7 @@ func renderActionInputTableOutput(i map[string]ActionInput, inputColumns[]string
 				case "Required":
 					row = append(row, strconv.FormatBool(i[key].Required))
 				case "Default":
-					row = append(row, inputDefault)
+					row = append(row, utils.FormatValue(i[key].Default))
 				case "Description":
 					row = append(row, utils.WordWrap(i[key].Description, maxWords))
 				default:
@@ -218,6 +214,7 @@ func renderActionInputTableOutput(i map[string]ActionInput, inputColumns[]string
 	return inputTableOutput, nil
 }
 
+// renderActionOutputTableOutput renders the action output table
 func renderActionOutputTableOutput(o map[string]ActionOutput, outputColumns[]string, maxWidth int, maxWords int) (*strings.Builder, error) {
 	outputTableOutput := &strings.Builder{}
 
