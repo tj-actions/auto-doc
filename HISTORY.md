@@ -1,5 +1,31 @@
 # Changelog
 
+## [v2.0.0](https://github.com/tj-actions/auto-doc/tree/v2.0.0) (2023-03-09)
+
+[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v2...v2.0.0)
+
+## [v2](https://github.com/tj-actions/auto-doc/tree/v2) (2023-03-09)
+
+[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v1...v2)
+
+**Implemented enhancements:**
+
+- \[Feature\] Support for reusable workflow documentation [\#404](https://github.com/tj-actions/auto-doc/issues/404)
+- \[Feature\] Rename project to action-docgen [\#364](https://github.com/tj-actions/auto-doc/issues/364)
+
+**Closed issues:**
+
+- Dependency Dashboard [\#2](https://github.com/tj-actions/auto-doc/issues/2)
+
+**Merged pull requests:**
+
+- chore: fix add missing comments [\#409](https://github.com/tj-actions/auto-doc/pull/409) ([jackton1](https://github.com/jackton1))
+- docs: add andreas-aman as a contributor for code, and doc [\#408](https://github.com/tj-actions/auto-doc/pull/408) ([allcontributors[bot]](https://github.com/apps/allcontributors))
+- chore\(deps\): update codacy/codacy-analysis-cli-action action to v4.3.0 [\#407](https://github.com/tj-actions/auto-doc/pull/407) ([renovate[bot]](https://github.com/apps/renovate))
+- chore\(deps\): update pascalgn/automerge-action action to v0.15.6 [\#406](https://github.com/tj-actions/auto-doc/pull/406) ([renovate[bot]](https://github.com/apps/renovate))
+- Support reusable workflows [\#405](https://github.com/tj-actions/auto-doc/pull/405) ([andreas-aman](https://github.com/andreas-aman))
+- Upgraded to v1.7.4 [\#403](https://github.com/tj-actions/auto-doc/pull/403) ([jackton1](https://github.com/jackton1))
+
 ## [v1](https://github.com/tj-actions/auto-doc/tree/v1) (2023-01-22)
 
 [Full Changelog](https://github.com/tj-actions/auto-doc/compare/v1.7.4...v1)
@@ -43,10 +69,6 @@
 ## [v1.7.0](https://github.com/tj-actions/auto-doc/tree/v1.7.0) (2022-12-30)
 
 [Full Changelog](https://github.com/tj-actions/auto-doc/compare/v1.6.0...v1.7.0)
-
-**Closed issues:**
-
-- Dependency Dashboard [\#2](https://github.com/tj-actions/auto-doc/issues/2)
 
 **Merged pull requests:**
 
