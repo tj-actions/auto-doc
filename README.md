@@ -122,11 +122,25 @@ jobs:
 
 ### Installation
 
-Run
+#### Install using Go:
 
 ```shell script
 go install github.com/tj-actions/auto-doc@latest
 ```
+
+#### Install using Homebrew:
+
+```shell script
+brew tap tj-actions/tap
+brew install tj-actions/tap/auto-doc
+```
+
+#### Install using Chocolatey (Windows):
+
+```shell script
+choco install auto-doc
+```
+
 
 ### Synopsis
 
