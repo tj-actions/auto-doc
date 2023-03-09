@@ -1,3 +1,19 @@
+//Package types contains all defined types
+/*
+Copyright © 2021 Tonye Jack <jtonye@ymail.com>
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+*/
 package types
 
 import (
@@ -51,6 +67,7 @@ type Reusable struct {
 	}
 }
 
+// GetData parses the source yaml file
 func (r *Reusable) GetData() error {
 	reusableYaml, err := os.ReadFile(r.InputFileName)
 	if err != nil {
@@ -61,6 +78,7 @@ func (r *Reusable) GetData() error {
 	return err
 }
 
+// WriteDocumentation write the table to the output file
 func (r *Reusable) WriteDocumentation(inputTable, outputTable, secretsTable *strings.Builder) error {
 	input, err := os.ReadFile(r.OutputFileName)
 
@@ -121,6 +139,7 @@ func (r *Reusable) WriteDocumentation(inputTable, outputTable, secretsTable *str
 	return nil
 }
 
+// RenderOutput renders the output and writes it to the given output
 func (r *Reusable) RenderOutput() error {
 	var err error
 	maxWidth, err := strconv.Atoi(r.ColMaxWidth)
@@ -155,6 +174,7 @@ func (r *Reusable) RenderOutput() error {
 	return nil
 }
 
+// renderReusableInputTableOutput renders the reusable workflow input table
 func renderReusableInputTableOutput(i map[string]ReusableInput, inputColumns[]string, maxWidth int, maxWords int) (*strings.Builder, error) {
 	inputTableOutput := &strings.Builder{}
 
@@ -224,6 +244,7 @@ func renderReusableInputTableOutput(i map[string]ReusableInput, inputColumns[]st
 	return inputTableOutput, nil
 }
 
+// renderReusableOutputTableOutput renders the reusable workflow output table
 func renderReusableOutputTableOutput(o map[string]ReusableOutput, reusableOutputColumns[]string, maxWidth int, maxWords int) (*strings.Builder, error) {
 	outputTableOutput := &strings.Builder{}
 
@@ -287,6 +308,7 @@ func renderReusableOutputTableOutput(o map[string]ReusableOutput, reusableOutput
 	return outputTableOutput, nil
 }
 
+// renderReusableSecretTableOutput renders the reusable workflow secret table
 func renderReusableSecretTableOutput(s map[string]ReusableSecret, secretColumns[]string, maxWidth int, maxWords int) (*strings.Builder, error) {
 	secretTableOutput := &strings.Builder{}
 
