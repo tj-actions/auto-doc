@@ -1,0 +1,45 @@
+name: Reusable workflow example
+
+on:
+  workflow_call:
+    outputs:
+      firstword:
+        description: "The first output string"
+        value: ${{ jobs.example_job.outputs.output1 }}
+      secondword:
+        description: "The second output string"
+        value: ${{ jobs.example_job.outputs.output2 }}
+    inputs:
+      config-path:
+        required: true
+        type: string
+        description: "The configuration path"
+      username:
+        required: false
+        type: string
+        description: "Username"
+        default: "example"
+    secrets:
+      token:
+        required: true
+        description: "Repo scoped PAT token"
+
+jobs:
+  triage:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/labeler@v4
+        with:
+          repo-token: ${{ secrets.token }}
+          configuration-path: ${{ inputs.config-path }}
+  example_job:
+    name: Generate output
+    runs-on: ubuntu-latest
+    outputs:
+      output1: ${{ steps.step1.outputs.firstword }}
+      output2: ${{ steps.step2.outputs.secondword }}
+    steps:
+      - id: step1
+        run: echo "::set-output name=firstword::hello"
+      - id: step2
+        run: echo "::set-output name=secondword::world"
