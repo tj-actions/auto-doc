@@ -114,9 +114,9 @@ runs:
           OUTPUT_FILE="$TEMP_DIR"/auto-doc."$ARCHIVE"
         
           for i in $(seq 1 5); do
-              curl --connect-timeout 300 -sLf https://github.com/tj-actions/auto-doc/releases/download/"$LATEST_VERSION"/auto-doc_"$LATEST_VERSION"_"$TARGET"."$ARCHIVE" -o "$OUTPUT_FILE" && break
-              sleep $DELAY
-              echo "$i retries"
+            curl --connect-timeout 300 -sLf https://github.com/tj-actions/auto-doc/releases/download/"$LATEST_VERSION"/auto-doc_"$LATEST_VERSION"_"$TARGET"."$ARCHIVE" -o "$OUTPUT_FILE" && break
+            sleep $DELAY
+            echo "$i retries"
           done
         
           if [[ "$ARCHIVE" == "zip" ]]; then
