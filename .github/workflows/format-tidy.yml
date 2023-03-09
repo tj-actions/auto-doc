@@ -8,7 +8,7 @@ on:
       - '.github/workflows/format.yml'
     branches:
       - 'main'
-  pull_request_target:
+  pull_request:
     paths:
       - '**.go'
       - '**.mod'
@@ -20,6 +20,7 @@ on:
 jobs:
   cleanup-runs:
     runs-on: ubuntu-latest
+    if: github.event.pull_request.head.repo.owner.login == github.repository_owner
     steps:
       - uses: rokroskar/workflow-run-cleanup-action@v0.3.3
         env:
@@ -28,6 +29,7 @@ jobs:
   format:
     name: format
     runs-on: ubuntu-latest
+    if: github.event.pull_request.head.repo.owner.login == github.repository_owner
     steps:
       - name: Checkout
         uses: actions/checkout@v3

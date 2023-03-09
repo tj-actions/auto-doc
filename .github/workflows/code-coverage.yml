@@ -14,7 +14,8 @@ jobs:
     if: |
       (
         github.actor != 'dependabot[bot]' &&
-        github.actor != 'dependabot'
+        github.actor != 'dependabot' &&
+        github.event.pull_request.head.repo.owner.login == github.repository_owner
       )
     name: Update coverage badge
     steps:
