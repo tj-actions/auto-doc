@@ -125,7 +125,7 @@ jobs:
 #### Install using Go:
 
 ```shell script
-go install github.com/tj-actions/auto-doc@latest
+go get -u github.com/tj-actions/auto-doc
 ```
 
 #### Install using Homebrew:
