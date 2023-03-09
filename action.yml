@@ -91,7 +91,7 @@ runs:
         done
         
         if [[ -z "$VERSION" ]]; then
-          VERSION=v2.1.0
+          VERSION=v2.2.0
         fi
 
         if [[ -z "$BIN_PATH" ]]; then
