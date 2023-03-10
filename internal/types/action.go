@@ -102,7 +102,7 @@ func (a *Action) WriteDocumentation(inputTable, outputTable *strings.Builder) er
 
 	if hasOutputsData {
 		output = utils.ReplaceBytesInBetween(output, outputStartIndex, outputEndIndex, []byte(outputsStr))
-	} else if outputTable.String() != "" {
+	} else {
 		output = bytes.Replace(output, []byte(internal.OutputsHeader), []byte(outputsStr), -1)
 	}
 
