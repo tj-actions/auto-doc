@@ -1,12 +1,31 @@
 # Changelog
 
+## [v2.2.2](https://github.com/tj-actions/auto-doc/tree/v2.2.2) (2023-03-10)
+
+[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v2...v2.2.2)
+
+**Merged pull requests:**
+
+- chore: tidy imports [\#424](https://github.com/tj-actions/auto-doc/pull/424) ([jackton1](https://github.com/jackton1))
+- Don't add 2 newlines if nothing in table [\#423](https://github.com/tj-actions/auto-doc/pull/423) ([andreas-aman](https://github.com/andreas-aman))
+- Update tj-actions/github-changelog-generator action to v1.18 [\#422](https://github.com/tj-actions/auto-doc/pull/422) ([renovate[bot]](https://github.com/apps/renovate))
+- Upgraded to v2.2.0 [\#421](https://github.com/tj-actions/auto-doc/pull/421) ([jackton1](https://github.com/jackton1))
+
+## [v2](https://github.com/tj-actions/auto-doc/tree/v2) (2023-03-10)
+
+[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v2.2.1...v2)
+
+## [v2.2.1](https://github.com/tj-actions/auto-doc/tree/v2.2.1) (2023-03-10)
+
+[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v2.2.0...v2.2.1)
+
+**Closed issues:**
+
+- Dependency Dashboard [\#2](https://github.com/tj-actions/auto-doc/issues/2)
+
 ## [v2.2.0](https://github.com/tj-actions/auto-doc/tree/v2.2.0) (2023-03-09)
 
-[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v2...v2.2.0)
-
-## [v2](https://github.com/tj-actions/auto-doc/tree/v2) (2023-03-09)
-
-[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v2.1.0...v2)
+[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v2.1.0...v2.2.0)
 
 **Merged pull requests:**
 
@@ -53,10 +72,6 @@
 
 - \[Feature\] Support for reusable workflow documentation [\#404](https://github.com/tj-actions/auto-doc/issues/404)
 - \[Feature\] Rename project to action-docgen [\#364](https://github.com/tj-actions/auto-doc/issues/364)
-
-**Closed issues:**
-
-- Dependency Dashboard [\#2](https://github.com/tj-actions/auto-doc/issues/2)
 
 **Merged pull requests:**
 
