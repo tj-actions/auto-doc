@@ -19,15 +19,16 @@ package types
 import (
 	"bytes"
 	"fmt"
+	"os"
+	"sort"
+	"strconv"
+	"strings"
+
 	"github.com/olekukonko/tablewriter"
 	"github.com/spf13/cobra"
 	"github.com/tj-actions/auto-doc/internal"
 	"github.com/tj-actions/auto-doc/internal/utils"
 	"gopkg.in/yaml.v3"
-	"os"
-	"sort"
-	"strconv"
-	"strings"
 )
 
 // ReusableInput represents the input of the reusable workflow
@@ -97,9 +98,12 @@ func (r *Reusable) WriteDocumentation(inputTable, outputTable, secretsTable *str
 	if hasInputsData {
 		inputsStr := fmt.Sprintf("%s\n\n%v", internal.InputsHeader, inputTable.String())
 		output = utils.ReplaceBytesInBetween(input, inputStartIndex, inputEndIndex, []byte(inputsStr))
+
 	} else {
 		inputsStr := fmt.Sprintf("%s\n\n%v", internal.InputsHeader, inputTable.String())
-		output = bytes.Replace(input, []byte(internal.InputsHeader), []byte(inputsStr), -1)
+		if inputTable.String() != "" {
+			output = bytes.Replace(input, []byte(internal.InputsHeader), []byte(inputsStr), -1)
+		}
 	}
 
 	hasOutputsData, outputStartIndex, outputEndIndex := utils.HasBytesInBetween(
@@ -113,7 +117,9 @@ func (r *Reusable) WriteDocumentation(inputTable, outputTable, secretsTable *str
 		output = utils.ReplaceBytesInBetween(output, outputStartIndex, outputEndIndex, []byte(outputsStr))
 	} else {
 		outputsStr := fmt.Sprintf("%s\n\n%v", internal.OutputsHeader, outputTable.String())
-		output = bytes.Replace(output, []byte(internal.OutputsHeader), []byte(outputsStr), -1)
+		if outputTable.String() != "" {
+			output = bytes.Replace(output, []byte(internal.OutputsHeader), []byte(outputsStr), -1)
+		}
 	}
 
 	hasSecretsData, secretsStartIndex, secretsEndIndex := utils.HasBytesInBetween(
@@ -127,7 +133,9 @@ func (r *Reusable) WriteDocumentation(inputTable, outputTable, secretsTable *str
 		output = utils.ReplaceBytesInBetween(output, secretsStartIndex, secretsEndIndex, []byte(secretsStr))
 	} else {
 		secretsStr := fmt.Sprintf("%s\n\n%v", internal.SecretsHeader, secretsTable.String())
-		output = bytes.Replace(output, []byte(internal.SecretsHeader), []byte(secretsStr), -1)
+		if secretsTable.String() != "" {
+			output = bytes.Replace(output, []byte(internal.SecretsHeader), []byte(secretsStr), -1)
+		}
 	}
 
 	if len(output) > 0 {
