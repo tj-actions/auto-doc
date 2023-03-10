@@ -18,8 +18,9 @@ package utils
 
 import (
 	"fmt"
-	"github.com/tj-actions/auto-doc/internal"
 	"strings"
+
+	"github.com/tj-actions/auto-doc/internal"
 )
 
 func FormatValue(v string) string {

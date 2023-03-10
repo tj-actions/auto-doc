@@ -19,15 +19,17 @@ package types
 import (
 	"bytes"
 	"fmt"
-	"github.com/olekukonko/tablewriter"
-	"github.com/spf13/cobra"
-	"github.com/tj-actions/auto-doc/internal"
-	"github.com/tj-actions/auto-doc/internal/utils"
-	"gopkg.in/yaml.v3"
 	"os"
 	"sort"
 	"strconv"
 	"strings"
+
+	"github.com/olekukonko/tablewriter"
+	"github.com/spf13/cobra"
+	"gopkg.in/yaml.v3"
+
+	"github.com/tj-actions/auto-doc/internal"
+	"github.com/tj-actions/auto-doc/internal/utils"
 )
 
 // ReusableInput represents the input of the reusable workflow
