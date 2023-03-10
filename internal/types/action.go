@@ -26,9 +26,10 @@ import (
 
 	"github.com/olekukonko/tablewriter"
 	"github.com/spf13/cobra"
+	"gopkg.in/yaml.v3"
+
 	"github.com/tj-actions/auto-doc/internal"
 	"github.com/tj-actions/auto-doc/internal/utils"
-	"gopkg.in/yaml.v3"
 )
 
 // ActionInput represents the input of the action.yml
@@ -83,14 +84,12 @@ func (a *Action) WriteDocumentation(inputTable, outputTable *strings.Builder) er
 		[]byte(internal.InputAutoDocEnd),
 	)
 
+	inputsStr := strings.TrimSpace(fmt.Sprintf("%s\n\n%v", internal.InputsHeader, inputTable.String()))
+
 	if hasInputsData {
-		inputsStr := fmt.Sprintf("%s\n\n%v", internal.InputsHeader, inputTable.String())
 		output = utils.ReplaceBytesInBetween(input, inputStartIndex, inputEndIndex, []byte(inputsStr))
 	} else {
-		inputsStr := fmt.Sprintf("%s\n\n%v", internal.InputsHeader, inputTable.String())
-		if inputTable.String() != "" {
-			output = bytes.Replace(input, []byte(internal.InputsHeader), []byte(inputsStr), -1)
-		}
+		output = bytes.Replace(input, []byte(internal.InputsHeader), []byte(inputsStr), -1)
 	}
 
 	hasOutputsData, outputStartIndex, outputEndIndex := utils.HasBytesInBetween(
@@ -99,14 +98,12 @@ func (a *Action) WriteDocumentation(inputTable, outputTable *strings.Builder) er
 		[]byte(internal.OutputAutoDocEnd),
 	)
 
+	outputsStr := strings.TrimSpace(fmt.Sprintf("%s\n\n%v", internal.OutputsHeader, outputTable.String()))
+
 	if hasOutputsData {
-		outputsStr := fmt.Sprintf("%s\n\n%v", internal.OutputsHeader, outputTable.String())
 		output = utils.ReplaceBytesInBetween(output, outputStartIndex, outputEndIndex, []byte(outputsStr))
-	} else {
-		outputsStr := fmt.Sprintf("%s\n\n%v", internal.OutputsHeader, outputTable.String())
-		if outputTable.String() != "" {
-			output = bytes.Replace(output, []byte(internal.OutputsHeader), []byte(outputsStr), -1)
-		}
+	} else if outputTable.String() != "" {
+		output = bytes.Replace(output, []byte(internal.OutputsHeader), []byte(outputsStr), -1)
 	}
 
 	if len(output) > 0 {
