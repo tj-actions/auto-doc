@@ -89,13 +89,9 @@ runs:
         for reusable_secret_column in ${REUSABLE_SECRET_COLUMNS[@]}; do
           EXTRA_ARGS="${EXTRA_ARGS} --reusableSecretColumns ${reusable_secret_column}"
         done
-        
-        if [[ -z "$VERSION" ]]; then
-          VERSION=v2.2.0
-        fi
 
         if [[ -z "$BIN_PATH" ]]; then
-          LATEST_VERSION=$VERSION
+          LATEST_VERSION=${VERSION:-v2.2.0}
           echo "Downloading auto-doc $LATEST_VERSION binary..."
 
           # Download the latest version
