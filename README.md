@@ -35,6 +35,9 @@ GitHub Action that generates beautiful, easy-to-read markdown tables with just a
 *   [Examples](#examples)
 *   [CLI](#cli)
     *   [Installation](#installation)
+        *   [Install using Go:](#install-using-go)
+        *   [Install using Homebrew:](#install-using-homebrew)
+        *   [Install using Chocolatey (Windows):](#install-using-chocolatey-windows)
     *   [Synopsis](#synopsis)
     *   [Flags](#flags)
 *   [Credits](#credits)
@@ -139,7 +142,6 @@ brew install tj-actions/tap/auto-doc
 ```shell script
 choco install auto-doc
 ```
-
 
 ### Synopsis
 
