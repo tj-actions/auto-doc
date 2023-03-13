@@ -105,7 +105,7 @@ func (r *Reusable) WriteDocumentation(inputTable, outputTable, secretsTable *str
 		if err != nil {
 			return err
 		}
-		output = re.ReplaceAll([]byte(output), []byte(inputsStr))
+		output = re.ReplaceAll([]byte(input), []byte(inputsStr))
 	}
 
 	hasOutputsData, outputStartIndex, outputEndIndex := utils.HasBytesInBetween(
