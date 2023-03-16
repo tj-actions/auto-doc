@@ -70,7 +70,7 @@ func (a *Action) GetData() error {
 
 // WriteDocumentation write the table to the output file
 func (a *Action) WriteDocumentation(inputTable, outputTable *strings.Builder) error {
-        var error error
+        var err error
 	input, err := os.ReadFile(a.OutputFileName)
 
 	if err != nil {
