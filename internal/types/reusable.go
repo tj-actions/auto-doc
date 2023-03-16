@@ -17,9 +17,9 @@ limitations under the License.
 package types
 
 import (
-	"bytes"
 	"fmt"
 	"os"
+	"regexp"
 	"sort"
 	"strconv"
 	"strings"
@@ -82,6 +82,7 @@ func (r *Reusable) GetData() error {
 
 // WriteDocumentation write the table to the output file
 func (r *Reusable) WriteDocumentation(inputTable, outputTable, secretsTable *strings.Builder) error {
+        var err error
 	input, err := os.ReadFile(r.OutputFileName)
 
 	if err != nil {
@@ -95,13 +96,17 @@ func (r *Reusable) WriteDocumentation(inputTable, outputTable, secretsTable *str
 		[]byte(internal.InputsHeader),
 		[]byte(internal.InputAutoDocEnd),
 	)
-	
+
 	inputsStr := strings.TrimSpace(fmt.Sprintf("%s\n\n%v", internal.InputsHeader, inputTable.String()))
 
 	if hasInputsData {
 		output = utils.ReplaceBytesInBetween(input, inputStartIndex, inputEndIndex, []byte(inputsStr))
 	} else {
-		output = bytes.Replace(input, []byte(internal.InputsHeader), []byte(inputsStr), -1)
+		re, err := regexp.Compile(fmt.Sprintf("(?m)^%s", internal.InputsHeader))
+		if err != nil {
+			return err
+		}
+		output = re.ReplaceAll([]byte(input), []byte(inputsStr))
 	}
 
 	hasOutputsData, outputStartIndex, outputEndIndex := utils.HasBytesInBetween(
@@ -115,7 +120,11 @@ func (r *Reusable) WriteDocumentation(inputTable, outputTable, secretsTable *str
 	if hasOutputsData {
 		output = utils.ReplaceBytesInBetween(output, outputStartIndex, outputEndIndex, []byte(outputsStr))
 	} else {
-		output = bytes.Replace(output, []byte(internal.OutputsHeader), []byte(outputsStr), -1)
+		re, err := regexp.Compile(fmt.Sprintf("(?m)^%s", internal.OutputsHeader))
+		if err != nil {
+			return err
+		}
+		output = re.ReplaceAll([]byte(output), []byte(outputsStr))
 	}
 
 	hasSecretsData, secretsStartIndex, secretsEndIndex := utils.HasBytesInBetween(
@@ -123,13 +132,17 @@ func (r *Reusable) WriteDocumentation(inputTable, outputTable, secretsTable *str
 		[]byte(internal.SecretsHeader),
 		[]byte(internal.SecretsAutoDocEnd),
 	)
-	
+
 	secretsStr := strings.TrimSpace(fmt.Sprintf("%s\n\n%v", internal.SecretsHeader, secretsTable.String()))
 
 	if hasSecretsData {
 		output = utils.ReplaceBytesInBetween(output, secretsStartIndex, secretsEndIndex, []byte(secretsStr))
 	} else {
-		output = bytes.Replace(output, []byte(internal.SecretsHeader), []byte(secretsStr), -1)
+		re, err := regexp.Compile(fmt.Sprintf("(?m)^%s", internal.SecretsHeader))
+		if err != nil {
+			return err
+		}
+		output = re.ReplaceAll([]byte(output), []byte(secretsStr))
 	}
 
 	if len(output) > 0 {

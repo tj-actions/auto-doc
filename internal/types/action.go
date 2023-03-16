@@ -17,9 +17,9 @@ limitations under the License.
 package types
 
 import (
-	"bytes"
 	"fmt"
 	"os"
+	"regexp"
 	"sort"
 	"strconv"
 	"strings"
@@ -70,6 +70,7 @@ func (a *Action) GetData() error {
 
 // WriteDocumentation write the table to the output file
 func (a *Action) WriteDocumentation(inputTable, outputTable *strings.Builder) error {
+        var err error
 	input, err := os.ReadFile(a.OutputFileName)
 
 	if err != nil {
@@ -89,7 +90,11 @@ func (a *Action) WriteDocumentation(inputTable, outputTable *strings.Builder) er
 	if hasInputsData {
 		output = utils.ReplaceBytesInBetween(input, inputStartIndex, inputEndIndex, []byte(inputsStr))
 	} else {
-		output = bytes.Replace(input, []byte(internal.InputsHeader), []byte(inputsStr), -1)
+		re, err := regexp.Compile(fmt.Sprintf("(?m)^%s", internal.InputsHeader))
+		if err != nil {
+			return err
+		}
+		output = re.ReplaceAll([]byte(input), []byte(inputsStr))
 	}
 
 	hasOutputsData, outputStartIndex, outputEndIndex := utils.HasBytesInBetween(
@@ -103,7 +108,11 @@ func (a *Action) WriteDocumentation(inputTable, outputTable *strings.Builder) er
 	if hasOutputsData {
 		output = utils.ReplaceBytesInBetween(output, outputStartIndex, outputEndIndex, []byte(outputsStr))
 	} else {
-		output = bytes.Replace(output, []byte(internal.OutputsHeader), []byte(outputsStr), -1)
+		re, err := regexp.Compile(fmt.Sprintf("(?m)^%s", internal.OutputsHeader))
+		if err != nil {
+			return err
+		}
+		output = re.ReplaceAll([]byte(output), []byte(outputsStr))
 	}
 
 	if len(output) > 0 {
