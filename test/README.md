@@ -4,6 +4,10 @@ Test text ## Inputs
 
 ## Inputs
 
+------
+
+## Inputs
+
 <!-- AUTO-DOC-INPUT:START - Do not remove or modify this section -->
 
 |               INPUT               |  TYPE  | REQUIRED |       DEFAULT       |                                                                                                                 DESCRIPTION                                                                                                                 |
