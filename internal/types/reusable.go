@@ -82,7 +82,7 @@ func (r *Reusable) GetData() error {
 
 // WriteDocumentation write the table to the output file
 func (r *Reusable) WriteDocumentation(inputTable, outputTable, secretsTable *strings.Builder) error {
-        var err error
+	var err error
 	input, err := os.ReadFile(r.OutputFileName)
 
 	if err != nil {
