@@ -82,6 +82,7 @@ func (r *Reusable) GetData() error {
 
 // WriteDocumentation write the table to the output file
 func (r *Reusable) WriteDocumentation(inputTable, outputTable, secretsTable *strings.Builder) error {
+        var err error
 	input, err := os.ReadFile(r.OutputFileName)
 
 	if err != nil {
@@ -101,7 +102,7 @@ func (r *Reusable) WriteDocumentation(inputTable, outputTable, secretsTable *str
 	if hasInputsData {
 		output = utils.ReplaceBytesInBetween(input, inputStartIndex, inputEndIndex, []byte(inputsStr))
 	} else {
-		re, _ := regexp.Compile(fmt.Sprintf("(?m)^%s", internal.InputsHeader))
+		re, err := regexp.Compile(fmt.Sprintf("(?m)^%s", internal.InputsHeader))
 		if err != nil {
 			return err
 		}
@@ -119,7 +120,7 @@ func (r *Reusable) WriteDocumentation(inputTable, outputTable, secretsTable *str
 	if hasOutputsData {
 		output = utils.ReplaceBytesInBetween(output, outputStartIndex, outputEndIndex, []byte(outputsStr))
 	} else {
-		re, _ := regexp.Compile(fmt.Sprintf("(?m)^%s", internal.OutputsHeader))
+		re, err := regexp.Compile(fmt.Sprintf("(?m)^%s", internal.OutputsHeader))
 		if err != nil {
 			return err
 		}
@@ -137,7 +138,7 @@ func (r *Reusable) WriteDocumentation(inputTable, outputTable, secretsTable *str
 	if hasSecretsData {
 		output = utils.ReplaceBytesInBetween(output, secretsStartIndex, secretsEndIndex, []byte(secretsStr))
 	} else {
-		re, _ := regexp.Compile(fmt.Sprintf("(?m)^%s", internal.SecretsHeader))
+		re, err := regexp.Compile(fmt.Sprintf("(?m)^%s", internal.SecretsHeader))
 		if err != nil {
 			return err
 		}
