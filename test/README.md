@@ -1,10 +1,6 @@
 # test
 
-Test text ## Inputs
-
-## Inputs
-
-------
+Test text ## Inputs that is in a paragraph
 
 ## Inputs
 
