@@ -70,7 +70,7 @@ func (a *Action) GetData() error {
 
 // WriteDocumentation write the table to the output file
 func (a *Action) WriteDocumentation(inputTable, outputTable *strings.Builder) error {
-        var err error
+	var err error
 	input, err := os.ReadFile(a.OutputFileName)
 
 	if err != nil {
@@ -90,7 +90,7 @@ func (a *Action) WriteDocumentation(inputTable, outputTable *strings.Builder) er
 	if hasInputsData {
 		output = utils.ReplaceBytesInBetween(input, inputStartIndex, inputEndIndex, []byte(inputsStr))
 	} else {
-		re, err := regexp.Compile(fmt.Sprintf("(?m)^%s", internal.InputsHeader))
+		re, err := regexp.Compile(fmt.Sprintf("^%s", internal.InputsHeader))
 		if err != nil {
 			return err
 		}
@@ -108,7 +108,7 @@ func (a *Action) WriteDocumentation(inputTable, outputTable *strings.Builder) er
 	if hasOutputsData {
 		output = utils.ReplaceBytesInBetween(output, outputStartIndex, outputEndIndex, []byte(outputsStr))
 	} else {
-		re, err := regexp.Compile(fmt.Sprintf("(?m)^%s", internal.OutputsHeader))
+		re, err := regexp.Compile(fmt.Sprintf("^%s", internal.OutputsHeader))
 		if err != nil {
 			return err
 		}
