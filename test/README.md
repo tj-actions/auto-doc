@@ -1,6 +1,12 @@
 # test
 
-Test text ## Inputs
+Test text ## Inputs with some more text
+
+## Inputs
+
+ ------
+
+ ## Inputs
 
 <!-- AUTO-DOC-INPUT:START - Do not remove or modify this section -->
 
