@@ -1,6 +1,8 @@
 # test
 
-Test text ## Inputs
+Test text ## Inputs that is in a paragraph
+
+## Inputs
 
 <!-- AUTO-DOC-INPUT:START - Do not remove or modify this section -->
 
