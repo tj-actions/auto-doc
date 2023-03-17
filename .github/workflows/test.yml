@@ -149,7 +149,7 @@ jobs:
         if: github.event.pull_request.head.repo.owner.login == github.repository_owner
 
       - name: Verify Changed files
-        uses: tj-actions/verify-changed-files@v13
+        uses: tj-actions/verify-changed-files@v14
         if: github.event.pull_request.head.repo.owner.login == github.repository_owner
         id: verify-changed-files
         with:
