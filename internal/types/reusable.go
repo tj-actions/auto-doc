@@ -122,7 +122,7 @@ func (r *Reusable) WriteDocumentation(inputTable, outputTable, secretsTable *str
 	)
 
 	outputsStr := strings.TrimSpace(outputTable.String())
-	
+
 	if hasOutputsData {
 		for i := 0; i < len(outputStartIndexes); i++ {
 			output = utils.ReplaceBytesInBetween(output, outputStartIndexes[i], outputEndIndexes[i], []byte(outputsStr))
@@ -144,7 +144,7 @@ func (r *Reusable) WriteDocumentation(inputTable, outputTable, secretsTable *str
 	)
 
 	secretsStr := strings.TrimSpace(secretsTable.String())
-	
+
 	if hasSecretsData {
 		for i := 0; i < len(secretsStartIndexes); i++ {
 			output = utils.ReplaceBytesInBetween(output, secretsStartIndexes[i], secretsEndIndexes[i], []byte(secretsStr))

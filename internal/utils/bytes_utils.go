@@ -32,7 +32,7 @@ func HasBytesInBetween(value, start, end []byte) (found bool, startIndexes []int
 		if len(startLoc) > 0 && len(endLoc) > 0 {
 			startIndex := startLoc[0] + i
 			endIndex := endLoc[1] + i
-			
+
 			if startIndex < endIndex {
 				startIndexes = append(startIndexes, startIndex)
 				endIndexes = append(endIndexes, endIndex)
