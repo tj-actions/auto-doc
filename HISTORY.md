@@ -1,8 +1,39 @@
 # Changelog
 
+## [Unreleased](https://github.com/tj-actions/auto-doc/tree/HEAD)
+
+[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v2.2.4...HEAD)
+
+**Closed issues:**
+
+- Dependency Dashboard [\#2](https://github.com/tj-actions/auto-doc/issues/2)
+
+## [v2.2.4](https://github.com/tj-actions/auto-doc/tree/v2.2.4) (2023-03-17)
+
+[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v2.2.3...v2.2.4)
+
+**Fixed bugs:**
+
+- \[BUG\] auto-doc replaces first occurrence of header regardless of placement. [\#427](https://github.com/tj-actions/auto-doc/issues/427)
+- \[BUG\] Having header defined without any data causes 2 blank spaces. [\#426](https://github.com/tj-actions/auto-doc/issues/426)
+
+**Merged pull requests:**
+
+- chore\(deps\): update tj-actions/verify-changed-files action to v14 [\#435](https://github.com/tj-actions/auto-doc/pull/435) ([renovate[bot]](https://github.com/apps/renovate))
+- chore: update README.md [\#433](https://github.com/tj-actions/auto-doc/pull/433) ([jackton1](https://github.com/jackton1))
+- fix: bug with matching only headings that occur at the start [\#432](https://github.com/tj-actions/auto-doc/pull/432) ([jackton1](https://github.com/jackton1))
+- chore\(deps\): update actions/setup-go action to v4 [\#430](https://github.com/tj-actions/auto-doc/pull/430) ([renovate[bot]](https://github.com/apps/renovate))
+- chore\(deps\): update peter-evans/create-pull-request action to v4.2.4 [\#429](https://github.com/tj-actions/auto-doc/pull/429) ([renovate[bot]](https://github.com/apps/renovate))
+- Replace headers instead of any matching text [\#428](https://github.com/tj-actions/auto-doc/pull/428) ([andreas-aman](https://github.com/andreas-aman))
+- Upgraded to v2.2.3 [\#425](https://github.com/tj-actions/auto-doc/pull/425) ([jackton1](https://github.com/jackton1))
+
 ## [v2.2.3](https://github.com/tj-actions/auto-doc/tree/v2.2.3) (2023-03-10)
 
-[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v2.2.2...v2.2.3)
+[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v2...v2.2.3)
+
+## [v2](https://github.com/tj-actions/auto-doc/tree/v2) (2023-03-10)
+
+[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v2.2.2...v2)
 
 **Merged pull requests:**
 
@@ -13,19 +44,11 @@
 
 ## [v2.2.2](https://github.com/tj-actions/auto-doc/tree/v2.2.2) (2023-03-10)
 
-[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v2...v2.2.2)
-
-## [v2](https://github.com/tj-actions/auto-doc/tree/v2) (2023-03-10)
-
-[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v2.2.1...v2)
+[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v2.2.1...v2.2.2)
 
 ## [v2.2.1](https://github.com/tj-actions/auto-doc/tree/v2.2.1) (2023-03-10)
 
 [Full Changelog](https://github.com/tj-actions/auto-doc/compare/v2.2.0...v2.2.1)
-
-**Closed issues:**
-
-- Dependency Dashboard [\#2](https://github.com/tj-actions/auto-doc/issues/2)
 
 ## [v2.2.0](https://github.com/tj-actions/auto-doc/tree/v2.2.0) (2023-03-09)
 
