@@ -17,6 +17,7 @@ limitations under the License.
 package types
 
 import (
+	"bytes"
 	"fmt"
 	"os"
 	"regexp"
@@ -70,7 +71,7 @@ func (a *Action) GetData() error {
 
 // WriteDocumentation write the table to the output file
 func (a *Action) WriteDocumentation(inputTable, outputTable *strings.Builder) error {
-        var err error
+	var err error
 	input, err := os.ReadFile(a.OutputFileName)
 
 	if err != nil {
@@ -79,46 +80,53 @@ func (a *Action) WriteDocumentation(inputTable, outputTable *strings.Builder) er
 
 	var output []byte
 
-	hasInputsData, inputStartIndex, inputEndIndex := utils.HasBytesInBetween(
+	hasInputsData, inputStartIndexes, inputEndIndexes := utils.HasBytesInBetween(
 		input,
-		[]byte(internal.InputsHeader),
+		[]byte(internal.InputAutoDocStart),
 		[]byte(internal.InputAutoDocEnd),
 	)
 
-	inputsStr := strings.TrimSpace(fmt.Sprintf("%s\n\n%v", internal.InputsHeader, inputTable.String()))
+	output = input
+	inputsStr := strings.TrimSpace(inputTable.String())
 
 	if hasInputsData {
-		output = utils.ReplaceBytesInBetween(input, inputStartIndex, inputEndIndex, []byte(inputsStr))
-	} else {
-		re, err := regexp.Compile(fmt.Sprintf("(?m)^%s", internal.InputsHeader))
-		if err != nil {
-			return err
+		for i := 0; i < len(inputStartIndexes); i++ {
+			output = utils.ReplaceBytesInBetween(output, inputStartIndexes[i], inputEndIndexes[i], []byte(inputsStr))
 		}
-		output = re.ReplaceAll([]byte(input), []byte(inputsStr))
+	} else {
+		re := regexp.MustCompile(fmt.Sprintf("(?m)^%s", internal.InputsHeader))
+		output = re.ReplaceAllFunc(input, func(match []byte) []byte {
+			if bytes.HasPrefix(match, []byte(internal.InputsHeader)) {
+				return []byte(fmt.Sprintf("%s\n\n%v", internal.InputsHeader, inputsStr))
+			}
+			return match
+		})
 	}
 
-	hasOutputsData, outputStartIndex, outputEndIndex := utils.HasBytesInBetween(
+	hasOutputsData, outputStartIndexes, outputEndIndexes := utils.HasBytesInBetween(
 		output,
-		[]byte(internal.OutputsHeader),
+		[]byte(internal.OutputAutoDocStart),
 		[]byte(internal.OutputAutoDocEnd),
 	)
 
-	outputsStr := strings.TrimSpace(fmt.Sprintf("%s\n\n%v", internal.OutputsHeader, outputTable.String()))
+	outputsStr := strings.TrimSpace(outputTable.String())
 
 	if hasOutputsData {
-		output = utils.ReplaceBytesInBetween(output, outputStartIndex, outputEndIndex, []byte(outputsStr))
-	} else {
-		re, err := regexp.Compile(fmt.Sprintf("(?m)^%s", internal.OutputsHeader))
-		if err != nil {
-			return err
+		for i := 0; i < len(outputStartIndexes); i++ {
+			output = utils.ReplaceBytesInBetween(output, outputStartIndexes[i], outputEndIndexes[i], []byte(outputsStr))
 		}
-		output = re.ReplaceAll([]byte(output), []byte(outputsStr))
+	} else {
+		re := regexp.MustCompile(fmt.Sprintf("(?m)^%s", internal.OutputsHeader))
+		output = re.ReplaceAllFunc(output, func(match []byte) []byte {
+			if bytes.HasPrefix(match, []byte(internal.OutputsHeader)) {
+				return []byte(fmt.Sprintf("%s\n\n%v", internal.OutputsHeader, outputsStr))
+			}
+			return match
+		})
 	}
 
-	if len(output) > 0 {
-		if err = os.WriteFile(a.OutputFileName, output, 0666); err != nil {
-			cobra.CheckErr(err)
-		}
+	if err = os.WriteFile(a.OutputFileName, output, 0666); err != nil {
+		cobra.CheckErr(err)
 	}
 
 	return nil

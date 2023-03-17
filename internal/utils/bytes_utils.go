@@ -16,24 +16,39 @@ limitations under the License.
 */
 package utils
 
-import "bytes"
+import (
+	"regexp"
+)
 
-func HasBytesInBetween(value, start, end []byte) (found bool, startIndex int, endIndex int) {
-	s := bytes.Index(value, start)
+// HasBytesInBetween checks if a byte array has a start and end byte array and returns true if and all occurrences of start and end
+func HasBytesInBetween(value, start, end []byte) (found bool, startIndexes []int, endIndexes []int) {
+	startRegexp := regexp.MustCompile("(?m)^" + string(start))
+	endRegexp := regexp.MustCompile("(?m)^" + string(end))
 
-	if s == -1 {
-		return false, -1, -1
+	// Find all start and end indexes
+	for i := 0; i < len(value); i++ {
+		startLoc := startRegexp.FindIndex(value[i:])
+		endLoc := endRegexp.FindIndex(value[i:])
+		if len(startLoc) > 0 && len(endLoc) > 0 {
+			startIndex := startLoc[0] + i
+			endIndex := endLoc[1] + i
+
+			if startIndex < endIndex {
+				startIndexes = append(startIndexes, startIndex)
+				endIndexes = append(endIndexes, endIndex)
+			}
+			i += endIndex // skip the content between end and next start
+		}
 	}
 
-	e := bytes.Index(value, end)
-
-	if e == -1 {
-		return false, -1, -1
+	if len(startIndexes) == 0 || len(endIndexes) == 0 {
+		return false, nil, nil
 	}
 
-	return true, s, e + len(end)
+	return true, startIndexes, endIndexes
 }
 
+// ReplaceBytesInBetween replaces a byte array between a start and end index with a new byte array
 func ReplaceBytesInBetween(value []byte, startIndex int, endIndex int, new []byte) []byte {
 	t := make([]byte, len(value)+len(new))
 	w := 0
