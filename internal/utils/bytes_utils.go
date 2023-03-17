@@ -16,22 +16,36 @@ limitations under the License.
 */
 package utils
 
-import "bytes"
+import (
+	"bytes"
+	"regexp"
+)
 
-func HasBytesInBetween(value, start, end []byte) (found bool, startIndex int, endIndex int) {
-	s := bytes.Index(value, start)
+func HasBytesInBetween(value, start, end []byte) (found bool, startIndexes []int, endIndexes []int) {
+	startRegexp := regexp.MustCompile("(?m)^" + string(start))
+	endRegexp := regexp.MustCompile("(?m)^" + string(end))
 
-	if s == -1 {
-		return false, -1, -1
+	// Find all start and end indexes
+	for i := 0; i < len(value); i++ {
+		startLoc := startRegexp.FindIndex(value[i:])
+		endLoc := endRegexp.FindIndex(value[i:])
+		if len(startLoc) > 0 && len(endLoc) > 0 {
+			startIndex := startLoc[0] + i
+			endIndex := endLoc[1] + i
+			
+			if startIndex < endIndex {
+				startIndexes = append(startIndexes, startIndex)
+				endIndexes = append(endIndexes, endIndex)
+			}
+			i += endIndex // skip the content between end and next start
+		}
 	}
 
-	e := bytes.Index(value, end)
-
-	if e == -1 {
-		return false, -1, -1
+	if len(startIndexes) == 0 || len(endIndexes) == 0 {
+		return false, nil, nil
 	}
 
-	return true, s, e + len(end)
+	return true, startIndexes, endIndexes
 }
 
 func ReplaceBytesInBetween(value []byte, startIndex int, endIndex int, new []byte) []byte {
@@ -42,4 +56,27 @@ func ReplaceBytesInBetween(value []byte, startIndex int, endIndex int, new []byt
 	w += copy(t[w:w+len(new)], new)
 	w += copy(t[w:], value[endIndex:])
 	return t[0:w]
+}
+
+func ReplaceAllBytesBetween(value []byte, startToken []byte, endToken []byte, new []byte) []byte {
+	startIndex := bytes.Index(value, startToken)
+	endIndex := bytes.Index(value, endToken)
+	result := make([]byte, len(value))
+
+	// copy bytes before startToken to the result
+	copy(result, value[:startIndex])
+
+	for startIndex != -1 && endIndex != -1 {
+		// copy new bytes between startToken and endToken to the result
+		result = append(result, new...)
+
+		// copy bytes after endToken to the result
+		result = append(result, value[endIndex+len(endToken):]...)
+
+		// find the next startToken and endToken
+		startIndex = bytes.Index(result, startToken)
+		endIndex = bytes.Index(result, endToken)
+	}
+
+	return result
 }
