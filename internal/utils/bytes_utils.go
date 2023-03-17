@@ -17,10 +17,10 @@ limitations under the License.
 package utils
 
 import (
-	"bytes"
 	"regexp"
 )
 
+// HasBytesInBetween checks if a byte array has a start and end byte array and returns true if and all occurrences of start and end
 func HasBytesInBetween(value, start, end []byte) (found bool, startIndexes []int, endIndexes []int) {
 	startRegexp := regexp.MustCompile("(?m)^" + string(start))
 	endRegexp := regexp.MustCompile("(?m)^" + string(end))
@@ -48,6 +48,7 @@ func HasBytesInBetween(value, start, end []byte) (found bool, startIndexes []int
 	return true, startIndexes, endIndexes
 }
 
+// ReplaceBytesInBetween replaces a byte array between a start and end index with a new byte array
 func ReplaceBytesInBetween(value []byte, startIndex int, endIndex int, new []byte) []byte {
 	t := make([]byte, len(value)+len(new))
 	w := 0
@@ -56,27 +57,4 @@ func ReplaceBytesInBetween(value []byte, startIndex int, endIndex int, new []byt
 	w += copy(t[w:w+len(new)], new)
 	w += copy(t[w:], value[endIndex:])
 	return t[0:w]
-}
-
-func ReplaceAllBytesBetween(value []byte, startToken []byte, endToken []byte, new []byte) []byte {
-	startIndex := bytes.Index(value, startToken)
-	endIndex := bytes.Index(value, endToken)
-	result := make([]byte, len(value))
-
-	// copy bytes before startToken to the result
-	copy(result, value[:startIndex])
-
-	for startIndex != -1 && endIndex != -1 {
-		// copy new bytes between startToken and endToken to the result
-		result = append(result, new...)
-
-		// copy bytes after endToken to the result
-		result = append(result, value[endIndex+len(endToken):]...)
-
-		// find the next startToken and endToken
-		startIndex = bytes.Index(result, startToken)
-		endIndex = bytes.Index(result, endToken)
-	}
-
-	return result
 }
