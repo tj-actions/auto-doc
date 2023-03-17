@@ -23,8 +23,8 @@ GitHub Action that generates beautiful, easy-to-read markdown tables with just a
 
 ## Features
 
-*   Document custom actions from the `action.yml` file.
-*   Document reusable workflows by specifying the filename.
+*   Document [your Github action](https://docs.github.com/en/actions/creating-actions) using the `action.yml` file.
+*   Document [reusable workflows](https://docs.github.com/en/actions/using-workflows/reusing-workflows) by specifying the filename.
 *   Easy to understand markdown table of all inputs/outputs/secrets.
 *   Fast and always up-to-date documentation.
 
