@@ -95,7 +95,7 @@ runs:
           echo "Downloading auto-doc $LATEST_VERSION binary..."
 
           TEMP_DIR=$(mktemp -d)
-          curl -svf https://gobinaries.com/github.com/tj-actions/auto-doc@$LATEST_VERSION | PREFIX=$TEMP_DIR 
+          curl -svf https://gobinaries.com/github.com/tj-actions/auto-doc@$LATEST_VERSION | PREFIX=$TEMP_DIR sh
 
           BIN_PATH="$TEMP_DIR/auto-doc"
         fi
