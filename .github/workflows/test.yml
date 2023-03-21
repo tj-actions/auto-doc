@@ -100,7 +100,8 @@ jobs:
     if: |
       (
         github.actor != 'dependabot[bot]' &&
-        github.actor != 'dependabot'
+        github.actor != 'dependabot' &&
+        github.actor != 'github-actions[bot]'
       )
     runs-on: ${{ matrix.platform }}
     strategy:
