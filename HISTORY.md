@@ -1,21 +1,31 @@
 # Changelog
 
-## [Unreleased](https://github.com/tj-actions/auto-doc/tree/HEAD)
+## [v2.2.5](https://github.com/tj-actions/auto-doc/tree/v2.2.5) (2023-03-21)
 
-[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v2.2.4...HEAD)
+[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v2.2.4...v2.2.5)
 
-**Closed issues:**
+**Merged pull requests:**
 
-- Dependency Dashboard [\#2](https://github.com/tj-actions/auto-doc/issues/2)
+- chore: switch back to gobinaries [\#437](https://github.com/tj-actions/auto-doc/pull/437) ([jackton1](https://github.com/jackton1))
+- Upgraded to v2.2.4 [\#436](https://github.com/tj-actions/auto-doc/pull/436) ([jackton1](https://github.com/jackton1))
+- chore: update README.md [\#434](https://github.com/tj-actions/auto-doc/pull/434) ([jackton1](https://github.com/jackton1))
 
 ## [v2.2.4](https://github.com/tj-actions/auto-doc/tree/v2.2.4) (2023-03-17)
 
-[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v2.2.3...v2.2.4)
+[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v2...v2.2.4)
+
+## [v2](https://github.com/tj-actions/auto-doc/tree/v2) (2023-03-17)
+
+[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v2.2.3...v2)
 
 **Fixed bugs:**
 
 - \[BUG\] auto-doc replaces first occurrence of header regardless of placement. [\#427](https://github.com/tj-actions/auto-doc/issues/427)
 - \[BUG\] Having header defined without any data causes 2 blank spaces. [\#426](https://github.com/tj-actions/auto-doc/issues/426)
+
+**Closed issues:**
+
+- Dependency Dashboard [\#2](https://github.com/tj-actions/auto-doc/issues/2)
 
 **Merged pull requests:**
 
@@ -29,11 +39,7 @@
 
 ## [v2.2.3](https://github.com/tj-actions/auto-doc/tree/v2.2.3) (2023-03-10)
 
-[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v2...v2.2.3)
-
-## [v2](https://github.com/tj-actions/auto-doc/tree/v2) (2023-03-10)
-
-[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v2.2.2...v2)
+[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v2.2.2...v2.2.3)
 
 **Merged pull requests:**
 
