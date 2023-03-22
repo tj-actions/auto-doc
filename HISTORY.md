@@ -1,8 +1,23 @@
 # Changelog
 
+## [v2.2.7](https://github.com/tj-actions/auto-doc/tree/v2.2.7) (2023-03-22)
+
+[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v2.2.6...v2.2.7)
+
+**Merged pull requests:**
+
+- Update README.md [\#445](https://github.com/tj-actions/auto-doc/pull/445) ([jackton1](https://github.com/jackton1))
+- Update format-tidy.yml [\#444](https://github.com/tj-actions/auto-doc/pull/444) ([jackton1](https://github.com/jackton1))
+- chore: update description of types [\#443](https://github.com/tj-actions/auto-doc/pull/443) ([jackton1](https://github.com/jackton1))
+- Upgraded to v2.2.6 [\#442](https://github.com/tj-actions/auto-doc/pull/442) ([jackton1](https://github.com/jackton1))
+
 ## [v2.2.6](https://github.com/tj-actions/auto-doc/tree/v2.2.6) (2023-03-22)
 
-[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v2.2.5...v2.2.6)
+[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v2...v2.2.6)
+
+## [v2](https://github.com/tj-actions/auto-doc/tree/v2) (2023-03-22)
+
+[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v2.2.5...v2)
 
 **Merged pull requests:**
 
@@ -11,11 +26,7 @@
 
 ## [v2.2.5](https://github.com/tj-actions/auto-doc/tree/v2.2.5) (2023-03-22)
 
-[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v2...v2.2.5)
-
-## [v2](https://github.com/tj-actions/auto-doc/tree/v2) (2023-03-22)
-
-[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v2.2.4...v2)
+[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v2.2.4...v2.2.5)
 
 **Merged pull requests:**
 

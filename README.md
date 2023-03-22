@@ -23,7 +23,7 @@ GitHub Action that generates beautiful, easy-to-read markdown tables with just a
 
 ## Features
 
-*   Document your [Github action](https://docs.github.com/en/actions/creating-actions) using the `action.yml` file.
+*   Document your custom [Github action](https://docs.github.com/en/actions/creating-actions) using the `action.yml` file.
 *   Document [reusable workflows](https://docs.github.com/en/actions/using-workflows/reusing-workflows) by specifying the filename.
 *   Easy to understand markdown table of all inputs/outputs/secrets.
 *   Fast and always up-to-date documentation.
@@ -46,7 +46,7 @@ GitHub Action that generates beautiful, easy-to-read markdown tables with just a
 
 ## Usage
 
-Add the `Inputs` and/or `Outputs` and/or `Secrets` (only supported by reusable workflows) [`H2` header] (https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#headers) to any markdown file.
+Add the `Inputs` and/or `Outputs` and/or `Secrets` (only supported by reusable workflows) \[`H2` header] (https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#headers) to any markdown file.
 
 ```yaml
 ...
