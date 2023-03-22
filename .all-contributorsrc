@@ -15,6 +15,16 @@
         "code",
         "doc"
       ]
+    },
+    {
+      "login": "ViacheslavKudinov",
+      "name": "Viacheslav Kudinov",
+      "avatar_url": "https://avatars.githubusercontent.com/u/56436734?v=4",
+      "profile": "https://github.com/ViacheslavKudinov",
+      "contributions": [
+        "code",
+        "test"
+      ]
     }
   ],
   "contributorsPerLine": 7,

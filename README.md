@@ -12,9 +12,7 @@
 [![Windows](https://img.shields.io/badge/Windows-0078D6?logo=windows\&logoColor=white)](https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idruns-on)
 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
-
+[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 ## auto-doc
@@ -196,21 +194,18 @@ If you are reporting a bug, please include:
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
-
 <!-- prettier-ignore-start -->
-
 <!-- markdownlint-disable -->
-
 <table>
   <tbody>
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/andreas-aman"><img src="https://avatars.githubusercontent.com/u/118175695?v=4?s=100" width="100px;" alt="Andreas Åman"/><br /><sub><b>Andreas Åman</b></sub></a><br /><a href="https://github.com/tj-actions/auto-doc/commits?author=andreas-aman" title="Code">💻</a> <a href="https://github.com/tj-actions/auto-doc/commits?author=andreas-aman" title="Documentation">📖</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/ViacheslavKudinov"><img src="https://avatars.githubusercontent.com/u/56436734?v=4?s=100" width="100px;" alt="Viacheslav Kudinov"/><br /><sub><b>Viacheslav Kudinov</b></sub></a><br /><a href="https://github.com/tj-actions/auto-doc/commits?author=ViacheslavKudinov" title="Code">💻</a> <a href="https://github.com/tj-actions/auto-doc/commits?author=ViacheslavKudinov" title="Tests">⚠️</a></td>
     </tr>
   </tbody>
 </table>
 
 <!-- markdownlint-restore -->
-
 <!-- prettier-ignore-end -->
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
