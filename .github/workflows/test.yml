@@ -1,7 +1,7 @@
 name: CI
 
 on:
-  pull_request_target:
+  pull_request:
     branches:
       - main
 
@@ -158,11 +158,13 @@ jobs:
             README.md
             test/**
 
+
       - name: Commit README changes
         if: github.event.pull_request.head.repo.owner.login == github.repository_owner && steps.verify-changed-files.outputs.files_changed == 'true'
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
+          git diff
           git add ${{ steps.verify-changed-files.outputs.changed_files }}
           git commit -m "Updated README."
 
