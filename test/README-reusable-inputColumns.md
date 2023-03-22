@@ -4,8 +4,9 @@
 
 <!-- AUTO-DOC-INPUT:START - Do not remove or modify this section -->
 
-|    INPUT    | TYPE   |      DESCRIPTION       |
+|    INPUT    |  TYPE  |      DESCRIPTION       |
 |-------------|--------|------------------------|
+| bool_tested |  bool  |      Test of bool      |
 | config-path | string | The configuration path |
 |  username   | string |        Username        |
 
