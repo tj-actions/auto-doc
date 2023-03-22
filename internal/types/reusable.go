@@ -27,10 +27,9 @@ import (
 
 	"github.com/olekukonko/tablewriter"
 	"github.com/spf13/cobra"
-	"gopkg.in/yaml.v3"
-
 	"github.com/tj-actions/auto-doc/internal"
 	"github.com/tj-actions/auto-doc/internal/utils"
+	"gopkg.in/yaml.v3"
 )
 
 // ReusableInput represents the input of the reusable workflow
@@ -38,6 +37,7 @@ type ReusableInput struct {
 	Description string `yaml:"description"`
 	Required    bool   `yaml:"required"`
 	Default     string `yaml:"default,omitempty"`
+	Type        string `yaml:"type"`
 }
 
 // ReusableOutput represents the output of the reusable workflow
@@ -233,7 +233,7 @@ func renderReusableInputTableOutput(i map[string]ReusableInput, inputColumns []s
 				case "Input":
 					row = append(row, key)
 				case "Type":
-					row = append(row, "string")
+					row = append(row, i[key].Type)
 				case "Required":
 					row = append(row, strconv.FormatBool(i[key].Required))
 				case "Default":
