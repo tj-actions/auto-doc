@@ -4,10 +4,10 @@
 
 <!-- AUTO-DOC-INPUT:START - Do not remove or modify this section -->
 
-|    INPUT    |    TYPE    | REQUIRED |   DEFAULT   |      DESCRIPTION       |
-|-------------|------------|----------|-------------|------------------------|
-| config-path | `"string"` |   true   |             | The configuration path |
-|  username   | `"string"` |  false   | `"example"` |        Username        |
+|    INPUT    | TYPE   | REQUIRED |   DEFAULT   |      DESCRIPTION       |
+|-------------|--------|----------|-------------|------------------------|
+| config-path | string |   true   |             | The configuration path |
+|  username   | string |  false   | `"example"` |        Username        |
 
 <!-- AUTO-DOC-INPUT:END -->
 

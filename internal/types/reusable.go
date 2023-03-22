@@ -27,8 +27,6 @@ import (
 
 	"github.com/olekukonko/tablewriter"
 	"github.com/spf13/cobra"
-	"gopkg.in/yaml.v3"
-
 	"github.com/tj-actions/auto-doc/internal"
 	"github.com/tj-actions/auto-doc/internal/utils"
 )
@@ -234,7 +232,7 @@ func renderReusableInputTableOutput(i map[string]ReusableInput, inputColumns []s
 				case "Input":
 					row = append(row, key)
 				case "Type":
-					row = append(row, utils.FormatValue(i[key].Type))
+					row = append(row, i[key].Required)
 				case "Required":
 					row = append(row, strconv.FormatBool(i[key].Required))
 				case "Default":
