@@ -112,7 +112,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
         with:
+          ref: ${{ github.head_ref }}
           fetch-depth: 0  # otherwise, you will fail to push refs to dest repo
+          persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal token
 
       - name: Setup go
         uses: actions/setup-go@v4
@@ -164,7 +166,6 @@ jobs:
           git config --local user.name "github-actions[bot]"
           git add ${{ steps.verify-changed-files.outputs.changed_files }}
           git commit -m "Updated README."
-          git pull 
 
       - name: Push README changes
         if: github.event.pull_request.head.repo.owner.login == github.repository_owner && steps.verify-changed-files.outputs.files_changed == 'true'
