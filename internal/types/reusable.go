@@ -38,6 +38,7 @@ type ReusableInput struct {
 	Description string `yaml:"description"`
 	Required    bool   `yaml:"required"`
 	Default     string `yaml:"default,omitempty"`
+	Type        string `yaml:"type"`
 }
 
 // ReusableOutput represents the output of the reusable workflow
@@ -233,7 +234,7 @@ func renderReusableInputTableOutput(i map[string]ReusableInput, inputColumns []s
 				case "Input":
 					row = append(row, key)
 				case "Type":
-					row = append(row, "string")
+					row = append(row, utils.FormatValue(i[key].Type))
 				case "Required":
 					row = append(row, strconv.FormatBool(i[key].Required))
 				case "Default":
