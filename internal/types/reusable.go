@@ -52,7 +52,7 @@ type ReusableSecret struct {
 	Description string `yaml:"description"`
 }
 
-// Reusable represents the reusable workflow yaml
+// Reusable represents a reusable workflow
 type Reusable struct {
 	InputFileName  string
 	OutputFileName string
