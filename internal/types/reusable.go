@@ -232,7 +232,7 @@ func renderReusableInputTableOutput(i map[string]ReusableInput, inputColumns []s
 				case "Input":
 					row = append(row, key)
 				case "Type":
-					row = append(row, i[key].Required)
+					row = append(row, i[key].Type)
 				case "Required":
 					row = append(row, strconv.FormatBool(i[key].Required))
 				case "Default":
