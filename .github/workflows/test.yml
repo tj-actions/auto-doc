@@ -1,7 +1,7 @@
 name: CI
 
 on:
-  pull_request:
+  pull_request_target:
     branches:
       - main
 
@@ -164,7 +164,6 @@ jobs:
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git diff
           git add ${{ steps.verify-changed-files.outputs.changed_files }}
           git commit -m "Updated README."
 
