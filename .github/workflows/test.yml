@@ -16,13 +16,6 @@ jobs:
         with:
           go-version-file: 'go.mod'
 
-      - uses: actions/cache@v3
-        with:
-          path: ~/go/pkg/mod
-          key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
-          restore-keys: |
-            ${{ runner.os }}-go-
-
       - name: GoReleaser
         uses: goreleaser/goreleaser-action@v4
         with:
@@ -112,20 +105,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
         with:
+          ref: ${{ github.head_ref }}
           fetch-depth: 0  # otherwise, you will fail to push refs to dest repo
-          persist-credentials: false  # otherwise, the token used is the GITHUB_TOKEN, instead of your personal token
+          persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal token
 
       - name: Setup go
         uses: actions/setup-go@v4
         with:
           go-version-file: 'go.mod'
-
-      - uses: actions/cache@v3
-        with:
-          path: ~/go/pkg/mod
-          key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
-          restore-keys: |
-            ${{ runner.os }}-go-
 
       - name: Test action
         uses: ./
@@ -159,7 +146,8 @@ jobs:
             test/**
 
       - name: Commit README changes
-        if: github.event.pull_request.head.repo.owner.login == github.repository_owner && steps.verify-changed-files.outputs.files_changed == 'true'
+        if: github.event.pull_request.head.repo.owner.login == github.repository_owner && steps.verify-changed-files.outputs.files_changed == 'true' && matrix.platform == 'ubuntu-latest'
+        
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
@@ -167,7 +155,7 @@ jobs:
           git commit -m "Updated README."
 
       - name: Push README changes
-        if: github.event.pull_request.head.repo.owner.login == github.repository_owner && steps.verify-changed-files.outputs.files_changed == 'true'
+        if: github.event.pull_request.head.repo.owner.login == github.repository_owner && steps.verify-changed-files.outputs.files_changed == 'true' && matrix.platform == 'ubuntu-latest'
         uses: ad-m/github-push-action@master
         continue-on-error: true
         with:
