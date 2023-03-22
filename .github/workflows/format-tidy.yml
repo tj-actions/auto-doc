@@ -1,13 +1,5 @@
 name: Format & Tidy go.mod
 on:
-  push:
-    paths:
-      - '**.go'
-      - '**.mod'
-      - 'Makefile'
-      - '.github/workflows/format-tidy.yml'
-    branches:
-      - 'main'
   pull_request:
     paths:
       - '**.go'
