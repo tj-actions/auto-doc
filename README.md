@@ -19,7 +19,7 @@
 
 ## auto-doc
 
-GitHub Action that generates beautiful, easy-to-read markdown tables with just a few lines of code. Say goodbye to manual table creation and hello to streamlined documentation that's always up-to-date.
+GitHub Action that generates beautiful, easy-to-read markdown tables with just a few lines of code. Say goodbye to manual table creation and hello to streamlined documentation that is always up-to-date.
 
 ## Features
 
