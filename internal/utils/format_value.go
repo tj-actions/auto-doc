@@ -23,6 +23,7 @@ import (
 	"github.com/tj-actions/auto-doc/internal"
 )
 
+// Formats a string that would be outputed as markdown
 func FormatValue(v string) string {
 	if len(v) == 0 {
 		return ""
