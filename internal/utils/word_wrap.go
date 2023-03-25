@@ -21,7 +21,7 @@ import (
 	"strings"
 )
 
-// Wrap lengthy words with the br html tag except code blocks, links, and code
+// WordWrap wraps lengthy words with the br html tag except code blocks, links, and code
 func WordWrap(s string, limit int) string {
 	if strings.TrimSpace(s) == "" {
 		return s
