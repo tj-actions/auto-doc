@@ -1,4 +1,4 @@
-// Package internal/constants contains all internal constants
+// Package internal contains all internal packages and utility functions.
 /*
 Copyright © 2021 Tonye Jack <jtonye@ymail.com>
 
