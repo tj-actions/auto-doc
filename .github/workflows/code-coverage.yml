@@ -15,7 +15,7 @@ jobs:
       (
         github.actor != 'dependabot[bot]' &&
         github.actor != 'dependabot' &&
-        (github.event.pull_request.head.repo.owner.login == github.repository_owner && github.event_name != 'push')
+        github.event.pull_request.head.repo.fork != 'true'
       )
     name: Update coverage badge
     steps:
