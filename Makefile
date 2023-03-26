@@ -36,10 +36,27 @@ run-help: build guard-OUTPUT guard-FILENAME  ## Execute binary
 	@./bin/auto_doc --help
 	@$(MAKE) clean
 
-upgrade-major-version:  ## Upgrade major version
+upgrade-to-v2:  ## Upgrade to v2
+	@find . -type f \
+		-name '*.go' \
+		-exec grep -q 'github.com/tj-actions/auto-doc/v2' {} \; \
+		&& echo "Already upgraded to v2" \
+		&& exit 1 \
+		|| echo "Upgrading to v2"
 	@find . -type f \
         -name '*.go' \
-        -exec sed -i 's,github.com/tj-actions/auto-doc,github.com/tj-actions/auto-doc/v2,g' {} \;
+        -exec sed -i '' -e 's,github.com/tj-actions/auto-doc,github.com/tj-actions/auto-doc/v2,g' {} \;
+
+upgrade-from-v2-to-a-major-version: guard-MAJOR_VERSION  ## Upgrade from v2 to a major version
+	@find . -type f \
+		-name '*.go' \
+		-exec grep -q 'github.com/tj-actions/auto-doc/v$(MAJOR_VERSION)' {} \; \
+		&& echo "Already upgraded to v$(MAJOR_VERSION)" \
+		&& exit 1 \
+		|| echo "Upgrading to v$(MAJOR_VERSION)"
+	@find . -type f \
+		-name '*.go' \
+		-exec sed -i '' -e 's,github.com/tj-actions/auto-doc/v2,github.com/tj-actions/auto-doc/v$(MAJOR_VERSION),g' {} \;
 
 .PHONY: test
 test: clean
