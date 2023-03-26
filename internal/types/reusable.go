@@ -28,8 +28,8 @@ import (
 	"github.com/spf13/cobra"
 	"gopkg.in/yaml.v3"
 
-	"github.com/tj-actions/auto-doc/internal"
-	"github.com/tj-actions/auto-doc/internal/utils"
+	"github.com/tj-actions/auto-doc/v2/internal"
+	"github.com/tj-actions/auto-doc/v2/internal/utils"
 )
 
 // ReusableInput represents the input of the reusable workflow
