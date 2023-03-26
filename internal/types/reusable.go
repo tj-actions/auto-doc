@@ -27,8 +27,8 @@ import (
 
 	"github.com/olekukonko/tablewriter"
 	"github.com/spf13/cobra"
-	"github.com/tj-actions/auto-doc/internal"
-	"github.com/tj-actions/auto-doc/internal/utils"
+	"github.com/tj-actions/auto-doc/v2/internal"
+	"github.com/tj-actions/auto-doc/v2/internal/utils"
 	"gopkg.in/yaml.v3"
 )
 
