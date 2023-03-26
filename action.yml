@@ -91,7 +91,7 @@ runs:
         done
 
         if [[ -z "$BIN_PATH" ]]; then
-          LATEST_VERSION=${VERSION:-v2.3.0}
+          LATEST_VERSION=${VERSION:-v2.3.1}
           echo "Downloading auto-doc $LATEST_VERSION binary..."
 
           WINDOWS_TARGET=Windows_x86_64
