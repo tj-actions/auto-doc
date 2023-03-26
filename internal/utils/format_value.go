@@ -20,7 +20,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/tj-actions/auto-doc/internal"
+	"github.com/tj-actions/auto-doc/v2/internal"
 )
 
 func FormatValue(v string) string {
