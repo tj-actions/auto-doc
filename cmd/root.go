@@ -19,8 +19,8 @@ package cmd
 import (
 	"fmt"
 	"github.com/spf13/cobra"
-	"github.com/tj-actions/auto-doc/internal"
-	"github.com/tj-actions/auto-doc/internal/types"
+	"github.com/tj-actions/auto-doc/v2/internal"
+	"github.com/tj-actions/auto-doc/v2/internal/types"
 )
 
 var fileName string
