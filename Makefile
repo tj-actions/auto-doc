@@ -44,8 +44,8 @@ upgrade-to-v2:  ## Upgrade to v2
 		&& exit 1 \
 		|| echo "Upgrading to v2"
 	@find . -type f \
-        -name '*.go' \
-        -exec sed -i '' -e 's,github.com/tj-actions/auto-doc,github.com/tj-actions/auto-doc/v2,g' {} \;
+		-name '*.go' \
+		-exec sed -i '' -e 's,github.com/tj-actions/auto-doc,github.com/tj-actions/auto-doc/v2,g' {} \;
 
 upgrade-from-v2-to-a-major-version: guard-MAJOR_VERSION  ## Upgrade from v2 to a major version
 	@find . -type f \
