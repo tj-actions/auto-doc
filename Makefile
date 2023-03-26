@@ -36,6 +36,11 @@ run-help: build guard-OUTPUT guard-FILENAME  ## Execute binary
 	@./bin/auto_doc --help
 	@$(MAKE) clean
 
+upgrade-major-version:  ## Upgrade major version
+	@find . -type f \
+        -name '*.go' \
+        -exec sed -i 's,github.com/tj-actions/auto-doc,github.com/tj-actions/auto-doc/v2,g' {} \;
+
 .PHONY: test
 test: clean
 	@go test ./cmd

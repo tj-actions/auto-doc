@@ -1,4 +1,4 @@
-module github.com/tj-actions/auto-doc
+module github.com/tj-actions/auto-doc/v2
 
 go 1.20
 
