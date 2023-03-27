@@ -1,6 +1,6 @@
 ![Coverage](https://img.shields.io/badge/Coverage-80.6%25-brightgreen)
 [![codecov](https://codecov.io/github/tj-actions/auto-doc/branch/main/graph/badge.svg?token=TNXW4QRRJD)](https://codecov.io/github/tj-actions/auto-doc)
-[![Go Reference](https://pkg.go.dev/badge/github.com/tj-actions/auto-doc.svg)](https://pkg.go.dev/github.com/tj-actions/auto-doc)
+[![Go Reference](https://pkg.go.dev/badge/github.com/tj-actions/auto-doc/v2.svg)](https://pkg.go.dev/github.com/tj-actions/auto-doc/v2)
 [![Go Report Card](https://goreportcard.com/badge/github.com/tj-actions/auto-doc)](https://goreportcard.com/report/github.com/tj-actions/auto-doc)
 [![CI](https://github.com/tj-actions/auto-doc/workflows/CI/badge.svg)](https://github.com/tj-actions/auto-doc/actions?query=workflow%3ACI)
 [![Update release version.](https://github.com/tj-actions/auto-doc/workflows/Update%20release%20version./badge.svg)](https://github.com/tj-actions/auto-doc/actions?query=workflow%3A%22Update+release+version.%22)
