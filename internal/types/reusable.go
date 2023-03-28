@@ -237,7 +237,12 @@ func renderReusableInputTableOutput(i map[string]ReusableInput, inputColumns []s
 				case "Required":
 					row = append(row, strconv.FormatBool(i[key].Required))
 				case "Default":
-					row = append(row, utils.FormatValue(i[key].Default))
+					switch i[key].Type {
+					case "string":
+						row = append(row, utils.FormatValue(i[key].Default))
+					default:
+						row = append(row, "`"+i[key].Default+"`")
+					}
 				case "Description":
 					row = append(row, utils.WordWrap(i[key].Description, maxWords))
 				default:
