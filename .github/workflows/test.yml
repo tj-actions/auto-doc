@@ -163,5 +163,5 @@ jobs:
         uses: ad-m/github-push-action@master
         continue-on-error: true
         with:
-          github_token: ${{ secrets.PAT_TOKEN }}
+          github_token: ${{ secrets.PAT_TOKEN || github.token }}
           branch: ${{ github.head_ref }}
