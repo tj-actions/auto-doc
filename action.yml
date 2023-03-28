@@ -1,5 +1,5 @@
 name: action.yml autodoc
-description: action.yml doc generator
+description: Document your custom github action or reusable workflow with ease
 author: jackton1
 inputs:
   filename:
