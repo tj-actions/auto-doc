@@ -1,64 +1,86 @@
 # Changelog
 
-## [v2.3.1](https://github.com/tj-actions/auto-doc/tree/v2.3.1) (2023-03-26)
+## [v2.3.2](https://github.com/tj-actions/auto-doc/tree/v2.3.2) (2023-03-28)
 
-[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v2.3.0...v2.3.1)
+[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v2.3.0...v2.3.2)
 
-**Merged pull requests:**
+**Fixed bugs:**
 
-- chore: upgrade to v2 [\#454](https://github.com/tj-actions/auto-doc/pull/454) ([jackton1](https://github.com/jackton1))
-- Upgraded to v2.3.0 [\#453](https://github.com/tj-actions/auto-doc/pull/453) ([jackton1](https://github.com/jackton1))
-
-## [v2.3.0](https://github.com/tj-actions/auto-doc/tree/v2.3.0) (2023-03-22)
-
-[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v2...v2.3.0)
-
-## [v2](https://github.com/tj-actions/auto-doc/tree/v2) (2023-03-22)
-
-[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v2.2.7...v2)
+- \[BUG\] Non string default values are quoted. [\#456](https://github.com/tj-actions/auto-doc/issues/456)
 
 **Merged pull requests:**
 
-- Update README.md [\#452](https://github.com/tj-actions/auto-doc/pull/452) ([jackton1](https://github.com/jackton1))
-- Update README.md [\#451](https://github.com/tj-actions/auto-doc/pull/451) ([jackton1](https://github.com/jackton1))
-- docs: add ViacheslavKudinov as a contributor for code, and test [\#450](https://github.com/tj-actions/auto-doc/pull/450) ([allcontributors[bot]](https://github.com/apps/allcontributors))
-- chore: Update code-coverage.yml [\#449](https://github.com/tj-actions/auto-doc/pull/449) ([jackton1](https://github.com/jackton1))
-- chore: Update test.yml [\#448](https://github.com/tj-actions/auto-doc/pull/448) ([jackton1](https://github.com/jackton1))
-- \[Bugfix\] Type of inputs are always string fix [\#447](https://github.com/tj-actions/auto-doc/pull/447) ([ViacheslavKudinov](https://github.com/ViacheslavKudinov))
-- Upgraded to v2.2.7 [\#446](https://github.com/tj-actions/auto-doc/pull/446) ([jackton1](https://github.com/jackton1))
-- Update README.md [\#445](https://github.com/tj-actions/auto-doc/pull/445) ([jackton1](https://github.com/jackton1))
-- Update format-tidy.yml [\#444](https://github.com/tj-actions/auto-doc/pull/444) ([jackton1](https://github.com/jackton1))
-- chore: update description of types [\#443](https://github.com/tj-actions/auto-doc/pull/443) ([jackton1](https://github.com/jackton1))
-- Upgraded to v2.2.6 [\#442](https://github.com/tj-actions/auto-doc/pull/442) ([jackton1](https://github.com/jackton1))
+- Don't enclose non-strings with quotes [\#457](https://github.com/tj-actions/auto-doc/pull/457) ([andreas-aman](https://github.com/andreas-aman))
+- Upgraded to v2.3.1 [\#455](https://github.com/tj-actions/auto-doc/pull/455) ([jackton1](https://github.com/jackton1))
 
-## [v2.2.7](https://github.com/tj-actions/auto-doc/tree/v2.2.7) (2023-03-22)
+## [v2.3.0](https://github.com/tj-actions/auto-doc/tree/v2.3.0) (2023-03-26)
+
+[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v2.2.7...v2.3.0)
+
+## [v2.2.7](https://github.com/tj-actions/auto-doc/tree/v2.2.7) (2023-03-26)
 
 [Full Changelog](https://github.com/tj-actions/auto-doc/compare/v2.2.6...v2.2.7)
 
-## [v2.2.6](https://github.com/tj-actions/auto-doc/tree/v2.2.6) (2023-03-22)
+## [v2.2.6](https://github.com/tj-actions/auto-doc/tree/v2.2.6) (2023-03-26)
 
 [Full Changelog](https://github.com/tj-actions/auto-doc/compare/v2.2.5...v2.2.6)
 
-**Merged pull requests:**
-
-- Upgraded to v2.2.5 [\#441](https://github.com/tj-actions/auto-doc/pull/441) ([jackton1](https://github.com/jackton1))
-- chore: Update README.md [\#440](https://github.com/tj-actions/auto-doc/pull/440) ([jackton1](https://github.com/jackton1))
-
-## [v2.2.5](https://github.com/tj-actions/auto-doc/tree/v2.2.5) (2023-03-22)
+## [v2.2.5](https://github.com/tj-actions/auto-doc/tree/v2.2.5) (2023-03-26)
 
 [Full Changelog](https://github.com/tj-actions/auto-doc/compare/v2.2.4...v2.2.5)
 
-**Merged pull requests:**
-
-- chore: Update README.md [\#439](https://github.com/tj-actions/auto-doc/pull/439) ([jackton1](https://github.com/jackton1))
-- Upgraded to v2.2.5 [\#438](https://github.com/tj-actions/auto-doc/pull/438) ([jackton1](https://github.com/jackton1))
-- chore: switch back to gobinaries [\#437](https://github.com/tj-actions/auto-doc/pull/437) ([jackton1](https://github.com/jackton1))
-- Upgraded to v2.2.4 [\#436](https://github.com/tj-actions/auto-doc/pull/436) ([jackton1](https://github.com/jackton1))
-- chore: update README.md [\#434](https://github.com/tj-actions/auto-doc/pull/434) ([jackton1](https://github.com/jackton1))
-
-## [v2.2.4](https://github.com/tj-actions/auto-doc/tree/v2.2.4) (2023-03-17)
+## [v2.2.4](https://github.com/tj-actions/auto-doc/tree/v2.2.4) (2023-03-26)
 
 [Full Changelog](https://github.com/tj-actions/auto-doc/compare/v2.2.3...v2.2.4)
+
+## [v2.2.3](https://github.com/tj-actions/auto-doc/tree/v2.2.3) (2023-03-26)
+
+[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v2.2.2...v2.2.3)
+
+## [v2.2.2](https://github.com/tj-actions/auto-doc/tree/v2.2.2) (2023-03-26)
+
+[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v2.2.1...v2.2.2)
+
+## [v2.2.1](https://github.com/tj-actions/auto-doc/tree/v2.2.1) (2023-03-26)
+
+[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v2.2.0...v2.2.1)
+
+## [v2.2.0](https://github.com/tj-actions/auto-doc/tree/v2.2.0) (2023-03-26)
+
+[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v2.1.0...v2.2.0)
+
+## [v2.1.0](https://github.com/tj-actions/auto-doc/tree/v2.1.0) (2023-03-26)
+
+[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v2.0.3...v2.1.0)
+
+## [v2.0.3](https://github.com/tj-actions/auto-doc/tree/v2.0.3) (2023-03-26)
+
+[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v2.0.2...v2.0.3)
+
+## [v2.0.2](https://github.com/tj-actions/auto-doc/tree/v2.0.2) (2023-03-26)
+
+[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v2.0.1...v2.0.2)
+
+## [v2.0.1](https://github.com/tj-actions/auto-doc/tree/v2.0.1) (2023-03-26)
+
+[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v2.0.0...v2.0.1)
+
+## [v2.0.0](https://github.com/tj-actions/auto-doc/tree/v2.0.0) (2023-03-26)
+
+[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v2.3.1...v2.0.0)
+
+## [v2.3.1](https://github.com/tj-actions/auto-doc/tree/v2.3.1) (2023-03-26)
+
+[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v2...v2.3.1)
+
+## [v2](https://github.com/tj-actions/auto-doc/tree/v2) (2023-03-26)
+
+[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v1...v2)
+
+**Implemented enhancements:**
+
+- \[Feature\] Support for reusable workflow documentation [\#404](https://github.com/tj-actions/auto-doc/issues/404)
+- \[Feature\] Rename project to action-docgen [\#364](https://github.com/tj-actions/auto-doc/issues/364)
 
 **Fixed bugs:**
 
@@ -71,85 +93,46 @@
 
 **Merged pull requests:**
 
+- chore: upgrade to v2 [\#454](https://github.com/tj-actions/auto-doc/pull/454) ([jackton1](https://github.com/jackton1))
+- Upgraded to v2.3.0 [\#453](https://github.com/tj-actions/auto-doc/pull/453) ([jackton1](https://github.com/jackton1))
+- Update README.md [\#452](https://github.com/tj-actions/auto-doc/pull/452) ([jackton1](https://github.com/jackton1))
+- Update README.md [\#451](https://github.com/tj-actions/auto-doc/pull/451) ([jackton1](https://github.com/jackton1))
+- docs: add ViacheslavKudinov as a contributor for code, and test [\#450](https://github.com/tj-actions/auto-doc/pull/450) ([allcontributors[bot]](https://github.com/apps/allcontributors))
+- chore: Update code-coverage.yml [\#449](https://github.com/tj-actions/auto-doc/pull/449) ([jackton1](https://github.com/jackton1))
+- chore: Update test.yml [\#448](https://github.com/tj-actions/auto-doc/pull/448) ([jackton1](https://github.com/jackton1))
+- \[Bugfix\] Type of inputs are always string fix [\#447](https://github.com/tj-actions/auto-doc/pull/447) ([ViacheslavKudinov](https://github.com/ViacheslavKudinov))
+- Upgraded to v2.2.7 [\#446](https://github.com/tj-actions/auto-doc/pull/446) ([jackton1](https://github.com/jackton1))
+- Update README.md [\#445](https://github.com/tj-actions/auto-doc/pull/445) ([jackton1](https://github.com/jackton1))
+- Update format-tidy.yml [\#444](https://github.com/tj-actions/auto-doc/pull/444) ([jackton1](https://github.com/jackton1))
+- chore: update description of types [\#443](https://github.com/tj-actions/auto-doc/pull/443) ([jackton1](https://github.com/jackton1))
+- Upgraded to v2.2.6 [\#442](https://github.com/tj-actions/auto-doc/pull/442) ([jackton1](https://github.com/jackton1))
+- Upgraded to v2.2.5 [\#441](https://github.com/tj-actions/auto-doc/pull/441) ([jackton1](https://github.com/jackton1))
+- chore: Update README.md [\#440](https://github.com/tj-actions/auto-doc/pull/440) ([jackton1](https://github.com/jackton1))
+- chore: Update README.md [\#439](https://github.com/tj-actions/auto-doc/pull/439) ([jackton1](https://github.com/jackton1))
+- Upgraded to v2.2.5 [\#438](https://github.com/tj-actions/auto-doc/pull/438) ([jackton1](https://github.com/jackton1))
+- chore: switch back to gobinaries [\#437](https://github.com/tj-actions/auto-doc/pull/437) ([jackton1](https://github.com/jackton1))
+- Upgraded to v2.2.4 [\#436](https://github.com/tj-actions/auto-doc/pull/436) ([jackton1](https://github.com/jackton1))
 - chore\(deps\): update tj-actions/verify-changed-files action to v14 [\#435](https://github.com/tj-actions/auto-doc/pull/435) ([renovate[bot]](https://github.com/apps/renovate))
+- chore: update README.md [\#434](https://github.com/tj-actions/auto-doc/pull/434) ([jackton1](https://github.com/jackton1))
 - chore: update README.md [\#433](https://github.com/tj-actions/auto-doc/pull/433) ([jackton1](https://github.com/jackton1))
 - fix: bug with matching only headings that occur at the start [\#432](https://github.com/tj-actions/auto-doc/pull/432) ([jackton1](https://github.com/jackton1))
 - chore\(deps\): update actions/setup-go action to v4 [\#430](https://github.com/tj-actions/auto-doc/pull/430) ([renovate[bot]](https://github.com/apps/renovate))
 - chore\(deps\): update peter-evans/create-pull-request action to v4.2.4 [\#429](https://github.com/tj-actions/auto-doc/pull/429) ([renovate[bot]](https://github.com/apps/renovate))
 - Replace headers instead of any matching text [\#428](https://github.com/tj-actions/auto-doc/pull/428) ([andreas-aman](https://github.com/andreas-aman))
 - Upgraded to v2.2.3 [\#425](https://github.com/tj-actions/auto-doc/pull/425) ([jackton1](https://github.com/jackton1))
-
-## [v2.2.3](https://github.com/tj-actions/auto-doc/tree/v2.2.3) (2023-03-10)
-
-[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v2.2.2...v2.2.3)
-
-**Merged pull requests:**
-
 - chore: tidy imports [\#424](https://github.com/tj-actions/auto-doc/pull/424) ([jackton1](https://github.com/jackton1))
 - Don't add 2 newlines if nothing in table [\#423](https://github.com/tj-actions/auto-doc/pull/423) ([andreas-aman](https://github.com/andreas-aman))
 - Update tj-actions/github-changelog-generator action to v1.18 [\#422](https://github.com/tj-actions/auto-doc/pull/422) ([renovate[bot]](https://github.com/apps/renovate))
 - Upgraded to v2.2.0 [\#421](https://github.com/tj-actions/auto-doc/pull/421) ([jackton1](https://github.com/jackton1))
-
-## [v2.2.2](https://github.com/tj-actions/auto-doc/tree/v2.2.2) (2023-03-10)
-
-[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v2.2.1...v2.2.2)
-
-## [v2.2.1](https://github.com/tj-actions/auto-doc/tree/v2.2.1) (2023-03-10)
-
-[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v2.2.0...v2.2.1)
-
-## [v2.2.0](https://github.com/tj-actions/auto-doc/tree/v2.2.0) (2023-03-09)
-
-[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v2.1.0...v2.2.0)
-
-**Merged pull requests:**
-
 - Upgraded to v2.1.0 [\#420](https://github.com/tj-actions/auto-doc/pull/420) ([jackton1](https://github.com/jackton1))
-
-## [v2.1.0](https://github.com/tj-actions/auto-doc/tree/v2.1.0) (2023-03-09)
-
-[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v2.0.3...v2.1.0)
-
-**Merged pull requests:**
-
 - Upgraded to v2.0.3 [\#419](https://github.com/tj-actions/auto-doc/pull/419) ([jackton1](https://github.com/jackton1))
 - Upgraded to v2.0.2 [\#418](https://github.com/tj-actions/auto-doc/pull/418) ([jackton1](https://github.com/jackton1))
-
-## [v2.0.3](https://github.com/tj-actions/auto-doc/tree/v2.0.3) (2023-03-09)
-
-[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v2.0.2...v2.0.3)
-
-## [v2.0.2](https://github.com/tj-actions/auto-doc/tree/v2.0.2) (2023-03-09)
-
-[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v2.0.1...v2.0.2)
-
-**Merged pull requests:**
-
 - chore/hard code version [\#417](https://github.com/tj-actions/auto-doc/pull/417) ([jackton1](https://github.com/jackton1))
 - Upgraded to v2.0.1 [\#414](https://github.com/tj-actions/auto-doc/pull/414) ([jackton1](https://github.com/jackton1))
-
-## [v2.0.1](https://github.com/tj-actions/auto-doc/tree/v2.0.1) (2023-03-09)
-
-[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v2.0.0...v2.0.1)
-
-**Merged pull requests:**
-
 - chore/update the download [\#413](https://github.com/tj-actions/auto-doc/pull/413) ([jackton1](https://github.com/jackton1))
 - Revert "Updated the test" [\#412](https://github.com/tj-actions/auto-doc/pull/412) ([jackton1](https://github.com/jackton1))
 - Upgraded to v2 [\#411](https://github.com/tj-actions/auto-doc/pull/411) ([jackton1](https://github.com/jackton1))
 - Updated the test [\#410](https://github.com/tj-actions/auto-doc/pull/410) ([jackton1](https://github.com/jackton1))
-
-## [v2.0.0](https://github.com/tj-actions/auto-doc/tree/v2.0.0) (2023-03-09)
-
-[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v1...v2.0.0)
-
-**Implemented enhancements:**
-
-- \[Feature\] Support for reusable workflow documentation [\#404](https://github.com/tj-actions/auto-doc/issues/404)
-- \[Feature\] Rename project to action-docgen [\#364](https://github.com/tj-actions/auto-doc/issues/364)
-
-**Merged pull requests:**
-
 - chore: fix add missing comments [\#409](https://github.com/tj-actions/auto-doc/pull/409) ([jackton1](https://github.com/jackton1))
 - docs: add andreas-aman as a contributor for code, and doc [\#408](https://github.com/tj-actions/auto-doc/pull/408) ([allcontributors[bot]](https://github.com/apps/allcontributors))
 - chore\(deps\): update codacy/codacy-analysis-cli-action action to v4.3.0 [\#407](https://github.com/tj-actions/auto-doc/pull/407) ([renovate[bot]](https://github.com/apps/renovate))
