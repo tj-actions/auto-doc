@@ -145,7 +145,7 @@ choco install auto-doc
 
 ### Synopsis
 
-Auto generate documentation for your github action or reusable workflow.
+Automatically generate documentation for your custom github action or reusable workflow.
 
     auto-doc [flags]
 
