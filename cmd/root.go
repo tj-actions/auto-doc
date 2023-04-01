@@ -42,8 +42,8 @@ var reusableSecretColumns []string
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
 	Use:   "auto-doc",
-	Short: "Auto doc generator for your github action",
-	Long:  `Auto generate documentation for your github action.`,
+	Short: "Auto doc generator for your custom github action or reusable workflow",
+	Long:  "Automatically generate documentation for your custom github action or reusable workflow",
 	RunE:  RootCmdRunE,
 }
 
