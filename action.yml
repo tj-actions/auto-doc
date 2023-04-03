@@ -13,7 +13,7 @@ inputs:
   col_max_words:
     description: 'Max number of words per line in a column'
     required: false
-    default: '6'
+    default: '5'
   output:
     description: 'Path to the output file'
     required: false

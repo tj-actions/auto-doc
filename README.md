@@ -64,7 +64,7 @@ Add the `Inputs` and/or `Outputs` and/or `Secrets` (only supported by reusable w
 |-------------------------|--------|----------|----------------|----------------------------------------------------------------------------------------------------|
 |        bin\_path         | string |  false   |                |                                    Path to the auto-doc binary                                     |
 |      col\_max\_width      | string |  false   |    `"1000"`    |                                       Max width of a column                                        |
-|      col\_max\_words      | string |  false   |     `"6"`      |                            Max number of words per line<br>in a column                             |
+|      col\_max\_words      | string |  false   |     `"5"`      |                            Max number of words per line<br>in a column                             |
 |        filename         | string |  false   | `"action.yml"` |                                       Path to the yaml file                                        |
 |      input\_columns      | string |  false   |                |      List of action.yml **input** columns names<br>to display, default (display all columns)       |
 |         output          | string |  false   | `"README.md"`  |                                      Path to the output file                                       |
