@@ -16,22 +16,22 @@ else
 fi
 
 # reusable workflow
-if [[ -n "$INPUT_REUSABLE_SECRETS_COLUMNS" ]]; then
-  IFS=$'\n' read -rd '' -a REUSABLE_SECRETS_COLUMNS <<<"$INPUT_REUSABLE_SECRETS_COLUMNS"
+if [[ -n "$INPUT_REUSABLE_SECRET_COLUMNS" ]]; then
+  IFS=$'\n' read -rd '' -a REUSABLE_SECRET_COLUMNS <<<"$INPUT_REUSABLE_SECRET_COLUMNS"
 else
-  REUSABLE_SECRETS_COLUMNS=()
+  REUSABLE_SECRET_COLUMNS=()
 fi
 
-if [[ -n "$INPUT_REUSABLE_INPUTS_COLUMNS" ]]; then
-  IFS=$'\n' read -rd '' -a REUSABLE_INPUTS_COLUMNS <<<"$INPUT_REUSABLE_INPUTS_COLUMNS"
+if [[ -n "$INPUT_REUSABLE_INPUT_COLUMNS" ]]; then
+  IFS=$'\n' read -rd '' -a REUSABLE_INPUT_COLUMNS <<<"$INPUT_REUSABLE_INPUT_COLUMNS"
 else
-  REUSABLE_INPUTS_COLUMNS=()
+  REUSABLE_INPUT_COLUMNS=()
 fi
 
-if [[ -n "$INPUT_REUSABLE_OUTPUTS_COLUMNS" ]]; then
-  IFS=$'\n' read -rd '' -a REUSABLE_OUTPUTS_COLUMNS <<<"$INPUT_REUSABLE_OUTPUTS_COLUMNS"
+if [[ -n "$INPUT_REUSABLE_OUTPUT_COLUMNS" ]]; then
+  IFS=$'\n' read -rd '' -a REUSABLE_OUTPUT_COLUMNS <<<"$INPUT_REUSABLE_OUTPUT_COLUMNS"
 else
-  REUSABLE_OUTPUTS_COLUMNS=()
+  REUSABLE_OUTPUT_COLUMNS=()
 fi
 
 if [[ ! -f "$INPUT_FILENAME" ]]; then
@@ -53,15 +53,15 @@ if [[ "$REUSABLE" == "true" ]]; then
   EXTRA_ARGS="${EXTRA_ARGS} --reusable"
 fi
 
-for reusable_input_column in "${REUSABLE_INPUTS_COLUMNS[@]}"; do
+for reusable_input_column in "${REUSABLE_INPUT_COLUMNS[@]}"; do
   EXTRA_ARGS="${EXTRA_ARGS} --reusableInputColumns ${reusable_input_column}"
 done
 
-for reusable_output_column in "${REUSABLE_OUTPUTS_COLUMNS[@]}"; do
+for reusable_output_column in "${REUSABLE_OUTPUT_COLUMNS[@]}"; do
   EXTRA_ARGS="${EXTRA_ARGS} --reusableOutputColumns ${reusable_output_column}"
 done
 
-for reusable_secret_column in "${REUSABLE_SECRETS_COLUMNS[@]}"; do
+for reusable_secret_column in "${REUSABLE_SECRET_COLUMNS[@]}"; do
   EXTRA_ARGS="${EXTRA_ARGS} --reusableSecretColumns ${reusable_secret_column}"
 done
 
