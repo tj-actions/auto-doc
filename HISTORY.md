@@ -1,8 +1,29 @@
 # Changelog
 
+## [v2.4.0](https://github.com/tj-actions/auto-doc/tree/v2.4.0) (2023-04-30)
+
+[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v2.3.2...v2.4.0)
+
+**Closed issues:**
+
+- Dependency Dashboard [\#2](https://github.com/tj-actions/auto-doc/issues/2)
+
+**Merged pull requests:**
+
+- feat: move to use shellscript [\#463](https://github.com/tj-actions/auto-doc/pull/463) ([jackton1](https://github.com/jackton1))
+- chore\(deps\): update peter-evans/create-pull-request action to v5 [\#462](https://github.com/tj-actions/auto-doc/pull/462) ([renovate[bot]](https://github.com/apps/renovate))
+- fix\(deps\): update module github.com/spf13/cobra to v1.7.0 [\#461](https://github.com/tj-actions/auto-doc/pull/461) ([renovate[bot]](https://github.com/apps/renovate))
+- chore: update default col max words [\#460](https://github.com/tj-actions/auto-doc/pull/460) ([jackton1](https://github.com/jackton1))
+- chore: update description [\#459](https://github.com/tj-actions/auto-doc/pull/459) ([jackton1](https://github.com/jackton1))
+- Upgraded to v2.3.2 [\#458](https://github.com/tj-actions/auto-doc/pull/458) ([jackton1](https://github.com/jackton1))
+
 ## [v2.3.2](https://github.com/tj-actions/auto-doc/tree/v2.3.2) (2023-03-28)
 
-[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v2.3.0...v2.3.2)
+[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v2...v2.3.2)
+
+## [v2](https://github.com/tj-actions/auto-doc/tree/v2) (2023-03-28)
+
+[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v2.3.0...v2)
 
 **Fixed bugs:**
 
@@ -71,11 +92,7 @@
 
 ## [v2.3.1](https://github.com/tj-actions/auto-doc/tree/v2.3.1) (2023-03-26)
 
-[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v2...v2.3.1)
-
-## [v2](https://github.com/tj-actions/auto-doc/tree/v2) (2023-03-26)
-
-[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v1...v2)
+[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v1...v2.3.1)
 
 **Implemented enhancements:**
 
@@ -86,10 +103,6 @@
 
 - \[BUG\] auto-doc replaces first occurrence of header regardless of placement. [\#427](https://github.com/tj-actions/auto-doc/issues/427)
 - \[BUG\] Having header defined without any data causes 2 blank spaces. [\#426](https://github.com/tj-actions/auto-doc/issues/426)
-
-**Closed issues:**
-
-- Dependency Dashboard [\#2](https://github.com/tj-actions/auto-doc/issues/2)
 
 **Merged pull requests:**
 
