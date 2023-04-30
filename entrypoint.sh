@@ -9,9 +9,13 @@ VERSION="$INPUT_VERSION"
 # action.yml file
 if [[ -n "$INPUT_INPUT_COLUMNS" ]]; then
   IFS=$'\n' read -rd '' -a INPUT_COLUMNS <<<"$INPUT_INPUT_COLUMNS"
-  IFS=$'\n' read -rd '' -a OUTPUT_COLUMNS <<<"$INPUT_OUTPUT_COLUMNS"
 else
   INPUT_COLUMNS=()
+fi
+
+if [[ -n "$INPUT_OUTPUT_COLUMNS" ]]; then
+  IFS=$'\n' read -rd '' -a OUTPUT_COLUMNS <<<"$INPUT_OUTPUT_COLUMNS"
+else
   OUTPUT_COLUMNS=()
 fi
 
