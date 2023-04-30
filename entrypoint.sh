@@ -7,7 +7,6 @@ REUSABLE="$INPUT_REUSABLE"
 VERSION="$INPUT_VERSION"
 
 # action.yml file
-# convert string seperated by newline to array
 IFS=$'\n' read -rd '' -a INPUT_COLUMNS <<<"$INPUT_INPUT_COLUMNS"
 IFS=$'\n' read -rd '' -a OUTPUT_COLUMNS <<<"$INPUT_OUTPUT_COLUMNS"
 
