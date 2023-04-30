@@ -9,28 +9,48 @@ VERSION="$INPUT_VERSION"
 # action.yml file
 INPUT_COLUMNS=()
 if [[ -n "$INPUT_INPUT_COLUMNS" ]]; then
-  IFS=$'\n' read -rd '' -a INPUT_COLUMNS <<<"$INPUT_INPUT_COLUMNS"
+  IFS=$'\n' read -rd '' -a INPUT_COLUMNS <<<"$INPUT_INPUT_COLUMNS"\
+
+  for input_column in "${INPUT_COLUMNS[@]}"; do
+    EXTRA_ARGS="${EXTRA_ARGS} --inputColumns ${input_column}"
+  done
 fi
 
 OUTPUT_COLUMNS=()
 if [[ -n "$INPUT_OUTPUT_COLUMNS" ]]; then
   IFS=$'\n' read -rd '' -a OUTPUT_COLUMNS <<<"$INPUT_OUTPUT_COLUMNS"
+
+  for output_column in "${OUTPUT_COLUMNS[@]}"; do
+    EXTRA_ARGS="${EXTRA_ARGS} --outputColumns ${output_column}"
+  done
 fi
 
 # reusable workflow
 REUSABLE_SECRET_COLUMNS=()
 if [[ -n "$INPUT_REUSABLE_SECRET_COLUMNS" ]]; then
   IFS=$'\n' read -rd '' -a REUSABLE_SECRET_COLUMNS <<<"$INPUT_REUSABLE_SECRET_COLUMNS"
+
+  for reusable_secret_column in "${REUSABLE_SECRET_COLUMNS[@]}"; do
+    EXTRA_ARGS="${EXTRA_ARGS} --reusableSecretColumns ${reusable_secret_column}"
+  done
 fi
 
 REUSABLE_INPUT_COLUMNS=()
 if [[ -n "$INPUT_REUSABLE_INPUT_COLUMNS" ]]; then
   IFS=$'\n' read -rd '' -a REUSABLE_INPUT_COLUMNS <<<"$INPUT_REUSABLE_INPUT_COLUMNS"
+
+  for reusable_input_column in "${REUSABLE_INPUT_COLUMNS[@]}"; do
+    EXTRA_ARGS="${EXTRA_ARGS} --reusableInputColumns ${reusable_input_column}"
+  done
 fi
 
 REUSABLE_OUTPUT_COLUMNS=()
 if [[ -n "$INPUT_REUSABLE_OUTPUT_COLUMNS" ]]; then
   IFS=$'\n' read -rd '' -a REUSABLE_OUTPUT_COLUMNS <<<"$INPUT_REUSABLE_OUTPUT_COLUMNS"
+
+  for reusable_output_column in "${REUSABLE_OUTPUT_COLUMNS[@]}"; do
+    EXTRA_ARGS="${EXTRA_ARGS} --reusableOutputColumns ${reusable_output_column}"
+  done
 fi
 
 if [[ ! -f "$INPUT_FILENAME" ]]; then
@@ -38,31 +58,10 @@ if [[ ! -f "$INPUT_FILENAME" ]]; then
   exit 0
 fi
 
-# action.yml file
-for input_column in "${INPUT_COLUMNS[@]}"; do
-  EXTRA_ARGS="${EXTRA_ARGS} --inputColumns ${input_column}"
-done
-
-for output_column in "${OUTPUT_COLUMNS[@]}"; do
-  EXTRA_ARGS="${EXTRA_ARGS} --outputColumns ${output_column}"
-done
-
 # reusable workflow
 if [[ "$REUSABLE" == "true" ]]; then
   EXTRA_ARGS="${EXTRA_ARGS} --reusable"
 fi
-
-for reusable_input_column in "${REUSABLE_INPUT_COLUMNS[@]}"; do
-  EXTRA_ARGS="${EXTRA_ARGS} --reusableInputColumns ${reusable_input_column}"
-done
-
-for reusable_output_column in "${REUSABLE_OUTPUT_COLUMNS[@]}"; do
-  EXTRA_ARGS="${EXTRA_ARGS} --reusableOutputColumns ${reusable_output_column}"
-done
-
-for reusable_secret_column in "${REUSABLE_SECRET_COLUMNS[@]}"; do
-  EXTRA_ARGS="${EXTRA_ARGS} --reusableSecretColumns ${reusable_secret_column}"
-done
 
 if [[ -z "$BIN_PATH" ]]; then
   LATEST_VERSION=${VERSION:-v2.3.2}
