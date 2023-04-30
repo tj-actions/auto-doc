@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -euo pipefail
+set -exuo pipefail
 
 EXTRA_ARGS=""
 BIN_PATH="$INPUT_BIN_PATH"
