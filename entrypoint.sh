@@ -115,5 +115,5 @@ rm -f "$BIN_PATH"
 
 if [[ $exit_status -ne 0 ]]; then
   echo "::warning::Error occurred running auto-doc"
-  exit $exit_status;
+  exit "$exit_status";
 fi
