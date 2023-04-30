@@ -1,4 +1,4 @@
-name: autodoc
+name: auto-doc
 description: Document your github action or reusable workflow with ease
 author: jackton1
 inputs:
