@@ -179,7 +179,6 @@ This package was created with [Cookiecutter](https://github.com/cookiecutter/coo
 
 *   [cobra](https://github.com/spf13/cobra)
 *   [goreleaser](https://github.com/goreleaser/goreleaser/)
-*   [gobinaries](https://github.com/tj/gobinaries)
 
 ## Report Bugs
 
