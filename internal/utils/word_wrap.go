@@ -50,7 +50,7 @@ func WordWrap(s string, limit int) string {
 			currentLimit = len(strSlice)
 			result = result + strings.Join(strSlice[:currentLimit], " ")
 		} else if currentLimit == limit && !linkRegex.MatchString(strings.Join(strSlice[:currentLimit], " ")) && !codeBlockRegex.MatchString(strings.Join(strSlice[:currentLimit], " ")) {
-			result = result + strings.Join(strSlice[:currentLimit], " ") + "<br>"
+			result = result + strings.Join(strSlice[:currentLimit], " ") + " <br>"
 		} else {
 			result = result + strings.Join(strSlice[:currentLimit], " ")
 		}
@@ -68,5 +68,5 @@ func WordWrap(s string, limit int) string {
 	// Remove trailing <br> if any
 	result = strings.TrimSuffix(result, "<br>")
 
-	return strings.TrimSpace(result)
+	return result
 }
