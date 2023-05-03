@@ -44,8 +44,13 @@ func HasBytesInBetween(value, start, end []byte) (found bool, startIndexes []int
 
 				startIndexes = append(startIndexes, startIndex)
 				endIndexes = append(endIndexes, endIndex)
+
+				// Move the index to the end of the found end index
+				i = endIndex - 1
+			} else {
+				// Move the index to the end of the found start index
+				i = startIndex - 1
 			}
-			i += endIndex - 1 // Skip the content between end and next start
 		}
 	}
 
