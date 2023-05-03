@@ -43,7 +43,7 @@ func WordWrap(s string, limit int) string {
 		hasMore := len(strSlice) > currentLimit
 
 		if hasMore && len(result) > 0 {
-			result += " "
+			result += "&nbsp;"
 		}
 
 		if len(strSlice) < currentLimit {
