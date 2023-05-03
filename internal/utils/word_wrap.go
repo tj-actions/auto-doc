@@ -43,7 +43,7 @@ func WordWrap(s string, limit int) string {
 		hasMore := len(strSlice) > currentLimit
 
 		if hasMore && len(result) > 0 {
-			result += "&nbsp;"
+			result += " "
 		}
 
 		if len(strSlice) < currentLimit {
@@ -68,5 +68,5 @@ func WordWrap(s string, limit int) string {
 	// Remove trailing <br> if any
 	result = strings.TrimSuffix(result, "<br>")
 
-	return strings.TrimSpace(result)
+	return result
 }
