@@ -26,7 +26,7 @@ func HasBytesInBetween(value, start, end []byte) (found bool, Indices [][]int) {
 	// Multiline regex
 	findRegex := regexp.MustCompile(fmt.Sprintf(`(?s)%s(.*?)%s`, regexp.QuoteMeta(string(start)), regexp.QuoteMeta(string(end))))
 	Indices = findRegex.FindAllIndex(value, -1)
-	
+
 	if len(Indices) == 0 {
 		return false, Indices
 	}

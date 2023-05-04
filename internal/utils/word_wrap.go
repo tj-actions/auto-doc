@@ -29,12 +29,12 @@ func WordWrap(s string, limit int) string {
 	}
 
 	var (
-		linkIndices [][]int = getAllLinksIndex(s)
-		codeBlockIndices [][]int = getAllCodeBlocksIndex(s)
-		codeIndices [][]int = getAllCodeIndex(s)
+		linkIndices        [][]int = getAllLinksIndex(s)
+		codeBlockIndices   [][]int = getAllCodeBlocksIndex(s)
+		codeIndices        [][]int = getAllCodeIndex(s)
 		parenthesisIndices [][]int = getAllParenthesisIndex(s)
-		italicIndices [][]int = getAllItalicIndex(s)
-		start int = 0
+		italicIndices      [][]int = getAllItalicIndex(s)
+		start              int     = 0
 	)
 
 	// split the string into words that aren't between any of the links, code blocks, code and parenthesis
@@ -74,7 +74,6 @@ func isWithin(index int, ranges [][]int) bool {
 
 	return false
 }
-
 
 func getAllLinksIndex(s string) [][]int {
 	linkRegex := regexp.MustCompile(`\[(.*?)\]\((.*?)\)`)
