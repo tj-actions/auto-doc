@@ -60,20 +60,20 @@ Add the `Inputs` and/or `Outputs` and/or `Secrets` (only supported by reusable w
 
 <!-- AUTO-DOC-INPUT:START - Do not remove or modify this section -->
 
-|          INPUT          |  TYPE  | REQUIRED |    DEFAULT     |                                            DESCRIPTION                                             |
-|-------------------------|--------|----------|----------------|----------------------------------------------------------------------------------------------------|
-|        bin\_path         | string |  false   |                |                                    Path to the auto-doc binary                                     |
-|      col\_max\_width      | string |  false   |    `"1000"`    |                                       Max width of a column                                        |
-|      col\_max\_words      | string |  false   |     `"5"`      |                            Max number of words per line<br>in a column                             |
-|        filename         | string |  false   | `"action.yml"` |                                       Path to the yaml file                                        |
-|      input\_columns      | string |  false   |                |      List of action.yml **input** columns names<br>to display, default (display all columns)       |
-|         output          | string |  false   | `"README.md"`  |                                      Path to the output file                                       |
-|     output\_columns      | string |  false   |                |      List of action.yml **output** column names<br>to display, default (display all columns)       |
-|        reusable         | string |  false   |                |                   Boolean Indicating whether the file is<br>a reusable workflow                    |
-| reusable\_input\_columns  | string |  false   |                | List of reusable workflow **input** column<br> names to display, default (display all<br>columns)  |
-| reusable\_output\_columns | string |  false   |                | List of reusable workflow **output** column<br> names to display, default (display all<br>columns) |
-| reusable\_secret\_columns | string |  false   |                | List of reusable workflow **secret** column<br> names to display, default (display all<br>columns) |
-|         version         | string |  false   |                |                                     The version number to run                                      |
+|          INPUT          |  TYPE  | REQUIRED |    DEFAULT     |                                          DESCRIPTION                                           |
+|-------------------------|--------|----------|----------------|------------------------------------------------------------------------------------------------|
+|        bin\_path         | string |  false   |                |                                  Path to the auto-doc binary                                   |
+|      col\_max\_width      | string |  false   |    `"1000"`    |                                     Max width of a column                                      |
+|      col\_max\_words      | string |  false   |     `"5"`      |                          Max number of words per line<br>in a column                           |
+|        filename         | string |  false   | `"action.yml"` |                                     Path to the yaml file                                      |
+|      input\_columns      | string |  false   |                |    List of action.yml **input** columns names<br>to display, default (display all columns)     |
+|         output          | string |  false   | `"README.md"`  |                                    Path to the output file                                     |
+|     output\_columns      | string |  false   |                |    List of action.yml **output** column names<br>to display, default (display all columns)     |
+|        reusable         | string |  false   |                |                 Boolean Indicating whether the file is<br>a reusable workflow                  |
+| reusable\_input\_columns  | string |  false   |                | List of reusable workflow **input** column<br>names to display, default (display all columns)  |
+| reusable\_output\_columns | string |  false   |                | List of reusable workflow **output** column<br>names to display, default (display all columns) |
+| reusable\_secret\_columns | string |  false   |                | List of reusable workflow **secret** column<br>names to display, default (display all columns) |
+|         version         | string |  false   |                |                                   The version number to run                                    |
 
 <!-- AUTO-DOC-INPUT:END -->
 
