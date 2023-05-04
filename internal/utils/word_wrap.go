@@ -29,17 +29,17 @@ func WordWrap(s string, limit int) string {
 	}
 
 	var (
-		linkindices        = getAllLinksIndex(s)
-		codeBlockindices   = getAllCodeBlocksIndex(s)
-		codeindices        = getAllCodeIndex(s)
-		parenthesisindices = getAllParenthesisIndex(s)
-		italicindices      = getAllItalicIndex(s)
+		linkIndices        = getAllLinksIndex(s)
+		codeBlockIndices   = getAllCodeBlocksIndex(s)
+		codeIndices        = getAllCodeIndex(s)
+		parenthesisIndices = getAllParenthesisIndex(s)
+		italicIndices      = getAllItalicIndex(s)
 		start              = 0
 	)
 
 	// split the string into words that aren't between any of the links, code blocks, code and parenthesis
 	strSlice := strings.FieldsFunc(s, func(r rune) bool {
-		shouldExclude := isWithin(start, linkindices) || isWithin(start, codeBlockindices) || isWithin(start, codeindices) || isWithin(start, parenthesisindices) || isWithin(start, italicindices)
+		shouldExclude := isWithin(start, linkIndices) || isWithin(start, codeBlockIndices) || isWithin(start, codeIndices) || isWithin(start, parenthesisIndices) || isWithin(start, italicIndices)
 		start++
 		return !shouldExclude && unicode.IsSpace(r)
 	})
