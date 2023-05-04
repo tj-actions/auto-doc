@@ -29,12 +29,12 @@ func WordWrap(s string, limit int) string {
 	}
 
 	var (
-		linkIndices        [][]int = getAllLinksIndex(s)
-		codeBlockIndices   [][]int = getAllCodeBlocksIndex(s)
-		codeIndices        [][]int = getAllCodeIndex(s)
-		parenthesisIndices [][]int = getAllParenthesisIndex(s)
-		italicIndices      [][]int = getAllItalicIndex(s)
-		start              int     = 0
+		linkIndices      = getAllLinksIndex(s)
+		codeBlockIndices = getAllCodeBlocksIndex(s)
+		codeIndices      = getAllCodeIndex(s)
+		parenthesisIndices         = getAllParenthesisIndex(s)
+		italicIndices              = getAllItalicIndex(s)
+		start                      = 0
 	)
 
 	// split the string into words that aren't between any of the links, code blocks, code and parenthesis
