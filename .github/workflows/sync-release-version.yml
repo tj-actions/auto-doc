@@ -59,10 +59,8 @@ jobs:
           paths: |
             action.yml
 
-      - name: Generate CHANGELOG
-        uses: tj-actions/github-changelog-generator@v1.18
-        with:
-          output: 'HISTORY.md'
+      - name: Run git-cliff
+        uses: tj-actions/git-cliff@v1
 
       - name: Get branch name
         id: branch-name
