@@ -1,8 +1,21 @@
 # Changelog
 
+## [v2.5.1](https://github.com/tj-actions/auto-doc/tree/v2.5.1) (2023-05-04)
+
+[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v2.5.0...v2.5.1)
+
+**Merged pull requests:**
+
+- chore: skip fields that are within the limit [\#472](https://github.com/tj-actions/auto-doc/pull/472) ([jackton1](https://github.com/jackton1))
+- Upgraded to v2.5.0 [\#471](https://github.com/tj-actions/auto-doc/pull/471) ([jackton1](https://github.com/jackton1))
+
 ## [v2.5.0](https://github.com/tj-actions/auto-doc/tree/v2.5.0) (2023-05-04)
 
-[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v2.4.0...v2.5.0)
+[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v2...v2.5.0)
+
+## [v2](https://github.com/tj-actions/auto-doc/tree/v2) (2023-05-04)
+
+[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v2.4.0...v2)
 
 **Closed issues:**
 
@@ -18,11 +31,7 @@
 
 ## [v2.4.0](https://github.com/tj-actions/auto-doc/tree/v2.4.0) (2023-04-30)
 
-[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v2...v2.4.0)
-
-## [v2](https://github.com/tj-actions/auto-doc/tree/v2) (2023-04-30)
-
-[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v2.3.2...v2)
+[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v2.3.2...v2.4.0)
 
 **Merged pull requests:**
 
