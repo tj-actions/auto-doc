@@ -22,19 +22,19 @@ import (
 )
 
 // HasBytesInBetween checks if a byte array has a start and end byte array and returns true if and all occurrences of start and end
-func HasBytesInBetween(value, start, end []byte) (found bool, Indices [][]int) {
+func HasBytesInBetween(value, start, end []byte) (found bool, indices [][]int) {
 	// Multiline regex
 	findRegex := regexp.MustCompile(fmt.Sprintf(`(?s)%s(.*?)%s`, regexp.QuoteMeta(string(start)), regexp.QuoteMeta(string(end))))
-	Indices = findRegex.FindAllIndex(value, -1)
+	indices = findRegex.FindAllIndex(value, -1)
 
-	if len(Indices) == 0 {
-		return false, Indices
+	if len(indices) == 0 {
+		return false, indices
 	}
 
-	return true, Indices
+	return true, indices
 }
 
-// ReplaceBytesInBetween replaces a byte array between an array of start and end Indices with a new byte array
+// ReplaceBytesInBetween replaces a byte array between an array of start and end indices with a new byte array
 func ReplaceBytesInBetween(value []byte, indices [][]int, new []byte) []byte {
 	t := make([]byte, 0, len(value)+len(new)*len(indices))
 	prevIndex := 0
