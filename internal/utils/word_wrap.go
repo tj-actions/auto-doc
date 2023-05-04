@@ -48,7 +48,7 @@ func WordWrap(s string, limit int) string {
 
 	for len(strSlice) >= 1 {
 		// convert slice/array back to string
-		// but insert \r\n at specified limit
+		// but insert <br> at specified limit
 		if len(strSlice) < limit {
 			limit = len(strSlice)
 		}
