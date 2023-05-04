@@ -19,54 +19,89 @@ package utils
 import (
 	"regexp"
 	"strings"
+	"unicode"
 )
 
-// WordWrap wraps lengthy words with the br html tag except code blocks, links, and code
+// WordWrap wraps text at the specified number of columns
 func WordWrap(s string, limit int) string {
 	if strings.TrimSpace(s) == "" {
 		return s
 	}
-	// compile regular expressions for Markdown links and code blocks and code
-	linkRegex := regexp.MustCompile(`\[.*]\(.*\)`)
-	codeBlockRegex := regexp.MustCompile(`\` + "```" + `.*` + "```" + `\s*`)
 
-	// convert string to slice
-	strSlice := strings.Fields(s)
-	currentLimit := limit
+	var (
+		linkIndices [][]int = getAllLinksIndex(s)
+		codeBlockIndices [][]int = getAllCodeBlocksIndex(s)
+		codeIndices [][]int = getAllCodeIndex(s)
+		parenthesisIndices [][]int = getAllParenthesisIndex(s)
+		italicIndices [][]int = getAllItalicIndex(s)
+		start int = 0
+	)
 
-	var result string
+	// split the string into words that aren't between any of the links, code blocks, code and parenthesis
+	strSlice := strings.FieldsFunc(s, func(r rune) bool {
+		shouldExclude := isWithin(start, linkIndices) || isWithin(start, codeBlockIndices) || isWithin(start, codeIndices) || isWithin(start, parenthesisIndices) || isWithin(start, italicIndices)
+		start++
+		return !shouldExclude && unicode.IsSpace(r)
+	})
+
+	var result = ""
 
 	for len(strSlice) >= 1 {
 		// convert slice/array back to string
-		// but insert <br> at specified limit
-		// unless the current slice contains a Markdown link or code block or code
-		hasMore := len(strSlice) > currentLimit
-
-		if hasMore && len(result) > 0 {
-			result += " "
+		// but insert \r\n at specified limit
+		if len(strSlice) < limit {
+			limit = len(strSlice)
 		}
 
-		if len(strSlice) < currentLimit {
-			currentLimit = len(strSlice)
-			result = result + strings.Join(strSlice[:currentLimit], " ")
-		} else if currentLimit == limit && !linkRegex.MatchString(strings.Join(strSlice[:currentLimit], " ")) && !codeBlockRegex.MatchString(strings.Join(strSlice[:currentLimit], " ")) {
-			result = result + strings.Join(strSlice[:currentLimit], " ") + "<br>"
-		} else {
-			result = result + strings.Join(strSlice[:currentLimit], " ")
-		}
+		result = result + strings.Join(strSlice[:limit], " ") + "<br>"
 
 		// discard the elements that were copied over to result
-		strSlice = strSlice[currentLimit:]
+		strSlice = strSlice[limit:]
+	}
 
-		// change the limit
-		// to cater for the last few words in the line
-		if len(strSlice) < currentLimit {
-			currentLimit = len(strSlice)
+	// Trim the last <br> tag
+	result = strings.TrimSuffix(result, "<br>")
+
+	return result
+}
+
+func isWithin(index int, ranges [][]int) bool {
+	for _, r := range ranges {
+		if index >= r[0] && index < r[1] {
+			return true
 		}
 	}
 
-	// Remove trailing <br> if any
-	result = strings.TrimSuffix(result, "<br>")
+	return false
+}
 
-	return strings.TrimSpace(result)
+
+func getAllLinksIndex(s string) [][]int {
+	linkRegex := regexp.MustCompile(`\[(.*?)\]\((.*?)\)`)
+
+	return linkRegex.FindAllStringIndex(s, -1)
+}
+
+func getAllCodeBlocksIndex(s string) [][]int {
+	codeBlockRegex := regexp.MustCompile("```[^`]*```")
+
+	return codeBlockRegex.FindAllStringIndex(s, -1)
+}
+
+func getAllCodeIndex(s string) [][]int {
+	codeRegex := regexp.MustCompile("`[^`]*`")
+
+	return codeRegex.FindAllStringIndex(s, -1)
+}
+
+func getAllParenthesisIndex(s string) [][]int {
+	parenthesisRegex := regexp.MustCompile(`\((.*?)\)`)
+
+	return parenthesisRegex.FindAllStringIndex(s, -1)
+}
+
+func getAllItalicIndex(s string) [][]int {
+	italicRegex := regexp.MustCompile(`\*(.*?)\*`)
+
+	return italicRegex.FindAllStringIndex(s, -1)
 }

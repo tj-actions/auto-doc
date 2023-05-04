@@ -17,57 +17,34 @@ limitations under the License.
 package utils
 
 import (
+	"fmt"
 	"regexp"
 )
 
 // HasBytesInBetween checks if a byte array has a start and end byte array and returns true if and all occurrences of start and end
-func HasBytesInBetween(value, start, end []byte) (found bool, startIndexes []int, endIndexes []int) {
-	startRegexp := regexp.MustCompile("(?m)^" + string(start))
-	endRegexp := regexp.MustCompile("(?m)^" + string(end))
-
-	// Find all start and end indexes
-	for i := 0; i < len(value); i++ {
-		startLoc := startRegexp.FindIndex(value[i:])
-		endLoc := endRegexp.FindIndex(value[i:])
-		if len(startLoc) > 0 && len(endLoc) > 0 {
-			startIndex := startLoc[0] + i
-			endIndex := endLoc[1] + i
-
-			if startIndex < endIndex {
-				// Check if there is a closer end index between the current start and the previously found end index
-				for j := len(endIndexes) - 1; j >= 0; j-- {
-					if endIndex < endIndexes[j] && endIndexes[j] < startIndex {
-						// Use the closer end index instead
-						endIndex = endIndexes[j]
-					}
-				}
-
-				startIndexes = append(startIndexes, startIndex)
-				endIndexes = append(endIndexes, endIndex)
-
-				// Move the index to the end of the found end index
-				i = endIndex - 1
-			} else {
-				// Move the index to the end of the found start index
-				i = startIndex - 1
-			}
-		}
+func HasBytesInBetween(value, start, end []byte) (found bool, Indices [][]int) {
+	// Multiline regex
+	findRegex := regexp.MustCompile(fmt.Sprintf(`(?s)%s(.*?)%s`, regexp.QuoteMeta(string(start)), regexp.QuoteMeta(string(end))))
+	Indices = findRegex.FindAllIndex(value, -1)
+	
+	if len(Indices) == 0 {
+		return false, Indices
 	}
 
-	if len(startIndexes) == 0 || len(endIndexes) == 0 {
-		return false, nil, nil
-	}
-
-	return true, startIndexes, endIndexes
+	return true, Indices
 }
 
-// ReplaceBytesInBetween replaces a byte array between a start and end index with a new byte array
-func ReplaceBytesInBetween(value []byte, startIndex int, endIndex int, new []byte) []byte {
-	t := make([]byte, len(value)+len(new))
-	w := 0
+// ReplaceBytesInBetween replaces a byte array between an array of start and end Indices with a new byte array
+func ReplaceBytesInBetween(value []byte, indices [][]int, new []byte) []byte {
+	t := make([]byte, 0, len(value)+len(new)*len(indices))
+	prevIndex := 0
 
-	w += copy(t[:startIndex], value[:startIndex])
-	w += copy(t[w:w+len(new)], new)
-	w += copy(t[w:], value[endIndex:])
-	return t[0:w]
+	for _, v := range indices {
+		t = append(t, value[prevIndex:v[0]]...)
+		t = append(t, new...)
+		prevIndex = v[1]
+	}
+
+	t = append(t, value[prevIndex:]...)
+	return t
 }
