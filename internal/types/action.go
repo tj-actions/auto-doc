@@ -80,7 +80,7 @@ func (a *Action) WriteDocumentation(inputTable, outputTable *strings.Builder) er
 
 	var output []byte
 
-	hasInputsData, Indices := utils.HasBytesInBetween(
+	hasInputsData, indices := utils.HasBytesInBetween(
 		input,
 		[]byte(internal.InputAutoDocStart),
 		[]byte(internal.InputAutoDocEnd),
@@ -90,7 +90,7 @@ func (a *Action) WriteDocumentation(inputTable, outputTable *strings.Builder) er
 	inputsStr := strings.TrimSpace(inputTable.String())
 
 	if hasInputsData {
-		output = utils.ReplaceBytesInBetween(output, Indices, []byte(inputsStr))
+		output = utils.ReplaceBytesInBetween(output, indices, []byte(inputsStr))
 	} else {
 		re := regexp.MustCompile(fmt.Sprintf("(?m)^%s", internal.InputsHeader))
 		output = re.ReplaceAllFunc(input, func(match []byte) []byte {
@@ -101,7 +101,7 @@ func (a *Action) WriteDocumentation(inputTable, outputTable *strings.Builder) er
 		})
 	}
 
-	hasOutputsData, Indices := utils.HasBytesInBetween(
+	hasOutputsData, indices := utils.HasBytesInBetween(
 		output,
 		[]byte(internal.OutputAutoDocStart),
 		[]byte(internal.OutputAutoDocEnd),
@@ -110,7 +110,7 @@ func (a *Action) WriteDocumentation(inputTable, outputTable *strings.Builder) er
 	outputsStr := strings.TrimSpace(outputTable.String())
 
 	if hasOutputsData {
-		output = utils.ReplaceBytesInBetween(output, Indices, []byte(outputsStr))
+		output = utils.ReplaceBytesInBetween(output, indices, []byte(outputsStr))
 	} else {
 		re := regexp.MustCompile(fmt.Sprintf("(?m)^%s", internal.OutputsHeader))
 		output = re.ReplaceAllFunc(output, func(match []byte) []byte {
