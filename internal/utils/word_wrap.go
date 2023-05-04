@@ -53,7 +53,7 @@ func WordWrap(s string, limit int) string {
 			limit = len(strSlice)
 		}
 
-		result = result + strings.Join(strSlice[:limit], " ") + "<br>"
+		result = result + strings.Join(strSlice[:limit], " ") + " <br>"
 
 		// discard the elements that were copied over to result
 		strSlice = strSlice[limit:]
