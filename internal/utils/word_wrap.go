@@ -24,7 +24,7 @@ import (
 
 // WordWrap wraps text at the specified number of columns
 func WordWrap(s string, limit int) string {
-	if strings.TrimSpace(s) == "" {
+	if strings.TrimSpace(s) == "" || len(strings.Fields(s)) <= limit {
 		return s
 	}
 
