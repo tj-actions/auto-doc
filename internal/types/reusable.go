@@ -27,9 +27,10 @@ import (
 
 	"github.com/olekukonko/tablewriter"
 	"github.com/spf13/cobra"
+	"gopkg.in/yaml.v3"
+
 	"github.com/tj-actions/auto-doc/v2/internal"
 	"github.com/tj-actions/auto-doc/v2/internal/utils"
-	"gopkg.in/yaml.v3"
 )
 
 // ReusableInput represents the input of the reusable workflow
@@ -92,7 +93,7 @@ func (r *Reusable) WriteDocumentation(inputTable, outputTable, secretsTable *str
 
 	var output []byte
 
-	hasInputsData, inputStartIndexes, inputEndIndexes := utils.HasBytesInBetween(
+	hasInputsData, Indices := utils.HasBytesInBetween(
 		input,
 		[]byte(internal.InputAutoDocStart),
 		[]byte(internal.InputAutoDocEnd),
@@ -102,9 +103,7 @@ func (r *Reusable) WriteDocumentation(inputTable, outputTable, secretsTable *str
 	inputsStr := strings.TrimSpace(inputTable.String())
 
 	if hasInputsData {
-		for i := 0; i < len(inputStartIndexes); i++ {
-			output = utils.ReplaceBytesInBetween(output, inputStartIndexes[i], inputEndIndexes[i], []byte(inputsStr))
-		}
+		output = utils.ReplaceBytesInBetween(output, Indices, []byte(inputsStr))
 	} else {
 		re := regexp.MustCompile(fmt.Sprintf("(?m)^%s", internal.InputsHeader))
 		output = re.ReplaceAllFunc(input, func(match []byte) []byte {
@@ -115,7 +114,7 @@ func (r *Reusable) WriteDocumentation(inputTable, outputTable, secretsTable *str
 		})
 	}
 
-	hasOutputsData, outputStartIndexes, outputEndIndexes := utils.HasBytesInBetween(
+	hasOutputsData, Indices := utils.HasBytesInBetween(
 		output,
 		[]byte(internal.OutputAutoDocStart),
 		[]byte(internal.OutputAutoDocEnd),
@@ -124,9 +123,7 @@ func (r *Reusable) WriteDocumentation(inputTable, outputTable, secretsTable *str
 	outputsStr := strings.TrimSpace(outputTable.String())
 
 	if hasOutputsData {
-		for i := 0; i < len(outputStartIndexes); i++ {
-			output = utils.ReplaceBytesInBetween(output, outputStartIndexes[i], outputEndIndexes[i], []byte(outputsStr))
-		}
+		output = utils.ReplaceBytesInBetween(output, Indices, []byte(outputsStr))
 	} else {
 		re := regexp.MustCompile(fmt.Sprintf("(?m)^%s", internal.OutputsHeader))
 		output = re.ReplaceAllFunc(output, func(match []byte) []byte {
@@ -137,7 +134,7 @@ func (r *Reusable) WriteDocumentation(inputTable, outputTable, secretsTable *str
 		})
 	}
 
-	hasSecretsData, secretsStartIndexes, secretsEndIndexes := utils.HasBytesInBetween(
+	hasSecretsData, Indices := utils.HasBytesInBetween(
 		output,
 		[]byte(internal.SecretsAutoDocStart),
 		[]byte(internal.SecretsAutoDocEnd),
@@ -146,9 +143,7 @@ func (r *Reusable) WriteDocumentation(inputTable, outputTable, secretsTable *str
 	secretsStr := strings.TrimSpace(secretsTable.String())
 
 	if hasSecretsData {
-		for i := 0; i < len(secretsStartIndexes); i++ {
-			output = utils.ReplaceBytesInBetween(output, secretsStartIndexes[i], secretsEndIndexes[i], []byte(secretsStr))
-		}
+		output = utils.ReplaceBytesInBetween(output, Indices, []byte(secretsStr))
 	} else {
 		re := regexp.MustCompile(fmt.Sprintf("(?m)^%s", internal.SecretsHeader))
 		output = re.ReplaceAllFunc(output, func(match []byte) []byte {
