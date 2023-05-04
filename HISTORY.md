@@ -1,12 +1,28 @@
 # Changelog
 
-## [v2.4.0](https://github.com/tj-actions/auto-doc/tree/v2.4.0) (2023-04-30)
+## [v2.5.0](https://github.com/tj-actions/auto-doc/tree/v2.5.0) (2023-05-04)
 
-[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v2.3.2...v2.4.0)
+[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v2.4.0...v2.5.0)
 
 **Closed issues:**
 
 - Dependency Dashboard [\#2](https://github.com/tj-actions/auto-doc/issues/2)
+
+**Merged pull requests:**
+
+- chore: rename variable [\#470](https://github.com/tj-actions/auto-doc/pull/470) ([jackton1](https://github.com/jackton1))
+- feat: improve handling description data [\#469](https://github.com/tj-actions/auto-doc/pull/469) ([jackton1](https://github.com/jackton1))
+- fix: Update bytes\_utils.go [\#468](https://github.com/tj-actions/auto-doc/pull/468) ([jackton1](https://github.com/jackton1))
+- chore\(deps\): update peter-evans/create-pull-request action to v5.0.1 [\#465](https://github.com/tj-actions/auto-doc/pull/465) ([renovate[bot]](https://github.com/apps/renovate))
+- Upgraded to v2.4.0 [\#464](https://github.com/tj-actions/auto-doc/pull/464) ([jackton1](https://github.com/jackton1))
+
+## [v2.4.0](https://github.com/tj-actions/auto-doc/tree/v2.4.0) (2023-04-30)
+
+[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v2...v2.4.0)
+
+## [v2](https://github.com/tj-actions/auto-doc/tree/v2) (2023-04-30)
+
+[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v2.3.2...v2)
 
 **Merged pull requests:**
 
@@ -19,11 +35,7 @@
 
 ## [v2.3.2](https://github.com/tj-actions/auto-doc/tree/v2.3.2) (2023-03-28)
 
-[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v2...v2.3.2)
-
-## [v2](https://github.com/tj-actions/auto-doc/tree/v2) (2023-03-28)
-
-[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v2.3.0...v2)
+[Full Changelog](https://github.com/tj-actions/auto-doc/compare/v2.3.0...v2.3.2)
 
 **Fixed bugs:**
 
