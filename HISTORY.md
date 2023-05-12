@@ -1,5 +1,15 @@
 # Changelog
 
+# [2.5.4](https://github.com/tj-actions/auto-doc/compare/v2.5.3...v2.5.4) - (2023-05-12)
+
+## <!-- 26 -->🔄 Update
+
+- Update action.yml ([9b9d172](https://github.com/tj-actions/auto-doc/commit/9b9d1727f337d5594938fd05288e7d4c9c19efd8))  - (Tonye Jack)
+
+## <!-- 30 -->📝 Other
+
+- PR [#476](https://github.com/tj-actions/auto-doc/pull/476): to v2.5.3 ([ea29a7f](https://github.com/tj-actions/auto-doc/commit/ea29a7f1fc2974b5765bcc856e9348a86cd84458))  - (repo-ranger[bot])
+
 # [2.5.3](https://github.com/tj-actions/auto-doc/compare/v2.5.0...v2.5.3) - (2023-05-12)
 
 ## <!-- 0 -->🚀 Features
@@ -21,6 +31,7 @@
 
 ## <!-- 7 -->⚙️ Miscellaneous Tasks
 
+- Upgraded from v2.5.2 -> v2.5.3 ([cf27187](https://github.com/tj-actions/auto-doc/commit/cf27187403627d870cf3d278aa0723bdff3d5830))  - (github-actions[bot])
 - Remove debug mode ([0ead27c](https://github.com/tj-actions/auto-doc/commit/0ead27c29f963014ceddd7b065ac764ba6eff7f8))  - (Tonye Jack)
 - Skip fields that are within the limit ([#472](https://github.com/tj-actions/auto-doc/issues/472)) ([45a609f](https://github.com/tj-actions/auto-doc/commit/45a609f057e55686834a3b6ec66296d6a8461312))  - (Tonye Jack)
 
