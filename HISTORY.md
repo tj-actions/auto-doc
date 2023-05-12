@@ -1,9 +1,18 @@
 # Changelog
 
-# [2.5.2](https://github.com/tj-actions/auto-doc/compare/v2.5.0...v2.5.2) - (2023-05-04)
+# [2.5.3](https://github.com/tj-actions/auto-doc/compare/v2.5.0...v2.5.3) - (2023-05-12)
+
+## <!-- 0 -->🚀 Features
+
+- Switch to use setup bin action ([#475](https://github.com/tj-actions/auto-doc/issues/475)) ([a511420](https://github.com/tj-actions/auto-doc/commit/a5114207122941e5d4b631dddad665b3834202e0))  - (Tonye Jack)
 
 ## <!-- 26 -->🔄 Update
 
+- Updated README.
+ ([fa3bf22](https://github.com/tj-actions/auto-doc/commit/fa3bf2294de33cdec5726c66e5ed911b7f388283))  - (github-actions[bot])
+- Update README.md ([61fc5c0](https://github.com/tj-actions/auto-doc/commit/61fc5c0ab121b39d324fd968371b8bb227f034f8))  - (Tonye Jack)
+- Updated comment
+ ([3454e51](https://github.com/tj-actions/auto-doc/commit/3454e5186150933e348991cfae8bc35287567c4e))  - (Tonye Jack)
 - Update sync-release-version.yml ([b1c32bb](https://github.com/tj-actions/auto-doc/commit/b1c32bbbbb4b65e6d09e50f56e4afac6f85be5e8))  - (Tonye Jack)
 
 ## <!-- 30 -->📝 Other
@@ -17,6 +26,9 @@
 
 ## <!-- 9 -->⬆️ Upgrades
 
+- Upgraded to v2.5.2 ([#474](https://github.com/tj-actions/auto-doc/issues/474))
+
+Co-authored-by: github-actions[bot] <github-actions[bot]@users.noreply.github.com> ([ca5874c](https://github.com/tj-actions/auto-doc/commit/ca5874cea2ac21e059d32ec33ae4ae8085332853))  - (Tonye Jack)
 - Upgraded to v2.5.1 ([#473](https://github.com/tj-actions/auto-doc/issues/473))
 
 Co-authored-by: github-actions[bot] <github-actions[bot]@users.noreply.github.com>
