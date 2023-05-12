@@ -50,7 +50,7 @@ runs:
       uses: tj-actions/setup-bin@v1
       id: setup-bin-go
       with:
-        version: ${{ github.action_ref }}
+        version: v2.5.2
         language-type: 'go'
     - run: |
         bash $GITHUB_ACTION_PATH/entrypoint.sh
