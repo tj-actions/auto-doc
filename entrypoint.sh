@@ -63,45 +63,6 @@ if [[ "$REUSABLE" == "true" ]]; then
   EXTRA_ARGS="${EXTRA_ARGS} --reusable"
 fi
 
-if [[ -z "$BIN_PATH" ]]; then
-  LATEST_VERSION=${VERSION:-v2.3.2}
-  echo "Downloading auto-doc $LATEST_VERSION binary..."
-
-  WINDOWS_TARGET=Windows_x86_64
-  LINUX_TARGET=Linux_x86_64
-  MACOS_TARGET=Darwin_x86_64
-  ARCHIVE=zip
-  TEMP_DIR=$(mktemp -d)
-
-  if [[ $(uname -s) == "Linux" ]]; then
-    TARGET=$LINUX_TARGET
-    ARCHIVE=tar.gz
-  elif [[ $(uname -s) == "Darwin" ]]; then
-    TARGET=$MACOS_TARGET
-    ARCHIVE=tar.gz
-  else
-    TARGET=$WINDOWS_TARGET
-  fi
-
-  DELAY=10
-  OUTPUT_FILE="$TEMP_DIR"/auto-doc."$ARCHIVE"
-
-  for i in $(seq 1 5); do
-    curl --connect-timeout 300 -sLf https://github.com/tj-actions/auto-doc/releases/download/"$LATEST_VERSION"/auto-doc_"${LATEST_VERSION/v/}"_"$TARGET"."$ARCHIVE" -o "$OUTPUT_FILE" && break
-    sleep $DELAY
-    echo "$i retries"
-  done
-
-  if [[ "$ARCHIVE" == "zip" ]]; then
-    unzip -q "$OUTPUT_FILE" -d "$TEMP_DIR"
-  else
-    tar -xzf "$OUTPUT_FILE" -C "$TEMP_DIR"
-  fi
-
-  chmod +x "$TEMP_DIR"/auto-doc
-  BIN_PATH="$TEMP_DIR"/auto-doc
-fi
-
 echo "::debug::Generating documentation using ${BIN_PATH}..."
 echo "::debug::Extra args: ${EXTRA_ARGS}"
 

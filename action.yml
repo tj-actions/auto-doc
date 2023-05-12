@@ -46,6 +46,12 @@ inputs:
 runs:
   using: 'composite'
   steps:
+    - name: Setup bin
+      uses: tj-actions/setup-bin@v1
+      id: setup-bin-go
+      with:
+        version: v2.5.2
+        language-type: 'go'
     - run: |
         bash $GITHUB_ACTION_PATH/entrypoint.sh
       id: autodoc
@@ -57,7 +63,7 @@ runs:
         INPUT_COL_MAX_WIDTH: ${{ inputs.col_max_width }}
         INPUT_COL_MAX_WORDS: ${{ inputs.col_max_words }}
         INPUT_OUTPUT: ${{ inputs.output }}
-        INPUT_BIN_PATH: ${{ inputs.bin_path }}
+        INPUT_BIN_PATH: ${{ inputs.bin_path || steps.setup-bin-go.outputs.binary_path }}
         INPUT_INPUT_COLUMNS: ${{ inputs.input_columns }}
         INPUT_OUTPUT_COLUMNS: ${{ inputs.output_columns }}
         INPUT_REUSABLE_OUTPUT_COLUMNS: ${{ inputs.reusable_output_columns }}

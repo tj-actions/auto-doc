@@ -55,7 +55,7 @@ jobs:
         uses: tj-actions/sync-release-version@v13
         id: sync-release-version-action
         with:
-          pattern: 'VERSION:-'
+          pattern: 'version: '
           paths: |
             action.yml
 
