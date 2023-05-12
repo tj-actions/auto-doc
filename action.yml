@@ -50,6 +50,8 @@ runs:
       uses: tj-actions/setup-bin@v1
       id: setup-bin-go
       with:
+        repository-owner: tj-actions
+        repository: auto-doc
         version: v2.5.3
         language-type: 'go'
     - run: |
