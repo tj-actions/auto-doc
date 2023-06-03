@@ -67,6 +67,7 @@ Add the `Inputs` and/or `Outputs` and/or `Secrets` (only supported by reusable w
 |      col\_max\_words      | string |  false   |     `"5"`      |                          Max number of words per line <br>in a column                            |
 |        filename         | string |  false   | `"action.yml"` |                                      Path to the yaml file                                       |
 |      input\_columns      | string |  false   |                |    List of action.yml **input** columns names <br>to display, default (display all columns)      |
+|     markdown\_links      | string |  false   |   `"false"`    |  Boolean indicating whether to output input, <br>output and secret names as markdown <br>links   |
 |         output          | string |  false   | `"README.md"`  |                                     Path to the output file                                      |
 |     output\_columns      | string |  false   |                |    List of action.yml **output** column names <br>to display, default (display all columns)      |
 |        reusable         | string |  false   |                |                 Boolean Indicating whether the file is <br>a reusable workflow                   |
