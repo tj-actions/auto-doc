@@ -29,7 +29,6 @@ var fileName string
 var outputFileName string
 var colMaxWidth string
 var colMaxWords string
-var markdownLinks bool
 
 // action.yml
 var inputColumns []string

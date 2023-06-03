@@ -277,3 +277,18 @@ func Test_rootCommand(t *testing.T) {
 		}
 	})
 }
+
+func TestGetMarkdownLinksFlag(t *testing.T) {
+	cmd := &cobra.Command{}
+	cmd.Flags().Bool("markdownLinks", true, "Names of inputs, outputs and secrets as markdown links")
+	expected := true
+
+	actual, err := cmd.Flags().GetBool("markdownLinks")
+	if err != nil {
+		t.Fatalf("unexpected error: %v", err)
+	}
+
+	if actual != expected {
+		t.Errorf("expected %v but got %v", expected, actual)
+	}
+}
