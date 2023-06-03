@@ -16,7 +16,7 @@ limitations under the License.
 */
 package utils
 
-// format string input as markdown link (named anchor)
+// Formats string input as markdown link (named anchor) and return the link
 func MarkdownLink(s string, t string) string {
 	var link string
 	var typeName = t + "_" + s
