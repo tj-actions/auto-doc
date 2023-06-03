@@ -221,4 +221,59 @@ func Test_rootCommand(t *testing.T) {
 			)
 		}
 	})
+
+	t.Run("Update test/README-MarkdownLinks.md using custom action file and output file and markdownLinks flag", func(t *testing.T) {
+		cmd := &cobra.Command{Use: "auto-doc", RunE: RootCmdRunE}
+		RootCmdFlags(cmd)
+		b := bytes.NewBufferString("")
+		cmd.SetOut(b)
+		cmd.SetArgs([]string{"--filename", "../test/action.yml", "--output", "../test/README-MarkdownLinks.md", "--markdownLinks"})
+		err := cmd.Execute()
+
+		if err != nil {
+			t.Fatal(err)
+		}
+
+		out, err := ioutil.ReadAll(b)
+		if err != nil {
+			t.Fatal(err)
+		}
+
+		exp := fmt.Sprintln("Successfully generated documentation")
+
+		if string(out) != exp {
+			t.Fatalf(
+				"expected \"%s\" got \"%s\"",
+				exp,
+				string(out),
+			)
+		}
+	})
+	t.Run("Update test/README-reusable.md using custom action file and output file and markdownLinks flag", func(t *testing.T) {
+		cmd := &cobra.Command{Use: "auto-doc", RunE: RootCmdRunE}
+		RootCmdFlags(cmd)
+		b := bytes.NewBufferString("")
+		cmd.SetOut(b)
+		cmd.SetArgs([]string{"--filename", "../test/reusable-action.yml", "--reusable", "--output", "../test/README-reusable-MarkdownLinks.md", "-m"})
+		err := cmd.Execute()
+
+		if err != nil {
+			t.Fatal(err)
+		}
+
+		out, err := ioutil.ReadAll(b)
+		if err != nil {
+			t.Fatal(err)
+		}
+
+		exp := fmt.Sprintln("Successfully generated documentation")
+
+		if string(out) != exp {
+			t.Fatalf(
+				"expected \"%s\" got \"%s\"",
+				exp,
+				string(out),
+			)
+		}
+	})
 }

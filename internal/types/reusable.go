@@ -69,6 +69,7 @@ type Reusable struct {
 			Outputs map[string]ReusableOutput `yaml:"outputs,omitempty"`
 		} `yaml:"workflow_call"`
 	}
+	InputMarkdownLinks bool
 }
 
 // GetData parses the source yaml file
@@ -173,17 +174,17 @@ func (r *Reusable) RenderOutput() error {
 	if err != nil {
 		return err
 	}
-	inputTableOutput, err := renderReusableInputTableOutput(r.On.WorkflowCall.Inputs, r.InputColumns, maxWidth, maxWords)
+	inputTableOutput, err := renderReusableInputTableOutput(r.On.WorkflowCall.Inputs, r.InputColumns, maxWidth, maxWords, r.InputMarkdownLinks)
 	if err != nil {
 		return err
 	}
 
-	secretTableOutput, err := renderReusableSecretTableOutput(r.On.WorkflowCall.Secrets, r.SecretColumns, maxWidth, maxWords)
+	secretTableOutput, err := renderReusableSecretTableOutput(r.On.WorkflowCall.Secrets, r.SecretColumns, maxWidth, maxWords, r.InputMarkdownLinks)
 	if err != nil {
 		return err
 	}
 
-	outputTableOutput, err := renderReusableOutputTableOutput(r.On.WorkflowCall.Outputs, r.OutputColumns, maxWidth, maxWords)
+	outputTableOutput, err := renderReusableOutputTableOutput(r.On.WorkflowCall.Outputs, r.OutputColumns, maxWidth, maxWords, r.InputMarkdownLinks)
 	if err != nil {
 		return err
 	}
@@ -197,7 +198,7 @@ func (r *Reusable) RenderOutput() error {
 }
 
 // renderReusableInputTableOutput renders the reusable workflow input table
-func renderReusableInputTableOutput(i map[string]ReusableInput, inputColumns []string, maxWidth int, maxWords int) (*strings.Builder, error) {
+func renderReusableInputTableOutput(i map[string]ReusableInput, inputColumns []string, maxWidth int, maxWords int, markdownLinks bool) (*strings.Builder, error) {
 	inputTableOutput := &strings.Builder{}
 
 	if len(i) > 0 {
@@ -226,7 +227,11 @@ func renderReusableInputTableOutput(i map[string]ReusableInput, inputColumns []s
 			for _, col := range inputColumns {
 				switch col {
 				case "Input":
-					row = append(row, utils.MarkdownLink(key))
+					if markdownLinks {
+						row = append(row, utils.MarkdownLink(key))
+					} else {
+						row = append(row, key)
+					}
 				case "Type":
 					row = append(row, i[key].Type)
 				case "Required":
@@ -272,7 +277,7 @@ func renderReusableInputTableOutput(i map[string]ReusableInput, inputColumns []s
 }
 
 // renderReusableOutputTableOutput renders the reusable workflow output table
-func renderReusableOutputTableOutput(o map[string]ReusableOutput, reusableOutputColumns []string, maxWidth int, maxWords int) (*strings.Builder, error) {
+func renderReusableOutputTableOutput(o map[string]ReusableOutput, reusableOutputColumns []string, maxWidth int, maxWords int, markdownLinks bool) (*strings.Builder, error) {
 	outputTableOutput := &strings.Builder{}
 
 	if len(o) > 0 {
@@ -300,7 +305,11 @@ func renderReusableOutputTableOutput(o map[string]ReusableOutput, reusableOutput
 			for _, col := range reusableOutputColumns {
 				switch col {
 				case "Output":
-					row = append(row, key)
+					if markdownLinks {
+						row = append(row, utils.MarkdownLink(key))
+					} else {
+						row = append(row, key)
+					}
 				case "Value":
 					row = append(row, utils.FormatValue(o[key].Value))
 				case "Description":
@@ -336,7 +345,7 @@ func renderReusableOutputTableOutput(o map[string]ReusableOutput, reusableOutput
 }
 
 // renderReusableSecretTableOutput renders the reusable workflow secret table
-func renderReusableSecretTableOutput(s map[string]ReusableSecret, secretColumns []string, maxWidth int, maxWords int) (*strings.Builder, error) {
+func renderReusableSecretTableOutput(s map[string]ReusableSecret, secretColumns []string, maxWidth int, maxWords int, markdownLinks bool) (*strings.Builder, error) {
 	secretTableOutput := &strings.Builder{}
 
 	if len(s) > 0 {
@@ -364,7 +373,11 @@ func renderReusableSecretTableOutput(s map[string]ReusableSecret, secretColumns 
 			for _, col := range secretColumns {
 				switch col {
 				case "Secret":
-					row = append(row, key)
+					if markdownLinks {
+						row = append(row, utils.MarkdownLink(key))
+					} else {
+						row = append(row, key)
+					}
 				case "Required":
 					row = append(row, fmt.Sprintf("%v", s[key].Required))
 				case "Description":

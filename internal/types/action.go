@@ -48,14 +48,15 @@ type ActionOutput struct {
 
 // Action represents the action.yml
 type Action struct {
-	InputFileName  string
-	OutputFileName string
-	ColMaxWidth    string
-	ColMaxWords    string
-	InputColumns   []string
-	OutputColumns  []string
-	Inputs         map[string]ActionInput  `yaml:"inputs,omitempty"`
-	Outputs        map[string]ActionOutput `yaml:"outputs,omitempty"`
+	InputFileName      string
+	OutputFileName     string
+	ColMaxWidth        string
+	ColMaxWords        string
+	InputColumns       []string
+	OutputColumns      []string
+	Inputs             map[string]ActionInput  `yaml:"inputs,omitempty"`
+	Outputs            map[string]ActionOutput `yaml:"outputs,omitempty"`
+	InputMarkdownLinks bool
 }
 
 // GetData parses the source yaml file
@@ -141,12 +142,12 @@ func (a *Action) RenderOutput() error {
 		return err
 	}
 
-	inputTableOutput, err := renderActionInputTableOutput(a.Inputs, a.InputColumns, maxWidth, maxWords)
+	inputTableOutput, err := renderActionInputTableOutput(a.Inputs, a.InputColumns, maxWidth, maxWords, a.InputMarkdownLinks)
 	if err != nil {
 		return err
 	}
 
-	outputTableOutput, err := renderActionOutputTableOutput(a.Outputs, a.OutputColumns, maxWidth, maxWords)
+	outputTableOutput, err := renderActionOutputTableOutput(a.Outputs, a.OutputColumns, maxWidth, maxWords, a.InputMarkdownLinks)
 	if err != nil {
 		return err
 	}
@@ -160,7 +161,7 @@ func (a *Action) RenderOutput() error {
 }
 
 // renderActionOutputTableOutput renders the action input table
-func renderActionInputTableOutput(i map[string]ActionInput, inputColumns []string, maxWidth int, maxWords int) (*strings.Builder, error) {
+func renderActionInputTableOutput(i map[string]ActionInput, inputColumns []string, maxWidth int, maxWords int, markdownLinks bool) (*strings.Builder, error) {
 	inputTableOutput := &strings.Builder{}
 
 	if len(i) > 0 {
@@ -189,7 +190,11 @@ func renderActionInputTableOutput(i map[string]ActionInput, inputColumns []strin
 			for _, col := range inputColumns {
 				switch col {
 				case "Input":
-					row = append(row, key)
+					if markdownLinks {
+						row = append(row, utils.MarkdownLink(key))
+					} else {
+						row = append(row, key)
+					}
 				case "Type":
 					row = append(row, "string")
 				case "Required":
@@ -230,7 +235,7 @@ func renderActionInputTableOutput(i map[string]ActionInput, inputColumns []strin
 }
 
 // renderActionOutputTableOutput renders the action output table
-func renderActionOutputTableOutput(o map[string]ActionOutput, outputColumns []string, maxWidth int, maxWords int) (*strings.Builder, error) {
+func renderActionOutputTableOutput(o map[string]ActionOutput, outputColumns []string, maxWidth int, maxWords int, markdownLinks bool) (*strings.Builder, error) {
 	outputTableOutput := &strings.Builder{}
 
 	if len(o) > 0 {
@@ -258,7 +263,11 @@ func renderActionOutputTableOutput(o map[string]ActionOutput, outputColumns []st
 			for _, col := range outputColumns {
 				switch col {
 				case "Output":
-					row = append(row, key)
+					if markdownLinks {
+						row = append(row, utils.MarkdownLink(key))
+					} else {
+						row = append(row, key)
+					}
 				case "Type":
 					row = append(row, "string")
 				case "Description":
