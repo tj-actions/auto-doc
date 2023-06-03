@@ -59,9 +59,11 @@ func RootCmdRunE(cmd *cobra.Command, args []string) error {
 	}
 
 	reusable, err := cmd.Flags().GetBool("reusable")
+	if err != nil {
+		return err
+	}
 
 	markdownLinks, err := cmd.Flags().GetBool("markdownLinks")
-
 	if err != nil {
 		return err
 	}
