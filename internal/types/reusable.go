@@ -226,7 +226,7 @@ func renderReusableInputTableOutput(i map[string]ReusableInput, inputColumns []s
 			for _, col := range inputColumns {
 				switch col {
 				case "Input":
-					row = append(row, key)
+					row = append(row, utils.MarkdownLink(key))
 				case "Type":
 					row = append(row, i[key].Type)
 				case "Required":
