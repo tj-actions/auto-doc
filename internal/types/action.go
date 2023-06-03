@@ -191,7 +191,7 @@ func renderActionInputTableOutput(i map[string]ActionInput, inputColumns []strin
 				switch col {
 				case "Input":
 					if markdownLinks {
-						row = append(row, utils.MarkdownLink(key))
+						row = append(row, utils.MarkdownLink(key, "input"))
 					} else {
 						row = append(row, key)
 					}
@@ -264,7 +264,7 @@ func renderActionOutputTableOutput(o map[string]ActionOutput, outputColumns []st
 				switch col {
 				case "Output":
 					if markdownLinks {
-						row = append(row, utils.MarkdownLink(key))
+						row = append(row, utils.MarkdownLink(key, "output"))
 					} else {
 						row = append(row, key)
 					}

@@ -4,11 +4,11 @@
 
 <!-- AUTO-DOC-INPUT:START - Do not remove or modify this section -->
 
-|                         INPUT                         |  TYPE  | REQUIRED |   DEFAULT   |      DESCRIPTION       |
-|-------------------------------------------------------|--------|----------|-------------|------------------------|
-| <a name="bool_tested"></a>[bool_tested](#bool_tested) |  bool  |  false   |   `true`    |      Test of bool      |
-| <a name="config-path"></a>[config-path](#config-path) | string |   true   |             | The configuration path |
-|     <a name="username"></a>[username](#username)      | string |  false   | `"example"` |        Username        |
+|                               INPUT                               |  TYPE  | REQUIRED |   DEFAULT   |      DESCRIPTION       |
+|-------------------------------------------------------------------|--------|----------|-------------|------------------------|
+| <a name="input_bool_tested"></a>[bool_tested](#input_bool_tested) |  bool  |  false   |   `true`    |      Test of bool      |
+| <a name="input_config-path"></a>[config-path](#input_config-path) | string |   true   |             | The configuration path |
+|     <a name="input_username"></a>[username](#input_username)      | string |  false   | `"example"` |        Username        |
 
 <!-- AUTO-DOC-INPUT:END -->
 
@@ -16,10 +16,10 @@
 
 <!-- AUTO-DOC-OUTPUT:START - Do not remove or modify this section -->
 
-|                       OUTPUT                       |                    VALUE                    |       DESCRIPTION        |
-|----------------------------------------------------|---------------------------------------------|--------------------------|
-|  <a name="firstword"></a>[firstword](#firstword)   | `"${{ jobs.example_job.outputs.output1 }}"` | The first output string  |
-| <a name="secondword"></a>[secondword](#secondword) | `"${{ jobs.example_job.outputs.output2 }}"` | The second output string |
+|                              OUTPUT                              |                    VALUE                    |       DESCRIPTION        |
+|------------------------------------------------------------------|---------------------------------------------|--------------------------|
+|  <a name="output_firstword"></a>[firstword](#output_firstword)   | `"${{ jobs.example_job.outputs.output1 }}"` | The first output string  |
+| <a name="output_secondword"></a>[secondword](#output_secondword) | `"${{ jobs.example_job.outputs.output2 }}"` | The second output string |
 
 <!-- AUTO-DOC-OUTPUT:END -->
 
@@ -27,8 +27,8 @@
 
 <!-- AUTO-DOC-SECRETS:START - Do not remove or modify this section -->
 
-|               SECRET                | REQUIRED |      DESCRIPTION      |
-|-------------------------------------|----------|-----------------------|
-| <a name="token"></a>[token](#token) |   true   | Repo scoped PAT token |
+|                      SECRET                       | REQUIRED |      DESCRIPTION      |
+|---------------------------------------------------|----------|-----------------------|
+| <a name="secret_token"></a>[token](#secret_token) |   true   | Repo scoped PAT token |
 
 <!-- AUTO-DOC-SECRETS:END -->

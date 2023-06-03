@@ -228,7 +228,7 @@ func renderReusableInputTableOutput(i map[string]ReusableInput, inputColumns []s
 				switch col {
 				case "Input":
 					if markdownLinks {
-						row = append(row, utils.MarkdownLink(key))
+						row = append(row, utils.MarkdownLink(key, "input"))
 					} else {
 						row = append(row, key)
 					}
@@ -306,7 +306,7 @@ func renderReusableOutputTableOutput(o map[string]ReusableOutput, reusableOutput
 				switch col {
 				case "Output":
 					if markdownLinks {
-						row = append(row, utils.MarkdownLink(key))
+						row = append(row, utils.MarkdownLink(key, "output"))
 					} else {
 						row = append(row, key)
 					}
@@ -374,7 +374,7 @@ func renderReusableSecretTableOutput(s map[string]ReusableSecret, secretColumns 
 				switch col {
 				case "Secret":
 					if markdownLinks {
-						row = append(row, utils.MarkdownLink(key))
+						row = append(row, utils.MarkdownLink(key, "secret"))
 					} else {
 						row = append(row, key)
 					}
