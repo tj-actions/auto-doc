@@ -1,5 +1,48 @@
 # Changelog
 
+# [2.6.1](https://github.com/tj-actions/auto-doc/compare/v2.6.0...v2.6.1) - (2023-06-06)
+
+## <!-- 25 -->🎨 Format
+
+- Formatted code.
+ ([d9e68b4](https://github.com/tj-actions/auto-doc/commit/d9e68b40fe5ca7f42477c7064a6c51400374b572))  - (github-actions[bot])
+
+## <!-- 26 -->🔄 Update
+
+- Updated README.
+ ([29b19bd](https://github.com/tj-actions/auto-doc/commit/29b19bdad4586166b73e3122a9b01d4b0d3f8524))  - (github-actions[bot])
+
+## <!-- 30 -->📝 Other
+
+- PR [#483](https://github.com/tj-actions/auto-doc/pull/483): update formatting ([a6a6e0a](https://github.com/tj-actions/auto-doc/commit/a6a6e0a3716a767bd87dee3b664bad766f0a66df))  - (repo-ranger[bot])
+- Merge baeca55efb26a45771460c86f83853b301f610b7 into a00777cb8d47091e0bb7f2619bce0de160cf203f
+ ([b3167e8](https://github.com/tj-actions/auto-doc/commit/b3167e8d62815eada73e6969d37ea6de457dbb70))  - (Tonye Jack)
+- Merge branch 'main' into chore/update-formatting ([baeca55](https://github.com/tj-actions/auto-doc/commit/baeca55efb26a45771460c86f83853b301f610b7))  - (repo-ranger[bot])
+- PR [#482](https://github.com/tj-actions/auto-doc/pull/482): to v2.6.0 ([a00777c](https://github.com/tj-actions/auto-doc/commit/a00777cb8d47091e0bb7f2619bce0de160cf203f))  - (repo-ranger[bot])
+
+## <!-- 7 -->⚙️ Miscellaneous Tasks
+
+- Update formatting ([757551c](https://github.com/tj-actions/auto-doc/commit/757551c3ea61196541919b81c5ad5b2612a6412c))  - (Tonye Jack)
+
+# [2.6.0](https://github.com/tj-actions/auto-doc/compare/v2.5.4...v2.6.0) - (2023-06-06)
+
+## <!-- 0 -->🚀 Features
+
+- Add support for indicating deprecated inputs ([#481](https://github.com/tj-actions/auto-doc/issues/481)) ([1034c3e](https://github.com/tj-actions/auto-doc/commit/1034c3e0222de0e0f7b07a3cb37c87757bdc4631))  - (Tonye Jack)
+
+## <!-- 26 -->🔄 Update
+
+- Update README.md ([7aae7c3](https://github.com/tj-actions/auto-doc/commit/7aae7c39efa57b5c5a7c105733c3459838b2e191))  - (Tonye Jack)
+
+## <!-- 30 -->📝 Other
+
+- PR [#477](https://github.com/tj-actions/auto-doc/pull/477): to v2.5.4 ([8d294a2](https://github.com/tj-actions/auto-doc/commit/8d294a22ce090ec6fec7ec19a17ef8c6cbb3276a))  - (repo-ranger[bot])
+
+## <!-- 7 -->⚙️ Miscellaneous Tasks
+
+- Upgraded from v2.5.4 -> v2.6.0 ([24706b6](https://github.com/tj-actions/auto-doc/commit/24706b638b1c2c532054bf7dc9aa0d0b7cbd3898))  - (github-actions[bot])
+- **deps:** Update tj-actions/branch-names action to v7 ([fe77e45](https://github.com/tj-actions/auto-doc/commit/fe77e45b4b325230d9ca37002ded009bf3127e7c))  - (renovate[bot])
+
 # [2.5.4](https://github.com/tj-actions/auto-doc/compare/v2.5.3...v2.5.4) - (2023-05-12)
 
 ## <!-- 26 -->🔄 Update
@@ -9,6 +52,10 @@
 ## <!-- 30 -->📝 Other
 
 - PR [#476](https://github.com/tj-actions/auto-doc/pull/476): to v2.5.3 ([ea29a7f](https://github.com/tj-actions/auto-doc/commit/ea29a7f1fc2974b5765bcc856e9348a86cd84458))  - (repo-ranger[bot])
+
+## <!-- 7 -->⚙️ Miscellaneous Tasks
+
+- Upgraded from v2.5.3 -> v2.5.4 ([f5d2fe1](https://github.com/tj-actions/auto-doc/commit/f5d2fe14eeb47c2d25098a7863fe47929be76a3d))  - (github-actions[bot])
 
 # [2.5.3](https://github.com/tj-actions/auto-doc/compare/v2.5.0...v2.5.3) - (2023-05-12)
 

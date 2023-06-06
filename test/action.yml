@@ -83,6 +83,11 @@ inputs:
     description: "Output list of changed files in a raw format which means that the output will not be surrounded by quotes and special characters will not be escaped."
     required: false
     default: "false"
+    deprecationMessage: "Use `json_unescaped` instead."
+  json_unescaped:
+    description: "Output list of changed files in a JSON formatted string without escaping special characters."
+    required: false
+    default: "false"
   fetch_depth:
     description: "Depth of additional branch history fetched. **NOTE**: This can be adjusted to resolve errors with insufficient history."
     required: false

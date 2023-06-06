@@ -35,10 +35,11 @@ import (
 
 // ReusableInput represents the input of the reusable workflow
 type ReusableInput struct {
-	Description string `yaml:"description"`
-	Required    bool   `yaml:"required"`
-	Default     string `yaml:"default,omitempty"`
-	Type        string `yaml:"type"`
+	Description        string `yaml:"description"`
+	Required           bool   `yaml:"required"`
+	Default            string `yaml:"default,omitempty"`
+	Type               string `yaml:"type"`
+	DeprecationMessage string `yaml:"deprecationMessage,omitempty"`
 }
 
 // ReusableOutput represents the output of the reusable workflow
@@ -201,7 +202,7 @@ func (r *Reusable) RenderOutput() error {
 func renderReusableInputTableOutput(i map[string]ReusableInput, inputColumns []string, maxWidth int, maxWords int, markdownLinks bool) (*strings.Builder, error) {
 	inputTableOutput := &strings.Builder{}
 
-	if len(i) > 0 {
+	if len(inputs) > 0 {
 		_, err := fmt.Fprintln(inputTableOutput, internal.InputAutoDocStart)
 		if err != nil {
 			return inputTableOutput, err
@@ -213,8 +214,8 @@ func renderReusableInputTableOutput(i map[string]ReusableInput, inputColumns []s
 		inputTable.SetCenterSeparator(internal.PipeSeparator)
 		inputTable.SetAlignment(tablewriter.ALIGN_CENTER)
 
-		keys := make([]string, 0, len(i))
-		for k := range i {
+		keys := make([]string, 0, len(inputs))
+		for k := range inputs {
 			keys = append(keys, k)
 		}
 		sort.Strings(keys)
@@ -227,27 +228,33 @@ func renderReusableInputTableOutput(i map[string]ReusableInput, inputColumns []s
 			for _, col := range inputColumns {
 				switch col {
 				case "Input":
-					if markdownLinks {
-						row = append(row, utils.MarkdownLink(key, "input"))
-					} else {
+					if inputs[key].DeprecationMessage != "" {
+						row = append(row, fmt.Sprintf("~~%s~~ <br> %s", key, inputs[key].DeprecationMessage))
+					} else if markdownLinks {
+            row = append(row, utils.MarkdownLink(key, "input"))
+          } else {
 						row = append(row, key)
 					}
 				case "Type":
-					row = append(row, i[key].Type)
+					row = append(row, inputs[key].Type)
 				case "Required":
-					row = append(row, strconv.FormatBool(i[key].Required))
+					row = append(row, strconv.FormatBool(inputs[key].Required))
 				case "Default":
-					switch i[key].Type {
+					switch inputs[key].Type {
 					case "string":
-						row = append(row, utils.FormatValue(i[key].Default))
+						row = append(row, utils.FormatValue(inputs[key].Default))
 					default:
-						row = append(row, "`"+i[key].Default+"`")
+						row = append(row, "`"+inputs[key].Default+"`")
 					}
 				case "Description":
-					row = append(row, utils.WordWrap(i[key].Description, maxWords))
+					if inputs[key].DeprecationMessage != "" {
+						row = append(row, utils.WordWrap(fmt.Sprintf("**Deprecated:** %s", inputs[key].Description), maxWords))
+					} else {
+						row = append(row, utils.WordWrap(inputs[key].Description, maxWords))
+					}
 				default:
 					return inputTableOutput, fmt.Errorf(
-						"unknown input column: '%s'. Please specify any of the following columns: %s",
+						"unknown inputs column: '%s'. Please specify any of the following columns: %s",
 						col,
 						strings.Join(internal.DefaultReusableInputColumns, ", "),
 					)
@@ -280,7 +287,7 @@ func renderReusableInputTableOutput(i map[string]ReusableInput, inputColumns []s
 func renderReusableOutputTableOutput(o map[string]ReusableOutput, reusableOutputColumns []string, maxWidth int, maxWords int, markdownLinks bool) (*strings.Builder, error) {
 	outputTableOutput := &strings.Builder{}
 
-	if len(o) > 0 {
+	if len(outputs) > 0 {
 		_, err := fmt.Fprintln(outputTableOutput, internal.OutputAutoDocStart)
 		if err != nil {
 			return outputTableOutput, err
@@ -292,8 +299,8 @@ func renderReusableOutputTableOutput(o map[string]ReusableOutput, reusableOutput
 		outputTable.SetCenterSeparator(internal.PipeSeparator)
 		outputTable.SetAlignment(tablewriter.ALIGN_CENTER)
 
-		keys := make([]string, 0, len(o))
-		for k := range o {
+		keys := make([]string, 0, len(outputs))
+		for k := range outputs {
 			keys = append(keys, k)
 		}
 		sort.Strings(keys)
@@ -311,12 +318,12 @@ func renderReusableOutputTableOutput(o map[string]ReusableOutput, reusableOutput
 						row = append(row, key)
 					}
 				case "Value":
-					row = append(row, utils.FormatValue(o[key].Value))
+					row = append(row, utils.FormatValue(outputs[key].Value))
 				case "Description":
-					row = append(row, utils.WordWrap(o[key].Description, maxWords))
+					row = append(row, utils.WordWrap(outputs[key].Description, maxWords))
 				default:
 					return outputTableOutput, fmt.Errorf(
-						"unknown output column: '%s'. Please specify any of the following columns: %s",
+						"unknown outputs column: '%s'. Please specify any of the following columns: %s",
 						col,
 						strings.Join(internal.DefaultReusableOutputColumns, ", "),
 					)
@@ -348,7 +355,7 @@ func renderReusableOutputTableOutput(o map[string]ReusableOutput, reusableOutput
 func renderReusableSecretTableOutput(s map[string]ReusableSecret, secretColumns []string, maxWidth int, maxWords int, markdownLinks bool) (*strings.Builder, error) {
 	secretTableOutput := &strings.Builder{}
 
-	if len(s) > 0 {
+	if len(secrets) > 0 {
 		_, err := fmt.Fprintln(secretTableOutput, internal.SecretsAutoDocStart)
 		if err != nil {
 			return secretTableOutput, err
@@ -360,8 +367,8 @@ func renderReusableSecretTableOutput(s map[string]ReusableSecret, secretColumns 
 		secretTable.SetCenterSeparator(internal.PipeSeparator)
 		secretTable.SetAlignment(tablewriter.ALIGN_CENTER)
 
-		keys := make([]string, 0, len(s))
-		for k := range s {
+		keys := make([]string, 0, len(secrets))
+		for k := range secrets {
 			keys = append(keys, k)
 		}
 		sort.Strings(keys)
@@ -379,12 +386,12 @@ func renderReusableSecretTableOutput(s map[string]ReusableSecret, secretColumns 
 						row = append(row, key)
 					}
 				case "Required":
-					row = append(row, fmt.Sprintf("%v", s[key].Required))
+					row = append(row, fmt.Sprintf("%v", secrets[key].Required))
 				case "Description":
-					row = append(row, utils.WordWrap(s[key].Description, maxWords))
+					row = append(row, utils.WordWrap(secrets[key].Description, maxWords))
 				default:
 					return secretTableOutput, fmt.Errorf(
-						"unknown secrets column: '%s'. Please specify any of the following columns: %s",
+						"unknown secrets column: '%secrets'. Please specify any of the following columns: %secrets",
 						col,
 						strings.Join(internal.DefaultReusableSecretColumns, ", "),
 					)
