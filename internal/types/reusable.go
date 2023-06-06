@@ -35,10 +35,10 @@ import (
 
 // ReusableInput represents the input of the reusable workflow
 type ReusableInput struct {
-	Description        string `yaml:"description"`
-	Required           bool   `yaml:"required"`
-	Default            string `yaml:"default,omitempty"`
-	Type               string `yaml:"type"`
+	Description string `yaml:"description"`
+	Required    bool   `yaml:"required"`
+	Default     string `yaml:"default,omitempty"`
+	Type        string `yaml:"type"`
 	DeprecationMessage string `yaml:"deprecationMessage,omitempty"`
 }
 
@@ -228,7 +228,7 @@ func renderReusableInputTableOutput(inputs map[string]ReusableInput, inputColumn
 				switch col {
 				case "Input":
 					if inputs[key].DeprecationMessage != "" {
-						row = append(row, fmt.Sprintf("~~%s~~ <br> **%s**", key, inputs[key].DeprecationMessage))
+						row = append(row, fmt.Sprintf("~~%s~~ <br> %s", key, inputs[key].DeprecationMessage))
 					} else {
 						row = append(row, key)
 					}

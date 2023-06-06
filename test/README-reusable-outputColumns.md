@@ -4,12 +4,12 @@
 
 <!-- AUTO-DOC-INPUT:START - Do not remove or modify this section -->
 
-|                     INPUT                     |  TYPE   | REQUIRED |   DEFAULT   |         DESCRIPTION          |
-|-----------------------------------------------|---------|----------|-------------|------------------------------|
-| ~~bool_tested~~ <br> **Use `tested` instead** | boolean |  false   |   `true`    | **Deprecated:** Test of bool |
-|                  config-path                  | string  |   true   |             |    The configuration path    |
-|                    tested                     | boolean |  false   |   `false`   |         Test of bool         |
-|                   username                    | string  |  false   | `"example"` |           Username           |
+|                   INPUT                   |  TYPE   | REQUIRED |   DEFAULT   |         DESCRIPTION          |
+|-------------------------------------------|---------|----------|-------------|------------------------------|
+| ~~bool_tested~~ <br> Use `tested` instead | boolean |  false   |   `true`    | **Deprecated:** Test of bool |
+|                config-path                | string  |   true   |             |    The configuration path    |
+|                  tested                   | boolean |  false   |   `false`   |         Test of bool         |
+|                 username                  | string  |  false   | `"example"` |           Username           |
 
 <!-- AUTO-DOC-INPUT:END -->
 

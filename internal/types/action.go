@@ -35,9 +35,9 @@ import (
 
 // ActionInput represents the input of the action.yml
 type ActionInput struct {
-	Description        string `yaml:"description"`
-	Required           bool   `yaml:"required"`
-	Default            string `yaml:"default,omitempty"`
+	Description string `yaml:"description"`
+	Required    bool   `yaml:"required"`
+	Default     string `yaml:"default,omitempty"`
 	DeprecationMessage string `yaml:"deprecationMessage,omitempty"`
 }
 
@@ -191,7 +191,7 @@ func renderActionInputTableOutput(inputs map[string]ActionInput, inputColumns []
 				switch col {
 				case "Input":
 					if inputs[key].DeprecationMessage != "" {
-						row = append(row, fmt.Sprintf("~~%s~~ <br> **%s**", key, inputs[key].DeprecationMessage))
+						row = append(row, fmt.Sprintf("~~%s~~ <br> %s", key, inputs[key].DeprecationMessage))
 					} else {
 						row = append(row, key)
 					}
