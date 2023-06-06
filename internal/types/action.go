@@ -35,9 +35,10 @@ import (
 
 // ActionInput represents the input of the action.yml
 type ActionInput struct {
-	Description string `yaml:"description"`
-	Required    bool   `yaml:"required"`
-	Default     string `yaml:"default,omitempty"`
+	Description        string `yaml:"description"`
+	Required           bool   `yaml:"required"`
+	Default            string `yaml:"default,omitempty"`
+	DeprecationMessage string `yaml:"deprecationMessage,omitempty"`
 }
 
 // ActionOutput represents the output of the action.yml
@@ -160,10 +161,10 @@ func (a *Action) RenderOutput() error {
 }
 
 // renderActionOutputTableOutput renders the action input table
-func renderActionInputTableOutput(i map[string]ActionInput, inputColumns []string, maxWidth int, maxWords int) (*strings.Builder, error) {
+func renderActionInputTableOutput(inputs map[string]ActionInput, inputColumns []string, maxWidth int, maxWords int) (*strings.Builder, error) {
 	inputTableOutput := &strings.Builder{}
 
-	if len(i) > 0 {
+	if len(inputs) > 0 {
 		_, err := fmt.Fprintln(inputTableOutput, internal.InputAutoDocStart)
 		if err != nil {
 			return inputTableOutput, err
@@ -175,8 +176,8 @@ func renderActionInputTableOutput(i map[string]ActionInput, inputColumns []strin
 		inputTable.SetCenterSeparator(internal.PipeSeparator)
 		inputTable.SetAlignment(tablewriter.ALIGN_CENTER)
 
-		keys := make([]string, 0, len(i))
-		for k := range i {
+		keys := make([]string, 0, len(inputs))
+		for k := range inputs {
 			keys = append(keys, k)
 		}
 		sort.Strings(keys)
@@ -189,18 +190,26 @@ func renderActionInputTableOutput(i map[string]ActionInput, inputColumns []strin
 			for _, col := range inputColumns {
 				switch col {
 				case "Input":
-					row = append(row, key)
+					if inputs[key].DeprecationMessage != "" {
+						row = append(row, fmt.Sprintf("~~%s~~ <br> **%s**", key, inputs[key].DeprecationMessage))
+					} else {
+						row = append(row, key)
+					}
 				case "Type":
 					row = append(row, "string")
 				case "Required":
-					row = append(row, strconv.FormatBool(i[key].Required))
+					row = append(row, strconv.FormatBool(inputs[key].Required))
 				case "Default":
-					row = append(row, utils.FormatValue(i[key].Default))
+					row = append(row, utils.FormatValue(inputs[key].Default))
 				case "Description":
-					row = append(row, utils.WordWrap(i[key].Description, maxWords))
+					if inputs[key].DeprecationMessage != "" {
+						row = append(row, utils.WordWrap(fmt.Sprintf("**Deprecated:** %s", inputs[key].Description), maxWords))
+					} else {
+						row = append(row, utils.WordWrap(inputs[key].Description, maxWords))
+					}
 				default:
 					return inputTableOutput, fmt.Errorf(
-						"unknown input column: '%s'. Please specify any of the following columns: %s",
+						"unknown inputs column: '%s'. Please specify any of the following columns: %s",
 						col,
 						strings.Join(internal.DefaultActionInputColumns, ", "),
 					)
@@ -230,10 +239,10 @@ func renderActionInputTableOutput(i map[string]ActionInput, inputColumns []strin
 }
 
 // renderActionOutputTableOutput renders the action output table
-func renderActionOutputTableOutput(o map[string]ActionOutput, outputColumns []string, maxWidth int, maxWords int) (*strings.Builder, error) {
+func renderActionOutputTableOutput(outputs map[string]ActionOutput, outputColumns []string, maxWidth int, maxWords int) (*strings.Builder, error) {
 	outputTableOutput := &strings.Builder{}
 
-	if len(o) > 0 {
+	if len(outputs) > 0 {
 		_, err := fmt.Fprintln(outputTableOutput, internal.OutputAutoDocStart)
 		if err != nil {
 			return outputTableOutput, err
@@ -245,8 +254,8 @@ func renderActionOutputTableOutput(o map[string]ActionOutput, outputColumns []st
 		outputTable.SetCenterSeparator(internal.PipeSeparator)
 		outputTable.SetAlignment(tablewriter.ALIGN_CENTER)
 
-		keys := make([]string, 0, len(o))
-		for k := range o {
+		keys := make([]string, 0, len(outputs))
+		for k := range outputs {
 			keys = append(keys, k)
 		}
 		sort.Strings(keys)
@@ -262,10 +271,10 @@ func renderActionOutputTableOutput(o map[string]ActionOutput, outputColumns []st
 				case "Type":
 					row = append(row, "string")
 				case "Description":
-					row = append(row, utils.WordWrap(o[key].Description, maxWords))
+					row = append(row, utils.WordWrap(outputs[key].Description, maxWords))
 				default:
 					return outputTableOutput, fmt.Errorf(
-						"unknown output column: '%s'. Please specify any of the following columns: %s",
+						"unknown outputs column: '%s'. Please specify any of the following columns: %s",
 						col,
 						strings.Join(internal.DefaultActionOutputColumns, ", "),
 					)
