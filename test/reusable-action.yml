@@ -21,9 +21,15 @@ on:
         default: "example"
       bool_tested:
         required: false
-        type: bool
+        type: boolean
         description: "Test of bool"
+        deprecationMessage: "Use `tested` instead"
         default: true
+      tested:
+        required: false
+        type: boolean
+        description: "Test of bool"
+        default: false
     secrets:
       token:
         required: true
