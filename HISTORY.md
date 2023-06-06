@@ -1,5 +1,23 @@
 # Changelog
 
+# [2.6.0](https://github.com/tj-actions/auto-doc/compare/v2.5.4...v2.6.0) - (2023-06-06)
+
+## <!-- 0 -->🚀 Features
+
+- Add support for indicating deprecated inputs ([#481](https://github.com/tj-actions/auto-doc/issues/481)) ([1034c3e](https://github.com/tj-actions/auto-doc/commit/1034c3e0222de0e0f7b07a3cb37c87757bdc4631))  - (Tonye Jack)
+
+## <!-- 26 -->🔄 Update
+
+- Update README.md ([7aae7c3](https://github.com/tj-actions/auto-doc/commit/7aae7c39efa57b5c5a7c105733c3459838b2e191))  - (Tonye Jack)
+
+## <!-- 30 -->📝 Other
+
+- PR [#477](https://github.com/tj-actions/auto-doc/pull/477): to v2.5.4 ([8d294a2](https://github.com/tj-actions/auto-doc/commit/8d294a22ce090ec6fec7ec19a17ef8c6cbb3276a))  - (repo-ranger[bot])
+
+## <!-- 7 -->⚙️ Miscellaneous Tasks
+
+- **deps:** Update tj-actions/branch-names action to v7 ([fe77e45](https://github.com/tj-actions/auto-doc/commit/fe77e45b4b325230d9ca37002ded009bf3127e7c))  - (renovate[bot])
+
 # [2.5.4](https://github.com/tj-actions/auto-doc/compare/v2.5.3...v2.5.4) - (2023-05-12)
 
 ## <!-- 26 -->🔄 Update
@@ -9,6 +27,10 @@
 ## <!-- 30 -->📝 Other
 
 - PR [#476](https://github.com/tj-actions/auto-doc/pull/476): to v2.5.3 ([ea29a7f](https://github.com/tj-actions/auto-doc/commit/ea29a7f1fc2974b5765bcc856e9348a86cd84458))  - (repo-ranger[bot])
+
+## <!-- 7 -->⚙️ Miscellaneous Tasks
+
+- Upgraded from v2.5.3 -> v2.5.4 ([f5d2fe1](https://github.com/tj-actions/auto-doc/commit/f5d2fe14eeb47c2d25098a7863fe47929be76a3d))  - (github-actions[bot])
 
 # [2.5.3](https://github.com/tj-actions/auto-doc/compare/v2.5.0...v2.5.3) - (2023-05-12)
 
