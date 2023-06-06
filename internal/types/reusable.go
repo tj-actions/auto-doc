@@ -199,7 +199,7 @@ func (r *Reusable) RenderOutput() error {
 }
 
 // renderReusableInputTableOutput renders the reusable workflow input table
-func renderReusableInputTableOutput(i map[string]ReusableInput, inputColumns []string, maxWidth int, maxWords int, markdownLinks bool) (*strings.Builder, error) {
+func renderReusableInputTableOutput(inputs map[string]ReusableInput, inputColumns []string, maxWidth int, maxWords int, markdownLinks bool) (*strings.Builder, error) {
 	inputTableOutput := &strings.Builder{}
 
 	if len(inputs) > 0 {
@@ -231,8 +231,8 @@ func renderReusableInputTableOutput(i map[string]ReusableInput, inputColumns []s
 					if inputs[key].DeprecationMessage != "" {
 						row = append(row, fmt.Sprintf("~~%s~~ <br> %s", key, inputs[key].DeprecationMessage))
 					} else if markdownLinks {
-            row = append(row, utils.MarkdownLink(key, "input"))
-          } else {
+						row = append(row, utils.MarkdownLink(key, "input"))
+					} else {
 						row = append(row, key)
 					}
 				case "Type":
@@ -284,7 +284,7 @@ func renderReusableInputTableOutput(i map[string]ReusableInput, inputColumns []s
 }
 
 // renderReusableOutputTableOutput renders the reusable workflow output table
-func renderReusableOutputTableOutput(o map[string]ReusableOutput, reusableOutputColumns []string, maxWidth int, maxWords int, markdownLinks bool) (*strings.Builder, error) {
+func renderReusableOutputTableOutput(outputs map[string]ReusableOutput, reusableOutputColumns []string, maxWidth int, maxWords int, markdownLinks bool) (*strings.Builder, error) {
 	outputTableOutput := &strings.Builder{}
 
 	if len(outputs) > 0 {
@@ -352,7 +352,7 @@ func renderReusableOutputTableOutput(o map[string]ReusableOutput, reusableOutput
 }
 
 // renderReusableSecretTableOutput renders the reusable workflow secret table
-func renderReusableSecretTableOutput(s map[string]ReusableSecret, secretColumns []string, maxWidth int, maxWords int, markdownLinks bool) (*strings.Builder, error) {
+func renderReusableSecretTableOutput(secrets map[string]ReusableSecret, secretColumns []string, maxWidth int, maxWords int, markdownLinks bool) (*strings.Builder, error) {
 	secretTableOutput := &strings.Builder{}
 
 	if len(secrets) > 0 {

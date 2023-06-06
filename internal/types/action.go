@@ -163,7 +163,7 @@ func (a *Action) RenderOutput() error {
 
 // renderActionOutputTableOutput renders the action input table
 
-func renderActionInputTableOutput(i map[string]ActionInput, inputColumns []string, maxWidth int, maxWords int, markdownLinks bool) (*strings.Builder, error) {
+func renderActionInputTableOutput(inputs map[string]ActionInput, inputColumns []string, maxWidth int, maxWords int, markdownLinks bool) (*strings.Builder, error) {
 	inputTableOutput := &strings.Builder{}
 
 	if len(inputs) > 0 {
@@ -196,7 +196,7 @@ func renderActionInputTableOutput(i map[string]ActionInput, inputColumns []strin
 						row = append(row, fmt.Sprintf("~~%s~~ <br> %s", key, inputs[key].DeprecationMessage))
 					} else if markdownLinks {
 						row = append(row, utils.MarkdownLink(key, "input"))
-          } else {
+					} else {
 						row = append(row, key)
 					}
 				case "Type":
@@ -244,7 +244,7 @@ func renderActionInputTableOutput(i map[string]ActionInput, inputColumns []strin
 
 // renderActionOutputTableOutput renders the action output table
 
-func renderActionOutputTableOutput(o map[string]ActionOutput, outputColumns []string, maxWidth int, maxWords int, markdownLinks bool) (*strings.Builder, error) {
+func renderActionOutputTableOutput(outputs map[string]ActionOutput, outputColumns []string, maxWidth int, maxWords int, markdownLinks bool) (*strings.Builder, error) {
 	outputTableOutput := &strings.Builder{}
 
 	if len(outputs) > 0 {
