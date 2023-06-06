@@ -1,5 +1,29 @@
 # Changelog
 
+# [2.6.1](https://github.com/tj-actions/auto-doc/compare/v2.6.0...v2.6.1) - (2023-06-06)
+
+## <!-- 25 -->🎨 Format
+
+- Formatted code.
+ ([d9e68b4](https://github.com/tj-actions/auto-doc/commit/d9e68b40fe5ca7f42477c7064a6c51400374b572))  - (github-actions[bot])
+
+## <!-- 26 -->🔄 Update
+
+- Updated README.
+ ([29b19bd](https://github.com/tj-actions/auto-doc/commit/29b19bdad4586166b73e3122a9b01d4b0d3f8524))  - (github-actions[bot])
+
+## <!-- 30 -->📝 Other
+
+- PR [#483](https://github.com/tj-actions/auto-doc/pull/483): update formatting ([a6a6e0a](https://github.com/tj-actions/auto-doc/commit/a6a6e0a3716a767bd87dee3b664bad766f0a66df))  - (repo-ranger[bot])
+- Merge baeca55efb26a45771460c86f83853b301f610b7 into a00777cb8d47091e0bb7f2619bce0de160cf203f
+ ([b3167e8](https://github.com/tj-actions/auto-doc/commit/b3167e8d62815eada73e6969d37ea6de457dbb70))  - (Tonye Jack)
+- Merge branch 'main' into chore/update-formatting ([baeca55](https://github.com/tj-actions/auto-doc/commit/baeca55efb26a45771460c86f83853b301f610b7))  - (repo-ranger[bot])
+- PR [#482](https://github.com/tj-actions/auto-doc/pull/482): to v2.6.0 ([a00777c](https://github.com/tj-actions/auto-doc/commit/a00777cb8d47091e0bb7f2619bce0de160cf203f))  - (repo-ranger[bot])
+
+## <!-- 7 -->⚙️ Miscellaneous Tasks
+
+- Update formatting ([757551c](https://github.com/tj-actions/auto-doc/commit/757551c3ea61196541919b81c5ad5b2612a6412c))  - (Tonye Jack)
+
 # [2.6.0](https://github.com/tj-actions/auto-doc/compare/v2.5.4...v2.6.0) - (2023-06-06)
 
 ## <!-- 0 -->🚀 Features
@@ -16,6 +40,7 @@
 
 ## <!-- 7 -->⚙️ Miscellaneous Tasks
 
+- Upgraded from v2.5.4 -> v2.6.0 ([24706b6](https://github.com/tj-actions/auto-doc/commit/24706b638b1c2c532054bf7dc9aa0d0b7cbd3898))  - (github-actions[bot])
 - **deps:** Update tj-actions/branch-names action to v7 ([fe77e45](https://github.com/tj-actions/auto-doc/commit/fe77e45b4b325230d9ca37002ded009bf3127e7c))  - (renovate[bot])
 
 # [2.5.4](https://github.com/tj-actions/auto-doc/compare/v2.5.3...v2.5.4) - (2023-05-12)
