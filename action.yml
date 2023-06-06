@@ -52,7 +52,7 @@ runs:
       with:
         repository-owner: tj-actions
         repository: auto-doc
-        version: v2.6.0
+        version: v2.6.1
         language-type: 'go'
     - run: |
         bash $GITHUB_ACTION_PATH/entrypoint.sh
