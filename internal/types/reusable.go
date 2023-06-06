@@ -228,7 +228,7 @@ func renderReusableInputTableOutput(inputs map[string]ReusableInput, inputColumn
 				switch col {
 				case "Input":
 					if inputs[key].DeprecationMessage != "" {
-						row = append(row, fmt.Sprintf("~~%s~~ <br> **%s**", key, inputs[key].DeprecationMessage))
+						row = append(row, fmt.Sprintf("~~%s~~ <br> %s", key, inputs[key].DeprecationMessage))
 					} else {
 						row = append(row, key)
 					}

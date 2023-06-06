@@ -191,7 +191,7 @@ func renderActionInputTableOutput(inputs map[string]ActionInput, inputColumns []
 				switch col {
 				case "Input":
 					if inputs[key].DeprecationMessage != "" {
-						row = append(row, fmt.Sprintf("~~%s~~ <br> **%s**", key, inputs[key].DeprecationMessage))
+						row = append(row, fmt.Sprintf("~~%s~~ <br> %s", key, inputs[key].DeprecationMessage))
 					} else {
 						row = append(row, key)
 					}
