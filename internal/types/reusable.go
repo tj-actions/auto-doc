@@ -228,12 +228,14 @@ func renderReusableInputTableOutput(inputs map[string]ReusableInput, inputColumn
 			for _, col := range inputColumns {
 				switch col {
 				case "Input":
+					var modifiedKey = key
+					if markdownLinks {
+						modifiedKey = utils.MarkdownLink(key, "input")
+					}
 					if inputs[key].DeprecationMessage != "" {
-						row = append(row, fmt.Sprintf("~~%s~~ <br> %s", key, inputs[key].DeprecationMessage))
-					} else if markdownLinks {
-						row = append(row, utils.MarkdownLink(key, "input"))
+						row = append(row, fmt.Sprintf("~~%s~~ <br> %s", modifiedKey, inputs[key].DeprecationMessage))
 					} else {
-						row = append(row, key)
+						row = append(row, modifiedKey)
 					}
 				case "Type":
 					row = append(row, inputs[key].Type)

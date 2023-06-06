@@ -4,11 +4,12 @@
 
 <!-- AUTO-DOC-INPUT:START - Do not remove or modify this section -->
 
-|                               INPUT                               |  TYPE  | REQUIRED |   DEFAULT   |      DESCRIPTION       |
-|-------------------------------------------------------------------|--------|----------|-------------|------------------------|
-| <a name="input_bool_tested"></a>[bool_tested](#input_bool_tested) |  bool  |  false   |   `true`    |      Test of bool      |
-| <a name="input_config-path"></a>[config-path](#input_config-path) | string |   true   |             | The configuration path |
-|     <a name="input_username"></a>[username](#input_username)      | string |  false   | `"example"` |        Username        |
+|                                              INPUT                                              |  TYPE   | REQUIRED |   DEFAULT   |         DESCRIPTION          |
+|-------------------------------------------------------------------------------------------------|---------|----------|-------------|------------------------------|
+| ~~<a name="input_bool_tested"></a>[bool_tested](#input_bool_tested)~~ <br> Use `tested` instead | boolean |  false   |   `true`    | **Deprecated:** Test of bool |
+|                <a name="input_config-path"></a>[config-path](#input_config-path)                | string  |   true   |             |    The configuration path    |
+|                       <a name="input_tested"></a>[tested](#input_tested)                        | boolean |  false   |   `false`   |         Test of bool         |
+|                    <a name="input_username"></a>[username](#input_username)                     | string  |  false   | `"example"` |           Username           |
 
 <!-- AUTO-DOC-INPUT:END -->
 
