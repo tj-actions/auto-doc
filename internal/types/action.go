@@ -35,9 +35,9 @@ import (
 
 // ActionInput represents the input of the action.yml
 type ActionInput struct {
-	Description string `yaml:"description"`
-	Required    bool   `yaml:"required"`
-	Default     string `yaml:"default,omitempty"`
+	Description        string `yaml:"description"`
+	Required           bool   `yaml:"required"`
+	Default            string `yaml:"default,omitempty"`
 	DeprecationMessage string `yaml:"deprecationMessage,omitempty"`
 }
 

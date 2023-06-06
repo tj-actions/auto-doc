@@ -35,10 +35,10 @@ import (
 
 // ReusableInput represents the input of the reusable workflow
 type ReusableInput struct {
-	Description string `yaml:"description"`
-	Required    bool   `yaml:"required"`
-	Default     string `yaml:"default,omitempty"`
-	Type        string `yaml:"type"`
+	Description        string `yaml:"description"`
+	Required           bool   `yaml:"required"`
+	Default            string `yaml:"default,omitempty"`
+	Type               string `yaml:"type"`
 	DeprecationMessage string `yaml:"deprecationMessage,omitempty"`
 }
 
