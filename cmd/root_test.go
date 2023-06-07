@@ -20,6 +20,7 @@ import (
 	"bytes"
 	"fmt"
 	"io"
+	"runtime"
 	"testing"
 
 	"github.com/spf13/cobra"
@@ -105,14 +106,24 @@ func Test_rootCommand(t *testing.T) {
 			t.Fatal(err)
 		}
 
-		exp := fmt.Sprintln("Error: open ../test/invalid.yml: no such file or directory")
-
-		if string(out) != exp {
-			t.Fatalf(
-				"expected \"%s\" got \"%s\"",
-				exp,
-				string(out),
-			)
+		if runtime.GOOS == "windows" {
+			exp := fmt.Sprintln("Error: open ../test/invalid.yml: The system cannot find the file specified.")
+			if string(out) != exp {
+				t.Fatalf(
+					"expected \"%s\" got \"%s\"",
+					exp,
+					string(out),
+				)
+			}
+		} else {
+			exp := fmt.Sprintln("Error: open ../test/invalid.yml: no such file or directory")
+			if string(out) != exp {
+				t.Fatalf(
+					"expected \"%s\" got \"%s\"",
+					exp,
+					string(out),
+				)
+			}
 		}
 	})
 
@@ -135,14 +146,24 @@ func Test_rootCommand(t *testing.T) {
 			t.Fatal(err)
 		}
 
-		exp := fmt.Sprintln("Error: open ../test/reusable-invalid.yml: no such file or directory")
-
-		if string(out) != exp {
-			t.Fatalf(
-				"expected \"%s\" got \"%s\"",
-				exp,
-				string(out),
-			)
+		if runtime.GOOS == "windows" {
+			exp := fmt.Sprintln("Error: open ../test/reusable-invalid.yml: The system cannot find the file specified.")
+			if string(out) != exp {
+				t.Fatalf(
+					"expected \"%s\" got \"%s\"",
+					exp,
+					string(out),
+				)
+			}
+		} else {
+			exp := fmt.Sprintln("Error: open ../test/reusable-invalid.yml: no such file or directory")
+			if string(out) != exp {
+				t.Fatalf(
+					"expected \"%s\" got \"%s\"",
+					exp,
+					string(out),
+				)
+			}
 		}
 	})
 
