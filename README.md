@@ -158,6 +158,7 @@ Automatically generate documentation for your custom github action or reusable w
     -f, --filename string                 config file
     -h, --help                            help for auto-doc
     --inputColumns stringArray            list of input column names (default [Input,Type,Required,Default,Description])
+    -m, --markdownLinks                   Names of inputs, outputs and secrets as markdown links
     -o, --output string                   Output file (default "README.md")
     --outputColumns stringArray           list of output column names (default [Output,Type,Description])
     -r, --reusable                        A reusable workflow
