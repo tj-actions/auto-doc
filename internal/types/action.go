@@ -191,7 +191,7 @@ func renderActionInputTableOutput(inputs map[string]ActionInput, inputColumns []
 			inputKey := key
 
 			if markdownLinks {
-				inputKey =  utils.MarkdownLink(inputKey, "input")
+				inputKey = utils.MarkdownLink(inputKey, "input")
 			}
 
 			for _, col := range inputColumns {
