@@ -175,17 +175,17 @@ func (r *Reusable) RenderOutput() error {
 	if err != nil {
 		return err
 	}
-	inputTableOutput, err := renderReusableInputTableOutput(r.On.WorkflowCall.Inputs, r.InputColumns, maxWidth, maxWords, r.InputMarkdownLinks)
+	inputTableOutput, err := renderReusableInputTableOutput(r.On.WorkflowCall.Inputs, r.InputColumns, r.InputMarkdownLinks, maxWidth, maxWords)
 	if err != nil {
 		return err
 	}
 
-	secretTableOutput, err := renderReusableSecretTableOutput(r.On.WorkflowCall.Secrets, r.SecretColumns, maxWidth, maxWords, r.InputMarkdownLinks)
+	secretTableOutput, err := renderReusableSecretTableOutput(r.On.WorkflowCall.Secrets, r.SecretColumns, r.InputMarkdownLinks, maxWidth, maxWords)
 	if err != nil {
 		return err
 	}
 
-	outputTableOutput, err := renderReusableOutputTableOutput(r.On.WorkflowCall.Outputs, r.OutputColumns, maxWidth, maxWords, r.InputMarkdownLinks)
+	outputTableOutput, err := renderReusableOutputTableOutput(r.On.WorkflowCall.Outputs, r.OutputColumns, r.InputMarkdownLinks, maxWidth, maxWords)
 	if err != nil {
 		return err
 	}
@@ -199,7 +199,7 @@ func (r *Reusable) RenderOutput() error {
 }
 
 // renderReusableInputTableOutput renders the reusable workflow input table
-func renderReusableInputTableOutput(inputs map[string]ReusableInput, inputColumns []string, maxWidth int, maxWords int, markdownLinks bool) (*strings.Builder, error) {
+func renderReusableInputTableOutput(inputs map[string]ReusableInput, inputColumns []string, markdownLinks bool, maxWidth int, maxWords int) (*strings.Builder, error) {
 	inputTableOutput := &strings.Builder{}
 
 	if len(inputs) > 0 {
@@ -286,7 +286,7 @@ func renderReusableInputTableOutput(inputs map[string]ReusableInput, inputColumn
 }
 
 // renderReusableOutputTableOutput renders the reusable workflow output table
-func renderReusableOutputTableOutput(outputs map[string]ReusableOutput, reusableOutputColumns []string, maxWidth int, maxWords int, markdownLinks bool) (*strings.Builder, error) {
+func renderReusableOutputTableOutput(outputs map[string]ReusableOutput, reusableOutputColumns []string, markdownLinks bool, maxWidth int, maxWords int) (*strings.Builder, error) {
 	outputTableOutput := &strings.Builder{}
 
 	if len(outputs) > 0 {
@@ -354,7 +354,7 @@ func renderReusableOutputTableOutput(outputs map[string]ReusableOutput, reusable
 }
 
 // renderReusableSecretTableOutput renders the reusable workflow secret table
-func renderReusableSecretTableOutput(secrets map[string]ReusableSecret, secretColumns []string, maxWidth int, maxWords int, markdownLinks bool) (*strings.Builder, error) {
+func renderReusableSecretTableOutput(secrets map[string]ReusableSecret, secretColumns []string, markdownLinks bool, maxWidth int, maxWords int) (*strings.Builder, error) {
 	secretTableOutput := &strings.Builder{}
 
 	if len(secrets) > 0 {

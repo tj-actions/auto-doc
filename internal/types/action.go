@@ -143,12 +143,12 @@ func (a *Action) RenderOutput() error {
 		return err
 	}
 
-	inputTableOutput, err := renderActionInputTableOutput(a.Inputs, a.InputColumns, maxWidth, maxWords, a.InputMarkdownLinks)
+	inputTableOutput, err := renderActionInputTableOutput(a.Inputs, a.InputColumns, a.InputMarkdownLinks, maxWidth, maxWords)
 	if err != nil {
 		return err
 	}
 
-	outputTableOutput, err := renderActionOutputTableOutput(a.Outputs, a.OutputColumns, maxWidth, maxWords, a.InputMarkdownLinks)
+	outputTableOutput, err := renderActionOutputTableOutput(a.Outputs, a.OutputColumns, a.InputMarkdownLinks, maxWidth, maxWords)
 	if err != nil {
 		return err
 	}
@@ -163,7 +163,7 @@ func (a *Action) RenderOutput() error {
 
 // renderActionOutputTableOutput renders the action input table
 
-func renderActionInputTableOutput(inputs map[string]ActionInput, inputColumns []string, maxWidth int, maxWords int, markdownLinks bool) (*strings.Builder, error) {
+func renderActionInputTableOutput(inputs map[string]ActionInput, inputColumns []string, markdownLinks bool, maxWidth int, maxWords int) (*strings.Builder, error) {
 	inputTableOutput := &strings.Builder{}
 
 	if len(inputs) > 0 {
@@ -188,18 +188,19 @@ func renderActionInputTableOutput(inputs map[string]ActionInput, inputColumns []
 
 		for _, key := range keys {
 			var row []string
+			inputKey := key
+
+			if markdownLinks {
+				inputKey =  utils.MarkdownLink(inputKey, "input")
+			}
 
 			for _, col := range inputColumns {
 				switch col {
 				case "Input":
-					var modifiedKey = key
-					if markdownLinks {
-						modifiedKey = utils.MarkdownLink(key, "input")
-					}
 					if inputs[key].DeprecationMessage != "" {
-						row = append(row, fmt.Sprintf("~~%s~~ <br> %s", modifiedKey, inputs[key].DeprecationMessage))
+						row = append(row, fmt.Sprintf("~~%s~~ <br> %s", inputKey, inputs[key].DeprecationMessage))
 					} else {
-						row = append(row, modifiedKey)
+						row = append(row, inputKey)
 					}
 				case "Type":
 					row = append(row, "string")
@@ -246,7 +247,7 @@ func renderActionInputTableOutput(inputs map[string]ActionInput, inputColumns []
 
 // renderActionOutputTableOutput renders the action output table
 
-func renderActionOutputTableOutput(outputs map[string]ActionOutput, outputColumns []string, maxWidth int, maxWords int, markdownLinks bool) (*strings.Builder, error) {
+func renderActionOutputTableOutput(outputs map[string]ActionOutput, outputColumns []string, markdownLinks bool, maxWidth int, maxWords int) (*strings.Builder, error) {
 	outputTableOutput := &strings.Builder{}
 
 	if len(outputs) > 0 {
@@ -270,15 +271,16 @@ func renderActionOutputTableOutput(outputs map[string]ActionOutput, outputColumn
 		outputTable.SetColWidth(maxWidth)
 		for _, key := range keys {
 			var row []string
+			outputKey := key
+
+			if markdownLinks {
+				outputKey = utils.MarkdownLink(outputKey, "output")
+			}
 
 			for _, col := range outputColumns {
 				switch col {
 				case "Output":
-					if markdownLinks {
-						row = append(row, utils.MarkdownLink(key, "output"))
-					} else {
-						row = append(row, key)
-					}
+					row = append(row, outputKey)
 				case "Type":
 					row = append(row, "string")
 				case "Description":
