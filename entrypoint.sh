@@ -63,6 +63,11 @@ if [[ "$REUSABLE" == "true" ]]; then
   EXTRA_ARGS="${EXTRA_ARGS} --reusable"
 fi
 
+# markdown links
+if [[ "$INPUT_MARKDOWN_LINKS" == "true" ]]; then
+  EXTRA_ARGS="${EXTRA_ARGS} --markdownLinks"
+fi
+
 echo "::debug::Generating documentation using ${BIN_PATH}..."
 echo "::debug::Extra args: ${EXTRA_ARGS}"
 

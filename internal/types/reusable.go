@@ -70,6 +70,7 @@ type Reusable struct {
 			Outputs map[string]ReusableOutput `yaml:"outputs,omitempty"`
 		} `yaml:"workflow_call"`
 	}
+	InputMarkdownLinks bool
 }
 
 // GetData parses the source yaml file
@@ -174,17 +175,17 @@ func (r *Reusable) RenderOutput() error {
 	if err != nil {
 		return err
 	}
-	inputTableOutput, err := renderReusableInputTableOutput(r.On.WorkflowCall.Inputs, r.InputColumns, maxWidth, maxWords)
+	inputTableOutput, err := renderReusableInputTableOutput(r.On.WorkflowCall.Inputs, r.InputColumns, r.InputMarkdownLinks, maxWidth, maxWords)
 	if err != nil {
 		return err
 	}
 
-	secretTableOutput, err := renderReusableSecretTableOutput(r.On.WorkflowCall.Secrets, r.SecretColumns, maxWidth, maxWords)
+	secretTableOutput, err := renderReusableSecretTableOutput(r.On.WorkflowCall.Secrets, r.SecretColumns, r.InputMarkdownLinks, maxWidth, maxWords)
 	if err != nil {
 		return err
 	}
 
-	outputTableOutput, err := renderReusableOutputTableOutput(r.On.WorkflowCall.Outputs, r.OutputColumns, maxWidth, maxWords)
+	outputTableOutput, err := renderReusableOutputTableOutput(r.On.WorkflowCall.Outputs, r.OutputColumns, r.InputMarkdownLinks, maxWidth, maxWords)
 	if err != nil {
 		return err
 	}
@@ -198,7 +199,7 @@ func (r *Reusable) RenderOutput() error {
 }
 
 // renderReusableInputTableOutput renders the reusable workflow input table
-func renderReusableInputTableOutput(inputs map[string]ReusableInput, inputColumns []string, maxWidth int, maxWords int) (*strings.Builder, error) {
+func renderReusableInputTableOutput(inputs map[string]ReusableInput, inputColumns []string, markdownLinks bool, maxWidth int, maxWords int) (*strings.Builder, error) {
 	inputTableOutput := &strings.Builder{}
 
 	if len(inputs) > 0 {
@@ -227,10 +228,14 @@ func renderReusableInputTableOutput(inputs map[string]ReusableInput, inputColumn
 			for _, col := range inputColumns {
 				switch col {
 				case "Input":
+					var modifiedKey = key
+					if markdownLinks {
+						modifiedKey = utils.MarkdownLink(key, "input")
+					}
 					if inputs[key].DeprecationMessage != "" {
-						row = append(row, fmt.Sprintf("~~%s~~ <br> %s", key, inputs[key].DeprecationMessage))
+						row = append(row, fmt.Sprintf("~~%s~~ <br> %s", modifiedKey, inputs[key].DeprecationMessage))
 					} else {
-						row = append(row, key)
+						row = append(row, modifiedKey)
 					}
 				case "Type":
 					row = append(row, inputs[key].Type)
@@ -281,7 +286,7 @@ func renderReusableInputTableOutput(inputs map[string]ReusableInput, inputColumn
 }
 
 // renderReusableOutputTableOutput renders the reusable workflow output table
-func renderReusableOutputTableOutput(outputs map[string]ReusableOutput, reusableOutputColumns []string, maxWidth int, maxWords int) (*strings.Builder, error) {
+func renderReusableOutputTableOutput(outputs map[string]ReusableOutput, reusableOutputColumns []string, markdownLinks bool, maxWidth int, maxWords int) (*strings.Builder, error) {
 	outputTableOutput := &strings.Builder{}
 
 	if len(outputs) > 0 {
@@ -309,7 +314,11 @@ func renderReusableOutputTableOutput(outputs map[string]ReusableOutput, reusable
 			for _, col := range reusableOutputColumns {
 				switch col {
 				case "Output":
-					row = append(row, key)
+					if markdownLinks {
+						row = append(row, utils.MarkdownLink(key, "output"))
+					} else {
+						row = append(row, key)
+					}
 				case "Value":
 					row = append(row, utils.FormatValue(outputs[key].Value))
 				case "Description":
@@ -345,7 +354,7 @@ func renderReusableOutputTableOutput(outputs map[string]ReusableOutput, reusable
 }
 
 // renderReusableSecretTableOutput renders the reusable workflow secret table
-func renderReusableSecretTableOutput(secrets map[string]ReusableSecret, secretColumns []string, maxWidth int, maxWords int) (*strings.Builder, error) {
+func renderReusableSecretTableOutput(secrets map[string]ReusableSecret, secretColumns []string, markdownLinks bool, maxWidth int, maxWords int) (*strings.Builder, error) {
 	secretTableOutput := &strings.Builder{}
 
 	if len(secrets) > 0 {
@@ -373,7 +382,11 @@ func renderReusableSecretTableOutput(secrets map[string]ReusableSecret, secretCo
 			for _, col := range secretColumns {
 				switch col {
 				case "Secret":
-					row = append(row, key)
+					if markdownLinks {
+						row = append(row, utils.MarkdownLink(key, "secret"))
+					} else {
+						row = append(row, key)
+					}
 				case "Required":
 					row = append(row, fmt.Sprintf("%v", secrets[key].Required))
 				case "Description":

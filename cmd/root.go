@@ -59,7 +59,11 @@ func RootCmdRunE(cmd *cobra.Command, args []string) error {
 	}
 
 	reusable, err := cmd.Flags().GetBool("reusable")
+	if err != nil {
+		return err
+	}
 
+	markdownLinks, err := cmd.Flags().GetBool("markdownLinks")
 	if err != nil {
 		return err
 	}
@@ -68,22 +72,24 @@ func RootCmdRunE(cmd *cobra.Command, args []string) error {
 
 	if reusable {
 		documentation = &types.Reusable{
-			InputFileName:  fileName,
-			OutputFileName: outputFileName,
-			ColMaxWidth:    colMaxWidth,
-			ColMaxWords:    colMaxWords,
-			InputColumns:   reusableInputColumns,
-			OutputColumns:  reusableOutputColumns,
-			SecretColumns:  reusableSecretColumns,
+			InputFileName:      fileName,
+			OutputFileName:     outputFileName,
+			ColMaxWidth:        colMaxWidth,
+			ColMaxWords:        colMaxWords,
+			InputColumns:       reusableInputColumns,
+			OutputColumns:      reusableOutputColumns,
+			SecretColumns:      reusableSecretColumns,
+			InputMarkdownLinks: markdownLinks,
 		}
 	} else {
 		documentation = &types.Action{
-			InputFileName:  fileName,
-			OutputFileName: outputFileName,
-			ColMaxWidth:    colMaxWidth,
-			ColMaxWords:    colMaxWords,
-			InputColumns:   inputColumns,
-			OutputColumns:  outputColumns,
+			InputFileName:      fileName,
+			OutputFileName:     outputFileName,
+			ColMaxWidth:        colMaxWidth,
+			ColMaxWords:        colMaxWords,
+			InputColumns:       inputColumns,
+			OutputColumns:      outputColumns,
+			InputMarkdownLinks: markdownLinks,
 		}
 	}
 
@@ -175,6 +181,12 @@ func RootCmdFlags(cmd *cobra.Command) {
 		"reusableSecretColumns",
 		internal.DefaultReusableSecretColumns,
 		"list of reusable secrets column names",
+	)
+	cmd.Flags().BoolP(
+		"markdownLinks",
+		"m",
+		false,
+		"Names of inputs, outputs and secrets as markdown links",
 	)
 }
 
