@@ -1,5 +1,26 @@
 # Changelog
 
+# [2.7.0](https://github.com/tj-actions/auto-doc/compare/v2.6.1...v2.7.0) - (2023-06-07)
+
+## <!-- 0 -->🚀 Features
+
+- Add a new input to optionally set names as markdown anchors ([#480](https://github.com/tj-actions/auto-doc/issues/480)) ([b750d7a](https://github.com/tj-actions/auto-doc/commit/b750d7a55150cf63905fd20747da03323c6a41fc))  - (Viacheslav Kudinov)
+
+## <!-- 26 -->🔄 Update
+
+- Updated README.md
+ ([c9b3014](https://github.com/tj-actions/auto-doc/commit/c9b30141364dde6527a5ba828d6abea05bc00a5d))  - (Tonye Jack)
+- Update README.md ([5a8d1f8](https://github.com/tj-actions/auto-doc/commit/5a8d1f80ef72171af12584dd08ef58efd76e246e))  - (Tonye Jack)
+
+## <!-- 30 -->📝 Other
+
+- PR [#484](https://github.com/tj-actions/auto-doc/pull/484): to v2.6.1 ([1b233f2](https://github.com/tj-actions/auto-doc/commit/1b233f2e70a16ad49511ba09e2d7bb2ba18475bc))  - (repo-ranger[bot])
+
+## <!-- 7 -->⚙️ Miscellaneous Tasks
+
+- Improve code coverage ([#485](https://github.com/tj-actions/auto-doc/issues/485)) ([33205a6](https://github.com/tj-actions/auto-doc/commit/33205a6530e0fd158dcd95b4f8b18b6ec62c81fb))  - (Tonye Jack)
+- Updated coverage badge. ([6b78036](https://github.com/tj-actions/auto-doc/commit/6b78036deb9beb6937bf15318e8d83049190c5c3))  - (GitHub Action)
+
 # [2.6.1](https://github.com/tj-actions/auto-doc/compare/v2.6.0...v2.6.1) - (2023-06-06)
 
 ## <!-- 25 -->🎨 Format
@@ -22,6 +43,7 @@
 
 ## <!-- 7 -->⚙️ Miscellaneous Tasks
 
+- Upgraded from v2.6.0 -> v2.6.1 ([e332e0a](https://github.com/tj-actions/auto-doc/commit/e332e0a5dd5d2243c968292decde099c321bb953))  - (github-actions[bot])
 - Update formatting ([757551c](https://github.com/tj-actions/auto-doc/commit/757551c3ea61196541919b81c5ad5b2612a6412c))  - (Tonye Jack)
 
 # [2.6.0](https://github.com/tj-actions/auto-doc/compare/v2.5.4...v2.6.0) - (2023-06-06)
