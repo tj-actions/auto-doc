@@ -123,6 +123,8 @@ jobs:
            body: "auto-doc: Updated README.md"
 ```
 
+## Outputs
+
 ## CLI
 
 ### Installation
