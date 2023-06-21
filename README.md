@@ -34,6 +34,7 @@ GitHub Action that generates beautiful, easy-to-read markdown tables with just a
 *   [Usage](#usage)
 *   [Inputs](#inputs)
 *   [Examples](#examples)
+*   [Outputs](#outputs)
 *   [CLI](#cli)
     *   [Installation](#installation)
         *   [Install using Go:](#install-using-go)
