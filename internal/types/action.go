@@ -100,7 +100,7 @@ func (a *Action) WriteDocumentation(inputTable, outputTable *strings.Builder) er
 				if inputsStr != "" {
 					return []byte(fmt.Sprintf("%s\n\n%v", internal.InputsHeader, inputsStr))
 				} else {
-					return []byte(fmt.Sprintf("%s", internal.InputsHeader))
+					return []byte(internal.InputsHeader)
 				}
 			}
 			return match
