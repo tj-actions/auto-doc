@@ -110,7 +110,11 @@ func (r *Reusable) WriteDocumentation(inputTable, outputTable, secretsTable *str
 		re := regexp.MustCompile(fmt.Sprintf("(?m)^%s", internal.InputsHeader))
 		output = re.ReplaceAllFunc(input, func(match []byte) []byte {
 			if bytes.HasPrefix(match, []byte(internal.InputsHeader)) {
-				return []byte(fmt.Sprintf("%s\n\n%v", internal.InputsHeader, inputsStr))
+				if inputsStr != "" {
+					return []byte(fmt.Sprintf("%s\n\n%v", internal.InputsHeader, inputsStr))
+				} else {
+					return []byte(internal.InputsHeader)
+				}
 			}
 			return match
 		})
@@ -130,7 +134,11 @@ func (r *Reusable) WriteDocumentation(inputTable, outputTable, secretsTable *str
 		re := regexp.MustCompile(fmt.Sprintf("(?m)^%s", internal.OutputsHeader))
 		output = re.ReplaceAllFunc(output, func(match []byte) []byte {
 			if bytes.HasPrefix(match, []byte(internal.OutputsHeader)) {
-				return []byte(fmt.Sprintf("%s\n\n%v", internal.OutputsHeader, outputsStr))
+				if outputsStr != "" {
+					return []byte(fmt.Sprintf("%s\n\n%v", internal.OutputsHeader, outputsStr))
+				} else {
+					return []byte(internal.OutputsHeader)
+				}
 			}
 			return match
 		})
@@ -150,7 +158,11 @@ func (r *Reusable) WriteDocumentation(inputTable, outputTable, secretsTable *str
 		re := regexp.MustCompile(fmt.Sprintf("(?m)^%s", internal.SecretsHeader))
 		output = re.ReplaceAllFunc(output, func(match []byte) []byte {
 			if bytes.HasPrefix(match, []byte(internal.SecretsHeader)) {
-				return []byte(fmt.Sprintf("%s\n\n%v", internal.SecretsHeader, secretsStr))
+				if secretsStr != "" {
+					return []byte(fmt.Sprintf("%s\n\n%v", internal.SecretsHeader, secretsStr))
+				} else {
+					return []byte(internal.SecretsHeader)
+				}
 			}
 			return match
 		})
