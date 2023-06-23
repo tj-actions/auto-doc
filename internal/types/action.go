@@ -121,7 +121,11 @@ func (a *Action) WriteDocumentation(inputTable, outputTable *strings.Builder) er
 		re := regexp.MustCompile(fmt.Sprintf("(?m)^%s", internal.OutputsHeader))
 		output = re.ReplaceAllFunc(output, func(match []byte) []byte {
 			if bytes.HasPrefix(match, []byte(internal.OutputsHeader)) {
-				return []byte(fmt.Sprintf("%s\n\n%v", internal.OutputsHeader, outputsStr))
+				if outputsStr != "" {
+					return []byte(fmt.Sprintf("%s\n\n%v", internal.OutputsHeader, outputsStr))
+				} else {
+					return []byte(internal.OutputsHeader)
+				}
 			}
 			return match
 		})
