@@ -1,5 +1,30 @@
 # Changelog
 
+# [2.7.1](https://github.com/tj-actions/auto-doc/compare/v2.7.0...v2.7.1) - (2023-06-23)
+
+## <!-- 1 -->🐛 Bug Fixes
+
+- Fixed adding more spaces
+ ([4835a03](https://github.com/tj-actions/auto-doc/commit/4835a034a771bb8d60eb494645d9cfb5130999af))  - (Tonye Jack)
+- Bug where extra spaces get added to output ([3f13a09](https://github.com/tj-actions/auto-doc/commit/3f13a09c204c0704e1e37543fcdd8d28cd649eb8))  - (Tonye Jack)
+
+## <!-- 26 -->🔄 Update
+
+- Update action.go ([c722781](https://github.com/tj-actions/auto-doc/commit/c722781eb753c4198db60f690e6f26a212411dbf))  - (Tonye Jack)
+- Update action.go ([0ec2c5e](https://github.com/tj-actions/auto-doc/commit/0ec2c5eb12d5c272a16ad883d986aa9797265956))  - (Tonye Jack)
+
+## <!-- 30 -->📝 Other
+
+- PR [#490](https://github.com/tj-actions/auto-doc/pull/490): bug where extra spaces get added to output ([9c63fba](https://github.com/tj-actions/auto-doc/commit/9c63fba96d9a5b2744c01b442fc6d0a4735bab0f))  - (repo-ranger[bot])
+- Merge branch 'main' into fix/bug-where-extra-spaces-get-added-to-output ([0029ca6](https://github.com/tj-actions/auto-doc/commit/0029ca6f2e0dad8bd9ad90b4a696d8b267d5a795))  - (Tonye Jack)
+- PR [#486](https://github.com/tj-actions/auto-doc/pull/486): to v2.7.0 ([f90aa0e](https://github.com/tj-actions/auto-doc/commit/f90aa0e1e928b4264c0cb0c95024eccda5e49336))  - (repo-ranger[bot])
+
+## <!-- 7 -->⚙️ Miscellaneous Tasks
+
+- **deps:** Update tj-actions/verify-changed-files action to v16 ([8b78197](https://github.com/tj-actions/auto-doc/commit/8b7819715a14b3e5a2e119f15a92b9ee3711bf60))  - (renovate[bot])
+- **deps:** Update peter-evans/create-pull-request action to v5.0.2 ([41ddaa9](https://github.com/tj-actions/auto-doc/commit/41ddaa9f11db6fd2e36857f4d3c1cb30c736397e))  - (renovate[bot])
+- **deps:** Update tj-actions/verify-changed-files action to v15 ([a0e14ec](https://github.com/tj-actions/auto-doc/commit/a0e14ec6d518274908236a62817b9f56c8e01dfa))  - (renovate[bot])
+
 # [2.7.0](https://github.com/tj-actions/auto-doc/compare/v2.6.1...v2.7.0) - (2023-06-07)
 
 ## <!-- 0 -->🚀 Features
@@ -18,6 +43,7 @@
 
 ## <!-- 7 -->⚙️ Miscellaneous Tasks
 
+- Upgraded from v2.6.1 -> v2.7.0 ([2a18124](https://github.com/tj-actions/auto-doc/commit/2a181246010fd682c82ce84e80219ca1e0928b4d))  - (github-actions[bot])
 - Improve code coverage ([#485](https://github.com/tj-actions/auto-doc/issues/485)) ([33205a6](https://github.com/tj-actions/auto-doc/commit/33205a6530e0fd158dcd95b4f8b18b6ec62c81fb))  - (Tonye Jack)
 - Updated coverage badge. ([6b78036](https://github.com/tj-actions/auto-doc/commit/6b78036deb9beb6937bf15318e8d83049190c5c3))  - (GitHub Action)
 
