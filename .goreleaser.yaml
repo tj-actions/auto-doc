@@ -45,7 +45,7 @@ brews:
   - name: auto-doc
     homepage: https://github.com/tj-actions/auto-doc
     description: Generate markdown tables for your Github action and reusable workflow with ease.
-    tap:
+    repository:
       owner: tj-actions
       name: homebrew-tap
       branch: main
