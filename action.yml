@@ -51,6 +51,7 @@ runs:
   using: 'composite'
   steps:
     - name: Setup bin
+      if: inputs.bin_path == ''
       uses: tj-actions/setup-bin@v1
       id: setup-bin-go
       with:
