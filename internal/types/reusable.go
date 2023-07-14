@@ -214,12 +214,12 @@ func (r *Reusable) RenderOutput() error {
 func renderReusableInputTableOutput(inputs map[string]ReusableInput, inputColumns []string, markdownLinks bool, maxWidth int, maxWords int) (*strings.Builder, error) {
 	inputTableOutput := &strings.Builder{}
 
-	if len(inputs) > 0 {
-		_, err := fmt.Fprintln(inputTableOutput, internal.InputAutoDocStart)
-		if err != nil {
-			return inputTableOutput, err
-		}
+	_, err := fmt.Fprintln(inputTableOutput, internal.InputAutoDocStart)
+	if err != nil {
+		return inputTableOutput, err
+	}
 
+	if len(inputs) > 0 {
 		inputTable := tablewriter.NewWriter(inputTableOutput)
 		inputTable.SetHeader(inputColumns)
 		inputTable.SetBorders(tablewriter.Border{Left: true, Top: false, Right: true, Bottom: false})
@@ -288,11 +288,11 @@ func renderReusableInputTableOutput(inputs map[string]ReusableInput, inputColumn
 		if err != nil {
 			return inputTableOutput, err
 		}
+	}
 
-		_, err = fmt.Fprint(inputTableOutput, internal.InputAutoDocEnd)
-		if err != nil {
-			return inputTableOutput, err
-		}
+	_, err = fmt.Fprint(inputTableOutput, internal.InputAutoDocEnd)
+	if err != nil {
+		return inputTableOutput, err
 	}
 	return inputTableOutput, nil
 }
@@ -301,12 +301,12 @@ func renderReusableInputTableOutput(inputs map[string]ReusableInput, inputColumn
 func renderReusableOutputTableOutput(outputs map[string]ReusableOutput, reusableOutputColumns []string, markdownLinks bool, maxWidth int, maxWords int) (*strings.Builder, error) {
 	outputTableOutput := &strings.Builder{}
 
-	if len(outputs) > 0 {
-		_, err := fmt.Fprintln(outputTableOutput, internal.OutputAutoDocStart)
-		if err != nil {
-			return outputTableOutput, err
-		}
+	_, err := fmt.Fprintln(outputTableOutput, internal.OutputAutoDocStart)
+	if err != nil {
+		return outputTableOutput, err
+	}
 
+	if len(outputs) > 0 {
 		outputTable := tablewriter.NewWriter(outputTableOutput)
 		outputTable.SetHeader(reusableOutputColumns)
 		outputTable.SetBorders(tablewriter.Border{Left: true, Top: false, Right: true, Bottom: false})
@@ -356,11 +356,11 @@ func renderReusableOutputTableOutput(outputs map[string]ReusableOutput, reusable
 		if err != nil {
 			return outputTableOutput, err
 		}
+	}
 
-		_, err = fmt.Fprint(outputTableOutput, internal.OutputAutoDocEnd)
-		if err != nil {
-			return outputTableOutput, err
-		}
+	_, err = fmt.Fprint(outputTableOutput, internal.OutputAutoDocEnd)
+	if err != nil {
+		return outputTableOutput, err
 	}
 	return outputTableOutput, nil
 }
