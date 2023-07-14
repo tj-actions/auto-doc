@@ -1,0 +1,16 @@
+name: Changed Files
+description: Get all Added, Copied, Modified, Deleted, Renamed, Type changed, Unmerged, Unknown files.
+author: tj-actions
+
+#inputs: []
+
+runs:
+  using: 'composite'
+  steps:
+    - run: |
+        echo "Test"
+      id: test
+      shell: bash
+branding:
+  icon: file-text
+  color: white
