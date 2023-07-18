@@ -7,7 +7,7 @@ REUSABLE="$INPUT_REUSABLE"
 VERSION="$INPUT_VERSION"
 
 # action.yml file
-IFS=$'\n' read -rd '' -a INPUT_COLUMNS <<<"$INPUT_INPUT_COLUMNS"
+IFS=$'\n' read -rd '' -a INPUT_COLUMNS <<<"$INPUT_INPUT_COLUMNS" || true
 
 if [[ ${#INPUT_COLUMNS[@]} -gt 0 ]]; then
   for input_column in "${INPUT_COLUMNS[@]}"; do
@@ -15,7 +15,7 @@ if [[ ${#INPUT_COLUMNS[@]} -gt 0 ]]; then
   done
 fi
 
-IFS=$'\n' read -rd '' -a OUTPUT_COLUMNS <<<"$INPUT_OUTPUT_COLUMNS"
+IFS=$'\n' read -rd '' -a OUTPUT_COLUMNS <<<"$INPUT_OUTPUT_COLUMNS" || true
 
 if [[ ${#OUTPUT_COLUMNS[@]} -gt 0 ]]; then
   for output_column in "${OUTPUT_COLUMNS[@]}"; do
@@ -24,7 +24,7 @@ if [[ ${#OUTPUT_COLUMNS[@]} -gt 0 ]]; then
 fi
 
 # reusable workflow
-IFS=$'\n' read -rd '' -a REUSABLE_SECRET_COLUMNS <<<"$INPUT_REUSABLE_SECRET_COLUMNS"
+IFS=$'\n' read -rd '' -a REUSABLE_SECRET_COLUMNS <<<"$INPUT_REUSABLE_SECRET_COLUMNS" || true
 
 if [[ ${#REUSABLE_SECRET_COLUMNS[@]} -gt 0 ]]; then
   for reusable_secret_column in "${REUSABLE_SECRET_COLUMNS[@]}"; do
@@ -32,7 +32,7 @@ if [[ ${#REUSABLE_SECRET_COLUMNS[@]} -gt 0 ]]; then
   done
 fi
 
-IFS=$'\n' read -rd '' -a REUSABLE_INPUT_COLUMNS <<<"$INPUT_REUSABLE_INPUT_COLUMNS"
+IFS=$'\n' read -rd '' -a REUSABLE_INPUT_COLUMNS <<<"$INPUT_REUSABLE_INPUT_COLUMNS" || true
 
 if [[ ${#REUSABLE_INPUT_COLUMNS[@]} -gt 0 ]]; then
   for reusable_input_column in "${REUSABLE_INPUT_COLUMNS[@]}"; do
@@ -40,7 +40,7 @@ if [[ ${#REUSABLE_INPUT_COLUMNS[@]} -gt 0 ]]; then
   done
 fi
 
-IFS=$'\n' read -rd '' -a REUSABLE_OUTPUT_COLUMNS <<<"$INPUT_REUSABLE_OUTPUT_COLUMNS"
+IFS=$'\n' read -rd '' -a REUSABLE_OUTPUT_COLUMNS <<<"$INPUT_REUSABLE_OUTPUT_COLUMNS" || true
 
 if [[ ${#REUSABLE_OUTPUT_COLUMNS[@]} -gt 0 ]]; then
   for reusable_output_column in "${REUSABLE_OUTPUT_COLUMNS[@]}"; do
