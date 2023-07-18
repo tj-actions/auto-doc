@@ -53,6 +53,11 @@ if [[ ! -f "$INPUT_FILENAME" ]]; then
   exit 0
 fi
 
+if [[ ! -f "$BIN_PATH" ]]; then
+  echo "::error::No binary found at: $BIN_PATH"
+  exit 1
+fi
+
 # reusable workflow
 if [[ "$REUSABLE" == "true" ]]; then
   EXTRA_ARGS="${EXTRA_ARGS} --reusable"
