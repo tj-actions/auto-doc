@@ -11,7 +11,7 @@ IFS=$'\n' read -rd '' -a INPUT_COLUMNS <<<"$INPUT_INPUT_COLUMNS" || true
 
 if [[ ${#INPUT_COLUMNS[@]} -gt 0 ]]; then
   for input_column in "${INPUT_COLUMNS[@]}"; do
-    EXTRA_ARGS="${EXTRA_ARGS} --inputColumns ${input_column}"
+    EXTRA_ARGS="${EXTRA_ARGS} --inputColumns=${input_column}"
   done
 fi
 
@@ -19,7 +19,7 @@ IFS=$'\n' read -rd '' -a OUTPUT_COLUMNS <<<"$INPUT_OUTPUT_COLUMNS" || true
 
 if [[ ${#OUTPUT_COLUMNS[@]} -gt 0 ]]; then
   for output_column in "${OUTPUT_COLUMNS[@]}"; do
-    EXTRA_ARGS="${EXTRA_ARGS} --outputColumns ${output_column}"
+    EXTRA_ARGS="${EXTRA_ARGS} --outputColumns=${output_column}"
   done
 fi
 
@@ -28,7 +28,7 @@ IFS=$'\n' read -rd '' -a REUSABLE_SECRET_COLUMNS <<<"$INPUT_REUSABLE_SECRET_COLU
 
 if [[ ${#REUSABLE_SECRET_COLUMNS[@]} -gt 0 ]]; then
   for reusable_secret_column in "${REUSABLE_SECRET_COLUMNS[@]}"; do
-    EXTRA_ARGS="${EXTRA_ARGS} --reusableSecretColumns ${reusable_secret_column}"
+    EXTRA_ARGS="${EXTRA_ARGS} --reusableSecretColumns=${reusable_secret_column}"
   done
 fi
 
@@ -36,7 +36,7 @@ IFS=$'\n' read -rd '' -a REUSABLE_INPUT_COLUMNS <<<"$INPUT_REUSABLE_INPUT_COLUMN
 
 if [[ ${#REUSABLE_INPUT_COLUMNS[@]} -gt 0 ]]; then
   for reusable_input_column in "${REUSABLE_INPUT_COLUMNS[@]}"; do
-    EXTRA_ARGS="${EXTRA_ARGS} --reusableInputColumns ${reusable_input_column}"
+    EXTRA_ARGS="${EXTRA_ARGS} --reusableInputColumns=${reusable_input_column}"
   done
 fi
 
@@ -44,7 +44,7 @@ IFS=$'\n' read -rd '' -a REUSABLE_OUTPUT_COLUMNS <<<"$INPUT_REUSABLE_OUTPUT_COLU
 
 if [[ ${#REUSABLE_OUTPUT_COLUMNS[@]} -gt 0 ]]; then
   for reusable_output_column in "${REUSABLE_OUTPUT_COLUMNS[@]}"; do
-    EXTRA_ARGS="${EXTRA_ARGS} --reusableOutputColumns ${reusable_output_column}"
+    EXTRA_ARGS="${EXTRA_ARGS} --reusableOutputColumns=${reusable_output_column}"
   done
 fi
 
