@@ -141,6 +141,17 @@ jobs:
         with:
           bin_path: ./bin/auto_doc
 
+      - name: Test action with bin_path and reusable
+        uses: ./
+        with:
+          bin_path: ./bin/auto_doc
+          reusable: true
+          filename: test/reusable-action.yml
+          output: test/README-reusable-outputColumns.md
+          reusable_output_columns: |
+            Output
+            Value
+
       - name: Run auto-doc using the test directory
         run: make test
 
