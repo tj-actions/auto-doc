@@ -1,5 +1,40 @@
 # Changelog
 
+# [2.8.0](https://github.com/tj-actions/auto-doc/compare/v2.7.1...v2.8.0) - (2023-07-18)
+
+## <!-- 0 -->🚀 Features
+
+- Increase test coverage and fix bug with inputs ([#498](https://github.com/tj-actions/auto-doc/issues/498)) ([6a2669f](https://github.com/tj-actions/auto-doc/commit/6a2669fed415ebb5749c34f713ea8abdac4407af))  - (Tonye Jack)
+
+## <!-- 1 -->🐛 Bug Fixes
+
+- Fixed deprecation warning and increased fetch-depth
+ ([f6b4fa9](https://github.com/tj-actions/auto-doc/commit/f6b4fa925e77586475e50e974aef324da96a64a8))  - (Tonye Jack)
+- Usage of deprecated archives.replacements ([4050d60](https://github.com/tj-actions/auto-doc/commit/4050d60894895938b6ee9efaa6f1d2bf5829fca7))  - (Tonye Jack)
+
+## <!-- 17 -->➖ Remove
+
+- Deleted .github/workflows/auto-merge.yml ([5764663](https://github.com/tj-actions/auto-doc/commit/5764663d146290feebabeea0f2400c6194070339))  - (Tonye Jack)
+
+## <!-- 26 -->🔄 Update
+
+- Updated goreleaser.yaml
+ ([22c090b](https://github.com/tj-actions/auto-doc/commit/22c090b88275a2425b3b32fbea856a4c914c97c4))  - (Tonye Jack)
+- Updated gorelease config
+ ([13d63b3](https://github.com/tj-actions/auto-doc/commit/13d63b327ccdc576035653555f8822a1d1fb9bb0))  - (Tonye Jack)
+- Update .goreleaser.yaml ([e928446](https://github.com/tj-actions/auto-doc/commit/e9284464dad169129a4cd1ed3dc261176aaf1faa))  - (Tonye Jack)
+- Update .goreleaser.yaml ([91306a8](https://github.com/tj-actions/auto-doc/commit/91306a872cc22f623d7073f7ffbeacb67746a68f))  - (Tonye Jack)
+- Updated renovate.json ([03b66c9](https://github.com/tj-actions/auto-doc/commit/03b66c9d85863676eed93e0043949998a0c9bcd1))  - (Tonye Jack)
+
+## <!-- 30 -->📝 Other
+
+- PR [#494](https://github.com/tj-actions/auto-doc/pull/494): usage of deprecated archives.replacements ([a312178](https://github.com/tj-actions/auto-doc/commit/a3121780456a6a94fe5ca8ca86c6ac0c0c8d0d4b))  - (repo-ranger[bot])
+- PR [#492](https://github.com/tj-actions/auto-doc/pull/492): to v2.7.1 ([1a30ecd](https://github.com/tj-actions/auto-doc/commit/1a30ecdd80268a844f889828dd14eabd2b2d6552))  - (repo-ranger[bot])
+
+## <!-- 7 -->⚙️ Miscellaneous Tasks
+
+- Don't run setup-bin if bin_path input is provided ([#493](https://github.com/tj-actions/auto-doc/issues/493)) ([7a164ea](https://github.com/tj-actions/auto-doc/commit/7a164ea952a68498642081d3fd8fc804c8b4ac69))  - (Tonye Jack)
+
 # [2.7.1](https://github.com/tj-actions/auto-doc/compare/v2.7.0...v2.7.1) - (2023-06-23)
 
 ## <!-- 1 -->🐛 Bug Fixes
@@ -21,6 +56,7 @@
 
 ## <!-- 7 -->⚙️ Miscellaneous Tasks
 
+- Upgraded from v2.7.0 -> v2.7.1 ([d02dccf](https://github.com/tj-actions/auto-doc/commit/d02dccf93632674633d89eb4ec72b3907d04cbb1))  - (github-actions[bot])
 - **deps:** Update tj-actions/verify-changed-files action to v16 ([8b78197](https://github.com/tj-actions/auto-doc/commit/8b7819715a14b3e5a2e119f15a92b9ee3711bf60))  - (renovate[bot])
 - **deps:** Update peter-evans/create-pull-request action to v5.0.2 ([41ddaa9](https://github.com/tj-actions/auto-doc/commit/41ddaa9f11db6fd2e36857f4d3c1cb30c736397e))  - (renovate[bot])
 - **deps:** Update tj-actions/verify-changed-files action to v15 ([a0e14ec](https://github.com/tj-actions/auto-doc/commit/a0e14ec6d518274908236a62817b9f56c8e01dfa))  - (renovate[bot])
