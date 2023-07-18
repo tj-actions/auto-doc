@@ -7,47 +7,42 @@ REUSABLE="$INPUT_REUSABLE"
 VERSION="$INPUT_VERSION"
 
 # action.yml file
-INPUT_COLUMNS=()
-if [[ -n "$INPUT_INPUT_COLUMNS" ]]; then
-  IFS=$'\n' read -rd '' -a INPUT_COLUMNS <<<"$INPUT_INPUT_COLUMNS"\
+IFS=$'\n' read -rd '' -a INPUT_COLUMNS <<<"$INPUT_INPUT_COLUMNS"
 
+if [[ ${#INPUT_COLUMNS[@]} -gt 0 ]]; then
   for input_column in "${INPUT_COLUMNS[@]}"; do
     EXTRA_ARGS="${EXTRA_ARGS} --inputColumns ${input_column}"
   done
 fi
 
-OUTPUT_COLUMNS=()
-if [[ -n "$INPUT_OUTPUT_COLUMNS" ]]; then
-  IFS=$'\n' read -rd '' -a OUTPUT_COLUMNS <<<"$INPUT_OUTPUT_COLUMNS"
+IFS=$'\n' read -rd '' -a OUTPUT_COLUMNS <<<"$INPUT_OUTPUT_COLUMNS"
 
+if [[ ${#OUTPUT_COLUMNS[@]} -gt 0 ]]; then
   for output_column in "${OUTPUT_COLUMNS[@]}"; do
     EXTRA_ARGS="${EXTRA_ARGS} --outputColumns ${output_column}"
   done
 fi
 
 # reusable workflow
-REUSABLE_SECRET_COLUMNS=()
-if [[ -n "$INPUT_REUSABLE_SECRET_COLUMNS" ]]; then
-  IFS=$'\n' read -rd '' -a REUSABLE_SECRET_COLUMNS <<<"$INPUT_REUSABLE_SECRET_COLUMNS"
+IFS=$'\n' read -rd '' -a REUSABLE_SECRET_COLUMNS <<<"$INPUT_REUSABLE_SECRET_COLUMNS"
 
+if [[ ${#REUSABLE_SECRET_COLUMNS[@]} -gt 0 ]]; then
   for reusable_secret_column in "${REUSABLE_SECRET_COLUMNS[@]}"; do
     EXTRA_ARGS="${EXTRA_ARGS} --reusableSecretColumns ${reusable_secret_column}"
   done
 fi
 
-REUSABLE_INPUT_COLUMNS=()
-if [[ -n "$INPUT_REUSABLE_INPUT_COLUMNS" ]]; then
-  IFS=$'\n' read -rd '' -a REUSABLE_INPUT_COLUMNS <<<"$INPUT_REUSABLE_INPUT_COLUMNS"
+IFS=$'\n' read -rd '' -a REUSABLE_INPUT_COLUMNS <<<"$INPUT_REUSABLE_INPUT_COLUMNS"
 
+if [[ ${#REUSABLE_INPUT_COLUMNS[@]} -gt 0 ]]; then
   for reusable_input_column in "${REUSABLE_INPUT_COLUMNS[@]}"; do
     EXTRA_ARGS="${EXTRA_ARGS} --reusableInputColumns ${reusable_input_column}"
   done
 fi
 
-REUSABLE_OUTPUT_COLUMNS=()
-if [[ -n "$INPUT_REUSABLE_OUTPUT_COLUMNS" ]]; then
-  IFS=$'\n' read -rd '' -a REUSABLE_OUTPUT_COLUMNS <<<"$INPUT_REUSABLE_OUTPUT_COLUMNS"
+IFS=$'\n' read -rd '' -a REUSABLE_OUTPUT_COLUMNS <<<"$INPUT_REUSABLE_OUTPUT_COLUMNS"
 
+if [[ ${#REUSABLE_OUTPUT_COLUMNS[@]} -gt 0 ]]; then
   for reusable_output_column in "${REUSABLE_OUTPUT_COLUMNS[@]}"; do
     EXTRA_ARGS="${EXTRA_ARGS} --reusableOutputColumns ${reusable_output_column}"
   done
