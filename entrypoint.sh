@@ -71,8 +71,6 @@ $BIN_PATH --filename="$INPUT_FILENAME" --output="$INPUT_OUTPUT" \
   --colMaxWidth="$INPUT_COL_MAX_WIDTH" --colMaxWords="$INPUT_COL_MAX_WORDS" \
   ${EXTRA_ARGS} && exit_status=$? || exit_status=$?
 
-rm -f "$BIN_PATH"
-
 if [[ $exit_status -ne 0 ]]; then
   echo "::warning::Error occurred running auto-doc"
   exit "$exit_status";
