@@ -75,7 +75,6 @@ func (a *Action) GetData() error {
 func (a *Action) WriteDocumentation(inputTable, outputTable *strings.Builder) error {
 	var err error
 	input, err := os.ReadFile(a.OutputFileName)
-
 	if err != nil {
 		return err
 	}
@@ -131,7 +130,7 @@ func (a *Action) WriteDocumentation(inputTable, outputTable *strings.Builder) er
 		})
 	}
 
-	if err = os.WriteFile(a.OutputFileName, output, 0666); err != nil {
+	if err = os.WriteFile(a.OutputFileName, output, 0o666); err != nil {
 		cobra.CheckErr(err)
 	}
 
@@ -245,6 +244,11 @@ func renderActionInputTableOutput(inputs map[string]ActionInput, inputColumns []
 			return inputTableOutput, err
 		}
 
+	} else {
+		_, err := fmt.Fprintln(inputTableOutput, internal.NoInputsMessage)
+		if err != nil {
+			return inputTableOutput, err
+		}
 	}
 	_, err = fmt.Fprint(inputTableOutput, internal.InputAutoDocEnd)
 	if err != nil {
@@ -311,6 +315,11 @@ func renderActionOutputTableOutput(outputs map[string]ActionOutput, outputColumn
 		outputTable.Render()
 
 		_, err = fmt.Fprintln(outputTableOutput)
+		if err != nil {
+			return outputTableOutput, err
+		}
+	} else {
+		_, err := fmt.Fprintln(outputTableOutput, internal.NoOutputsMessage)
 		if err != nil {
 			return outputTableOutput, err
 		}

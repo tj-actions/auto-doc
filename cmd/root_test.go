@@ -176,7 +176,6 @@ func Test_rootCommand(t *testing.T) {
 		cmd.SetOut(b)
 		cmd.SetArgs([]string{"--filename", "../test/action.yml", "--output", "../test/README.md"})
 		err := cmd.Execute()
-
 		if err != nil {
 			t.Fatal(err)
 		}
@@ -204,7 +203,6 @@ func Test_rootCommand(t *testing.T) {
 		cmd.SetOut(b)
 		cmd.SetArgs([]string{"--filename", "../test/action.yml", "--output", "../test/README-outputColumns.md", "--outputColumns", "Output", "--outputColumns", "Type"})
 		err := cmd.Execute()
-
 		if err != nil {
 			t.Fatal(err)
 		}
@@ -232,7 +230,6 @@ func Test_rootCommand(t *testing.T) {
 		cmd.SetOut(b)
 		cmd.SetArgs([]string{"--filename", "../test/action.yml", "--output", "../test/README-inputColumns.md", "--inputColumns", "Input", "--inputColumns", "Type", "--inputColumns", "Description"})
 		err := cmd.Execute()
-
 		if err != nil {
 			t.Fatal(err)
 		}
@@ -260,7 +257,6 @@ func Test_rootCommand(t *testing.T) {
 		cmd.SetOut(b)
 		cmd.SetArgs([]string{"--filename", "../test/reusable-action.yml", "--reusable", "--output", "../test/README-reusable.md"})
 		err := cmd.Execute()
-
 		if err != nil {
 			t.Fatal(err)
 		}
@@ -288,7 +284,6 @@ func Test_rootCommand(t *testing.T) {
 		cmd.SetOut(b)
 		cmd.SetArgs([]string{"--filename", "../test/reusable-action.yml", "--reusable", "--output", "../test/README-reusable-outputColumns.md", "--reusableOutputColumns", "Output", "--reusableOutputColumns", "Value"})
 		err := cmd.Execute()
-
 		if err != nil {
 			t.Fatal(err)
 		}
@@ -316,7 +311,6 @@ func Test_rootCommand(t *testing.T) {
 		cmd.SetOut(b)
 		cmd.SetArgs([]string{"--filename", "../test/reusable-action.yml", "--reusable", "--output", "../test/README-reusable-inputColumns.md", "--reusableInputColumns", "Input", "--reusableInputColumns", "Type", "--reusableInputColumns", "Description"})
 		err := cmd.Execute()
-
 		if err != nil {
 			t.Fatal(err)
 		}
@@ -344,7 +338,6 @@ func Test_rootCommand(t *testing.T) {
 		cmd.SetOut(b)
 		cmd.SetArgs([]string{"--filename", "../test/reusable-action.yml", "--reusable", "--output", "../test/README-reusable-secretColumns.md", "--reusableSecretColumns", "Secret", "--reusableSecretColumns", "Description"})
 		err := cmd.Execute()
-
 		if err != nil {
 			t.Fatal(err)
 		}
@@ -372,7 +365,6 @@ func Test_rootCommand(t *testing.T) {
 		cmd.SetOut(b)
 		cmd.SetArgs([]string{"--filename", "../test/action.yml", "--output", "../test/README-markdownLinks.md", "--markdownLinks"})
 		err := cmd.Execute()
-
 		if err != nil {
 			t.Fatal(err)
 		}
@@ -399,7 +391,6 @@ func Test_rootCommand(t *testing.T) {
 		cmd.SetOut(b)
 		cmd.SetArgs([]string{"--filename", "../test/reusable-action.yml", "--reusable", "--output", "../test/README-reusable-markdownLinks.md", "-m"})
 		err := cmd.Execute()
-
 		if err != nil {
 			t.Fatal(err)
 		}
@@ -426,7 +417,6 @@ func Test_rootCommand(t *testing.T) {
 		cmd.SetOut(b)
 		cmd.SetArgs([]string{"--filename", "../test/action.yml", "--output", "../test/README-markdownLinks.md", "--markdownLinks"})
 		err := cmd.Execute()
-
 		if err != nil {
 			t.Fatal(err)
 		}
@@ -446,17 +436,16 @@ func Test_rootCommand(t *testing.T) {
 			)
 		}
 	})
-	t.Run("Update test/README-empty-markers.md with action without inputs and outputs", func(t *testing.T) {
+	t.Run("Update test/README-action-empty-markers.md with action without inputs and outputs", func(t *testing.T) {
 		cmd := &cobra.Command{Use: "auto-doc", RunE: RootCmdRunE}
 		RootCmdFlags(cmd)
 		b := bytes.NewBufferString("")
 		cmd.SetOut(b)
 		inputFile := filepath.Join("..", "test", "action-no-inputs-no-outputs.yml")
-		mdFile := filepath.Join("..", "test", "README-empty-markers.md")
-		goldenfile := filepath.Join("..", "test", "README-empty-markers-no-inputs-no-outputs.expected.md")
+		mdFile := filepath.Join("..", "test", "README-action-empty-markers.md")
+		goldenfile := filepath.Join("..", "test", "README-action-empty-markers-no-inputs-no-outputs.expected.md")
 		cmd.SetArgs([]string{"--filename", inputFile, "--reusable", "--output", mdFile})
 		err := cmd.Execute()
-
 		if err != nil {
 			t.Fatal(err)
 		}
@@ -487,17 +476,16 @@ func Test_rootCommand(t *testing.T) {
 			t.Errorf("\n==== got:\n%s\n==== want:\n%s\n", actual, want)
 		}
 	})
-	t.Run("Update test/README-empty-markers.md with worklow without inputs and outputs", func(t *testing.T) {
+	t.Run("Update test/README-workflow-empty-markers.md with worklow without inputs and outputs", func(t *testing.T) {
 		cmd := &cobra.Command{Use: "auto-doc", RunE: RootCmdRunE}
 		RootCmdFlags(cmd)
 		b := bytes.NewBufferString("")
 		cmd.SetOut(b)
 		workflowFile := filepath.Join("..", "test", "reusable-workflow-no-inputs-no-outputs.yml")
-		mdFile := filepath.Join("..", "test", "README-empty-markers.md")
-		goldenfile := filepath.Join("..", "test", "README-empty-markers-no-inputs-no-outputs.expected.md")
+		mdFile := filepath.Join("..", "test", "README-workflow-empty-markers.md")
+		goldenfile := filepath.Join("..", "test", "README-workflow-empty-markers-no-inputs-no-outputs.expected.md")
 		cmd.SetArgs([]string{"--filename", workflowFile, "--reusable", "--output", mdFile})
 		err := cmd.Execute()
-
 		if err != nil {
 			t.Fatal(err)
 		}
@@ -528,5 +516,4 @@ func Test_rootCommand(t *testing.T) {
 			t.Errorf("\n==== got:\n%s\n==== want:\n%s\n", actual, want)
 		}
 	})
-
 }

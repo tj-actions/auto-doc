@@ -45,17 +45,26 @@ var InputAutoDocStart = fmt.Sprintf(AutoDocStart, "INPUT")
 // InputAutoDocEnd is the end of the input
 var InputAutoDocEnd = fmt.Sprintf(AutoDocEnd, "INPUT")
 
+// Content when no inputs
+var NoInputsMessage = "No inputs."
+
 // OutputAutoDocStart is the start of the output
 var OutputAutoDocStart = fmt.Sprintf(AutoDocStart, "OUTPUT")
 
 // OutputAutoDocEnd is the end of the output
 var OutputAutoDocEnd = fmt.Sprintf(AutoDocEnd, "OUTPUT")
 
+// Content when no outputs
+var NoOutputsMessage = "No outputs."
+
 // SecretsAutoDocStart is the start of the secrets
 var SecretsAutoDocStart = fmt.Sprintf(AutoDocStart, "SECRETS")
 
 // SecretsAutoDocEnd is the end of the secrets
 var SecretsAutoDocEnd = fmt.Sprintf(AutoDocEnd, "SECRETS")
+
+// Content when no secrets
+var NoSecretsMessage = "No secrets."
 
 // action.yml
 
