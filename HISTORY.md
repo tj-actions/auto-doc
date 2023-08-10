@@ -1,5 +1,38 @@
 # Changelog
 
+# [2.9.0](https://github.com/tj-actions/auto-doc/compare/v2.8.0...v2.9.0) - (2023-08-10)
+
+## <!-- 0 -->🚀 Features
+
+- Print a message when no content found ([#500](https://github.com/tj-actions/auto-doc/issues/500)) ([07e0815](https://github.com/tj-actions/auto-doc/commit/07e081564852dc6c104f2398203acf2fd9c54113))  - (Christophe Furmaniak)
+
+## <!-- 1 -->🐛 Bug Fixes
+
+- Fixed test
+ ([510839c](https://github.com/tj-actions/auto-doc/commit/510839c01f1171bcddcf5869651f16eb252bded6))  - (Tonye Jack)
+
+## <!-- 26 -->🔄 Update
+
+- Updated README.
+ ([0ae682c](https://github.com/tj-actions/auto-doc/commit/0ae682ccb2ed98f468c3859ee025cc51afe201a6))  - (github-actions[bot])
+
+## <!-- 3 -->📚 Documentation
+
+- Add looztra as a contributor for code, and test ([#501](https://github.com/tj-actions/auto-doc/issues/501)) ([166829d](https://github.com/tj-actions/auto-doc/commit/166829dc6bb849cd55100e9305088303883f53ab))  - (allcontributors[bot])
+
+## <!-- 30 -->📝 Other
+
+- PR [#502](https://github.com/tj-actions/auto-doc/pull/502): make test consistent ([66158f0](https://github.com/tj-actions/auto-doc/commit/66158f01e505f67d31ece48f947be9289a017534))  - (repo-ranger[bot])
+- Improve coverage
+ ([3eb30a2](https://github.com/tj-actions/auto-doc/commit/3eb30a2165b6738f514f6ef9886ef6b636bfd46e))  - (Tonye Jack)
+- Improve coverage
+ ([db20505](https://github.com/tj-actions/auto-doc/commit/db20505132ed25c439cab55fc99368df5fd3cb38))  - (Tonye Jack)
+- PR [#499](https://github.com/tj-actions/auto-doc/pull/499): to v2.8.0 ([d284ca5](https://github.com/tj-actions/auto-doc/commit/d284ca548c671d89eef2386c1974a1d6f72471be))  - (repo-ranger[bot])
+
+## <!-- 7 -->⚙️ Miscellaneous Tasks
+
+- Make test consistent ([eb849b4](https://github.com/tj-actions/auto-doc/commit/eb849b488b219c0ea694520932a61309fe9bd46f))  - (Tonye Jack)
+
 # [2.8.0](https://github.com/tj-actions/auto-doc/compare/v2.7.1...v2.8.0) - (2023-07-18)
 
 ## <!-- 0 -->🚀 Features
@@ -33,6 +66,7 @@
 
 ## <!-- 7 -->⚙️ Miscellaneous Tasks
 
+- Upgraded from v2.7.1 -> v2.8.0 ([a4e7dd3](https://github.com/tj-actions/auto-doc/commit/a4e7dd3de4d9bae6af6c75b2790181d174d1fd49))  - (github-actions[bot])
 - Don't run setup-bin if bin_path input is provided ([#493](https://github.com/tj-actions/auto-doc/issues/493)) ([7a164ea](https://github.com/tj-actions/auto-doc/commit/7a164ea952a68498642081d3fd8fc804c8b4ac69))  - (Tonye Jack)
 
 # [2.7.1](https://github.com/tj-actions/auto-doc/compare/v2.7.0...v2.7.1) - (2023-06-23)
