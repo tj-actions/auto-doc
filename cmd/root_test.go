@@ -97,9 +97,8 @@ func Test_rootCommand(t *testing.T) {
 		b := bytes.NewBufferString("")
 		cmd.SetOut(o)
 		cmd.SetErr(b)
-		inputFile := filepath.Join("..", "test", "invalid.yml")
 		mdFile := filepath.Join("..", "test", "README.md")
-		cmd.SetArgs([]string{"--filename", inputFile, "--output", mdFile})
+		cmd.SetArgs([]string{"--filename", "../test/invalid.yml", "--output", mdFile})
 		err := cmd.Execute()
 
 		if err == nil {
@@ -139,9 +138,8 @@ func Test_rootCommand(t *testing.T) {
 		b := bytes.NewBufferString("")
 		cmd.SetOut(o)
 		cmd.SetErr(b)
-		inputFile := filepath.Join("..", "test", "reusable-invalid.yml")
 		mdFile := filepath.Join("..", "test", "README-reusable.md")
-		cmd.SetArgs([]string{"--filename", inputFile, "--reusable", "--output", mdFile})
+		cmd.SetArgs([]string{"--filename", "../test/reusable-invalid.yml", "--reusable", "--output", mdFile})
 		err := cmd.Execute()
 
 		if err == nil {
