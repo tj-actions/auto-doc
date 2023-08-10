@@ -25,6 +25,16 @@
         "code",
         "test"
       ]
+    },
+    {
+      "login": "looztra",
+      "name": "Christophe Furmaniak",
+      "avatar_url": "https://avatars.githubusercontent.com/u/246526?v=4",
+      "profile": "https://github.com/looztra",
+      "contributions": [
+        "code",
+        "test"
+      ]
     }
   ],
   "contributorsPerLine": 7,
@@ -32,5 +42,6 @@
   "repoType": "github",
   "repoHost": "https://github.com",
   "projectName": "auto-doc",
-  "projectOwner": "tj-actions"
+  "projectOwner": "tj-actions",
+  "commitType": "docs"
 }
