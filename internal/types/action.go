@@ -75,7 +75,6 @@ func (a *Action) GetData() error {
 func (a *Action) WriteDocumentation(inputTable, outputTable *strings.Builder) error {
 	var err error
 	input, err := os.ReadFile(a.OutputFileName)
-
 	if err != nil {
 		return err
 	}
@@ -131,7 +130,7 @@ func (a *Action) WriteDocumentation(inputTable, outputTable *strings.Builder) er
 		})
 	}
 
-	if err = os.WriteFile(a.OutputFileName, output, 0666); err != nil {
+	if err = os.WriteFile(a.OutputFileName, output, 0o666); err != nil {
 		cobra.CheckErr(err)
 	}
 
@@ -174,12 +173,12 @@ func (a *Action) RenderOutput() error {
 func renderActionInputTableOutput(inputs map[string]ActionInput, inputColumns []string, markdownLinks bool, maxWidth int, maxWords int) (*strings.Builder, error) {
 	inputTableOutput := &strings.Builder{}
 
-	if len(inputs) > 0 {
-		_, err := fmt.Fprintln(inputTableOutput, internal.InputAutoDocStart)
-		if err != nil {
-			return inputTableOutput, err
-		}
+	_, err := fmt.Fprintln(inputTableOutput, internal.InputAutoDocStart)
+	if err != nil {
+		return inputTableOutput, err
+	}
 
+	if len(inputs) > 0 {
 		inputTable := tablewriter.NewWriter(inputTableOutput)
 		inputTable.SetHeader(inputColumns)
 		inputTable.SetBorders(tablewriter.Border{Left: true, Top: false, Right: true, Bottom: false})
@@ -245,10 +244,15 @@ func renderActionInputTableOutput(inputs map[string]ActionInput, inputColumns []
 			return inputTableOutput, err
 		}
 
-		_, err = fmt.Fprint(inputTableOutput, internal.InputAutoDocEnd)
+	} else {
+		_, err := fmt.Fprintln(inputTableOutput, internal.NoInputsMessage)
 		if err != nil {
 			return inputTableOutput, err
 		}
+	}
+	_, err = fmt.Fprint(inputTableOutput, internal.InputAutoDocEnd)
+	if err != nil {
+		return inputTableOutput, err
 	}
 	return inputTableOutput, nil
 }
@@ -258,12 +262,12 @@ func renderActionInputTableOutput(inputs map[string]ActionInput, inputColumns []
 func renderActionOutputTableOutput(outputs map[string]ActionOutput, outputColumns []string, markdownLinks bool, maxWidth int, maxWords int) (*strings.Builder, error) {
 	outputTableOutput := &strings.Builder{}
 
-	if len(outputs) > 0 {
-		_, err := fmt.Fprintln(outputTableOutput, internal.OutputAutoDocStart)
-		if err != nil {
-			return outputTableOutput, err
-		}
+	_, err := fmt.Fprintln(outputTableOutput, internal.OutputAutoDocStart)
+	if err != nil {
+		return outputTableOutput, err
+	}
 
+	if len(outputs) > 0 {
 		outputTable := tablewriter.NewWriter(outputTableOutput)
 		outputTable.SetHeader(outputColumns)
 		outputTable.SetBorders(tablewriter.Border{Left: true, Top: false, Right: true, Bottom: false})
@@ -314,11 +318,16 @@ func renderActionOutputTableOutput(outputs map[string]ActionOutput, outputColumn
 		if err != nil {
 			return outputTableOutput, err
 		}
-
-		_, err = fmt.Fprint(outputTableOutput, internal.OutputAutoDocEnd)
+	} else {
+		_, err := fmt.Fprintln(outputTableOutput, internal.NoOutputsMessage)
 		if err != nil {
 			return outputTableOutput, err
 		}
+	}
+
+	_, err = fmt.Fprint(outputTableOutput, internal.OutputAutoDocEnd)
+	if err != nil {
+		return outputTableOutput, err
 	}
 	return outputTableOutput, nil
 }

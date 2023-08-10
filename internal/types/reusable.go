@@ -88,7 +88,6 @@ func (r *Reusable) GetData() error {
 func (r *Reusable) WriteDocumentation(inputTable, outputTable, secretsTable *strings.Builder) error {
 	var err error
 	input, err := os.ReadFile(r.OutputFileName)
-
 	if err != nil {
 		return err
 	}
@@ -168,7 +167,7 @@ func (r *Reusable) WriteDocumentation(inputTable, outputTable, secretsTable *str
 		})
 	}
 
-	if err = os.WriteFile(r.OutputFileName, output, 0666); err != nil {
+	if err = os.WriteFile(r.OutputFileName, output, 0o666); err != nil {
 		cobra.CheckErr(err)
 	}
 
@@ -214,12 +213,12 @@ func (r *Reusable) RenderOutput() error {
 func renderReusableInputTableOutput(inputs map[string]ReusableInput, inputColumns []string, markdownLinks bool, maxWidth int, maxWords int) (*strings.Builder, error) {
 	inputTableOutput := &strings.Builder{}
 
-	if len(inputs) > 0 {
-		_, err := fmt.Fprintln(inputTableOutput, internal.InputAutoDocStart)
-		if err != nil {
-			return inputTableOutput, err
-		}
+	_, err := fmt.Fprintln(inputTableOutput, internal.InputAutoDocStart)
+	if err != nil {
+		return inputTableOutput, err
+	}
 
+	if len(inputs) > 0 {
 		inputTable := tablewriter.NewWriter(inputTableOutput)
 		inputTable.SetHeader(inputColumns)
 		inputTable.SetBorders(tablewriter.Border{Left: true, Top: false, Right: true, Bottom: false})
@@ -240,7 +239,7 @@ func renderReusableInputTableOutput(inputs map[string]ReusableInput, inputColumn
 			for _, col := range inputColumns {
 				switch col {
 				case "Input":
-					var modifiedKey = key
+					modifiedKey := key
 					if markdownLinks {
 						modifiedKey = utils.MarkdownLink(key, "input")
 					}
@@ -288,11 +287,16 @@ func renderReusableInputTableOutput(inputs map[string]ReusableInput, inputColumn
 		if err != nil {
 			return inputTableOutput, err
 		}
-
-		_, err = fmt.Fprint(inputTableOutput, internal.InputAutoDocEnd)
+	} else {
+		_, err := fmt.Fprintln(inputTableOutput, internal.NoInputsMessage)
 		if err != nil {
 			return inputTableOutput, err
 		}
+	}
+
+	_, err = fmt.Fprint(inputTableOutput, internal.InputAutoDocEnd)
+	if err != nil {
+		return inputTableOutput, err
 	}
 	return inputTableOutput, nil
 }
@@ -301,12 +305,12 @@ func renderReusableInputTableOutput(inputs map[string]ReusableInput, inputColumn
 func renderReusableOutputTableOutput(outputs map[string]ReusableOutput, reusableOutputColumns []string, markdownLinks bool, maxWidth int, maxWords int) (*strings.Builder, error) {
 	outputTableOutput := &strings.Builder{}
 
-	if len(outputs) > 0 {
-		_, err := fmt.Fprintln(outputTableOutput, internal.OutputAutoDocStart)
-		if err != nil {
-			return outputTableOutput, err
-		}
+	_, err := fmt.Fprintln(outputTableOutput, internal.OutputAutoDocStart)
+	if err != nil {
+		return outputTableOutput, err
+	}
 
+	if len(outputs) > 0 {
 		outputTable := tablewriter.NewWriter(outputTableOutput)
 		outputTable.SetHeader(reusableOutputColumns)
 		outputTable.SetBorders(tablewriter.Border{Left: true, Top: false, Right: true, Bottom: false})
@@ -356,11 +360,16 @@ func renderReusableOutputTableOutput(outputs map[string]ReusableOutput, reusable
 		if err != nil {
 			return outputTableOutput, err
 		}
-
-		_, err = fmt.Fprint(outputTableOutput, internal.OutputAutoDocEnd)
+	} else {
+		_, err := fmt.Fprintln(outputTableOutput, internal.NoOutputsMessage)
 		if err != nil {
 			return outputTableOutput, err
 		}
+	}
+
+	_, err = fmt.Fprint(outputTableOutput, internal.OutputAutoDocEnd)
+	if err != nil {
+		return outputTableOutput, err
 	}
 	return outputTableOutput, nil
 }
@@ -369,12 +378,12 @@ func renderReusableOutputTableOutput(outputs map[string]ReusableOutput, reusable
 func renderReusableSecretTableOutput(secrets map[string]ReusableSecret, secretColumns []string, markdownLinks bool, maxWidth int, maxWords int) (*strings.Builder, error) {
 	secretTableOutput := &strings.Builder{}
 
-	if len(secrets) > 0 {
-		_, err := fmt.Fprintln(secretTableOutput, internal.SecretsAutoDocStart)
-		if err != nil {
-			return secretTableOutput, err
-		}
+	_, err := fmt.Fprintln(secretTableOutput, internal.SecretsAutoDocStart)
+	if err != nil {
+		return secretTableOutput, err
+	}
 
+	if len(secrets) > 0 {
 		secretTable := tablewriter.NewWriter(secretTableOutput)
 		secretTable.SetHeader(secretColumns)
 		secretTable.SetBorders(tablewriter.Border{Left: true, Top: false, Right: true, Bottom: false})
@@ -423,11 +432,16 @@ func renderReusableSecretTableOutput(secrets map[string]ReusableSecret, secretCo
 		if err != nil {
 			return secretTableOutput, err
 		}
-
-		_, err = fmt.Fprint(secretTableOutput, internal.SecretsAutoDocEnd)
+	} else {
+		_, err := fmt.Fprintln(secretTableOutput, internal.NoSecretsMessage)
 		if err != nil {
 			return secretTableOutput, err
 		}
+	}
+
+	_, err = fmt.Fprint(secretTableOutput, internal.SecretsAutoDocEnd)
+	if err != nil {
+		return secretTableOutput, err
 	}
 	return secretTableOutput, nil
 }
