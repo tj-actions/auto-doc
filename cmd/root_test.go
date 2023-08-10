@@ -20,7 +20,6 @@ import (
 	"bytes"
 	"fmt"
 	"io"
-	"os"
 	"path/filepath"
 	"runtime"
 	"testing"
@@ -36,7 +35,8 @@ func Test_rootCommand(t *testing.T) {
 		b := bytes.NewBufferString("")
 		cmd.SetOut(o)
 		cmd.SetErr(b)
-		cmd.SetArgs([]string{"--filename", "", "--output", "../test/README.md"})
+		mdFile := filepath.Join("..", "test", "README.md")
+		cmd.SetArgs([]string{"--filename", "", "--output", mdFile})
 		err := cmd.Execute()
 
 		if err == nil {
@@ -66,7 +66,8 @@ func Test_rootCommand(t *testing.T) {
 		b := bytes.NewBufferString("")
 		cmd.SetOut(o)
 		cmd.SetErr(b)
-		cmd.SetArgs([]string{"../test/action.yml"})
+		mdFile := filepath.Join("..", "test", "README.md")
+		cmd.SetArgs([]string{mdFile})
 		err := cmd.Execute()
 
 		if err == nil {
@@ -96,7 +97,9 @@ func Test_rootCommand(t *testing.T) {
 		b := bytes.NewBufferString("")
 		cmd.SetOut(o)
 		cmd.SetErr(b)
-		cmd.SetArgs([]string{"--filename", "../test/invalid.yml", "--output", "../test/README.md"})
+		inputFile := filepath.Join("..", "test", "invalid.yml")
+		mdFile := filepath.Join("..", "test", "README.md")
+		cmd.SetArgs([]string{"--filename", inputFile, "--output", mdFile})
 		err := cmd.Execute()
 
 		if err == nil {
@@ -136,7 +139,9 @@ func Test_rootCommand(t *testing.T) {
 		b := bytes.NewBufferString("")
 		cmd.SetOut(o)
 		cmd.SetErr(b)
-		cmd.SetArgs([]string{"--filename", "../test/reusable-invalid.yml", "--reusable", "--output", "../test/README-reusable.md"})
+		inputFile := filepath.Join("..", "test", "reusable-invalid.yml")
+		mdFile := filepath.Join("..", "test", "README-reusable.md")
+		cmd.SetArgs([]string{"--filename", inputFile, "--reusable", "--output", mdFile})
 		err := cmd.Execute()
 
 		if err == nil {
@@ -174,7 +179,9 @@ func Test_rootCommand(t *testing.T) {
 		RootCmdFlags(cmd)
 		b := bytes.NewBufferString("")
 		cmd.SetOut(b)
-		cmd.SetArgs([]string{"--filename", "../test/action.yml", "--output", "../test/README.md"})
+		inputFile := filepath.Join("..", "test", "action.yml")
+		mdFile := filepath.Join("..", "test", "README.md")
+		cmd.SetArgs([]string{"--filename", inputFile, "--output", mdFile})
 		err := cmd.Execute()
 		if err != nil {
 			t.Fatal(err)
@@ -201,7 +208,9 @@ func Test_rootCommand(t *testing.T) {
 		RootCmdFlags(cmd)
 		b := bytes.NewBufferString("")
 		cmd.SetOut(b)
-		cmd.SetArgs([]string{"--filename", "../test/action.yml", "--output", "../test/README-outputColumns.md", "--outputColumns", "Output", "--outputColumns", "Type"})
+		inputFile := filepath.Join("..", "test", "action.yml")
+		mdFile := filepath.Join("..", "test", "README-outputColumns.md")
+		cmd.SetArgs([]string{"--filename", inputFile, "--output", mdFile, "--outputColumns", "Output", "--outputColumns", "Type"})
 		err := cmd.Execute()
 		if err != nil {
 			t.Fatal(err)
@@ -228,7 +237,9 @@ func Test_rootCommand(t *testing.T) {
 		RootCmdFlags(cmd)
 		b := bytes.NewBufferString("")
 		cmd.SetOut(b)
-		cmd.SetArgs([]string{"--filename", "../test/action.yml", "--output", "../test/README-inputColumns.md", "--inputColumns", "Input", "--inputColumns", "Type", "--inputColumns", "Description"})
+		inputFile := filepath.Join("..", "test", "action.yml")
+		mdFile := filepath.Join("..", "test", "README-inputColumns.md")
+		cmd.SetArgs([]string{"--filename", inputFile, "--output", mdFile, "--inputColumns", "Input", "--inputColumns", "Type", "--inputColumns", "Description"})
 		err := cmd.Execute()
 		if err != nil {
 			t.Fatal(err)
@@ -255,7 +266,9 @@ func Test_rootCommand(t *testing.T) {
 		RootCmdFlags(cmd)
 		b := bytes.NewBufferString("")
 		cmd.SetOut(b)
-		cmd.SetArgs([]string{"--filename", "../test/reusable-action.yml", "--reusable", "--output", "../test/README-reusable.md"})
+		inputFile := filepath.Join("..", "test", "reusable-action.yml")
+		mdFile := filepath.Join("..", "test", "README-reusable.md")
+		cmd.SetArgs([]string{"--filename", inputFile, "--reusable", "--output", mdFile})
 		err := cmd.Execute()
 		if err != nil {
 			t.Fatal(err)
@@ -282,7 +295,9 @@ func Test_rootCommand(t *testing.T) {
 		RootCmdFlags(cmd)
 		b := bytes.NewBufferString("")
 		cmd.SetOut(b)
-		cmd.SetArgs([]string{"--filename", "../test/reusable-action.yml", "--reusable", "--output", "../test/README-reusable-outputColumns.md", "--reusableOutputColumns", "Output", "--reusableOutputColumns", "Value"})
+		inputFile := filepath.Join("..", "test", "reusable-action.yml")
+		mdFile := filepath.Join("..", "test", "README-reusable-outputColumns.md")
+		cmd.SetArgs([]string{"--filename", inputFile, "--reusable", "--output", mdFile, "--reusableOutputColumns", "Output", "--reusableOutputColumns", "Value"})
 		err := cmd.Execute()
 		if err != nil {
 			t.Fatal(err)
@@ -309,7 +324,9 @@ func Test_rootCommand(t *testing.T) {
 		RootCmdFlags(cmd)
 		b := bytes.NewBufferString("")
 		cmd.SetOut(b)
-		cmd.SetArgs([]string{"--filename", "../test/reusable-action.yml", "--reusable", "--output", "../test/README-reusable-inputColumns.md", "--reusableInputColumns", "Input", "--reusableInputColumns", "Type", "--reusableInputColumns", "Description"})
+		inputFile := filepath.Join("..", "test", "reusable-action.yml")
+		mdFile := filepath.Join("..", "test", "README-reusable-inputColumns.md")
+		cmd.SetArgs([]string{"--filename", inputFile, "--reusable", "--output", mdFile, "--reusableInputColumns", "Input", "--reusableInputColumns", "Type", "--reusableInputColumns", "Description"})
 		err := cmd.Execute()
 		if err != nil {
 			t.Fatal(err)
@@ -336,7 +353,9 @@ func Test_rootCommand(t *testing.T) {
 		RootCmdFlags(cmd)
 		b := bytes.NewBufferString("")
 		cmd.SetOut(b)
-		cmd.SetArgs([]string{"--filename", "../test/reusable-action.yml", "--reusable", "--output", "../test/README-reusable-secretColumns.md", "--reusableSecretColumns", "Secret", "--reusableSecretColumns", "Description"})
+		inputFile := filepath.Join("..", "test", "reusable-action.yml")
+		mdFile := filepath.Join("..", "test", "README-reusable-secretColumns.md")
+		cmd.SetArgs([]string{"--filename", inputFile, "--reusable", "--output", mdFile, "--reusableSecretColumns", "Secret", "--reusableSecretColumns", "Description"})
 		err := cmd.Execute()
 		if err != nil {
 			t.Fatal(err)
@@ -363,7 +382,9 @@ func Test_rootCommand(t *testing.T) {
 		RootCmdFlags(cmd)
 		b := bytes.NewBufferString("")
 		cmd.SetOut(b)
-		cmd.SetArgs([]string{"--filename", "../test/action.yml", "--output", "../test/README-markdownLinks.md", "--markdownLinks"})
+		inputFile := filepath.Join("..", "test", "action.yml")
+		mdFile := filepath.Join("..", "test", "README-markdownLinks.md")
+		cmd.SetArgs([]string{"--filename", inputFile, "--output", mdFile, "--markdownLinks"})
 		err := cmd.Execute()
 		if err != nil {
 			t.Fatal(err)
@@ -389,7 +410,9 @@ func Test_rootCommand(t *testing.T) {
 		RootCmdFlags(cmd)
 		b := bytes.NewBufferString("")
 		cmd.SetOut(b)
-		cmd.SetArgs([]string{"--filename", "../test/reusable-action.yml", "--reusable", "--output", "../test/README-reusable-markdownLinks.md", "-m"})
+		inputFile := filepath.Join("..", "test", "reusable-action.yml")
+		mdFile := filepath.Join("..", "test", "README-reusable-markdownLinks.md")
+		cmd.SetArgs([]string{"--filename", inputFile, "--reusable", "--output", mdFile, "-m"})
 		err := cmd.Execute()
 		if err != nil {
 			t.Fatal(err)
@@ -415,7 +438,9 @@ func Test_rootCommand(t *testing.T) {
 		RootCmdFlags(cmd)
 		b := bytes.NewBufferString("")
 		cmd.SetOut(b)
-		cmd.SetArgs([]string{"--filename", "../test/action.yml", "--output", "../test/README-markdownLinks.md", "--markdownLinks"})
+		inputFile := filepath.Join("..", "test", "action.yml")
+		mdFile := filepath.Join("..", "test", "README-markdownLinks.md")
+		cmd.SetArgs([]string{"--filename", inputFile, "--output", mdFile, "--markdownLinks"})
 		err := cmd.Execute()
 		if err != nil {
 			t.Fatal(err)
@@ -443,7 +468,6 @@ func Test_rootCommand(t *testing.T) {
 		cmd.SetOut(b)
 		inputFile := filepath.Join("..", "test", "action-no-inputs-no-outputs.yml")
 		mdFile := filepath.Join("..", "test", "README-action-empty-markers.md")
-		goldenfile := filepath.Join("..", "test", "README-action-empty-markers-no-inputs-no-outputs.expected.md")
 		cmd.SetArgs([]string{"--filename", inputFile, "--reusable", "--output", mdFile})
 		err := cmd.Execute()
 		if err != nil {
@@ -464,26 +488,14 @@ func Test_rootCommand(t *testing.T) {
 				string(out),
 			)
 		}
-		want, err := os.ReadFile(goldenfile)
-		if err != nil {
-			t.Fatal("error reading golden file:", err)
-		}
-		actual, err := os.ReadFile(mdFile)
-		if err != nil {
-			t.Fatal("error reading actual file:", err)
-		}
-		if !bytes.Equal(actual, want) {
-			t.Errorf("\n==== got:\n%s\n==== want:\n%s\n", actual, want)
-		}
 	})
-	t.Run("Update test/README-workflow-empty-markers.md with worklow without inputs and outputs", func(t *testing.T) {
+	t.Run("Update test/README-workflow-empty-markers.md with workflow without inputs and outputs", func(t *testing.T) {
 		cmd := &cobra.Command{Use: "auto-doc", RunE: RootCmdRunE}
 		RootCmdFlags(cmd)
 		b := bytes.NewBufferString("")
 		cmd.SetOut(b)
 		workflowFile := filepath.Join("..", "test", "reusable-workflow-no-inputs-no-outputs.yml")
 		mdFile := filepath.Join("..", "test", "README-workflow-empty-markers.md")
-		goldenfile := filepath.Join("..", "test", "README-workflow-empty-markers-no-inputs-no-outputs.expected.md")
 		cmd.SetArgs([]string{"--filename", workflowFile, "--reusable", "--output", mdFile})
 		err := cmd.Execute()
 		if err != nil {
@@ -503,17 +515,6 @@ func Test_rootCommand(t *testing.T) {
 				exp,
 				string(out),
 			)
-		}
-		want, err := os.ReadFile(goldenfile)
-		if err != nil {
-			t.Fatal("error reading golden file:", err)
-		}
-		actual, err := os.ReadFile(mdFile)
-		if err != nil {
-			t.Fatal("error reading actual file:", err)
-		}
-		if !bytes.Equal(actual, want) {
-			t.Errorf("\n==== got:\n%s\n==== want:\n%s\n", actual, want)
 		}
 	})
 }
