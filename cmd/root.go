@@ -59,18 +59,16 @@ func RootCmdRunE(cmd *cobra.Command, args []string) error {
 	}
 
 	reusable, err := cmd.Flags().GetBool("reusable")
-	// @codeCoverageIgnoreStart
+	// coverage:ignore
 	if err != nil {
 		return err
 	}
-	// @codeCoverageIgnoreEnd
 
 	markdownLinks, err := cmd.Flags().GetBool("markdownLinks")
-	// @codeCoverageIgnoreStart
+	// coverage:ignore
 	if err != nil {
 		return err
 	}
-	// @codeCoverageIgnoreEnd
 
 	var documentation types.Documentation
 
@@ -103,11 +101,10 @@ func RootCmdRunE(cmd *cobra.Command, args []string) error {
 	}
 
 	err = documentation.RenderOutput()
-	// @codeCoverageIgnoreStart
+	// coverage:ignore
 	if err != nil {
 		return err
 	}
-	// @codeCoverageIgnoreEnd
 
 	_, err = fmt.Fprintln(
 		cmd.OutOrStdout(),
@@ -119,11 +116,10 @@ func RootCmdRunE(cmd *cobra.Command, args []string) error {
 
 // Execute adds all child commands to the root command and sets flags appropriately.
 // This is called by main.main(). It only needs to happen once to the rootCmd.
-// @codeCoverageIgnoreStart
+// coverage:ignore
 func Execute() {
 	cobra.CheckErr(rootCmd.Execute())
 }
-// @codeCoverageIgnoreEnd
 
 // RootCmdFlags adds the flags to the root command.
 func RootCmdFlags(cmd *cobra.Command) {
