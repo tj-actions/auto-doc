@@ -45,7 +45,7 @@ inputs:
   markdown_links:
     description: 'Boolean indicating whether to output input, output and secret names as markdown links'
     required: false
-    default: 'false'
+    default: 'true'
 
 runs:
   using: 'composite'
