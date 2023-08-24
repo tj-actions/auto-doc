@@ -1,9 +1,17 @@
 # Changelog
 
-# [2.9.0](https://github.com/tj-actions/auto-doc/compare/v2.8.0...v2.9.0) - (2023-08-10)
+# [unreleased]
+
+## <!-- 26 -->🔄 Update
+
+- Updated README.
+ ([520aaab](https://github.com/tj-actions/auto-doc/commit/520aaab15b6c36ca972a2bc56db416e9bf9fc545))  - (github-actions[bot])
+
+# [3.0.0](https://github.com/tj-actions/auto-doc/compare/v2.8.0...v3.0.0) - (2023-08-24)
 
 ## <!-- 0 -->🚀 Features
 
+- Make markdown_links enabled by default ([#505](https://github.com/tj-actions/auto-doc/issues/505)) ([e1be296](https://github.com/tj-actions/auto-doc/commit/e1be2961de92578848904302d90fe3bd5348895c))  - (Tonye Jack)
 - Print a message when no content found ([#500](https://github.com/tj-actions/auto-doc/issues/500)) ([07e0815](https://github.com/tj-actions/auto-doc/commit/07e081564852dc6c104f2398203acf2fd9c54113))  - (Christophe Furmaniak)
 
 ## <!-- 1 -->🐛 Bug Fixes
@@ -32,6 +40,12 @@
 ## <!-- 7 -->⚙️ Miscellaneous Tasks
 
 - Make test consistent ([eb849b4](https://github.com/tj-actions/auto-doc/commit/eb849b488b219c0ea694520932a61309fe9bd46f))  - (Tonye Jack)
+
+## <!-- 9 -->⬆️ Upgrades
+
+- Upgraded to v2.9.0 ([#503](https://github.com/tj-actions/auto-doc/issues/503))
+
+Co-authored-by: github-actions[bot] <github-actions[bot]@users.noreply.github.com> ([de932b7](https://github.com/tj-actions/auto-doc/commit/de932b7be5d7ad6cc0ac54c95990047d7d07ac98))  - (tj-actions[bot])
 
 # [2.8.0](https://github.com/tj-actions/auto-doc/compare/v2.7.1...v2.8.0) - (2023-07-18)
 
