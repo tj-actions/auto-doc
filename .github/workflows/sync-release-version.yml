@@ -87,7 +87,7 @@ jobs:
           git push -f origin ${{ steps.branch-name.outputs.tag }}
 
       - name: Run release-tagger
-        uses: tj-actions/release-tagger@v3
+        uses: tj-actions/release-tagger@v4
         with:
           token: ${{ secrets.PAT_TOKEN }}
 
