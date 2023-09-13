@@ -18,6 +18,9 @@ package internal
 
 import "fmt"
 
+// DescriptionHeader represents the markdown header of description
+const DescriptionHeader = "## Description"
+
 // InputsHeader represents the markdown header of inputs
 const InputsHeader = "## Inputs"
 
@@ -38,6 +41,12 @@ const PipeSeparator = "|"
 
 // NewLineSeparator used for splitting lines
 const NewLineSeparator = "\n"
+
+// InputAutoDocStart is the start of the input
+var DescriptionAutoDocStart = fmt.Sprintf(AutoDocStart, "DESCRIPTION")
+
+// InputAutoDocEnd is the end of the input
+var DescriptionAutoDocEnd = fmt.Sprintf(AutoDocEnd, "DESCRIPTION")
 
 // InputAutoDocStart is the start of the input
 var InputAutoDocStart = fmt.Sprintf(AutoDocStart, "INPUT")

@@ -57,6 +57,7 @@ type Action struct {
 	OutputColumns      []string
 	Inputs             map[string]ActionInput  `yaml:"inputs,omitempty"`
 	Outputs            map[string]ActionOutput `yaml:"outputs,omitempty"`
+    Description        string `yaml:"description,omitempty"`
 	InputMarkdownLinks bool
 }
 
@@ -72,7 +73,7 @@ func (a *Action) GetData() error {
 }
 
 // WriteDocumentation write the table to the output file
-func (a *Action) WriteDocumentation(inputTable, outputTable *strings.Builder) error {
+func (a *Action) WriteDocumentation(inputTable, outputTable, description *strings.Builder) error {
 	var err error
 	input, err := os.ReadFile(a.OutputFileName)
 	if err != nil {
@@ -81,17 +82,43 @@ func (a *Action) WriteDocumentation(inputTable, outputTable *strings.Builder) er
 
 	var output []byte
 
-	hasInputsData, indices := utils.HasBytesInBetween(
+    hasDescriptionData, indices := utils.HasBytesInBetween(
 		input,
+		[]byte(internal.DescriptionAutoDocStart),
+		[]byte(internal.DescriptionAutoDocEnd),
+	)
+    output = input
+
+    descriptionStr := strings.TrimSpace(description.String())
+
+
+    if hasDescriptionData {
+		output = utils.ReplaceBytesInBetween(output, indices, []byte(descriptionStr))
+	} else {
+		re := regexp.MustCompile(fmt.Sprintf("(?m)^%s", internal.DescriptionHeader))
+		output = re.ReplaceAllFunc(input, func(match []byte) []byte {
+			if bytes.HasPrefix(match, []byte(internal.DescriptionHeader)) {
+				if descriptionStr != "" {
+					return []byte(fmt.Sprintf("%s\n\n%v", internal.DescriptionHeader, descriptionStr))
+				} else {
+					return []byte(internal.DescriptionHeader)
+				}
+			}
+			return match
+		})
+	}
+
+	hasInputsData, indices := utils.HasBytesInBetween(
+		output,
 		[]byte(internal.InputAutoDocStart),
 		[]byte(internal.InputAutoDocEnd),
 	)
 
-	output = input
+
 	inputsStr := strings.TrimSpace(inputTable.String())
 
 	if hasInputsData {
-		output = utils.ReplaceBytesInBetween(output, indices, []byte(inputsStr))
+        output = utils.ReplaceBytesInBetween(output, indices, []byte(inputsStr))
 	} else {
 		re := regexp.MustCompile(fmt.Sprintf("(?m)^%s", internal.InputsHeader))
 		output = re.ReplaceAllFunc(input, func(match []byte) []byte {
@@ -105,7 +132,6 @@ func (a *Action) WriteDocumentation(inputTable, outputTable *strings.Builder) er
 			return match
 		})
 	}
-
 	hasOutputsData, indices := utils.HasBytesInBetween(
 		output,
 		[]byte(internal.OutputAutoDocStart),
@@ -150,6 +176,11 @@ func (a *Action) RenderOutput() error {
 		return err
 	}
 
+    descriptionOutput, err := renderDescription(a.Description)
+    if err != nil {
+		return err
+	}
+
 	inputTableOutput, err := renderActionInputTableOutput(a.Inputs, a.InputColumns, a.InputMarkdownLinks, maxWidth, maxWords)
 	if err != nil {
 		return err
@@ -160,12 +191,34 @@ func (a *Action) RenderOutput() error {
 		return err
 	}
 
-	err = a.WriteDocumentation(inputTableOutput, outputTableOutput)
+	err = a.WriteDocumentation(inputTableOutput, outputTableOutput, descriptionOutput)
 	if err != nil {
 		return err
 	}
 
 	return nil
+}
+
+// renderDescription
+func renderDescription(description string) (*strings.Builder, error) {
+    descriptionOutput := &strings.Builder{}
+    _, err := fmt.Fprintln(descriptionOutput, internal.DescriptionAutoDocStart)
+	if err != nil {
+		return descriptionOutput, err
+	}
+
+	_, err = fmt.Fprintln(descriptionOutput)
+		if err != nil {
+			return descriptionOutput, err
+		}
+    descriptionOutput.WriteString(description)
+    descriptionOutput.WriteString("\n")
+
+    _, err = fmt.Fprint(descriptionOutput, internal.DescriptionAutoDocEnd)
+    if err != nil {
+        return descriptionOutput, err
+    }
+    return descriptionOutput, nil
 }
 
 // renderActionOutputTableOutput renders the action input table

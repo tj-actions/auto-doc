@@ -47,7 +47,7 @@ GitHub Action that generates beautiful, easy-to-read markdown tables with just a
 
 ## Usage
 
-Add the `Inputs` and/or `Outputs` and/or `Secrets` (only supported by reusable workflows) [`H2` header](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#headers) to any markdown file.
+Add the `Inputs` and/or `Outputs` and/or `Secrets` (only supported by reusable workflows) and/or `Description` (only supported by actions) [`H2` header](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#headers) to any markdown file.
 
 ```yaml
 ...
