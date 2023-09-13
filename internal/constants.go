@@ -42,10 +42,10 @@ const PipeSeparator = "|"
 // NewLineSeparator used for splitting lines
 const NewLineSeparator = "\n"
 
-// InputAutoDocStart is the start of the input
+// DescriptionAutoDocStart is the start of the description
 var DescriptionAutoDocStart = fmt.Sprintf(AutoDocStart, "DESCRIPTION")
 
-// InputAutoDocEnd is the end of the input
+// DescriptionAutoDocEnd is the end of the description
 var DescriptionAutoDocEnd = fmt.Sprintf(AutoDocEnd, "DESCRIPTION")
 
 // InputAutoDocStart is the start of the input

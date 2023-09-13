@@ -57,7 +57,7 @@ type Action struct {
 	OutputColumns      []string
 	Inputs             map[string]ActionInput  `yaml:"inputs,omitempty"`
 	Outputs            map[string]ActionOutput `yaml:"outputs,omitempty"`
-    Description        string `yaml:"description,omitempty"`
+	Description        string                  `yaml:"description,omitempty"`
 	InputMarkdownLinks bool
 }
 
@@ -82,17 +82,16 @@ func (a *Action) WriteDocumentation(inputTable, outputTable, description *string
 
 	var output []byte
 
-    hasDescriptionData, indices := utils.HasBytesInBetween(
+	hasDescriptionData, indices := utils.HasBytesInBetween(
 		input,
 		[]byte(internal.DescriptionAutoDocStart),
 		[]byte(internal.DescriptionAutoDocEnd),
 	)
-    output = input
+	output = input
 
-    descriptionStr := strings.TrimSpace(description.String())
+	descriptionStr := strings.TrimSpace(description.String())
 
-
-    if hasDescriptionData {
+	if hasDescriptionData {
 		output = utils.ReplaceBytesInBetween(output, indices, []byte(descriptionStr))
 	} else {
 		re := regexp.MustCompile(fmt.Sprintf("(?m)^%s", internal.DescriptionHeader))
@@ -100,9 +99,8 @@ func (a *Action) WriteDocumentation(inputTable, outputTable, description *string
 			if bytes.HasPrefix(match, []byte(internal.DescriptionHeader)) {
 				if descriptionStr != "" {
 					return []byte(fmt.Sprintf("%s\n\n%v", internal.DescriptionHeader, descriptionStr))
-				} else {
-					return []byte(internal.DescriptionHeader)
 				}
+				return []byte(internal.DescriptionHeader)
 			}
 			return match
 		})
@@ -114,11 +112,10 @@ func (a *Action) WriteDocumentation(inputTable, outputTable, description *string
 		[]byte(internal.InputAutoDocEnd),
 	)
 
-
 	inputsStr := strings.TrimSpace(inputTable.String())
 
 	if hasInputsData {
-        output = utils.ReplaceBytesInBetween(output, indices, []byte(inputsStr))
+		output = utils.ReplaceBytesInBetween(output, indices, []byte(inputsStr))
 	} else {
 		re := regexp.MustCompile(fmt.Sprintf("(?m)^%s", internal.InputsHeader))
 		output = re.ReplaceAllFunc(input, func(match []byte) []byte {
@@ -176,8 +173,8 @@ func (a *Action) RenderOutput() error {
 		return err
 	}
 
-    descriptionOutput, err := renderDescription(a.Description)
-    if err != nil {
+	descriptionOutput, err := renderDescription(a.Description)
+	if err != nil {
 		return err
 	}
 
@@ -201,24 +198,24 @@ func (a *Action) RenderOutput() error {
 
 // renderDescription
 func renderDescription(description string) (*strings.Builder, error) {
-    descriptionOutput := &strings.Builder{}
-    _, err := fmt.Fprintln(descriptionOutput, internal.DescriptionAutoDocStart)
+	descriptionOutput := &strings.Builder{}
+	_, err := fmt.Fprintln(descriptionOutput, internal.DescriptionAutoDocStart)
 	if err != nil {
 		return descriptionOutput, err
 	}
 
 	_, err = fmt.Fprintln(descriptionOutput)
-		if err != nil {
-			return descriptionOutput, err
-		}
-    descriptionOutput.WriteString(description)
-    descriptionOutput.WriteString("\n")
+	if err != nil {
+		return descriptionOutput, err
+	}
+	descriptionOutput.WriteString(description)
+	descriptionOutput.WriteString("\n")
 
-    _, err = fmt.Fprint(descriptionOutput, internal.DescriptionAutoDocEnd)
-    if err != nil {
-        return descriptionOutput, err
-    }
-    return descriptionOutput, nil
+	_, err = fmt.Fprint(descriptionOutput, internal.DescriptionAutoDocEnd)
+	if err != nil {
+		return descriptionOutput, err
+	}
+	return descriptionOutput, nil
 }
 
 // renderActionOutputTableOutput renders the action input table
