@@ -2,6 +2,11 @@
 
 Test text ## Inputs
 
+## Description
+<!-- AUTO-DOC-DESCRIPTION:START - Do not remove or modify this section -->
+No description.
+<!-- AUTO-DOC-DESCRIPTION:END -->
+
 ## Inputs
 
 <!-- AUTO-DOC-INPUT:START - Do not remove or modify this section -->
