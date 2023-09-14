@@ -1,13 +1,40 @@
 # Changelog
 
-# [unreleased]
+# [3.0.1](https://github.com/tj-actions/auto-doc/compare/v3.0.0...v3.0.1) - (2023-09-14)
+
+## <!-- 17 -->➖ Remove
+
+- Deleted .github/ISSUE_TEMPLATE/feature_request.yaml ([c2e9812](https://github.com/tj-actions/auto-doc/commit/c2e9812a54d95c98fa09b5a53a5a4a733347d5d5))  - (Tonye Jack)
+- Deleted .github/ISSUE_TEMPLATE/bug_report.yaml ([54f1e88](https://github.com/tj-actions/auto-doc/commit/54f1e885b90b3e0c3389f4d0ef412b984fa90d29))  - (Tonye Jack)
+- Deleted .github/FUNDING.yml ([88f8049](https://github.com/tj-actions/auto-doc/commit/88f8049207849767fc8c8e18b502f306484be89e))  - (Tonye Jack)
 
 ## <!-- 26 -->🔄 Update
 
-- Updated README.
- ([520aaab](https://github.com/tj-actions/auto-doc/commit/520aaab15b6c36ca972a2bc56db416e9bf9fc545))  - (github-actions[bot])
+- Updated .github/FUNDING.yml ([e816fa6](https://github.com/tj-actions/auto-doc/commit/e816fa6e4e890f06c3c8029c09314ee8849115f2))  - (Tonye Jack)
+- Updated .github/FUNDING.yml ([a9e60da](https://github.com/tj-actions/auto-doc/commit/a9e60daef203c49aab470e705d57f53c7d906ad5))  - (Tonye Jack)
 
-# [3.0.0](https://github.com/tj-actions/auto-doc/compare/v2.8.0...v3.0.0) - (2023-08-24)
+## <!-- 30 -->📝 Other
+
+- PR [#511](https://github.com/tj-actions/auto-doc/pull/511): update codecov/codecov-action action to v4 ([b6c4095](https://github.com/tj-actions/auto-doc/commit/b6c409508d6762925fa7cde7ffe98aeaca1a263f))  - (repo-ranger[bot])
+- PR [#509](https://github.com/tj-actions/auto-doc/pull/509): update goreleaser/goreleaser-action action to v5 ([a36f299](https://github.com/tj-actions/auto-doc/commit/a36f299e1affb55cdc4bfad5026dd980dfb72572))  - (repo-ranger[bot])
+- PR [#508](https://github.com/tj-actions/auto-doc/pull/508): update actions/checkout action to v4 ([939ffb5](https://github.com/tj-actions/auto-doc/commit/939ffb556b9f420cdd3e9839ccb77c01a48f8f1c))  - (repo-ranger[bot])
+- PR [#507](https://github.com/tj-actions/auto-doc/pull/507): update tj-actions/release-tagger action to v4 ([0f58a12](https://github.com/tj-actions/auto-doc/commit/0f58a1217acb7ce2dea0dc76bfbd3a65ebc0f3f5))  - (repo-ranger[bot])
+- PR [#506](https://github.com/tj-actions/auto-doc/pull/506): to v3 ([b5a4583](https://github.com/tj-actions/auto-doc/commit/b5a4583bee3d8f6a9553ce856bd97e3c5b8330a0))  - (repo-ranger[bot])
+
+## <!-- 7 -->⚙️ Miscellaneous Tasks
+
+- **deps:** Update codecov/codecov-action action to v4 ([357982e](https://github.com/tj-actions/auto-doc/commit/357982e8feb3dfb9fc62090b84ffc133df21d307))  - (renovate[bot])
+- **deps:** Update goreleaser/goreleaser-action action to v5 ([6847fbf](https://github.com/tj-actions/auto-doc/commit/6847fbf10febdfd862d8c36130ae089d6788327d))  - (renovate[bot])
+- **deps:** Update actions/checkout action to v4 ([556dfbb](https://github.com/tj-actions/auto-doc/commit/556dfbb9eef634035e93702c8db1456c8631f3e2))  - (renovate[bot])
+- **deps:** Update tj-actions/release-tagger action to v4 ([1e1836e](https://github.com/tj-actions/auto-doc/commit/1e1836ece5ff950d8db74003c5c42795c875ad8f))  - (renovate[bot])
+
+# [3.0.0](https://github.com/tj-actions/auto-doc/compare/v3...v3.0.0) - (2023-08-24)
+
+## <!-- 7 -->⚙️ Miscellaneous Tasks
+
+- Upgraded from v2.9.0 -> v3 ([e423dcd](https://github.com/tj-actions/auto-doc/commit/e423dcd5655cc0bfe4fe68648376689be4af4378))  - (github-actions[bot])
+
+# [3](https://github.com/tj-actions/auto-doc/compare/v2.8.0...v3) - (2023-08-24)
 
 ## <!-- 0 -->🚀 Features
 
@@ -21,6 +48,8 @@
 
 ## <!-- 26 -->🔄 Update
 
+- Updated README.
+ ([520aaab](https://github.com/tj-actions/auto-doc/commit/520aaab15b6c36ca972a2bc56db416e9bf9fc545))  - (github-actions[bot])
 - Updated README.
  ([0ae682c](https://github.com/tj-actions/auto-doc/commit/0ae682ccb2ed98f468c3859ee025cc51afe201a6))  - (github-actions[bot])
 
