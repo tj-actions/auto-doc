@@ -196,7 +196,7 @@ func (a *Action) RenderOutput() error {
 	return nil
 }
 
-// renderDescription
+// renderDescription renders the description
 func renderDescription(description string) (*strings.Builder, error) {
 	descriptionOutput := &strings.Builder{}
 	_, err := fmt.Fprintln(descriptionOutput, internal.DescriptionAutoDocStart)
@@ -209,7 +209,7 @@ func renderDescription(description string) (*strings.Builder, error) {
 		return descriptionOutput, err
 	}
 	descriptionOutput.WriteString(description)
-	descriptionOutput.WriteString("\n")
+	descriptionOutput.WriteString("\n\n")
 
 	_, err = fmt.Fprint(descriptionOutput, internal.DescriptionAutoDocEnd)
 	if err != nil {
