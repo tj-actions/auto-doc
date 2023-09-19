@@ -47,7 +47,10 @@ GitHub Action that generates beautiful, easy-to-read markdown tables with just a
 
 ## Usage
 
-Add the `Inputs` and/or `Outputs` and/or `Secrets` (only supported by reusable workflows) [`H2` header](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#headers) to any markdown file.
+Add the `Inputs` and/or `Outputs`
+and/or `Secrets` (only supported by reusable workflows)
+and/or `Description` (only supported by actions)
+[`H2` header](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#headers) to any markdown file.
 
 ```yaml
 ...
@@ -61,21 +64,21 @@ Add the `Inputs` and/or `Outputs` and/or `Secrets` (only supported by reusable w
 
 <!-- AUTO-DOC-INPUT:START - Do not remove or modify this section -->
 
-|          INPUT          |  TYPE  | REQUIRED |    DEFAULT     |                                           DESCRIPTION                                            |
-|-------------------------|--------|----------|----------------|--------------------------------------------------------------------------------------------------|
-|        bin\_path         | string |  false   |                |                                   Path to the auto-doc binary                                    |
-|      col\_max\_width      | string |  false   |    `"1000"`    |                                      Max width of a column                                       |
-|      col\_max\_words      | string |  false   |     `"5"`      |                          Max number of words per line <br>in a column                            |
-|        filename         | string |  false   | `"action.yml"` |                                      Path to the yaml file                                       |
-|      input\_columns      | string |  false   |                |    List of action.yml **input** columns names <br>to display, default (display all columns)      |
-|     markdown\_links      | string |  false   |    `"true"`    |  Boolean indicating whether to output input, <br>output and secret names as markdown <br>links   |
-|         output          | string |  false   | `"README.md"`  |                                     Path to the output file                                      |
-|     output\_columns      | string |  false   |                |    List of action.yml **output** column names <br>to display, default (display all columns)      |
-|        reusable         | string |  false   |                |                 Boolean Indicating whether the file is <br>a reusable workflow                   |
-| reusable\_input\_columns  | string |  false   |                | List of reusable workflow **input** column <br>names to display, default (display all columns)   |
-| reusable\_output\_columns | string |  false   |                | List of reusable workflow **output** column <br>names to display, default (display all columns)  |
-| reusable\_secret\_columns | string |  false   |                | List of reusable workflow **secret** column <br>names to display, default (display all columns)  |
-|         version         | string |  false   |                |                                    The version number to run                                     |
+| INPUT                     | TYPE   | REQUIRED | DEFAULT        | DESCRIPTION                                                                                     |
+|---------------------------|--------|----------|----------------|-------------------------------------------------------------------------------------------------|
+| bin\_path                 | string | false    |                | Path to the auto-doc binary                                                                     |
+| col\_max\_width           | string | false    | `"1000"`       | Max width of a column                                                                           |
+| col\_max\_words           | string | false    | `"5"`          | Max number of words per line <br>in a column                                                    |
+| filename                  | string | false    | `"action.yml"` | Path to the yaml file                                                                           |
+| input\_columns            | string | false    |                | List of action.yml **input** columns names <br>to display, default (display all columns)        |
+| markdown\_links           | string | false    | `"true"`       | Boolean indicating whether to output input, <br>output and secret names as markdown <br>links   |
+| output                    | string | false    | `"README.md"`  | Path to the output file                                                                         |
+| output\_columns           | string | false    |                | List of action.yml **output** column names <br>to display, default (display all columns)        |
+| reusable                  | string | false    |                | Boolean Indicating whether the file is <br>a reusable workflow                                  |
+| reusable\_input\_columns  | string | false    |                | List of reusable workflow **input** column <br>names to display, default (display all columns)  |
+| reusable\_output\_columns | string | false    |                | List of reusable workflow **output** column <br>names to display, default (display all columns) |
+| reusable\_secret\_columns | string | false    |                | List of reusable workflow **secret** column <br>names to display, default (display all columns) |
+| version                   | string | false    |                | The version number to run                                                                       |
 
 <!-- AUTO-DOC-INPUT:END -->
 

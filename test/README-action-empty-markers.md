@@ -1,5 +1,11 @@
 # test/action
 
+## Description
+
+<!-- AUTO-DOC-DESCRIPTION:START - Do not remove or modify this section -->
+No description.
+<!-- AUTO-DOC-DESCRIPTION:END -->
+
 Test text ## Inputs
 
 ## Inputs

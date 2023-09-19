@@ -105,3 +105,12 @@ Test text ## Inputs
 |         unmerged_files         | string |                                                                                                                  Returns only files that are Unmerged <br>(U).                                                                                                                   |
 
 <!-- AUTO-DOC-OUTPUT:END -->
+
+
+## Description
+
+<!-- AUTO-DOC-DESCRIPTION:START - Do not remove or modify this section -->
+
+Get all Added, Copied, Modified, Deleted, Renamed, Type changed, Unmerged, Unknown files and directories.
+
+<!-- AUTO-DOC-DESCRIPTION:END -->
