@@ -1,5 +1,51 @@
 # Changelog
 
+# [3.1.0](https://github.com/tj-actions/auto-doc/compare/v3.0.1...v3.1.0) - (2023-09-23)
+
+## <!-- 0 -->🚀 Features
+
+- Upgrade package to v3 ([#515](https://github.com/tj-actions/auto-doc/issues/515)) ([d34955c](https://github.com/tj-actions/auto-doc/commit/d34955c543aa14f4c3fcbcdfa6f08d24cb1ebaec))  - (Tonye Jack)
+
+## <!-- 16 -->➕ Add
+
+- Adding Description heading for Actions
+ ([1169b3a](https://github.com/tj-actions/auto-doc/commit/1169b3a4d75222e333a97748c2cbcef86165eb04))  - (Mike Weeks)
+- Adding tests
+ ([bc1a0a7](https://github.com/tj-actions/auto-doc/commit/bc1a0a7f55124b6b767e2853433f156bbd90d195))  - (Mike Weeks)
+- Adding Description heading for Actions
+ ([c7e56ba](https://github.com/tj-actions/auto-doc/commit/c7e56ba5d4100ba8f57265c93fd248e55289c29c))  - (Mike Weeks)
+
+## <!-- 26 -->🔄 Update
+
+- Update sync-release-version.yml ([c67586d](https://github.com/tj-actions/auto-doc/commit/c67586d7cea411bc676a2cdee52bdcfa04febcb6))  - (Tonye Jack)
+- Update README.md ([d4621fc](https://github.com/tj-actions/auto-doc/commit/d4621fc02de19a68547cde2ae8661720c50680c8))  - (Tonye Jack)
+- Update README.md ([02e3176](https://github.com/tj-actions/auto-doc/commit/02e31768ce66ca183d942824452f40ce4ace5b7e))  - (Tonye Jack)
+- Update README.md ([3672cf7](https://github.com/tj-actions/auto-doc/commit/3672cf743c5f6ffdb17fd938f5e5f86d74f4928c))  - (Tonye Jack)
+- Updated README.
+ ([a7d3956](https://github.com/tj-actions/auto-doc/commit/a7d39567f0c836e580d3f0da287e58a2e9b55fcd))  - (github-actions[bot])
+- Update doc string and test
+ ([415476d](https://github.com/tj-actions/auto-doc/commit/415476d1695f305b81db14007684365311812b10))  - (Tonye Jack)
+- Updated dependabot.yml
+ ([7ccc464](https://github.com/tj-actions/auto-doc/commit/7ccc464ae5ac49d94a2884cf12fad0c79b7b5412))  - (Tonye Jack)
+- Updated README.
+ ([3749352](https://github.com/tj-actions/auto-doc/commit/37493525dd108db0c0d01dabc10a01f1dfa1353f))  - (github-actions[bot])
+- Update code-coverage.yml ([b89c7bc](https://github.com/tj-actions/auto-doc/commit/b89c7bc7ef0faf5d5660cb3f56d5f6e6d9e73773))  - (Tonye Jack)
+
+## <!-- 3 -->📚 Documentation
+
+- Add mw-root as a contributor for code, and doc ([#512](https://github.com/tj-actions/auto-doc/issues/512)) ([02522ed](https://github.com/tj-actions/auto-doc/commit/02522ed72acb7737dd350da3592527df55ebf9e1))  - (allcontributors[bot])
+
+## <!-- 30 -->📝 Other
+
+- PR [#510](https://github.com/tj-actions/auto-doc/pull/510): Description heading for Actions ([492e7bf](https://github.com/tj-actions/auto-doc/commit/492e7bf455724737cfacbb8ad23242adad14758f))  - (repo-ranger[bot])
+- Merge branch 'main' into adding-action-description ([84142c7](https://github.com/tj-actions/auto-doc/commit/84142c78ccff2d9f96e88074eb3f1090df0c09a3))  - (repo-ranger[bot])
+- Merge branch 'main' into adding-action-description ([91fc7bd](https://github.com/tj-actions/auto-doc/commit/91fc7bdce0c89709d6c6b16737d4f624b8dcd54f))  - (Tonye Jack)
+- PR [#513](https://github.com/tj-actions/auto-doc/pull/513): to v3.0.1 ([4b24753](https://github.com/tj-actions/auto-doc/commit/4b24753125609131fc1dcdccb777d68248b34e29))  - (repo-ranger[bot])
+
+## <!-- 7 -->⚙️ Miscellaneous Tasks
+
+- **deps:** Update actions/checkout action to v4 ([#516](https://github.com/tj-actions/auto-doc/issues/516)) ([ae720cd](https://github.com/tj-actions/auto-doc/commit/ae720cd94f0f1549a3305226190816b1ef8746fa))  - (renovate[bot])
+
 # [3.0.1](https://github.com/tj-actions/auto-doc/compare/v3.0.0...v3.0.1) - (2023-09-14)
 
 ## <!-- 17 -->➖ Remove
@@ -23,18 +69,13 @@
 
 ## <!-- 7 -->⚙️ Miscellaneous Tasks
 
+- Upgraded from v3.0.0 -> v3.0.1 ([234e456](https://github.com/tj-actions/auto-doc/commit/234e456d74f40863a3d0381f1e3779b1982b5160))  - (github-actions[bot])
 - **deps:** Update codecov/codecov-action action to v4 ([357982e](https://github.com/tj-actions/auto-doc/commit/357982e8feb3dfb9fc62090b84ffc133df21d307))  - (renovate[bot])
 - **deps:** Update goreleaser/goreleaser-action action to v5 ([6847fbf](https://github.com/tj-actions/auto-doc/commit/6847fbf10febdfd862d8c36130ae089d6788327d))  - (renovate[bot])
 - **deps:** Update actions/checkout action to v4 ([556dfbb](https://github.com/tj-actions/auto-doc/commit/556dfbb9eef634035e93702c8db1456c8631f3e2))  - (renovate[bot])
 - **deps:** Update tj-actions/release-tagger action to v4 ([1e1836e](https://github.com/tj-actions/auto-doc/commit/1e1836ece5ff950d8db74003c5c42795c875ad8f))  - (renovate[bot])
 
-# [3.0.0](https://github.com/tj-actions/auto-doc/compare/v3...v3.0.0) - (2023-08-24)
-
-## <!-- 7 -->⚙️ Miscellaneous Tasks
-
-- Upgraded from v2.9.0 -> v3 ([e423dcd](https://github.com/tj-actions/auto-doc/commit/e423dcd5655cc0bfe4fe68648376689be4af4378))  - (github-actions[bot])
-
-# [3](https://github.com/tj-actions/auto-doc/compare/v2.8.0...v3) - (2023-08-24)
+# [3.0.0](https://github.com/tj-actions/auto-doc/compare/v2.8.0...v3.0.0) - (2023-08-24)
 
 ## <!-- 0 -->🚀 Features
 
@@ -68,6 +109,7 @@
 
 ## <!-- 7 -->⚙️ Miscellaneous Tasks
 
+- Upgraded from v2.9.0 -> v3 ([e423dcd](https://github.com/tj-actions/auto-doc/commit/e423dcd5655cc0bfe4fe68648376689be4af4378))  - (github-actions[bot])
 - Make test consistent ([eb849b4](https://github.com/tj-actions/auto-doc/commit/eb849b488b219c0ea694520932a61309fe9bd46f))  - (Tonye Jack)
 
 ## <!-- 9 -->⬆️ Upgrades
