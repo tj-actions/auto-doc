@@ -23,7 +23,7 @@ jobs:
         uses: tj-actions/semver-diff@v2
 
       - name: Show release type
-        if: steps.semver-diff.outputs.release_type == "major"
+        if: steps.semver-diff.outputs.release_type == 'major'
         run: |
           OLD_VERSION=$(echo "${{ steps.semver-diff.outputs.old_version }}" | cut -d'.' -f1 | cut -d'v' -f2)
           MAJOR_VERSION=$(echo "${{ steps.semver-diff.outputs.new_version }}" | cut -d'.' -f1 | cut -d'v' -f2)
@@ -31,7 +31,7 @@ jobs:
           make upgrade-from-one-version-to-a-major-version OLD_VERSION=$OLD_VERSION MAJOR_VERSION=$MAJOR_VERSION
 
       - name: Commit the change to the main branch and update the latest version
-        if: steps.semver-diff.outputs.release_type == "major"
+        if: steps.semver-diff.outputs.release_type == 'major'
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
