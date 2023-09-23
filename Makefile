@@ -44,6 +44,9 @@ upgrade-from-one-version-to-a-major-version: guard-OLD_VERSION guard-MAJOR_VERSI
 	@find . -type f \
 		-name 'go.mod' \
 		-exec sed -i '' -e 's,github.com/tj-actions/auto-doc/v$(OLD_VERSION),github.com/tj-actions/auto-doc/v$(MAJOR_VERSION),g' {} \;
+	@find . -type f \
+		-name 'README.md' \
+		-exec sed -i '' -e 's,github.com/tj-actions/auto-doc/v$(OLD_VERSION),github.com/tj-actions/auto-doc/v$(MAJOR_VERSION),g' {} \;
 
 .PHONY: test
 test: clean
