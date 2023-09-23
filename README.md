@@ -55,7 +55,7 @@ and/or `Description` (only supported by actions)
 ```yaml
 ...
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: Run auto-doc
         uses: tj-actions/auto-doc@v3
 ```
