@@ -5,9 +5,47 @@ on:
 
 
 jobs:
+  check-version:
+    runs-on: ubuntu-latest
+    name: semver-diff
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          ref: main
+
+      - name: Get branch name
+        id: branch-name
+        uses: tj-actions/branch-names@v7
+
+      - name: Run semver-diff
+        id: semver-diff
+        uses: tj-actions/semver-diff@v2
+
+      - name: Show release type
+        if: steps.semver-diff.outputs.release_type == "major"
+        run: |
+          OLD_VERSION=$(echo "${{ steps.semver-diff.outputs.old_version }}" | cut -d'.' -f1 | cut -d'v' -f2)
+          MAJOR_VERSION=$(echo "${{ steps.semver-diff.outputs.new_version }}" | cut -d'.' -f1 | cut -d'v' -f2)
+          
+          make upgrade-from-one-version-to-a-major-version OLD_VERSION=$OLD_VERSION MAJOR_VERSION=$MAJOR_VERSION
+
+      - name: Commit the change to the main branch and update the latest version
+        if: steps.semver-diff.outputs.release_type == "major"
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git tag -d ${{ steps.branch-name.outputs.tag }}
+          git add .
+          git commit -m "chore: upgraded from ${{ steps.semver-diff.outputs.old_version }} -> ${{ steps.semver-diff.outputs.new_version }}"
+          git push -f origin main
+          git tag ${{ steps.branch-name.outputs.tag }}
+          git push -f origin ${{ steps.branch-name.outputs.tag }}
+
   release:
     name: release
     runs-on: ubuntu-latest
+    needs: check-version
     steps:
       - uses: actions/checkout@v4
         with:

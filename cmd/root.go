@@ -21,8 +21,8 @@ import (
 
 	"github.com/spf13/cobra"
 
-	"github.com/tj-actions/auto-doc/v2/internal"
-	"github.com/tj-actions/auto-doc/v2/internal/types"
+	"github.com/tj-actions/auto-doc/v3/internal"
+	"github.com/tj-actions/auto-doc/v3/internal/types"
 )
 
 var fileName string
