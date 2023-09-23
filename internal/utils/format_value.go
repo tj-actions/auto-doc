@@ -20,7 +20,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/tj-actions/auto-doc/v2/internal"
+	"github.com/tj-actions/auto-doc/v3/internal"
 )
 
 // FormatValue formats a string that would be outputed as markdown

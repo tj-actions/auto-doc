@@ -5,9 +5,42 @@ on:
 
 
 jobs:
+  check-version:
+    runs-on: ubuntu-latest
+    name: semver-diff
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Run semver-diff
+        id: semver-diff
+        uses: tj-actions/semver-diff@v2
+      - name: Show release type
+        if: steps.semver-diff.outputs.release_type == "major"
+        run: |
+          OLD_VERSION=$(echo "${{ steps.semver-diff.outputs.old_version }}" | cut -d'.' -f1)
+          MAJOR_VERSION=$(echo "${{ steps.semver-diff.outputs.new_version }}" | cut -d'.' -f1)
+          
+          make upgrade-from-one-version-to-a-major-version OLD_VERSION=$OLD_VERSION MAJOR_VERSION=$MAJOR_VERSION
+      - name: Create Pull Request
+        if: steps.semver-diff.outputs.release_type == "major"
+        uses: peter-evans/create-pull-request@v5.0.2
+        with:
+          base: "main"
+          labels: "merge when passing"
+          title: "Upgraded to ${{ steps.semver-diff.outputs.new_version }}"
+          branch: "upgrade-to-${{ steps.semver-diff.outputs.new_version }}"
+          commit-message: "Upgraded from ${{ steps.semver-diff.outputs.old_version }} -> ${{ steps.semver-diff.outputs.new_version }}"
+          body: ""
+          token: ${{ secrets.PAT_TOKEN }}
+      - name: Mark job as failed
+        if: steps.semver-diff.outputs.release_type == "major"
+        run: exit 1
+
   release:
     name: release
     runs-on: ubuntu-latest
+    needs: check-version
     steps:
       - uses: actions/checkout@v4
         with:
