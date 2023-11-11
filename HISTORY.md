@@ -1,5 +1,25 @@
 # Changelog
 
+# [3.1.1](https://github.com/tj-actions/auto-doc/compare/v3.1.0...v3.1.1) - (2023-11-05)
+
+## <!-- 1 -->🐛 Bug Fixes
+
+- **deps:** Update module github.com/spf13/cobra to v1.8.0 ([414c19a](https://github.com/tj-actions/auto-doc/commit/414c19a189f5aacf6c9b3f414f6bd45db10522be))  - (renovate[bot])
+
+## <!-- 25 -->🎨 Format
+
+- Formatted code.
+ ([8100ab4](https://github.com/tj-actions/auto-doc/commit/8100ab46fa9a518f4447fe403c68d0dd5834966e))  - (github-actions[bot])
+
+## <!-- 26 -->🔄 Update
+
+- Update README.md ([2766f50](https://github.com/tj-actions/auto-doc/commit/2766f50eed2583815b0650c9fcc8af097e236ab7))  - (Tonye Jack)
+- Update Makefile ([4c07eab](https://github.com/tj-actions/auto-doc/commit/4c07eab2374edb89197ff860477ec4a166477cfa))  - (Tonye Jack)
+
+## <!-- 30 -->📝 Other
+
+- PR [#517](https://github.com/tj-actions/auto-doc/pull/517): to v3.1.0 ([4aa6a3c](https://github.com/tj-actions/auto-doc/commit/4aa6a3cfc1d74a7e784977aab9bd239ae8abe8b0))  - (repo-ranger[bot])
+
 # [3.1.0](https://github.com/tj-actions/auto-doc/compare/v3.0.1...v3.1.0) - (2023-09-23)
 
 ## <!-- 0 -->🚀 Features
@@ -44,6 +64,7 @@
 
 ## <!-- 7 -->⚙️ Miscellaneous Tasks
 
+- Upgraded from v3.0.1 -> v3.1.0 ([d645fd9](https://github.com/tj-actions/auto-doc/commit/d645fd9c83fe1ac23ac9fe8a4e24d5838994ed51))  - (github-actions[bot])
 - **deps:** Update actions/checkout action to v4 ([#516](https://github.com/tj-actions/auto-doc/issues/516)) ([ae720cd](https://github.com/tj-actions/auto-doc/commit/ae720cd94f0f1549a3305226190816b1ef8746fa))  - (renovate[bot])
 
 # [3.0.1](https://github.com/tj-actions/auto-doc/compare/v3.0.0...v3.0.1) - (2023-09-14)
