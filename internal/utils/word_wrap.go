@@ -22,8 +22,8 @@ import (
 	"unicode"
 )
 
-// WordWrap wraps text at the specified number of columns
-func WordWrap(s string, limit int) string {
+// WordWrap wraps text at the specified number of columns and inserts a line separator
+func WordWrap(s string, limit int, lineSeparator string) string {
 	if strings.TrimSpace(s) == "" || len(strings.Fields(s)) <= limit {
 		return s
 	}
@@ -48,19 +48,19 @@ func WordWrap(s string, limit int) string {
 
 	for len(strSlice) >= 1 {
 		// convert slice/array back to string
-		// but insert <br> at specified limit
+		// but insert line break at specified limit
 		if len(strSlice) < limit {
 			limit = len(strSlice)
 		}
 
-		result = result + strings.Join(strSlice[:limit], " ") + " <br>"
+		result = result + strings.Join(strSlice[:limit], " ") + " " + lineSeparator
 
 		// discard the elements that were copied over to result
 		strSlice = strSlice[limit:]
 	}
 
 	// Trim the last <br> tag
-	result = strings.TrimSuffix(result, "<br>")
+	result = strings.TrimSuffix(result, lineSeparator)
 
 	return result
 }

@@ -29,6 +29,8 @@ var fileName string
 var outputFileName string
 var colMaxWidth string
 var colMaxWords string
+var repository string
+var token string
 
 // action.yml
 var inputColumns []string
@@ -70,6 +72,22 @@ func RootCmdRunE(cmd *cobra.Command, args []string) error {
 		return err
 	}
 
+	useCodeBlocks, err := cmd.Flags().GetBool("useCodeBlocks")
+	// coverage:ignore
+	if err != nil {
+		return err
+	}
+
+	useMajorVersion, err := cmd.Flags().GetBool("useMajorVersion")
+	// coverage:ignore
+	if err != nil {
+		return err
+	}
+
+	if repository == "" && useCodeBlocks {
+		return fmt.Errorf("repository must be specified with --repository")
+	}
+
 	var documentation types.Documentation
 
 	if reusable {
@@ -82,6 +100,16 @@ func RootCmdRunE(cmd *cobra.Command, args []string) error {
 			OutputColumns:      reusableOutputColumns,
 			SecretColumns:      reusableSecretColumns,
 			InputMarkdownLinks: markdownLinks,
+		}
+	} else if useCodeBlocks {
+		documentation = &types.CodeBlock{
+			Repository: repository,
+			Token: token,
+			UseMajorVersion: useMajorVersion,
+			InputFileName:  fileName,
+			OutputFileName: outputFileName,
+			InputColumns:   inputColumns,
+			OutputColumns:      outputColumns,
 		}
 	} else {
 		documentation = &types.Action{
@@ -191,6 +219,28 @@ func RootCmdFlags(cmd *cobra.Command) {
 		"m",
 		false,
 		"Names of inputs, outputs and secrets as markdown links",
+	)
+	cmd.Flags().StringVar(
+		&repository,
+		"repository",
+		"",
+		"Repository name with owner. For example, tj-actions/auto-doc",
+	)
+	cmd.Flags().StringVar(
+		&token,
+		"token",
+		"",
+		"GitHub token or Personal Access Token used to fetch the repository latest tag.",
+	)
+	cmd.Flags().Bool(
+		"useCodeBlocks",
+		false,
+		"Enable code block documentation",
+	)
+	cmd.Flags().Bool(
+		"useMajorVersion",
+		false,
+		"Use the major version of the repository tag",
 	)
 }
 
