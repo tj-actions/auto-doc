@@ -148,6 +148,9 @@ func (c *CodeBlock) RenderOutput() error {
 			if c.Inputs[key].Default != "" {
 				codeBlock.WriteString(fmt.Sprintf("    # Default: %s\n", c.Inputs[key].Default))
 			}
+			if c.Inputs[key].DeprecationMessage != "" {
+				codeBlock.WriteString(fmt.Sprintf("    # Deprecated: %s\n", c.Inputs[key].DeprecationMessage))
+			}
 			codeBlock.WriteString(fmt.Sprintf("    %s: ''\n", inputKey))
 			codeBlock.WriteString("\n")
 		}

@@ -67,6 +67,7 @@
     # which means that the output will not be surrounded 
     # by quotes and special characters will not be escaped. 
     # Default: false
+    # Deprecated: Use `json_unescaped` instead.
     json_raw_format: ''
 
     # Output list of changed files in a JSON formatted 
