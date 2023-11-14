@@ -261,9 +261,9 @@ func renderReusableInputTableOutput(inputs map[string]ReusableInput, inputColumn
 					}
 				case "Description":
 					if inputs[key].DeprecationMessage != "" {
-						row = append(row, utils.WordWrap(fmt.Sprintf("**Deprecated:** %s", inputs[key].Description), maxWords))
+						row = append(row, utils.WordWrap(fmt.Sprintf("**Deprecated:** %s", inputs[key].Description), maxWords, "<br>"))
 					} else {
-						row = append(row, utils.WordWrap(inputs[key].Description, maxWords))
+						row = append(row, utils.WordWrap(inputs[key].Description, maxWords, "<br>"))
 					}
 				default:
 					return inputTableOutput, fmt.Errorf(
@@ -338,7 +338,7 @@ func renderReusableOutputTableOutput(outputs map[string]ReusableOutput, reusable
 				case "Value":
 					row = append(row, utils.FormatValue(outputs[key].Value))
 				case "Description":
-					row = append(row, utils.WordWrap(outputs[key].Description, maxWords))
+					row = append(row, utils.WordWrap(outputs[key].Description, maxWords, "<br>"))
 				default:
 					return outputTableOutput, fmt.Errorf(
 						"unknown outputs column: '%s'. Please specify any of the following columns: %s",
@@ -411,7 +411,7 @@ func renderReusableSecretTableOutput(secrets map[string]ReusableSecret, secretCo
 				case "Required":
 					row = append(row, fmt.Sprintf("%v", secrets[key].Required))
 				case "Description":
-					row = append(row, utils.WordWrap(secrets[key].Description, maxWords))
+					row = append(row, utils.WordWrap(secrets[key].Description, maxWords, "<br>"))
 				default:
 					return secretTableOutput, fmt.Errorf(
 						"unknown secrets column: '%secrets'. Please specify any of the following columns: %secrets",
