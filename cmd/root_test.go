@@ -259,7 +259,7 @@ func Test_rootCommand(t *testing.T) {
 		}
 	})
 
-	t.Run("Update test/README-reusable.md using custom action file and output file", func(t *testing.T) {
+	t.Run("Update test/README-reusable.md using custom reusable workflow file and output file", func(t *testing.T) {
 		cmd := &cobra.Command{Use: "auto-doc", RunE: RootCmdRunE}
 		RootCmdFlags(cmd)
 		b := bytes.NewBufferString("")
@@ -495,6 +495,64 @@ func Test_rootCommand(t *testing.T) {
 		workflowFile := filepath.Join("..", "test", "reusable-workflow-no-inputs-no-outputs.yml")
 		mdFile := filepath.Join("..", "test", "README-workflow-empty-markers.md")
 		cmd.SetArgs([]string{"--filename", workflowFile, "--reusable", "--output", mdFile})
+		err := cmd.Execute()
+		if err != nil {
+			t.Fatal(err)
+		}
+
+		out, err := io.ReadAll(b)
+		if err != nil {
+			t.Fatal(err)
+		}
+
+		exp := fmt.Sprintln("Successfully generated documentation")
+
+		if string(out) != exp {
+			t.Fatalf(
+				"expected \"%s\" got \"%s\"",
+				exp,
+				string(out),
+			)
+		}
+	})
+
+	t.Run("Update test/README-codeBlocks.md using custom action file and output file", func(t *testing.T) {
+		cmd := &cobra.Command{Use: "auto-doc", RunE: RootCmdRunE}
+		RootCmdFlags(cmd)
+		b := bytes.NewBufferString("")
+		cmd.SetOut(b)
+		inputFile := filepath.Join("..", "test", "action.yml")
+		mdFile := filepath.Join("..", "test", "README-codeBlocks.md")
+		cmd.SetArgs([]string{"--filename", inputFile, "--output", mdFile, "--repository", "tj-actions/changed-files", "--useCodeBlocks"})
+		err := cmd.Execute()
+		if err != nil {
+			t.Fatal(err)
+		}
+
+		out, err := io.ReadAll(b)
+		if err != nil {
+			t.Fatal(err)
+		}
+
+		exp := fmt.Sprintln("Successfully generated documentation")
+
+		if string(out) != exp {
+			t.Fatalf(
+				"expected \"%s\" got \"%s\"",
+				exp,
+				string(out),
+			)
+		}
+	})
+
+	t.Run("Update test/README-codeBlocksMajorVersion.md using custom action file and output file", func(t *testing.T) {
+		cmd := &cobra.Command{Use: "auto-doc", RunE: RootCmdRunE}
+		RootCmdFlags(cmd)
+		b := bytes.NewBufferString("")
+		cmd.SetOut(b)
+		inputFile := filepath.Join("..", "test", "action.yml")
+		mdFile := filepath.Join("..", "test", "README-codeBlocksMajorVersion.md")
+		cmd.SetArgs([]string{"--filename", inputFile, "--output", mdFile, "--repository", "tj-actions/changed-files", "--useCodeBlocks", "--useMajorVersion"})
 		err := cmd.Execute()
 		if err != nil {
 			t.Fatal(err)

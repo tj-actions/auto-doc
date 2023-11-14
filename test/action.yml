@@ -112,6 +112,10 @@ inputs:
     description: "Boolean indicating whether to output input, output and secret names as markdown links"
     required: false
     default: "false"
+  token:
+    description: "The GitHub token to use for authentication."
+    required: false
+    default: ${{ github.token }}
 
 outputs:
   added_files:

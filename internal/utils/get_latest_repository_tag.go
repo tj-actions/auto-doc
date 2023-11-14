@@ -36,7 +36,9 @@ func GetLatestRepositoryTag(repository, token string, useMajorVersion bool) (str
 	if err != nil {
 		return "", err
 	}
-	req.Header.Set("Authorization", "token "+token)
+	if token != "" {
+		req.Header.Set("Authorization", "token "+token)
+	}
 
 	client := &http.Client{}
 	resp, err := client.Do(req)

@@ -88,10 +88,6 @@ func RootCmdRunE(cmd *cobra.Command, args []string) error {
 		return fmt.Errorf("repository must be specified with --repository")
 	}
 
-	if token == "" && useCodeBlocks {
-		return fmt.Errorf("token must be specified with --token")
-	}
-
 	var documentation types.Documentation
 
 	if reusable {

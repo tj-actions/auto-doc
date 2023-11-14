@@ -120,6 +120,11 @@ func (c *CodeBlock) RenderOutput() error {
 	// Output this as a code block
 	codeBlock := &strings.Builder{}
 
+	_, err := fmt.Fprintln(codeBlock, internal.AutoDocCodeBlockStart)
+	if err != nil {
+		return err
+	}
+
 	keys := make([]string, 0, len(c.Inputs))
 	for k := range c.Inputs {
 		keys = append(keys, k)
@@ -139,15 +144,22 @@ func (c *CodeBlock) RenderOutput() error {
 
 		for _, key := range keys {
 			inputKey := key
-			codeBlock.WriteString(fmt.Sprintf("    # %s\n", utils.WordWrap(c.Inputs[key].Description, 13, "\n    # ")))
-			codeBlock.WriteString(fmt.Sprintf("    # Default: %s\n", c.Inputs[key].Default))
+			codeBlock.WriteString(fmt.Sprintf("    # %s\n", utils.WordWrap(c.Inputs[key].Description, 9, "\n    # ")))
+			if c.Inputs[key].Default != "" {
+				codeBlock.WriteString(fmt.Sprintf("    # Default: %s\n", c.Inputs[key].Default))
+			}
 			codeBlock.WriteString(fmt.Sprintf("    %s: ''\n", inputKey))
 			codeBlock.WriteString("\n")
 		}
 		codeBlock.WriteString("```\n")
 	}
 
-	err := c.WriteDocumentation(codeBlock)
+	_, err = fmt.Fprintln(codeBlock, internal.AutoDocCodeBlockEnd)
+	if err != nil {
+		return err
+	}
+
+	err = c.WriteDocumentation(codeBlock)
 
 	if err != nil {
 		return err
