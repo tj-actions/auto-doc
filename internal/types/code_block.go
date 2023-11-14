@@ -41,14 +41,14 @@ type CodeBlockInput struct {
 
 // CodeBlock represents the action.yml outputted as a code block
 type CodeBlock struct {
-	Repository		   string
-	Token string
-	UseMajorVersion    bool
-	InputFileName      string
-	OutputFileName     string
-	InputColumns       []string
-	OutputColumns      []string
-	Inputs             map[string]CodeBlockInput  `yaml:"inputs,omitempty"`
+	Repository      string
+	Token           string
+	UseMajorVersion bool
+	InputFileName   string
+	OutputFileName  string
+	InputColumns    []string
+	OutputColumns   []string
+	Inputs          map[string]CodeBlockInput `yaml:"inputs,omitempty"`
 }
 
 // GetData parses the source yaml file

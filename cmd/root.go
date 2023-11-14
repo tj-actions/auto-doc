@@ -103,13 +103,13 @@ func RootCmdRunE(cmd *cobra.Command, args []string) error {
 		}
 	} else if useCodeBlocks {
 		documentation = &types.CodeBlock{
-			Repository: repository,
-			Token: token,
+			Repository:      repository,
+			Token:           token,
 			UseMajorVersion: useMajorVersion,
-			InputFileName:  fileName,
-			OutputFileName: outputFileName,
-			InputColumns:   inputColumns,
-			OutputColumns:      outputColumns,
+			InputFileName:   fileName,
+			OutputFileName:  outputFileName,
+			InputColumns:    inputColumns,
+			OutputColumns:   outputColumns,
 		}
 	} else {
 		documentation = &types.Action{
