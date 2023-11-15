@@ -132,6 +132,7 @@ jobs:
 
       - name: Test action
         uses: ./
+        if: github.event_name == 'push'
 
       - name: Run build
         run: make build
