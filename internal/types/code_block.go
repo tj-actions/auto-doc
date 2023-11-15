@@ -165,7 +165,7 @@ func renderCodeBlockActionInputs(inputs map[string]ActionInput, repository, tag 
 		for _, key := range keys {
 			codeBlock.WriteString(fmt.Sprintf("    # %s\n", utils.WordWrap(inputs[key].Description, 9, "\n    # ")))
 			if inputs[key].Default != "" {
-				codeBlock.WriteString(fmt.Sprintf("    # Default: %s\n", inputs[key].Default))
+				codeBlock.WriteString(fmt.Sprintf("    # Default: %s\n", utils.FormatValue(inputs[key].Default)))
 			}
 			if inputs[key].DeprecationMessage != "" {
 				codeBlock.WriteString(fmt.Sprintf("    # Deprecated: %s\n", inputs[key].DeprecationMessage))
