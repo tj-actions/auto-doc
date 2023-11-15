@@ -1,6 +1,17 @@
 # Changelog
 
-# [3.1.1](https://github.com/tj-actions/auto-doc/compare/v3.1.0...v3.1.1) - (2023-11-05)
+# [unreleased]
+
+## <!-- 26 -->🔄 Update
+
+- Updated README.
+ ([3381572](https://github.com/tj-actions/auto-doc/commit/3381572e3a668c264d58cba3e6e0c7cb80f9492a))  - (github-actions[bot])
+
+# [3.2.0](https://github.com/tj-actions/auto-doc/compare/v3.1.0...v3.2.0) - (2023-11-15)
+
+## <!-- 0 -->🚀 Features
+
+- Add support for code documentation ([#520](https://github.com/tj-actions/auto-doc/issues/520)) ([65de8d3](https://github.com/tj-actions/auto-doc/commit/65de8d3860ba79646a62ff5e7bbaa9feb05e2242))  - (Tonye Jack)
 
 ## <!-- 1 -->🐛 Bug Fixes
 
@@ -13,12 +24,25 @@
 
 ## <!-- 26 -->🔄 Update
 
+- Updated README.
+ ([69ed344](https://github.com/tj-actions/auto-doc/commit/69ed344e9e469ee5a2ace6057cf2bb71828a41e2))  - (github-actions[bot])
+- Update test.yml ([998e442](https://github.com/tj-actions/auto-doc/commit/998e4429690dd85ccea19464339e2356e9ada758))  - (Tonye Jack)
 - Update README.md ([2766f50](https://github.com/tj-actions/auto-doc/commit/2766f50eed2583815b0650c9fcc8af097e236ab7))  - (Tonye Jack)
 - Update Makefile ([4c07eab](https://github.com/tj-actions/auto-doc/commit/4c07eab2374edb89197ff860477ec4a166477cfa))  - (Tonye Jack)
 
 ## <!-- 30 -->📝 Other
 
 - PR [#517](https://github.com/tj-actions/auto-doc/pull/517): to v3.1.0 ([4aa6a3c](https://github.com/tj-actions/auto-doc/commit/4aa6a3cfc1d74a7e784977aab9bd239ae8abe8b0))  - (repo-ranger[bot])
+
+## <!-- 7 -->⚙️ Miscellaneous Tasks
+
+- Updated coverage badge. ([e2aaa74](https://github.com/tj-actions/auto-doc/commit/e2aaa749f3ae2712a5000bed14a78a27fd15e82a))  - (GitHub Action)
+
+## <!-- 9 -->⬆️ Upgrades
+
+- Upgraded to v3.1.1 ([#519](https://github.com/tj-actions/auto-doc/issues/519))
+
+Co-authored-by: github-actions[bot] <github-actions[bot]@users.noreply.github.com> ([37924e0](https://github.com/tj-actions/auto-doc/commit/37924e092ba9acad9a8c9420eef6e6f2a4c3ff07))  - (tj-actions[bot])
 
 # [3.1.0](https://github.com/tj-actions/auto-doc/compare/v3.0.1...v3.1.0) - (2023-09-23)
 
