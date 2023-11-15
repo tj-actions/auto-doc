@@ -19,7 +19,7 @@ inputs:
     required: false
     default: README.md
   bin_path:
-    description: 'Path to the auto-doc binary'
+    description: 'Optionally pass a path to the auto-doc binary'
     required: false
   input_columns:
     description: 'List of action.yml **input** columns names to display, default (display all columns)'
