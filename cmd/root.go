@@ -159,74 +159,74 @@ func RootCmdFlags(cmd *cobra.Command) {
 		"filename",
 		"f",
 		"",
-		"config file",
+		"config file.",
 	)
 	cmd.Flags().BoolP(
 		"reusable",
 		"r",
 		false,
-		"A reusable workflow",
+		"A reusable workflow.",
 	)
 	cmd.Flags().StringVarP(
 		&outputFileName,
 		"output",
 		"o",
 		"README.md",
-		"Output file",
+		"Output file.",
 	)
 	cmd.Flags().StringVar(
 		&colMaxWidth,
 		"colMaxWidth",
 		"1000",
-		"Max width of a column",
+		"Max width of a column.",
 	)
 	cmd.Flags().StringVar(
 		&colMaxWords,
 		"colMaxWords",
 		"6",
-		"Max number of words per line in a column",
+		"Max number of words per line in a column.",
 	)
 	cmd.Flags().StringArrayVar(
 		&inputColumns,
 		"inputColumns",
 		internal.DefaultActionInputColumns,
-		"list of input column names",
+		"list of input column names.",
 	)
 	cmd.Flags().StringArrayVar(
 		&outputColumns,
 		"outputColumns",
 		internal.DefaultActionOutputColumns,
-		"list of output column names",
+		"list of output column names.",
 	)
 	cmd.Flags().StringArrayVar(
 		&reusableInputColumns,
 		"reusableInputColumns",
 		internal.DefaultReusableInputColumns,
-		"list of reusable input column names",
+		"list of reusable input column names.",
 	)
 	cmd.Flags().StringArrayVar(
 		&reusableOutputColumns,
 		"reusableOutputColumns",
 		internal.DefaultReusableOutputColumns,
-		"list of reusable output column names",
+		"list of reusable output column names.",
 	)
 	cmd.Flags().StringArrayVar(
 		&reusableSecretColumns,
 		"reusableSecretColumns",
 		internal.DefaultReusableSecretColumns,
-		"list of reusable secrets column names",
+		"list of reusable secrets column names.",
 	)
 	cmd.Flags().BoolP(
 		"markdownLinks",
 		"m",
 		false,
-		"Names of inputs, outputs and secrets as markdown links",
+		"Names of inputs, outputs and secrets as markdown links.",
 	)
 	cmd.Flags().StringVar(
 		&repository,
 		"repository",
 		"",
-		"Repository name with owner. For example, tj-actions/auto-doc",
+		"Repository name with owner. Example: tj-actions/auto-doc",
 	)
 	cmd.Flags().StringVar(
 		&token,
@@ -237,12 +237,12 @@ func RootCmdFlags(cmd *cobra.Command) {
 	cmd.Flags().Bool(
 		"useCodeBlocks",
 		false,
-		"Enable code block documentation",
+		"Enable code block documentation.",
 	)
 	cmd.Flags().Bool(
 		"useMajorVersion",
 		false,
-		"Use the major version of the repository tag",
+		"Use the major version of the repository tag. Example: v1.0.0 -> v1",
 	)
 }
 

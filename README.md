@@ -156,22 +156,22 @@ Automatically generate documentation for your custom github action or reusable w
 
 ### Flags
 
-    --colMaxWidth string                  Max width of a column (default "1000")
-    --colMaxWords string                  Max number of words per line in a column (default "6")
-    -f, --filename string                 config file
+        --colMaxWidth string                  Max width of a column. (default "1000")
+        --colMaxWords string                  Max number of words per line in a column. (default "6")
+    -f, --filename string                 config file.
     -h, --help                            help for auto-doc
-    --inputColumns stringArray            list of input column names (default [Input,Type,Required,Default,Description])
-    -m, --markdownLinks                   Names of inputs, outputs and secrets as markdown links
-    -o, --output string                   Output file (default "README.md")
-    --outputColumns stringArray           list of output column names (default [Output,Type,Description])
-    --repository string                   Repository name with owner. For example, tj-actions/auto-doc
-    -r, --reusable                        A reusable workflow
-    --reusableInputColumns stringArray    list of reusable input column names (default [Input,Type,Required,Default,Description])
-    --reusableOutputColumns stringArray   list of reusable output column names (default [Output,Value,Description])
-    --reusableSecretColumns stringArray   list of reusable secrets column names (default [Secret,Required,Description])
-    --token string                        GitHub token or Personal Access Token used to fetch the repository latest tag.
-    --useCodeBlocks                       Enable code block documentation
-    --useMajorVersion                     Use the major version of the repository tag
+        --inputColumns stringArray            list of input column names. (default [Input,Type,Required,Default,Description])
+    -m, --markdownLinks                   Names of inputs, outputs and secrets as markdown links.
+    -o, --output string                   Output file. (default "README.md")
+        --outputColumns stringArray           list of output column names. (default [Output,Type,Description])
+        --repository string                   Repository name with owner. Example: tj-actions/auto-doc
+    -r, --reusable                        A reusable workflow.
+        --reusableInputColumns stringArray    list of reusable input column names. (default [Input,Type,Required,Default,Description])
+        --reusableOutputColumns stringArray   list of reusable output column names. (default [Output,Value,Description])
+        --reusableSecretColumns stringArray   list of reusable secrets column names. (default [Secret,Required,Description])
+        --token string                        GitHub token or Personal Access Token used to fetch the repository latest tag.
+        --useCodeBlocks                       Enable code block documentation.
+        --useMajorVersion                     Use the major version of the repository tag. Example: v1.0.0 -> v                 Use the major version of the repository tag. e.g v1.0.0 -> v1
 
 *   Free software: [Apache License 2.0](LICENSE)
 
