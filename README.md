@@ -64,21 +64,25 @@ and/or `Description` (only supported by actions)
 
 <!-- AUTO-DOC-INPUT:START - Do not remove or modify this section -->
 
-|          INPUT          |  TYPE  | REQUIRED |    DEFAULT     |                                           DESCRIPTION                                            |
-|-------------------------|--------|----------|----------------|--------------------------------------------------------------------------------------------------|
-|        bin\_path         | string |  false   |                |                                   Path to the auto-doc binary                                    |
-|      col\_max\_width      | string |  false   |    `"1000"`    |                                      Max width of a column                                       |
-|      col\_max\_words      | string |  false   |     `"5"`      |                          Max number of words per line <br>in a column                            |
-|        filename         | string |  false   | `"action.yml"` |                                      Path to the yaml file                                       |
-|      input\_columns      | string |  false   |                |    List of action.yml **input** columns names <br>to display, default (display all columns)      |
-|     markdown\_links      | string |  false   |    `"true"`    |  Boolean indicating whether to output input, <br>output and secret names as markdown <br>links   |
-|         output          | string |  false   | `"README.md"`  |                                     Path to the output file                                      |
-|     output\_columns      | string |  false   |                |    List of action.yml **output** column names <br>to display, default (display all columns)      |
-|        reusable         | string |  false   |                |                 Boolean Indicating whether the file is <br>a reusable workflow                   |
-| reusable\_input\_columns  | string |  false   |                | List of reusable workflow **input** column <br>names to display, default (display all columns)   |
-| reusable\_output\_columns | string |  false   |                | List of reusable workflow **output** column <br>names to display, default (display all columns)  |
-| reusable\_secret\_columns | string |  false   |                | List of reusable workflow **secret** column <br>names to display, default (display all columns)  |
-|         version         | string |  false   |                |                                    The version number to run                                     |
+|          INPUT          |  TYPE  | REQUIRED |           DEFAULT            |                                           DESCRIPTION                                            |
+|-------------------------|--------|----------|------------------------------|--------------------------------------------------------------------------------------------------|
+|        bin\_path         | string |  false   |                              |                                   Path to the auto-doc binary                                    |
+|      col\_max\_width      | string |  false   |           `"1000"`           |                                      Max width of a column                                       |
+|      col\_max\_words      | string |  false   |            `"5"`             |                          Max number of words per line <br>in a column                            |
+|        filename         | string |  false   |        `"action.yml"`        |                                      Path to the yaml file                                       |
+|      input\_columns      | string |  false   |                              |    List of action.yml **input** columns names <br>to display, default (display all columns)      |
+|     markdown\_links      | string |  false   |           `"true"`           |  Boolean indicating whether to output input, <br>output and secret names as markdown <br>links   |
+|         output          | string |  false   |        `"README.md"`         |                                     Path to the output file                                      |
+|     output\_columns      | string |  false   |                              |    List of action.yml **output** column names <br>to display, default (display all columns)      |
+|       repository        | string |  false   | `"${{ github.repository }}"` |                Repository name with owner. For example, <br>tj-actions/auto-doc                  |
+|        reusable         | string |  false   |                              |                 Boolean Indicating whether the file is <br>a reusable workflow                   |
+| reusable\_input\_columns  | string |  false   |                              | List of reusable workflow **input** column <br>names to display, default (display all columns)   |
+| reusable\_output\_columns | string |  false   |                              | List of reusable workflow **output** column <br>names to display, default (display all columns)  |
+| reusable\_secret\_columns | string |  false   |                              | List of reusable workflow **secret** column <br>names to display, default (display all columns)  |
+|          token          | string |  false   |   `"${{ github.token }}"`    |     GitHub token or Personal Access Token <br>used to fetch the repository latest <br>tag.       |
+|     use\_code\_blocks     | string |  false   |          `"false"`           |                                 Enable code block documentation                                  |
+|    use\_major\_version    | string |  false   |          `"false"`           |                Use the major version of the <br>repository tag e.g v1.0.0 -> v1                  |
+|         version         | string |  false   |                              |                                    The version number to run                                     |
 
 <!-- AUTO-DOC-INPUT:END -->
 
@@ -156,18 +160,22 @@ Automatically generate documentation for your custom github action or reusable w
 
 ### Flags
 
-    --colMaxWidth string                  Max width of a column (default "1000")
-    --colMaxWords string                  Max number of words per line in a column (default "6")
-    -f, --filename string                 config file
+        --colMaxWidth string                  Max width of a column. (default "1000")
+        --colMaxWords string                  Max number of words per line in a column. (default "6")
+    -f, --filename string                 config file.
     -h, --help                            help for auto-doc
-    --inputColumns stringArray            list of input column names (default [Input,Type,Required,Default,Description])
-    -m, --markdownLinks                   Names of inputs, outputs and secrets as markdown links
-    -o, --output string                   Output file (default "README.md")
-    --outputColumns stringArray           list of output column names (default [Output,Type,Description])
-    -r, --reusable                        A reusable workflow
-    --reusableInputColumns stringArray    list of reusable input column names (default [Input,Type,Required,Default,Description])
-    --reusableOutputColumns stringArray   list of reusable output column names (default [Output,Value,Description])
-    --reusableSecretColumns stringArray   list of reusable secrets column names (default [Secret,Required,Description])
+        --inputColumns stringArray            list of input column names. (default [Input,Type,Required,Default,Description])
+    -m, --markdownLinks                   Names of inputs, outputs and secrets as markdown links.
+    -o, --output string                   Output file. (default "README.md")
+        --outputColumns stringArray           list of output column names. (default [Output,Type,Description])
+        --repository string                   Repository name with owner. Example: tj-actions/auto-doc
+    -r, --reusable                        A reusable workflow.
+        --reusableInputColumns stringArray    list of reusable input column names. (default [Input,Type,Required,Default,Description])
+        --reusableOutputColumns stringArray   list of reusable output column names. (default [Output,Value,Description])
+        --reusableSecretColumns stringArray   list of reusable secrets column names. (default [Secret,Required,Description])
+        --token string                        GitHub token or Personal Access Token used to fetch the repository latest tag.
+        --useCodeBlocks                       Enable code block documentation.
+        --useMajorVersion                     Use the major version of the repository tag. Example: v1.0.0 -> v                 Use the major version of the repository tag. e.g v1.0.0 -> v1
 
 *   Free software: [Apache License 2.0](LICENSE)
 

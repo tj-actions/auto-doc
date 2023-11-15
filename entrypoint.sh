@@ -68,6 +68,26 @@ if [[ "$INPUT_MARKDOWN_LINKS" == "true" ]]; then
   EXTRA_ARGS="${EXTRA_ARGS} --markdownLinks"
 fi
 
+# repository
+if [[ -n "$INPUT_REPOSITORY" ]]; then
+  EXTRA_ARGS="${EXTRA_ARGS} --repository=${INPUT_REPOSITORY}"
+fi
+
+# token
+if [[ -n "$INPUT_TOKEN" ]]; then
+  EXTRA_ARGS="${EXTRA_ARGS} --token=${INPUT_TOKEN}"
+fi
+
+# use_code_blocks
+if [[ "$INPUT_USE_CODE_BLOCKS" == "true" ]]; then
+  EXTRA_ARGS="${EXTRA_ARGS} --useCodeBlocks"
+fi
+
+# use_major_version
+if [[ "$INPUT_USE_MAJOR_VERSION" == "true" ]]; then
+  EXTRA_ARGS="${EXTRA_ARGS} --useMajorVersion"
+fi
+
 echo "::debug::Generating documentation using ${BIN_PATH}..."
 echo "::debug::Extra args: ${EXTRA_ARGS}"
 

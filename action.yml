@@ -46,6 +46,23 @@ inputs:
     description: 'Boolean indicating whether to output input, output and secret names as markdown links'
     required: false
     default: 'true'
+  repository:
+    description: 'Repository name with owner. For example, tj-actions/auto-doc'
+    required: false
+    default: ${{ github.repository }}
+  token:
+    description: 'GitHub token or Personal Access Token used to fetch the repository latest tag.'
+    required: false
+    default: ${{ github.token }}
+  use_code_blocks:
+    description: 'Enable code block documentation'
+    required: false
+    default: 'false'
+  use_major_version:
+    description: 'Use the major version of the repository tag e.g v1.0.0 -> v1'
+    required: false
+    default: 'false'
+
 
 runs:
   using: 'composite'
@@ -79,6 +96,10 @@ runs:
         INPUT_REUSABLE: ${{ inputs.reusable }}
         INPUT_VERSION: ${{ inputs.version }}
         INPUT_MARKDOWN_LINKS: ${{ inputs.markdown_links }}
+        INPUT_REPOSITORY: ${{ inputs.repository }}
+        INPUT_TOKEN: ${{ inputs.token }}
+        INPUT_USE_CODE_BLOCKS: ${{ inputs.use_code_blocks }}
+        INPUT_USE_MAJOR_VERSION: ${{ inputs.use_major_version }}
 
 branding:
   icon: file-text

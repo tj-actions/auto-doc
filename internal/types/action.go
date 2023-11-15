@@ -267,9 +267,9 @@ func renderActionInputTableOutput(inputs map[string]ActionInput, inputColumns []
 					row = append(row, utils.FormatValue(inputs[key].Default))
 				case "Description":
 					if inputs[key].DeprecationMessage != "" {
-						row = append(row, utils.WordWrap(fmt.Sprintf("**Deprecated:** %s", inputs[key].Description), maxWords))
+						row = append(row, utils.WordWrap(fmt.Sprintf("**Deprecated:** %s", inputs[key].Description), maxWords, "<br>"))
 					} else {
-						row = append(row, utils.WordWrap(inputs[key].Description, maxWords))
+						row = append(row, utils.WordWrap(inputs[key].Description, maxWords, "<br>"))
 					}
 				default:
 					return inputTableOutput, fmt.Errorf(
@@ -308,7 +308,6 @@ func renderActionInputTableOutput(inputs map[string]ActionInput, inputColumns []
 }
 
 // renderActionOutputTableOutput renders the action output table
-
 func renderActionOutputTableOutput(outputs map[string]ActionOutput, outputColumns []string, markdownLinks bool, maxWidth int, maxWords int) (*strings.Builder, error) {
 	outputTableOutput := &strings.Builder{}
 
@@ -346,7 +345,7 @@ func renderActionOutputTableOutput(outputs map[string]ActionOutput, outputColumn
 				case "Type":
 					row = append(row, "string")
 				case "Description":
-					row = append(row, utils.WordWrap(outputs[key].Description, maxWords))
+					row = append(row, utils.WordWrap(outputs[key].Description, maxWords, "<br>"))
 				default:
 					return outputTableOutput, fmt.Errorf(
 						"unknown outputs column: '%s'. Please specify any of the following columns: %s",
@@ -369,7 +368,7 @@ func renderActionOutputTableOutput(outputs map[string]ActionOutput, outputColumn
 			return outputTableOutput, err
 		}
 	} else {
-		_, err := fmt.Fprintln(outputTableOutput, internal.NoOutputsMessage)
+		_, err = fmt.Fprintln(outputTableOutput, internal.NoOutputsMessage)
 		if err != nil {
 			return outputTableOutput, err
 		}
@@ -379,5 +378,6 @@ func renderActionOutputTableOutput(outputs map[string]ActionOutput, outputColumn
 	if err != nil {
 		return outputTableOutput, err
 	}
+
 	return outputTableOutput, nil
 }
