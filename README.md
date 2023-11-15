@@ -64,21 +64,25 @@ and/or `Description` (only supported by actions)
 
 <!-- AUTO-DOC-INPUT:START - Do not remove or modify this section -->
 
-|          INPUT          |  TYPE  | REQUIRED |    DEFAULT     |                                           DESCRIPTION                                            |
-|-------------------------|--------|----------|----------------|--------------------------------------------------------------------------------------------------|
-|        bin\_path         | string |  false   |                |                                   Path to the auto-doc binary                                    |
-|      col\_max\_width      | string |  false   |    `"1000"`    |                                      Max width of a column                                       |
-|      col\_max\_words      | string |  false   |     `"5"`      |                          Max number of words per line <br>in a column                            |
-|        filename         | string |  false   | `"action.yml"` |                                      Path to the yaml file                                       |
-|      input\_columns      | string |  false   |                |    List of action.yml **input** columns names <br>to display, default (display all columns)      |
-|     markdown\_links      | string |  false   |    `"true"`    |  Boolean indicating whether to output input, <br>output and secret names as markdown <br>links   |
-|         output          | string |  false   | `"README.md"`  |                                     Path to the output file                                      |
-|     output\_columns      | string |  false   |                |    List of action.yml **output** column names <br>to display, default (display all columns)      |
-|        reusable         | string |  false   |                |                 Boolean Indicating whether the file is <br>a reusable workflow                   |
-| reusable\_input\_columns  | string |  false   |                | List of reusable workflow **input** column <br>names to display, default (display all columns)   |
-| reusable\_output\_columns | string |  false   |                | List of reusable workflow **output** column <br>names to display, default (display all columns)  |
-| reusable\_secret\_columns | string |  false   |                | List of reusable workflow **secret** column <br>names to display, default (display all columns)  |
-|         version         | string |  false   |                |                                    The version number to run                                     |
+|          INPUT          |  TYPE  | REQUIRED |           DEFAULT            |                                           DESCRIPTION                                            |
+|-------------------------|--------|----------|------------------------------|--------------------------------------------------------------------------------------------------|
+|        bin\_path         | string |  false   |                              |                                   Path to the auto-doc binary                                    |
+|      col\_max\_width      | string |  false   |           `"1000"`           |                                      Max width of a column                                       |
+|      col\_max\_words      | string |  false   |            `"5"`             |                          Max number of words per line <br>in a column                            |
+|        filename         | string |  false   |        `"action.yml"`        |                                      Path to the yaml file                                       |
+|      input\_columns      | string |  false   |                              |    List of action.yml **input** columns names <br>to display, default (display all columns)      |
+|     markdown\_links      | string |  false   |           `"true"`           |  Boolean indicating whether to output input, <br>output and secret names as markdown <br>links   |
+|         output          | string |  false   |        `"README.md"`         |                                     Path to the output file                                      |
+|     output\_columns      | string |  false   |                              |    List of action.yml **output** column names <br>to display, default (display all columns)      |
+|       repository        | string |  false   | `"${{ github.repository }}"` |                Repository name with owner. For example, <br>tj-actions/auto-doc                  |
+|        reusable         | string |  false   |                              |                 Boolean Indicating whether the file is <br>a reusable workflow                   |
+| reusable\_input\_columns  | string |  false   |                              | List of reusable workflow **input** column <br>names to display, default (display all columns)   |
+| reusable\_output\_columns | string |  false   |                              | List of reusable workflow **output** column <br>names to display, default (display all columns)  |
+| reusable\_secret\_columns | string |  false   |                              | List of reusable workflow **secret** column <br>names to display, default (display all columns)  |
+|          token          | string |  false   |   `"${{ github.token }}"`    |     GitHub token or Personal Access Token <br>used to fetch the repository latest <br>tag.       |
+|     use\_code\_blocks     | string |  false   |          `"false"`           |                                 Enable code block documentation                                  |
+|    use\_major\_version    | string |  false   |          `"false"`           |                Use the major version of the <br>repository tag e.g v1.0.0 -> v1                  |
+|         version         | string |  false   |                              |                                    The version number to run                                     |
 
 <!-- AUTO-DOC-INPUT:END -->
 
