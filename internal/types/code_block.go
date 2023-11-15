@@ -34,17 +34,17 @@ import (
 
 // CodeBlock represents the action.yml outputted as a code block
 type CodeBlock struct {
-	Repository      string
-	Token           string
-	UseMajorVersion bool
+	Repository         string
+	Token              string
+	UseMajorVersion    bool
 	OutputColumns      []string
 	InputMarkdownLinks bool
 	ColMaxWidth        string
 	ColMaxWords        string
-	InputFileName   string
-	OutputFileName  string
-	Inputs          map[string]ActionInput `yaml:"inputs,omitempty"`
-	Outputs 		map[string]ActionOutput `yaml:"outputs,omitempty"`
+	InputFileName      string
+	OutputFileName     string
+	Inputs             map[string]ActionInput  `yaml:"inputs,omitempty"`
+	Outputs            map[string]ActionOutput `yaml:"outputs,omitempty"`
 }
 
 // GetData parses the source yaml file
@@ -174,7 +174,7 @@ func renderCodeBlockActionInputs(inputs map[string]ActionInput, repository, tag 
 			codeBlock.WriteString("\n")
 		}
 		codeBlock.WriteString("```\n")
-	}  else {
+	} else {
 		_, err := fmt.Fprintln(codeBlock, internal.NoInputsMessage)
 		if err != nil {
 			return codeBlock, err
@@ -201,7 +201,7 @@ func (c *CodeBlock) RenderOutput() error {
 	if err != nil {
 		return err
 	}
-	
+
 	tag, err := c.getLatestTagForRepository()
 	// coverage:ignore
 	if err != nil {

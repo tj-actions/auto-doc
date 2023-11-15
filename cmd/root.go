@@ -103,11 +103,11 @@ func RootCmdRunE(cmd *cobra.Command, args []string) error {
 		}
 	} else if useCodeBlocks {
 		documentation = &types.CodeBlock{
-			Repository:      repository,
-			Token:           token,
-			UseMajorVersion: useMajorVersion,
-			InputFileName:   fileName,
-			OutputFileName:  outputFileName,
+			Repository:         repository,
+			Token:              token,
+			UseMajorVersion:    useMajorVersion,
+			InputFileName:      fileName,
+			OutputFileName:     outputFileName,
 			OutputColumns:      outputColumns,
 			ColMaxWidth:        colMaxWidth,
 			ColMaxWords:        colMaxWords,
