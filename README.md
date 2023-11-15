@@ -68,7 +68,7 @@ and/or `Description` (only supported by actions)
 - uses: tj-actions/auto-doc@v3
   id: auto-doc
   with:
-    # Path to the auto-doc binary
+    # Optionally pass a path to the auto-doc binary
     bin_path: ''
 
     # Max width of a column
