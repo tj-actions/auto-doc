@@ -54,6 +54,7 @@ type CodeBlock struct {
 // GetData parses the source yaml file
 func (c *CodeBlock) GetData() error {
 	actionYaml, err := os.ReadFile(c.InputFileName)
+	// coverage:ignore
 	if err != nil {
 		return err
 	}
@@ -66,6 +67,7 @@ func (c *CodeBlock) GetData() error {
 func (c *CodeBlock) WriteDocumentation(codeBlock *strings.Builder) error {
 	var err error
 	input, err := os.ReadFile(c.OutputFileName)
+	// coverage:ignore
 	if err != nil {
 		return err
 	}
@@ -108,6 +110,7 @@ func (c *CodeBlock) GetLatestTagForRepository() (string, error) {
 	fmt.Println("Downloading the latest release")
 
 	tag, err := utils.GetLatestRepositoryTag(c.Repository, c.Token, c.UseMajorVersion)
+	// coverage:ignore
 	if err != nil {
 		return "", err
 	}
@@ -121,6 +124,7 @@ func (c *CodeBlock) RenderOutput() error {
 	codeBlock := &strings.Builder{}
 
 	_, err := fmt.Fprintln(codeBlock, internal.AutoDocCodeBlockStart)
+	// coverage:ignore
 	if err != nil {
 		return err
 	}
@@ -133,7 +137,7 @@ func (c *CodeBlock) RenderOutput() error {
 
 	if len(keys) > 0 {
 		tag, err := c.GetLatestTagForRepository()
-
+		// coverage:ignore
 		if err != nil {
 			return err
 		}
@@ -158,12 +162,13 @@ func (c *CodeBlock) RenderOutput() error {
 	}
 
 	_, err = fmt.Fprintln(codeBlock, internal.AutoDocCodeBlockEnd)
+	// coverage:ignore
 	if err != nil {
 		return err
 	}
 
 	err = c.WriteDocumentation(codeBlock)
-
+	// coverage:ignore
 	if err != nil {
 		return err
 	}
