@@ -1,8 +1,9 @@
 ## Inputs
 
-<!-- AUTO-DOC:START - Do not remove or modify this section -->
+<!-- AUTO-DOC-INPUT:START - Do not remove or modify this section -->
 ```yaml
 - uses: tj-actions/changed-files@v40
+  id: changed-files
   with:
     # Specify a different base commit SHA used for comparing 
     # changes 
@@ -139,4 +140,4 @@
     write_output_files: ''
 
 ```
-<!-- AUTO-DOC:END -->
+<!-- AUTO-DOC-INPUT:END -->

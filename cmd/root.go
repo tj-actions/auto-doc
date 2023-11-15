@@ -108,8 +108,10 @@ func RootCmdRunE(cmd *cobra.Command, args []string) error {
 			UseMajorVersion: useMajorVersion,
 			InputFileName:   fileName,
 			OutputFileName:  outputFileName,
-			InputColumns:    inputColumns,
-			OutputColumns:   outputColumns,
+			OutputColumns:      outputColumns,
+			ColMaxWidth:        colMaxWidth,
+			ColMaxWords:        colMaxWords,
+			InputMarkdownLinks: markdownLinks,
 		}
 	} else {
 		documentation = &types.Action{

@@ -36,12 +36,6 @@ const AutoDocStart = "<!-- AUTO-DOC-%s:START - Do not remove or modify this sect
 // AutoDocEnd placeholder that represents the end of the input table
 const AutoDocEnd = "<!-- AUTO-DOC-%s:END -->"
 
-// AutoDocCodeBlockStart placeholder that represents the start of the code block
-const AutoDocCodeBlockStart = "<!-- AUTO-DOC:START - Do not remove or modify this section -->"
-
-// AutoDocCodeBlockEnd placeholder that represents the end of the code block
-const AutoDocCodeBlockEnd = "<!-- AUTO-DOC:END -->"
-
 // PipeSeparator represents the separator used for the distinguishing between columns
 const PipeSeparator = "|"
 

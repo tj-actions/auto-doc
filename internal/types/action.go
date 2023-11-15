@@ -308,7 +308,6 @@ func renderActionInputTableOutput(inputs map[string]ActionInput, inputColumns []
 }
 
 // renderActionOutputTableOutput renders the action output table
-
 func renderActionOutputTableOutput(outputs map[string]ActionOutput, outputColumns []string, markdownLinks bool, maxWidth int, maxWords int) (*strings.Builder, error) {
 	outputTableOutput := &strings.Builder{}
 
@@ -369,7 +368,7 @@ func renderActionOutputTableOutput(outputs map[string]ActionOutput, outputColumn
 			return outputTableOutput, err
 		}
 	} else {
-		_, err := fmt.Fprintln(outputTableOutput, internal.NoOutputsMessage)
+		_, err = fmt.Fprintln(outputTableOutput, internal.NoOutputsMessage)
 		if err != nil {
 			return outputTableOutput, err
 		}
@@ -379,5 +378,6 @@ func renderActionOutputTableOutput(outputs map[string]ActionOutput, outputColumn
 	if err != nil {
 		return outputTableOutput, err
 	}
+
 	return outputTableOutput, nil
 }
