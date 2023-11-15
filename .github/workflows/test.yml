@@ -141,6 +141,8 @@ jobs:
         uses: ./
         with:
           bin_path: ./bin/auto_doc
+          use_code_blocks: true
+          use_major_version: true
 
       - name: Test action with bin_path and reusable
         uses: ./
@@ -155,9 +157,6 @@ jobs:
 
       - name: Run auto-doc using the test directory
         run: make test
-
-      - name: Run auto-doc using the top level directory
-        run: make run
 
       - name: Format markdown
         uses: tj-actions/remark@v3
