@@ -1,11 +1,32 @@
 # Changelog
 
-# [unreleased]
+# [3.2.1](https://github.com/tj-actions/auto-doc/compare/v3.2.0...v3.2.1) - (2023-11-15)
+
+## <!-- 1 -->🐛 Bug Fixes
+
+- Properly escape default values ([#523](https://github.com/tj-actions/auto-doc/issues/523)) ([c878815](https://github.com/tj-actions/auto-doc/commit/c8788154f9f0488500005213bc9b4efd64d815ba))  - (Tonye Jack)
 
 ## <!-- 26 -->🔄 Update
 
 - Updated README.
- ([3381572](https://github.com/tj-actions/auto-doc/commit/3381572e3a668c264d58cba3e6e0c7cb80f9492a))  - (github-actions[bot])
+ ([b3db267](https://github.com/tj-actions/auto-doc/commit/b3db267a6197925680627a6b873208b605212f77))  - (github-actions[bot])
+- Update action.yml ([9e297d2](https://github.com/tj-actions/auto-doc/commit/9e297d2578b3dc5524a3a50c35eae6281dbe3818))  - (Tonye Jack)
+- Updated README.
+ ([487992d](https://github.com/tj-actions/auto-doc/commit/487992dc828bb147c6362e953bf3d031b3fe3546))  - (github-actions[bot])
+- Updated README.
+ ([8b58758](https://github.com/tj-actions/auto-doc/commit/8b58758c09af91a0b70e94e56a24c28255e61122))  - (github-actions[bot])
+- Updated README.
+ ([51a78da](https://github.com/tj-actions/auto-doc/commit/51a78da80a2a0b2e20ca7caceb53e861e6df9beb))  - (github-actions[bot])
+
+## <!-- 30 -->📝 Other
+
+- PR [#522](https://github.com/tj-actions/auto-doc/pull/522): update test ([a2f6a05](https://github.com/tj-actions/auto-doc/commit/a2f6a052e3aca31eb9d4ab06498c85ada8d26664))  - (repo-ranger[bot])
+- Merge branch 'main' into chore/update-test ([48ee04f](https://github.com/tj-actions/auto-doc/commit/48ee04f3eabb2c82e6f0835e80feb53f5cf8848c))  - (repo-ranger[bot])
+- PR [#521](https://github.com/tj-actions/auto-doc/pull/521): to v3.2.0 ([b003727](https://github.com/tj-actions/auto-doc/commit/b00372773346fe5f062bd0f14f8bd475abf6cb69))  - (repo-ranger[bot])
+
+## <!-- 7 -->⚙️ Miscellaneous Tasks
+
+- Update test ([3d78f99](https://github.com/tj-actions/auto-doc/commit/3d78f99ce66007362cbdb691ddd3c6690c592f38))  - (Tonye Jack)
 
 # [3.2.0](https://github.com/tj-actions/auto-doc/compare/v3.1.0...v3.2.0) - (2023-11-15)
 
@@ -25,6 +46,8 @@
 ## <!-- 26 -->🔄 Update
 
 - Updated README.
+ ([3381572](https://github.com/tj-actions/auto-doc/commit/3381572e3a668c264d58cba3e6e0c7cb80f9492a))  - (github-actions[bot])
+- Updated README.
  ([69ed344](https://github.com/tj-actions/auto-doc/commit/69ed344e9e469ee5a2ace6057cf2bb71828a41e2))  - (github-actions[bot])
 - Update test.yml ([998e442](https://github.com/tj-actions/auto-doc/commit/998e4429690dd85ccea19464339e2356e9ada758))  - (Tonye Jack)
 - Update README.md ([2766f50](https://github.com/tj-actions/auto-doc/commit/2766f50eed2583815b0650c9fcc8af097e236ab7))  - (Tonye Jack)
@@ -36,6 +59,7 @@
 
 ## <!-- 7 -->⚙️ Miscellaneous Tasks
 
+- Upgraded from v3.1.1 -> v3.2.0 ([aa5b801](https://github.com/tj-actions/auto-doc/commit/aa5b8018e695b00b342eed5611a78c2a3f47f4c9))  - (github-actions[bot])
 - Updated coverage badge. ([e2aaa74](https://github.com/tj-actions/auto-doc/commit/e2aaa749f3ae2712a5000bed14a78a27fd15e82a))  - (GitHub Action)
 
 ## <!-- 9 -->⬆️ Upgrades
