@@ -24,7 +24,7 @@ import (
 )
 
 // FormatValue formats a string that would be output as markdown
-func FormatValue(v string) string {
+func FormatValue(v string, escape bool, lineSeparator string) string {
 	if len(v) == 0 {
 		return ""
 	}
@@ -36,16 +36,28 @@ func FormatValue(v string) string {
 	if len(parts) > 1 && inputDefault != internal.NewLineSeparator {
 		for _, part := range parts {
 			if part != "" {
-				defaultValue += "`\"" + part + "\"`" + "<br>"
+				if escape {
+					defaultValue += "`\"" + part + "\"`" + lineSeparator
+				} else {
+					defaultValue += part + lineSeparator
+				}
 			}
 		}
 	} else {
 		if strings.Contains(inputDefault, internal.PipeSeparator) {
-			inputDefault = strings.Replace(inputDefault, internal.PipeSeparator, "\"\\"+internal.PipeSeparator+"\"", -1)
+			if escape {
+				inputDefault = strings.Replace(inputDefault, internal.PipeSeparator, "\"\\"+internal.PipeSeparator+"\"", -1)
+			} else {
+				inputDefault = strings.Replace(inputDefault, internal.PipeSeparator, "\""+internal.PipeSeparator+"\"", -1)
+			}
 		} else {
 			inputDefault = fmt.Sprintf("%#v", inputDefault)
 		}
-		defaultValue = "`" + inputDefault + "`"
+		if escape {
+			defaultValue = "`" + inputDefault + "`"
+		} else {
+			defaultValue = inputDefault
+		}
 	}
 
 	return defaultValue

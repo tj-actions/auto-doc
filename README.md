@@ -72,15 +72,15 @@ and/or `Description` (only supported by actions)
     bin_path: ''
 
     # Max width of a column
-    # Default: `"1000"`
+    # Default: "1000"
     col_max_width: ''
 
     # Max number of words per line in a column
-    # Default: `"5"`
+    # Default: "5"
     col_max_words: ''
 
     # Path to the yaml file
-    # Default: `"action.yml"`
+    # Default: "action.yml"
     filename: ''
 
     # List of action.yml **input** columns names to display, default 
@@ -89,11 +89,11 @@ and/or `Description` (only supported by actions)
 
     # Boolean indicating whether to output input, output and secret 
     # names as markdown links 
-    # Default: `"true"`
+    # Default: "true"
     markdown_links: ''
 
     # Path to the output file
-    # Default: `"README.md"`
+    # Default: "README.md"
     output: ''
 
     # List of action.yml **output** column names to display, default 
@@ -101,7 +101,7 @@ and/or `Description` (only supported by actions)
     output_columns: ''
 
     # Repository name with owner. For example, tj-actions/auto-doc
-    # Default: `"${{ github.repository }}"`
+    # Default: "${{ github.repository }}"
     repository: ''
 
     # Boolean Indicating whether the file is a reusable workflow
@@ -121,16 +121,16 @@ and/or `Description` (only supported by actions)
 
     # GitHub token or Personal Access Token used to fetch 
     # the repository latest tag. 
-    # Default: `"${{ github.token }}"`
+    # Default: "${{ github.token }}"
     token: ''
 
     # Enable code block documentation
-    # Default: `"false"`
+    # Default: "false"
     use_code_blocks: ''
 
     # Use the major version of the repository tag e.g 
     # v1.0.0 -> v1 
-    # Default: `"false"`
+    # Default: "false"
     use_major_version: ''
 
     # The version number to run

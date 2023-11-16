@@ -264,7 +264,7 @@ func renderActionInputTableOutput(inputs map[string]ActionInput, inputColumns []
 				case "Required":
 					row = append(row, strconv.FormatBool(inputs[key].Required))
 				case "Default":
-					row = append(row, utils.FormatValue(inputs[key].Default))
+					row = append(row, utils.FormatValue(inputs[key].Default, true, "<br>"))
 				case "Description":
 					if inputs[key].DeprecationMessage != "" {
 						row = append(row, utils.WordWrap(fmt.Sprintf("**Deprecated:** %s", inputs[key].Description), maxWords, "<br>"))

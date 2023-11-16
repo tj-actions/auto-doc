@@ -255,7 +255,7 @@ func renderReusableInputTableOutput(inputs map[string]ReusableInput, inputColumn
 				case "Default":
 					switch inputs[key].Type {
 					case "string":
-						row = append(row, utils.FormatValue(inputs[key].Default))
+						row = append(row, utils.FormatValue(inputs[key].Default, true, "<br>"))
 					default:
 						row = append(row, "`"+inputs[key].Default+"`")
 					}
@@ -336,7 +336,7 @@ func renderReusableOutputTableOutput(outputs map[string]ReusableOutput, reusable
 						row = append(row, key)
 					}
 				case "Value":
-					row = append(row, utils.FormatValue(outputs[key].Value))
+					row = append(row, utils.FormatValue(outputs[key].Value, true, "<br>"))
 				case "Description":
 					row = append(row, utils.WordWrap(outputs[key].Description, maxWords, "<br>"))
 				default:
