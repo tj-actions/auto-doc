@@ -1,5 +1,21 @@
 # Changelog
 
+# [3.3.0](https://github.com/tj-actions/auto-doc/compare/v3.2.1...v3.3.0) - (2023-11-16)
+
+## <!-- 0 -->🚀 Features
+
+- Add support for conditionally escaping default values ([d1d098d](https://github.com/tj-actions/auto-doc/commit/d1d098d95e28c9500c7c00c8f131fbd072b5eeb3))  - (Tonye Jack)
+
+## <!-- 26 -->🔄 Update
+
+- Updated README.
+ ([f35ce36](https://github.com/tj-actions/auto-doc/commit/f35ce36a5aeac99b52ce0edb94553307da8bfd27))  - (github-actions[bot])
+
+## <!-- 30 -->📝 Other
+
+- PR [#525](https://github.com/tj-actions/auto-doc/pull/525): add support for conditionally escaping default values ([b326093](https://github.com/tj-actions/auto-doc/commit/b326093baae0b8689d26cd5a14464d5100f1fadf))  - (repo-ranger[bot])
+- PR [#524](https://github.com/tj-actions/auto-doc/pull/524): to v3.2.1 ([f4f096c](https://github.com/tj-actions/auto-doc/commit/f4f096cb3c044e2d44d168b4a3f8c64be72ed65d))  - (repo-ranger[bot])
+
 # [3.2.1](https://github.com/tj-actions/auto-doc/compare/v3.2.0...v3.2.1) - (2023-11-15)
 
 ## <!-- 1 -->🐛 Bug Fixes
@@ -26,6 +42,7 @@
 
 ## <!-- 7 -->⚙️ Miscellaneous Tasks
 
+- Upgraded from v3.2.0 -> v3.2.1 ([4205451](https://github.com/tj-actions/auto-doc/commit/4205451c61e1ad6c7b0e6b5ec0b4c7b37eb55629))  - (github-actions[bot])
 - Update test ([3d78f99](https://github.com/tj-actions/auto-doc/commit/3d78f99ce66007362cbdb691ddd3c6690c592f38))  - (Tonye Jack)
 
 # [3.2.0](https://github.com/tj-actions/auto-doc/compare/v3.1.0...v3.2.0) - (2023-11-15)
