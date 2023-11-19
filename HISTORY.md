@@ -1,5 +1,25 @@
 # Changelog
 
+# [3.4.0](https://github.com/tj-actions/auto-doc/compare/v3.3.0...v3.4.0) - (2023-11-19)
+
+## <!-- 0 -->🚀 Features
+
+- Add support for including the type ([#527](https://github.com/tj-actions/auto-doc/issues/527)) ([df45e1b](https://github.com/tj-actions/auto-doc/commit/df45e1bbf9647ee108360f04ad3509a995e28004))  - (Tonye Jack)
+
+## <!-- 26 -->🔄 Update
+
+- Update README.md ([96a77dd](https://github.com/tj-actions/auto-doc/commit/96a77dd6a16c8dedb86cf5c4aace1b4c3a857d01))  - (Tonye Jack)
+- Update README.md ([382258c](https://github.com/tj-actions/auto-doc/commit/382258cd9c019c9b61aa0013f8ff4431c2de3805))  - (Tonye Jack)
+- Update README.md ([a9dd38f](https://github.com/tj-actions/auto-doc/commit/a9dd38f6034ccbea519c33465977bafa0173509c))  - (Tonye Jack)
+
+## <!-- 30 -->📝 Other
+
+- PR [#526](https://github.com/tj-actions/auto-doc/pull/526): to v3.3.0 ([3716622](https://github.com/tj-actions/auto-doc/commit/3716622c0025116af784cdc47d1e123e67b7aba1))  - (repo-ranger[bot])
+
+## <!-- 7 -->⚙️ Miscellaneous Tasks
+
+- Update README.md ([e8f0f12](https://github.com/tj-actions/auto-doc/commit/e8f0f129011d693537a33de30c374047c200f026))  - (Tonye Jack)
+
 # [3.3.0](https://github.com/tj-actions/auto-doc/compare/v3.2.1...v3.3.0) - (2023-11-16)
 
 ## <!-- 0 -->🚀 Features
@@ -15,6 +35,10 @@
 
 - PR [#525](https://github.com/tj-actions/auto-doc/pull/525): add support for conditionally escaping default values ([b326093](https://github.com/tj-actions/auto-doc/commit/b326093baae0b8689d26cd5a14464d5100f1fadf))  - (repo-ranger[bot])
 - PR [#524](https://github.com/tj-actions/auto-doc/pull/524): to v3.2.1 ([f4f096c](https://github.com/tj-actions/auto-doc/commit/f4f096cb3c044e2d44d168b4a3f8c64be72ed65d))  - (repo-ranger[bot])
+
+## <!-- 7 -->⚙️ Miscellaneous Tasks
+
+- Upgraded from v3.2.1 -> v3.3.0 ([6b64a77](https://github.com/tj-actions/auto-doc/commit/6b64a7772f00c5ce34dcf762abda7b67bd4bded6))  - (github-actions[bot])
 
 # [3.2.1](https://github.com/tj-actions/auto-doc/compare/v3.2.0...v3.2.1) - (2023-11-15)
 
