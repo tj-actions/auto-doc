@@ -27,6 +27,7 @@ GitHub Action generates a beautiful, easy-to-read markdown table or YAML code bl
 *   Document your custom [Github action](https://docs.github.com/en/actions/creating-actions) using the `action.yml` file.
 *   Document [reusable workflows](https://docs.github.com/en/actions/using-workflows/reusing-workflows) by specifying the filename.
 *   Easy to understand markdown table of all inputs, outputs, and secrets.
+*   Optional YAML code block for your `action.yml` file which includes all inputs.
 *   Show deprecated inputs.
 *   Fast and always up-to-date documentation.
 
