@@ -164,6 +164,11 @@ func renderCodeBlockActionInputs(inputs map[string]ActionInput, repository, tag 
 
 		for _, key := range keys {
 			codeBlock.WriteString(fmt.Sprintf("    # %s\n", utils.WordWrap(inputs[key].Description, 9, "\n    # ")))
+			if inputs[key].Default == "false" || inputs[key].Default == "true" {
+			    codeBlock.WriteString(fmt.Sprintf("    # Type: boolean\n"))
+			} else {
+			    codeBlock.WriteString(fmt.Sprintf("    # Type: string\n"))
+			}
 			if inputs[key].Default != "" {
 				codeBlock.WriteString(fmt.Sprintf("    # Default: %s\n", utils.FormatValue(inputs[key].Default, false, "\n    #          ")))
 			}
