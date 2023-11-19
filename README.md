@@ -20,13 +20,13 @@
 
 ## auto-doc
 
-GitHub Action that generates beautiful, easy-to-read markdown tables with just a few lines of code. Say goodbye to manual table creation and hello to streamlined documentation that is always up-to-date.
+GitHub Action generates a beautiful, easy-to-read markdown table or YAML code block with just a few lines of code. Say goodbye to manual table creation or outdated YAML code blocks and hello to streamlined documentation that is always up-to-date.
 
 ## Features
 
 *   Document your custom [Github action](https://docs.github.com/en/actions/creating-actions) using the `action.yml` file.
 *   Document [reusable workflows](https://docs.github.com/en/actions/using-workflows/reusing-workflows) by specifying the filename.
-*   Easy to understand markdown table of all inputs, outputs, secrets.
+*   Easy to understand markdown table of all inputs, outputs, and secrets.
 *   Show deprecated inputs.
 *   Fast and always up-to-date documentation.
 
