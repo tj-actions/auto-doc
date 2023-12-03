@@ -101,7 +101,7 @@ func (c *CodeBlock) writeDocumentation(inputCodeBlock, outputTableOutput *string
 		[]byte(internal.OutputAutoDocEnd),
 	)
 
-	ooutputTableOutputStr := strings.TrimSpace(outputTableOutput.String())
+	outputTableOutputStr := strings.TrimSpace(outputTableOutput.String())
 
 	if hasOutputsData {
 		output = utils.ReplaceBytesInBetween(output, indices, []byte(outputTableOutputStr))
