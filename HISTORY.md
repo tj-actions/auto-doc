@@ -1,5 +1,56 @@
 # Changelog
 
+# [3.4.1](https://github.com/tj-actions/auto-doc/compare/v3.4.0...v3.4.1) - (2024-01-04)
+
+## <!-- 13 -->📦 Bumps
+
+- Bump tj-actions/branch-names from 7 to 8 ([#531](https://github.com/tj-actions/auto-doc/issues/531))
+
+Bumps [tj-actions/branch-names](https://github.com/tj-actions/branch-names) from 7 to 8.
+- [Release notes](https://github.com/tj-actions/branch-names/releases)
+- [Changelog](https://github.com/tj-actions/branch-names/blob/main/HISTORY.md)
+- [Commits](https://github.com/tj-actions/branch-names/compare/v7...v8)
+
+---
+updated-dependencies:
+- dependency-name: tj-actions/branch-names
+  dependency-type: direct:production
+  update-type: version-update:semver-major
+...
+
+Signed-off-by: dependabot[bot] <support@github.com>
+Co-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com> ([782598b](https://github.com/tj-actions/auto-doc/commit/782598b3105fc2649b039c33ff008c05ed46f019))  - (dependabot[bot])
+
+## <!-- 17 -->➖ Remove
+
+- Deleted .github/workflows/auto-approve.yml ([8ebf6d8](https://github.com/tj-actions/auto-doc/commit/8ebf6d843d13d4c0968cdd71269bd6303e66a5b8))  - (Tonye Jack)
+- Deleted .github/workflows/greetings.yml ([87cc985](https://github.com/tj-actions/auto-doc/commit/87cc985e393cabf634156fc603fcbcc08f4a131e))  - (Tonye Jack)
+
+## <!-- 26 -->🔄 Update
+
+- Updated README.
+ ([14d11ed](https://github.com/tj-actions/auto-doc/commit/14d11ed1cb2449d09c8ebe181f7d45e746560d53))  - (github-actions[bot])
+- Updated README.
+ ([0f82b43](https://github.com/tj-actions/auto-doc/commit/0f82b434cba03579bb232476b194e907984ca148))  - (github-actions[bot])
+- Updated README.
+ ([1f619ae](https://github.com/tj-actions/auto-doc/commit/1f619aee31e5678ec210ffae08ed900ee6705e44))  - (github-actions[bot])
+- Update code-coverage.yml ([251e69d](https://github.com/tj-actions/auto-doc/commit/251e69db8cd2eb45e17b519a42ddae448a9d9283))  - (Tonye Jack)
+
+## <!-- 30 -->📝 Other
+
+- PR [#533](https://github.com/tj-actions/auto-doc/pull/533): update actions/upload-artifact action to v4 ([6c89b85](https://github.com/tj-actions/auto-doc/commit/6c89b859c02fdb2a219f1f6484ef3a8e0e29b3e6))  - (repo-ranger[bot])
+- PR [#532](https://github.com/tj-actions/auto-doc/pull/532): update github/codeql-action action to v3 ([96fd17f](https://github.com/tj-actions/auto-doc/commit/96fd17f7eac6cd6a4f90395929e4585ce3984690))  - (repo-ranger[bot])
+- PR [#530](https://github.com/tj-actions/auto-doc/pull/530): update actions/setup-go action to v5 ([4f39c0d](https://github.com/tj-actions/auto-doc/commit/4f39c0d3fd84ca9704265379859db74120dfea4b))  - (repo-ranger[bot])
+- PR [#528](https://github.com/tj-actions/auto-doc/pull/528): to v3.4.0 ([73f2430](https://github.com/tj-actions/auto-doc/commit/73f243080847f8e764caf732952e2b665e9034a4))  - (repo-ranger[bot])
+
+## <!-- 7 -->⚙️ Miscellaneous Tasks
+
+- **deps:** Update tj-actions/verify-changed-files action to v17 [security] ([#537](https://github.com/tj-actions/auto-doc/issues/537)) ([6ed7c9f](https://github.com/tj-actions/auto-doc/commit/6ed7c9f1251795ede5eaa781e3458d5df28290d6))  - (renovate[bot])
+- Update code block output variable ([#529](https://github.com/tj-actions/auto-doc/issues/529)) ([116e612](https://github.com/tj-actions/auto-doc/commit/116e612cec74a59fe1a1b68eba5d74c05464ddc8))  - (Tonye Jack)
+- **deps:** Update actions/upload-artifact action to v4 ([27840ba](https://github.com/tj-actions/auto-doc/commit/27840baf066b94d838d1eeb1a89826550dcda71c))  - (renovate[bot])
+- **deps:** Update github/codeql-action action to v3 ([d56eca2](https://github.com/tj-actions/auto-doc/commit/d56eca2533b2a1aae1ac0f26524c6c06d874c4bb))  - (renovate[bot])
+- **deps:** Update actions/setup-go action to v5 ([e57734e](https://github.com/tj-actions/auto-doc/commit/e57734eb9bd35034c7b2690a8e1f8dbded688282))  - (renovate[bot])
+
 # [3.4.0](https://github.com/tj-actions/auto-doc/compare/v3.3.0...v3.4.0) - (2023-11-19)
 
 ## <!-- 0 -->🚀 Features
@@ -18,6 +69,7 @@
 
 ## <!-- 7 -->⚙️ Miscellaneous Tasks
 
+- Upgraded from v3.3.0 -> v3.4.0 ([ad64a78](https://github.com/tj-actions/auto-doc/commit/ad64a785d0a8be8baa109909839c23c2272fb2cb))  - (github-actions[bot])
 - Update README.md ([e8f0f12](https://github.com/tj-actions/auto-doc/commit/e8f0f129011d693537a33de30c374047c200f026))  - (Tonye Jack)
 
 # [3.3.0](https://github.com/tj-actions/auto-doc/compare/v3.2.1...v3.3.0) - (2023-11-16)
