@@ -60,7 +60,7 @@ func (c *CodeBlock) GetData() error {
 }
 
 // writeDocumentation write the table to the output file
-func (c *CodeBlock) writeDocumentation(inputCodeBlock, outputCodeBlock *strings.Builder) error {
+func (c *CodeBlock) writeDocumentation(inputCodeBlock, outputTableOutput *strings.Builder) error {
 	var err error
 	input, err := os.ReadFile(c.OutputFileName)
 	// coverage:ignore
@@ -101,16 +101,16 @@ func (c *CodeBlock) writeDocumentation(inputCodeBlock, outputCodeBlock *strings.
 		[]byte(internal.OutputAutoDocEnd),
 	)
 
-	outputCodeBlockStr := strings.TrimSpace(outputCodeBlock.String())
+	outputTableOutputStr := strings.TrimSpace(outputTableOutput.String())
 
 	if hasOutputsData {
-		output = utils.ReplaceBytesInBetween(output, indices, []byte(outputCodeBlockStr))
+		output = utils.ReplaceBytesInBetween(output, indices, []byte(outputTableOutputStr))
 	} else {
 		re := regexp.MustCompile(fmt.Sprintf("(?m)^%s", internal.OutputsHeader))
 		output = re.ReplaceAllFunc(output, func(match []byte) []byte {
 			if bytes.HasPrefix(match, []byte(internal.OutputsHeader)) {
-				if outputCodeBlockStr != "" {
-					return []byte(fmt.Sprintf("%s\n\n%v", internal.OutputsHeader, outputCodeBlockStr))
+				if outputTableOutputStr != "" {
+					return []byte(fmt.Sprintf("%s\n\n%v", internal.OutputsHeader, outputTableOutputStr))
 				} else {
 					return []byte(internal.OutputsHeader)
 				}
