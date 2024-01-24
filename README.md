@@ -8,7 +8,7 @@
 [![Update release version.](https://github.com/tj-actions/auto-doc/workflows/Update%20release%20version./badge.svg)](https://github.com/tj-actions/auto-doc/actions?query=workflow%3A%22Update+release+version.%22)
 [![codecov](https://codecov.io/github/tj-actions/auto-doc/branch/main/graph/badge.svg?token=TNXW4QRRJD)](https://codecov.io/github/tj-actions/auto-doc)
 
-[![Codacy Badge](https://app.codacy.com/project/badge/Grade/2ca092c5436e4994b536b02ba6752436)](https://app.codacy.com/gh/tj-actions/auto-doc/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/2ca092c5436e4994b536b02ba6752436)](https://app.codacy.com/gh/tj-actions/auto-doc/dashboard?utm_source=gh\&utm_medium=referral\&utm_content=\&utm_campaign=Badge_grade)
 [![Go Report Card](https://goreportcard.com/badge/github.com/tj-actions/auto-doc)](https://goreportcard.com/report/github.com/tj-actions/auto-doc)
 [![Go Reference](https://pkg.go.dev/badge/github.com/tj-actions/auto-doc/v3.svg)](https://pkg.go.dev/github.com/tj-actions/auto-doc/v3)
 
