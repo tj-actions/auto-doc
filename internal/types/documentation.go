@@ -16,7 +16,7 @@ limitations under the License.
 */
 package types
 
-// Documentation is the interface for Action and Reusable
+// Documentation is the interface for Action, Reusable and CodeBlock
 type Documentation interface {
 	GetData() error
 	RenderOutput() error
