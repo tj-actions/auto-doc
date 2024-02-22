@@ -54,6 +54,21 @@ and/or `Secrets` (only supported by reusable workflows)
 and/or `Description` (only supported by actions)
 [`H2` header](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#headers) to any markdown file.
 
+### Example
+
+Add any of the supported headings in any location of your `README.md`
+
+```
+…
+
+## Inputs
+— A placeholder would be added here automatically — 
+
+## Outputs 
+— A placeholder would be added here automatically —
+
+```
+
 ```yaml
 ...
     steps:
@@ -161,7 +176,7 @@ and/or `Description` (only supported by actions)
 
 **👆 This is generated 👆 using :point\_right: [action.yml](./action.yml)**
 
-## Examples
+## Example workflow
 
 Create a pull request each time the action.yml inputs/outputs change
 
