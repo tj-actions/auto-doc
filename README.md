@@ -34,6 +34,7 @@ GitHub Action generates a beautiful, easy-to-read markdown table or YAML code bl
 ## Table of Contents
 
 *   [Usage](#usage)
+    *   [Supported Headings](#supported-headings)
     *   [Example](#example)
 *   [Inputs](#inputs)
 *   [Example workflow](#example-workflow)
@@ -49,16 +50,20 @@ GitHub Action generates a beautiful, easy-to-read markdown table or YAML code bl
 *   [Contributors ✨](#contributors-)
 
 ## Usage
+
 Add any of the supported headings as a [`H2` header](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#headers) in any location of your markdown file.
 
 ### Supported Headings
-- `Inputs`
-- `Outputs`
-- `Secrets` (only supported by reusable workflows)
-- `Description` (only supported by actions)
+
+*   `Inputs`
+*   `Outputs`
+*   `Secrets` (only supported by reusable workflows)
+*   `Description` (only supported by actions)
 
 ### Example
+
 `README.md`
+
 ```
 …
 
