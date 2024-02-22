@@ -65,14 +65,9 @@ Add any of the supported headings in any location of your `README.md`
 ## Inputs
 — A placeholder would be added here automatically — 
 
-## Outputs
-
-<!-- AUTO-DOC-OUTPUT:START - Do not remove or modify this section -->
-No outputs.
-<!-- AUTO-DOC-OUTPUT:END --> 
-— A placeholder would be added here automatically —
-
 ```
+
+Update your workflow 
 
 ```yaml
 ...
