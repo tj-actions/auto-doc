@@ -49,6 +49,13 @@ GitHub Action generates a beautiful, easy-to-read markdown table or YAML code bl
 
 ## Usage
 
+Add the `Auto-Doc-Input` tag to the output file where you want the generated contented to be inserted.
+
+```
+<!-- AUTO-DOC-INPUT:START - Do not remove or modify this section -->
+<!-- AUTO-DOC-INPUT:END -->
+```
+
 Add the `Inputs` and/or `Outputs`
 and/or `Secrets` (only supported by reusable workflows)
 and/or `Description` (only supported by actions)
