@@ -34,8 +34,9 @@ GitHub Action generates a beautiful, easy-to-read markdown table or YAML code bl
 ## Table of Contents
 
 *   [Usage](#usage)
+    *   [Example](#example)
 *   [Inputs](#inputs)
-*   [Examples](#examples)
+*   [Example workflow](#example-workflow)
 *   [CLI](#cli)
     *   [Installation](#installation)
         *   [Install using Go:](#install-using-go)
@@ -53,6 +54,25 @@ Add the `Inputs` and/or `Outputs`
 and/or `Secrets` (only supported by reusable workflows)
 and/or `Description` (only supported by actions)
 [`H2` header](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#headers) to any markdown file.
+
+### Example
+
+Add any of the supported headings in any location of your `README.md`
+
+```
+…
+
+## Inputs
+— A placeholder would be added here automatically — 
+
+## Outputs
+
+<!-- AUTO-DOC-OUTPUT:START - Do not remove or modify this section -->
+No outputs.
+<!-- AUTO-DOC-OUTPUT:END --> 
+— A placeholder would be added here automatically —
+
+```
 
 ```yaml
 ...
@@ -161,7 +181,7 @@ and/or `Description` (only supported by actions)
 
 **👆 This is generated 👆 using :point\_right: [action.yml](./action.yml)**
 
-## Examples
+## Example workflow
 
 Create a pull request each time the action.yml inputs/outputs change
 
