@@ -34,8 +34,9 @@ GitHub Action generates a beautiful, easy-to-read markdown table or YAML code bl
 ## Table of Contents
 
 *   [Usage](#usage)
+    *   [Example](#example)
 *   [Inputs](#inputs)
-*   [Examples](#examples)
+*   [Example workflow](#example-workflow)
 *   [CLI](#cli)
     *   [Installation](#installation)
         *   [Install using Go:](#install-using-go)
@@ -64,7 +65,11 @@ Add any of the supported headings in any location of your `README.md`
 ## Inputs
 — A placeholder would be added here automatically — 
 
-## Outputs 
+## Outputs
+
+<!-- AUTO-DOC-OUTPUT:START - Do not remove or modify this section -->
+No outputs.
+<!-- AUTO-DOC-OUTPUT:END --> 
 — A placeholder would be added here automatically —
 
 ```
