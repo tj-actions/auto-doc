@@ -49,16 +49,16 @@ GitHub Action generates a beautiful, easy-to-read markdown table or YAML code bl
 *   [Contributors ✨](#contributors-)
 
 ## Usage
+Add any of the supported headings as a [`H2` header](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#headers) in any location of your markdown file.
 
-Add the `Inputs` and/or `Outputs`
-and/or `Secrets` (only supported by reusable workflows)
-and/or `Description` (only supported by actions)
-[`H2` header](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#headers) to any markdown file.
+### Supported Headings
+- `Inputs`
+- `Outputs`
+- `Secrets` (only supported by reusable workflows)
+- `Description` (only supported by actions)
 
 ### Example
-
-Add any of the supported headings in any location of your `README.md`
-
+`README.md`
 ```
 …
 
