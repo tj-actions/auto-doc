@@ -67,7 +67,7 @@ Add any of the supported headings in any location of your `README.md`
 
 ```
 
-Update your workflow 
+Update your workflow
 
 ```yaml
 ...
