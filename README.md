@@ -60,16 +60,16 @@ Add any of the supported headings as a [`H2` header](https://github.com/adam-p/m
 *   `Secrets` (only supported by reusable workflows)
 *   `Description` (only supported by actions)
 
-### Example 
+### Example
 
-1. Add one or more headings to your `README.md`
+1.  Add one or more headings to your `README.md`
 
 > \[!NOTE]
 > This can be multiple headings supported by the input file
 
     ## Inputs 
 
-2. Update your workflow
+2\. Update your workflow
 
 ```yaml
 ...
