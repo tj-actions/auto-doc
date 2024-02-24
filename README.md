@@ -62,9 +62,13 @@ Add any of the supported headings as a [`H2` header](https://github.com/adam-p/m
 
 ### Example
 
-`README.md`
+Add one or more headings to your `README.md`
 
-> \[!NOTE]
+```
+## Inputs 
+```
+
+> [!NOTE]
 > Add any of the headings you want to generate the documentation for (this can be multiple headings supported by the input file)
 
     ## Inputs 
