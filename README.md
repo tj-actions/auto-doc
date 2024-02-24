@@ -64,12 +64,11 @@ Add any of the supported headings as a [`H2` header](https://github.com/adam-p/m
 
 `README.md`
 
+> [!NOTE]
+> Add any of the headings you want to generate the documentation for (this can be multiple headings supported by the input file)
+
 ```
-…
-
-## Inputs
-— A placeholder would be added here automatically — 
-
+## Inputs 
 ```
 
 Update your workflow
@@ -81,6 +80,8 @@ Update your workflow
       - name: Run auto-doc
         uses: tj-actions/auto-doc@v3
 ```
+
+**👇 This was generated 👇 using 👉: [action.yml](./action.yml)**
 
 ## Inputs
 
@@ -179,7 +180,7 @@ Update your workflow
 
 <!-- AUTO-DOC-INPUT:END -->
 
-**👆 This is generated 👆 using :point\_right: [action.yml](./action.yml)**
+**👆 This was generated 👆 using 👉 [action.yml](./action.yml)**
 
 ## Example workflow
 
@@ -247,7 +248,7 @@ choco install auto-doc
 
 ### Synopsis
 
-Automatically generate documentation for your custom github action or reusable workflow.
+Automatically generate documentation for your custom GitHub action or reusable workflow.
 
     auto-doc [flags]
 
