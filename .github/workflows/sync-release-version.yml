@@ -20,7 +20,7 @@ jobs:
 
       - name: Run semver-diff
         id: semver-diff
-        uses: tj-actions/semver-diff@v2
+        uses: tj-actions/semver-diff@v3
 
       - name: Show release type
         if: steps.semver-diff.outputs.release_type == 'major'
