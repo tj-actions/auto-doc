@@ -140,7 +140,7 @@ func (c *CodeBlock) getLatestTagForRepository() (string, error) {
 }
 
 // renderCodeBlockActionInputs renders the inputs as a code block
-func renderCodeBlockActionInputs(inputs map[string]ActionInput, repository, tag string) (*strings.Builder, error) {
+func renderCodeBlockActionInputs(inputs map[string]ActionInput, repository, tag string, maxWords int) (*strings.Builder, error) {
 	// Output this as a code block
 	codeBlock := &strings.Builder{}
 
@@ -163,7 +163,7 @@ func renderCodeBlockActionInputs(inputs map[string]ActionInput, repository, tag 
 		codeBlock.WriteString("  with:\n")
 
 		for _, key := range keys {
-			codeBlock.WriteString(fmt.Sprintf("    # %s\n", utils.WordWrap(inputs[key].Description, 9, "\n    # ")))
+			codeBlock.WriteString(fmt.Sprintf("    # %s\n", utils.WordWrap(inputs[key].Description, maxWords, "\n    # ")))
 			if inputs[key].Default == "false" || inputs[key].Default == "true" {
 				codeBlock.WriteString("    # Type: boolean\n")
 			} else {
@@ -213,7 +213,7 @@ func (c *CodeBlock) RenderOutput() error {
 		return err
 	}
 
-	inputCodeBlockOutput, err := renderCodeBlockActionInputs(c.Inputs, c.Repository, tag)
+	inputCodeBlockOutput, err := renderCodeBlockActionInputs(c.Inputs, c.Repository, tag, maxWords)
 
 	// coverage:ignore
 	if err != nil {
