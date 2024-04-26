@@ -89,7 +89,8 @@ Add any of the supported headings as a [`H2` header](https://github.com/adam-p/m
 - uses: tj-actions/auto-doc@v3
   id: auto-doc
   with:
-    # Optionally pass a path to the auto-doc binary
+    # Optionally pass a path to 
+    # the auto-doc binary 
     # Type: string
     bin_path: ''
 
@@ -98,7 +99,8 @@ Add any of the supported headings as a [`H2` header](https://github.com/adam-p/m
     # Default: "1000"
     col_max_width: ''
 
-    # Max number of words per line in a column
+    # Max number of words per 
+    # line in a column 
     # Type: string
     # Default: "5"
     col_max_words: ''
@@ -108,13 +110,14 @@ Add any of the supported headings as a [`H2` header](https://github.com/adam-p/m
     # Default: "action.yml"
     filename: ''
 
-    # List of action.yml **input** columns names to display, default 
-    # (display all columns) 
+    # List of action.yml **input** columns 
+    # names to display, default (display all columns) 
     # Type: string
     input_columns: ''
 
-    # Boolean indicating whether to output input, output and secret 
-    # names as markdown links 
+    # Boolean indicating whether to output 
+    # input, output and secret names 
+    # as markdown links 
     # Type: boolean
     # Default: "true"
     markdown_links: ''
@@ -124,37 +127,43 @@ Add any of the supported headings as a [`H2` header](https://github.com/adam-p/m
     # Default: "README.md"
     output: ''
 
-    # List of action.yml **output** column names to display, default 
-    # (display all columns) 
+    # List of action.yml **output** column 
+    # names to display, default (display all columns) 
     # Type: string
     output_columns: ''
 
-    # Repository name with owner. For example, tj-actions/auto-doc
+    # Repository name with owner. For 
+    # example, tj-actions/auto-doc 
     # Type: string
     # Default: "${{ github.repository }}"
     repository: ''
 
-    # Boolean Indicating whether the file is a reusable workflow
+    # Boolean Indicating whether the file 
+    # is a reusable workflow 
     # Type: string
     reusable: ''
 
-    # List of reusable workflow **input** column names to display, 
-    # default (display all columns) 
+    # List of reusable workflow **input** 
+    # column names to display, default 
+    # (display all columns) 
     # Type: string
     reusable_input_columns: ''
 
-    # List of reusable workflow **output** column names to display, 
-    # default (display all columns) 
+    # List of reusable workflow **output** 
+    # column names to display, default 
+    # (display all columns) 
     # Type: string
     reusable_output_columns: ''
 
-    # List of reusable workflow **secret** column names to display, 
-    # default (display all columns) 
+    # List of reusable workflow **secret** 
+    # column names to display, default 
+    # (display all columns) 
     # Type: string
     reusable_secret_columns: ''
 
-    # GitHub token or Personal Access Token used to fetch 
-    # the repository latest tag. 
+    # GitHub token or Personal Access 
+    # Token used to fetch the 
+    # repository latest tag. 
     # Type: string
     # Default: "${{ github.token }}"
     token: ''
@@ -164,8 +173,9 @@ Add any of the supported headings as a [`H2` header](https://github.com/adam-p/m
     # Default: "false"
     use_code_blocks: ''
 
-    # Use the major version of the repository tag e.g 
-    # v1.0.0 -> v1 
+    # Use the major version of 
+    # the repository tag e.g v1.0.0 
+    # -> v1 
     # Type: boolean
     # Default: "false"
     use_major_version: ''
