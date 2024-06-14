@@ -2,7 +2,7 @@
 
 <!-- AUTO-DOC-INPUT:START - Do not remove or modify this section -->
 ```yaml
-- uses: tj-actions/changed-files@v44.3.0
+- uses: tj-actions/changed-files@v44.5.2
   id: changed-files
   with:
     # Specify a different base commit SHA 
