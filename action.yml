@@ -69,7 +69,7 @@ runs:
   steps:
     - name: Setup bin
       if: inputs.bin_path == ''
-      uses: tj-actions/setup-bin@v1
+      uses: tj-actions/setup-bin@cc2f416f28163075dc4d67e8b298dcbe2ecf4d5a # v1
       id: setup-bin-go
       with:
         repository-owner: tj-actions
