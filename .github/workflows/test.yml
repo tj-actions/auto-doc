@@ -27,14 +27,14 @@ jobs:
       - name: GoReleaser
         uses: goreleaser/goreleaser-action@v5
         with:
-          version: latest
+          version: '~> 1'
           args: release --snapshot --clean
 
       - name: Capture x86_64 (64-bit) Linux binary
         uses: actions/upload-artifact@v4
         with:
           name: auto-doc-linux-amd64
-          path: dist/auto-doc_linux_amd64/auto-doc
+          path: dist/auto-doc_linux_amd64_v1/auto-doc
 
       - name: Capture i386 (32-bit) Linux binary
         uses: actions/upload-artifact@v4
@@ -64,7 +64,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: auto-doc-windows-amd64
-          path: dist/auto-doc_windows_amd64/auto-doc.exe
+          path: dist/auto-doc_windows_amd64_v1/auto-doc.exe
 
       - name: Capture i386 (32-bit) Windows binary
         uses: actions/upload-artifact@v4
@@ -88,7 +88,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: auto-doc-macos-amd64
-          path: dist/auto-doc_darwin_amd64/auto-doc
+          path: dist/auto-doc_darwin_amd64_v1/auto-doc
 
       - name: Capture arm64 (64-bit) MacOS binary
         uses: actions/upload-artifact@v4

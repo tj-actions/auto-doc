@@ -4,7 +4,7 @@
 [![Public workflows that use this action.](https://img.shields.io/endpoint?style=for-the-badge\&url=https%3A%2F%2Fused-by.vercel.app%2Fapi%2Fgithub-actions%2Fused-by%3Faction%3Dtj-actions%2Fauto-doc%26badge%3Dtrue%26package_id%3DUGFja2FnZS0yOTU3MDU0NDI1)](https://github.com/search?o=desc\&q=tj-actions+auto-doc+language%3AYAML\&s=\&type=Code)
 
 [![CI](https://github.com/tj-actions/auto-doc/workflows/CI/badge.svg)](https://github.com/tj-actions/auto-doc/actions?query=workflow%3ACI)
-![Coverage](https://img.shields.io/badge/Coverage-85.7%25-brightgreen)
+![Coverage](https://img.shields.io/badge/Coverage-84.9%25-brightgreen)
 [![Update release version.](https://github.com/tj-actions/auto-doc/workflows/Update%20release%20version./badge.svg)](https://github.com/tj-actions/auto-doc/actions?query=workflow%3A%22Update+release+version.%22)
 [![codecov](https://codecov.io/github/tj-actions/auto-doc/branch/main/graph/badge.svg?token=TNXW4QRRJD)](https://codecov.io/github/tj-actions/auto-doc)
 
@@ -179,6 +179,15 @@ Add any of the supported headings as a [`H2` header](https://github.com/adam-p/m
     # Type: boolean
     # Default: "false"
     use_major_version: ''
+
+    # Use the tag commit hash 
+    # as the version and add 
+    # a comment with the tag 
+    # name. Example: v1.0.0 -> 1a2b3c4d5e6f7g8h9i0j1k2l3m4n5o6p7q8r9s0t 
+    # // v1.0.0 or v1 
+    # Type: boolean
+    # Default: "false"
+    use_tag_commit_hash: ''
 
     # The version number to run
     # Type: string
