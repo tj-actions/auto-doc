@@ -88,6 +88,11 @@ if [[ "$INPUT_USE_MAJOR_VERSION" == "true" ]]; then
   EXTRA_ARGS="${EXTRA_ARGS} --useMajorVersion"
 fi
 
+# use_tag_commit_hash
+if [[ "$INPUT_USE_TAG_COMMIT_HASH" == "true" ]]; then
+  EXTRA_ARGS="${EXTRA_ARGS} --useTagCommitHash"
+fi
+
 echo "::debug::Generating documentation using ${BIN_PATH}..."
 echo "::debug::Extra args: ${EXTRA_ARGS}"
 

@@ -180,6 +180,15 @@ Add any of the supported headings as a [`H2` header](https://github.com/adam-p/m
     # Default: "false"
     use_major_version: ''
 
+    # Use the tag commit hash 
+    # as the version and add 
+    # a comment with the tag 
+    # name. Example: v1.0.0 -> 1a2b3c4d5e6f7g8h9i0j1k2l3m4n5o6p7q8r9s0t 
+    # // v1.0.0 or v1 
+    # Type: boolean
+    # Default: "false"
+    use_tag_commit_hash: ''
+
     # The version number to run
     # Type: string
     version: ''
