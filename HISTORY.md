@@ -1,5 +1,56 @@
 # Changelog
 
+# [3.6.0](https://github.com/tj-actions/auto-doc/compare/v3.5.0...v3.6.0) - (2025-03-22)
+
+## <!-- 0 -->🚀 Features
+
+- Add support for using commit hash in code block documentation ([#584](https://github.com/tj-actions/auto-doc/issues/584)) ([15a27b3](https://github.com/tj-actions/auto-doc/commit/15a27b3bd0ca55204a1854588b0f6a5f190c1b71))  - (Tonye Jack)
+
+## <!-- 1 -->🐛 Bug Fixes
+
+- **deps:** Update module github.com/spf13/cobra to v1.9.1 ([#577](https://github.com/tj-actions/auto-doc/issues/577)) ([31d05ba](https://github.com/tj-actions/auto-doc/commit/31d05ba9021aa7337598a68c06c344674db18cc1))  - (renovate[bot])
+- **deps:** Update module github.com/spf13/cobra to v1.9.0 ([#576](https://github.com/tj-actions/auto-doc/issues/576)) ([f9f0ee6](https://github.com/tj-actions/auto-doc/commit/f9f0ee680097540e6ac44a19a313990f184d96a5))  - (renovate[bot])
+- **deps:** Update module github.com/spf13/cobra to v1.8.1 ([28e6bd9](https://github.com/tj-actions/auto-doc/commit/28e6bd9535bd8138bfa61febeb6c51b028044e50))  - (renovate[bot])
+
+## <!-- 17 -->➖ Remove
+
+- Deleted renovate.json ([5f0621d](https://github.com/tj-actions/auto-doc/commit/5f0621db23a35d572c4c8d49193f122a6dffd9fe))  - (Tonye Jack)
+
+## <!-- 25 -->🎨 Format
+
+- Formatted code.
+ ([5843653](https://github.com/tj-actions/auto-doc/commit/5843653a8770e941a5d986ae173ac2880b6f270a))  - (github-actions[bot])
+
+## <!-- 26 -->🔄 Update
+
+- Updated README.
+ ([3fb668e](https://github.com/tj-actions/auto-doc/commit/3fb668e11ee61a40b9e77a6846e433b15861e6c2))  - (github-actions[bot])
+- Updated README.
+ ([5f86422](https://github.com/tj-actions/auto-doc/commit/5f86422254f9aaf70c9c621a621d21af1335586f))  - (github-actions[bot])
+- Updated README.
+ ([9f14f2c](https://github.com/tj-actions/auto-doc/commit/9f14f2ce6ba29815c95a42b119a66ace717799ef))  - (github-actions[bot])
+
+## <!-- 30 -->📝 Other
+
+- PR [#561](https://github.com/tj-actions/auto-doc/pull/561): update tj-actions/verify-changed-files action to v20 ([c5414c9](https://github.com/tj-actions/auto-doc/commit/c5414c96f0a3e1f0028d98fc12e3d2e6b12967b1))  - (repo-ranger[bot])
+- PR [#560](https://github.com/tj-actions/auto-doc/pull/560): to v3.5.0 ([32c547b](https://github.com/tj-actions/auto-doc/commit/32c547b5e6bd15509f9ba59e6244dfe3a2676b6f))  - (repo-ranger[bot])
+
+## <!-- 7 -->⚙️ Miscellaneous Tasks
+
+- Pin setup-bin action to commit hash ([#583](https://github.com/tj-actions/auto-doc/issues/583)) ([60cc6d0](https://github.com/tj-actions/auto-doc/commit/60cc6d074101552098fcb9d0cab87c8d177426a5))  - (Tonye Jack)
+- **deps:** Update peter-evans/create-pull-request action to v7.0.8 ([#580](https://github.com/tj-actions/auto-doc/issues/580)) ([7fba421](https://github.com/tj-actions/auto-doc/commit/7fba42197937bd889d5fc323a60b70b1d2d16d56))  - (renovate[bot])
+- **deps:** Update peter-evans/create-pull-request action to v7.0.7 ([#578](https://github.com/tj-actions/auto-doc/issues/578)) ([3f85377](https://github.com/tj-actions/auto-doc/commit/3f853774997730c687861dd92b74fce14763c6c5))  - (renovate[bot])
+- **deps:** Update peter-evans/create-pull-request action to v7.0.6 ([#575](https://github.com/tj-actions/auto-doc/issues/575)) ([08a6743](https://github.com/tj-actions/auto-doc/commit/08a674335b0d367828ab36c16b81af064499d68c))  - (renovate[bot])
+- **deps:** Update codecov/codecov-action action to v5 ([#572](https://github.com/tj-actions/auto-doc/issues/572)) ([a3956ac](https://github.com/tj-actions/auto-doc/commit/a3956accc564918bdc23933edd5e7db7144fa990))  - (renovate[bot])
+- **deps:** Update peter-evans/create-pull-request action to v7.0.5 ([#573](https://github.com/tj-actions/auto-doc/issues/573)) ([ec7db31](https://github.com/tj-actions/auto-doc/commit/ec7db316a07b9e5fea87f8073a312bdf9f912d2d))  - (renovate[bot])
+- **deps:** Update peter-evans/create-pull-request action to v7 ([#570](https://github.com/tj-actions/auto-doc/issues/570)) ([36a963d](https://github.com/tj-actions/auto-doc/commit/36a963d75d343195bbd3327787009b261b2f9ea6))  - (renovate[bot])
+- **deps:** Update codacy/codacy-analysis-cli-action action to v4.4.5 ([ed9420b](https://github.com/tj-actions/auto-doc/commit/ed9420b570e551f88ca0df8a4ff5065300c1b31e))  - (renovate[bot])
+- **deps:** Update codacy/codacy-analysis-cli-action action to v4.4.4 ([54db70d](https://github.com/tj-actions/auto-doc/commit/54db70d412f11d4938d7cc422a4abefc2a6fed09))  - (renovate[bot])
+- **deps:** Update codacy/codacy-analysis-cli-action action to v4.4.2 ([b9f8143](https://github.com/tj-actions/auto-doc/commit/b9f814351f488b0be46bbc2aa4f1089fae9878c5))  - (renovate[bot])
+- **deps:** Update peter-evans/create-pull-request action to v6.1.0 ([a7b3d6a](https://github.com/tj-actions/auto-doc/commit/a7b3d6a241feec5208f3ca5d1df7dd9a92e3f24c))  - (renovate[bot])
+- **deps:** Update codacy/codacy-analysis-cli-action action to v4.4.1 ([1af2896](https://github.com/tj-actions/auto-doc/commit/1af2896ecec80fd01e68c60afb8e5a7992b07746))  - (renovate[bot])
+- **deps:** Update tj-actions/verify-changed-files action to v20 ([76a9212](https://github.com/tj-actions/auto-doc/commit/76a9212afaaf7e5ca2bf9721634048ca22b115e3))  - (renovate[bot])
+
 # [3.5.0](https://github.com/tj-actions/auto-doc/compare/v3.4.1...v3.5.0) - (2024-04-26)
 
 ## <!-- 0 -->🚀 Features
@@ -72,6 +123,7 @@ Signed-off-by: dependabot[bot] <support@github.com> ([e91e4f9](https://github.co
 
 ## <!-- 7 -->⚙️ Miscellaneous Tasks
 
+- Upgraded from v3.4.1 -> v3.5.0 ([79cbc18](https://github.com/tj-actions/auto-doc/commit/79cbc18cd7c4b037bb2fe25199cb14fef4bbad43))  - (github-actions[bot])
 - **deps:** Update peter-evans/create-pull-request action to v6.0.5 ([2380009](https://github.com/tj-actions/auto-doc/commit/2380009ac30b6d589afb2fb5d0abe93578966cab))  - (renovate[bot])
 - **deps:** Update peter-evans/create-pull-request action to v6.0.4 ([e957bab](https://github.com/tj-actions/auto-doc/commit/e957bab590fe76c9526823cf46b0348d49f6e0ed))  - (renovate[bot])
 - **deps:** Update peter-evans/create-pull-request action to v6.0.3 ([a7939e3](https://github.com/tj-actions/auto-doc/commit/a7939e335a06c62bffb70523b19510b69107df23))  - (renovate[bot])
