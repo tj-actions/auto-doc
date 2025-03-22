@@ -84,6 +84,12 @@ func RootCmdRunE(cmd *cobra.Command, args []string) error {
 		return err
 	}
 
+	useTagCommitHash, err := cmd.Flags().GetBool("useTagCommitHash")
+	// coverage:ignore
+	if err != nil {
+		return err
+	}
+
 	if repository == "" && useCodeBlocks {
 		return fmt.Errorf("repository must be specified with --repository")
 	}
@@ -106,6 +112,7 @@ func RootCmdRunE(cmd *cobra.Command, args []string) error {
 			Repository:         repository,
 			Token:              token,
 			UseMajorVersion:    useMajorVersion,
+			UseTagCommitHash:   useTagCommitHash,
 			InputFileName:      fileName,
 			OutputFileName:     outputFileName,
 			OutputColumns:      outputColumns,
@@ -243,6 +250,11 @@ func RootCmdFlags(cmd *cobra.Command) {
 		"useMajorVersion",
 		false,
 		"Use the major version of the repository tag. Example: v1.0.0 -> v1",
+	)
+	cmd.Flags().Bool(
+		"useTagCommitHash",
+		false,
+		"Use the tag commit hash as the version and add a comment with the tag name. Example: v1.0.0 -> 1a2b3c4d5e6f7g8h9i0j1k2l3m4n5o6p7q8r9s0t  // v1.0.0 or v1",
 	)
 }
 
