@@ -37,7 +37,7 @@ type CodeBlock struct {
 	Repository         string
 	Token              string
 	UseMajorVersion    bool
-	UseTagCommitHash    bool
+	UseTagCommitHash   bool
 	OutputColumns      []string
 	InputMarkdownLinks bool
 	ColMaxWidth        string
