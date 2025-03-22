@@ -37,6 +37,7 @@ type CodeBlock struct {
 	Repository         string
 	Token              string
 	UseMajorVersion    bool
+	UseTagCommitHash    bool
 	OutputColumns      []string
 	InputMarkdownLinks bool
 	ColMaxWidth        string
@@ -130,7 +131,7 @@ func (c *CodeBlock) writeDocumentation(inputCodeBlock, outputTableOutput *string
 func (c *CodeBlock) getLatestTagForRepository() (string, error) {
 	fmt.Println("Downloading the latest release")
 
-	tag, err := utils.GetLatestRepositoryTag(c.Repository, c.Token, c.UseMajorVersion)
+	tag, err := utils.GetLatestRepositoryTag(c.Repository, c.Token, c.UseMajorVersion, c.UseTagCommitHash)
 	// coverage:ignore
 	if err != nil {
 		return "", err
