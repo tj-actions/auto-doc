@@ -27,7 +27,7 @@ jobs:
       - name: GoReleaser
         uses: goreleaser/goreleaser-action@v5
         with:
-          version: latest
+          version: '~> 1'
           args: release --snapshot --clean
 
       - name: Capture x86_64 (64-bit) Linux binary
